@@ -1,0 +1,21 @@
+# 内容：全球直连列表补充
+# 更新：2023年7月2日15:50:40
+# 数量：365条
+
+# 时间同步服务器
+DOMAIN-SUFFIX,ntp.org
+
+# github国内加速
+DOMAIN-SUFFIX,ghproxy.com
+
+# CDN
+DOMAIN-KEYWORD,akamaiedge
+
+# 站点证书
+DOMAIN,ocsp.digicert.com
+DOMAIN-KEYWORD,verisign
+
+DOMAIN-KEYWORD,tdchat
+DOMAIN-SUFFIX,adtidy.org
+DOMAIN,www.xn--9kq01x6r3c.com
+DOMAIN,dash.xn--fhqw5fm27b1pj.com

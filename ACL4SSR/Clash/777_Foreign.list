@@ -1,0 +1,13 @@
+# 内容：国外常规列表补充
+# 更新：2023年7月2日15:39:37
+# 数量：4条
+
+# 学习网站
+DOMAIN-KEYWORD,bulianglin
+
+# 国外ip检测
+DOMAIN,api.ipify.org
+DOMAIN,api-ipv4.ip.sb
+
+# 青龙面板
+IP-CIDR,34.120.195.249/32

@@ -1,7 +1,7 @@
 # 内容：全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月2日21:58:16
-# 数量：15条
+# 更新：2023年7月2日22:05:19
+# 数量：16条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -20,12 +20,11 @@ DOMAIN,ocsp.digicert.com
 DOMAIN-KEYWORD,verisign
 DOMAIN-KEYWORD,amazontrust
 
-# GPT
+# 电脑相关
+DOMAIN-SUFFIX,intel.com
+
 DOMAIN-KEYWORD,tdchat
-
-# 罗技
 DOMAIN-SUFFIX,logitech.com
-
 DOMAIN-SUFFIX,adtidy.org
 DOMAIN,www.xn--9kq01x6r3c.com
 DOMAIN,dash.xn--fhqw5fm27b1pj.com

@@ -1,7 +1,7 @@
 # 内容：全球直连列表补充
 # 本列表优先级高
-# 更新：2023年07月03日03:06:34
-# 数量：18条
+# 更新：2023年07月03日03:30:02
+# 数量：19条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -33,3 +33,4 @@ DOMAIN-SUFFIX,zerotier.com
 DOMAIN-SUFFIX,netify.ai
 DOMAIN,www.xn--9kq01x6r3c.com
 DOMAIN,dash.xn--fhqw5fm27b1pj.com
+DOMAIN,gllto.glpals.com

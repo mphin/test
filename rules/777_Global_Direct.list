@@ -12,6 +12,7 @@ DOMAIN-SUFFIX,ghproxy.com
 # CDN
 DOMAIN-KEYWORD,akamaiedge
 DOMAIN-KEYWORD,jsdelivr
+DOMAIN-KEYWORD,cloudflare
 
 # 站点证书
 DOMAIN,ocsp.digicert.com

@@ -1,7 +1,7 @@
 # 内容：全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月2日21:30:33
-# 数量：15条
+# 更新：2023年7月2日21:43:47
+# 数量：14条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -21,7 +21,6 @@ DOMAIN-KEYWORD,verisign
 
 # GPT
 DOMAIN-KEYWORD,tdchat
-DOMAIN-SUFFIX,gpt4all.io
 
 # 罗技
 DOMAIN-SUFFIX,logitech.com

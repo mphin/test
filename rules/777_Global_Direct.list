@@ -1,6 +1,6 @@
 # 内容：全球直连列表补充
-# 更新：2023年7月2日19:09:05
-# 数量：9条
+# 更新：2023年7月2日19:18:49
+# 数量：10条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -10,12 +10,15 @@ DOMAIN-SUFFIX,ghproxy.com
 
 # CDN
 DOMAIN-KEYWORD,akamaiedge
+DOMAIN-KEYWORD,jsdelivr
 
 # 站点证书
 DOMAIN,ocsp.digicert.com
 DOMAIN-KEYWORD,verisign
 
+# GPT
 DOMAIN-KEYWORD,tdchat
+
 DOMAIN-SUFFIX,adtidy.org
 DOMAIN,www.xn--9kq01x6r3c.com
 DOMAIN,dash.xn--fhqw5fm27b1pj.com

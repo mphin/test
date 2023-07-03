@@ -1,7 +1,7 @@
 # 内容：全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月3日18:01:39
-# 数量：30条
+# 更新：2023年7月3日18:45:17
+# 数量：31条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -23,12 +23,15 @@ DOMAIN,ocsp.sectigo.com
 DOMAIN-KEYWORD,verisign
 DOMAIN-KEYWORD,amazontrust
 
+# IP查询
+DOMAIN-SUFFIX,ip125.com
+
 # 电脑相关
 DOMAIN-SUFFIX,intel.com
-DOMAIN,ocsp.thawte.com
 DOMAIN-SUFFIX,fiddler2.com
-DOMAIN,ts-ocsp.ws.symantec.com
 DOMAIN-SUFFIX,telerik.com
+DOMAIN,ocsp.thawte.com
+DOMAIN,ts-ocsp.ws.symantec.com
 
 # 加速器
 DOMAIN,ahaspeed.com

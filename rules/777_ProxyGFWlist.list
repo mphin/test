@@ -1,6 +1,6 @@
 # 内容：国外常规列表补充
-# 更新：2023年7月2日21:44:20
-# 数量：5条
+# 更新：2023年07月03日19:09:20
+# 数量：6条
 
 # 学习网站
 DOMAIN-KEYWORD,bulianglin
@@ -12,5 +12,6 @@ DOMAIN,api-ipv4.ip.sb
 # GPT
 DOMAIN-SUFFIX,gpt4all.io
 
-# 青龙面板
+# 青龙
+DOMAIN-SUFFIX,ingest.sentry.io
 IP-CIDR,34.120.195.249/32

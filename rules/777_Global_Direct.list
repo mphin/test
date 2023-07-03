@@ -1,7 +1,7 @@
 # 内容：全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月3日15:18:48
-# 数量：25条
+# 更新：2023年7月3日15:23:40
+# 数量：24条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -15,7 +15,6 @@ DOMAIN-KEYWORD,akamaiedge
 DOMAIN-KEYWORD,jsdelivr
 DOMAIN-KEYWORD,cloudflare
 DOMAIN-SUFFIX,edgekey.net
-DOMAIN-SUFFIX,cdn.strpst.com
 
 # 站点证书
 DOMAIN,ocsp.digicert.com

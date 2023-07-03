@@ -1,12 +1,13 @@
 # 内容：国外媒体列表补充
-# 更新：2023年7月3日15:23:31
-# 数量：5条
+# 更新：2023年07月03日21:07:07
+# 数量：6条
 
 # xhamster
 DOMAIN-KEYWORD,xhamster
 DOMAIN-SUFFIX,doppiocdn.com
 DOMAIN-KEYWORD,xhcdn
-DOMAIN-SUFFIX,cdn.strpst.com
+DOMAIN-SUFFIX,strpst.com
+DOMAIN-SUFFIX,stripst.com
 
 # JAVDB
 DOMAIN-SUFFIX,javdb.com

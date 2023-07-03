@@ -1,6 +1,7 @@
 # ACL4SSR
 自用subconverter订阅转换配置文件含自用补充规则，修改自ACL4SSR https://github.com/ACL4SSR/ACL4SSR    
-适合多节点用户  
+适合多节点用户，不定时更新补充规则  
+本项目创建于2023年7月2日
 
 做了以下修改：  
 增加油管奈非分组  

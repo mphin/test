@@ -1,7 +1,7 @@
 # 内容：全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月3日15:04:55
-# 数量：23条
+# 更新：2023年7月3日15:09:45
+# 数量：24条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -40,3 +40,4 @@ DOMAIN,www.xn--9kq01x6r3c.com
 DOMAIN,dash.xn--fhqw5fm27b1pj.com
 DOMAIN,gllto.glpals.com
 DOMAIN,sv.symcb.com
+DOMAIN,chatai.98dongman.com

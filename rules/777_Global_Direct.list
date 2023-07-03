@@ -1,7 +1,7 @@
 # 内容：全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月3日15:23:40
-# 数量：24条
+# 更新：2023年7月3日15:38:11
+# 数量：26条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -23,6 +23,8 @@ DOMAIN-KEYWORD,amazontrust
 
 # 电脑相关
 DOMAIN-SUFFIX,intel.com
+DOMAIN,ocsp.thawte.com
+DOMAIN-SUFFIX,fiddler2.com
 
 # 加速器
 DOMAIN,ahaspeed.com

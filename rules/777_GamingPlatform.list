@@ -1,6 +1,6 @@
 # 内容：游戏平台列表补充
-# 更新：2023年7月3日16:04:26
-# 数量：3条
+# 更新：2023年7月3日17:10:49
+# 数量：4条
 
 # 华硕
 DOMAIN-SUFFIX,asus.com
@@ -8,4 +8,6 @@ DOMAIN-SUFFIX,asus.com
 # nvidia
 DOMAIN-KEYWORD,nvidia
 
+# xboxlive
 DOMAIN-SUFFIX,auth.xboxlive.com
+DOMAIN,images-eds-ssl.xboxlive.com

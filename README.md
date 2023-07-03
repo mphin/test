@@ -23,6 +23,6 @@
 
 使用方法:
 1.使用在线订阅转换，在订阅转换网站上填写远程配置参数：  
-https://raw.githubusercontent.com/mphin/ACL4SSR/main/config/ACL4SSR_Online_Full_MultiMode_777.ini  
+https://raw.githubusercontent.com/mphin/ACL4SSR/main/config/ACL4SSR_Online_Full_MultiMode_777.ini    
 2.使用本地搭建的订阅转换，将本项目的配置文件和补充规则copy下来  
-补充规则文件放入ACL4SSR规则集下即可既*/subconverter/rules/ACL4SSR/Clash/
+补充规则文件放入ACL4SSR规则集下即可既*/subconverter/rules/ACL4SSR/Clash/  

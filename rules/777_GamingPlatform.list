@@ -8,6 +8,6 @@ DOMAIN-SUFFIX,asus.com
 # nvidia
 DOMAIN-KEYWORD,nvidia
 
-# xboxlive
-DOMAIN-SUFFIX,auth.xboxlive.com
-DOMAIN,images-eds-ssl.xboxlive.com
+# xbox
+DOMAIN-SUFFIX,xbox.com
+DOMAIN-SUFFIX,xboxlive.com

@@ -1,7 +1,7 @@
 # 内容：全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月4日01:12:57
-# 数量：36条
+# 更新：2023年7月4日03:37:05
+# 数量：37条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -20,6 +20,7 @@ DOMAIN-SUFFIX,edgekey.net
 DOMAIN,ocsp.digicert.com
 DOMAIN,x1.c.lencr.org
 DOMAIN,ocsp.sectigo.com
+DOMAIN,digitalcertvalidation.com
 DOMAIN-KEYWORD,verisign
 DOMAIN-KEYWORD,amazontrust
 

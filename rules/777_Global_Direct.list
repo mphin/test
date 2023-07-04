@@ -1,7 +1,7 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月4日14:12:31
-# 数量：38条
+# 更新：2023年7月4日15:27:05
+# 数量：39条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -35,6 +35,7 @@ DOMAIN,ahaspeed.com
 DOMAIN,version.pm2.io
 DOMAIN,nodejs.org
 DOMAIN,registry.npmjs.org
+DOMAIN,zlc1.chaoyi996.com
 
 DOMAIN-KEYWORD,tdchat
 DOMAIN-SUFFIX,logitech.com

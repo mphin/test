@@ -1,6 +1,6 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月4日15:27:05
+# 更新：2023年7月4日15:38:01
 # 数量：39条
 
 # 时间同步服务器
@@ -17,10 +17,10 @@ DOMAIN-KEYWORD,cloudflare
 DOMAIN-SUFFIX,edgekey.net
 
 # 站点证书
-DOMAIN,ocsp.digicert.com
 DOMAIN,x1.c.lencr.org
 DOMAIN,ocsp.sectigo.com
 DOMAIN,digitalcertvalidation.com
+DOMAIN-SUFFIX,digicert.com
 DOMAIN-KEYWORD,verisign
 DOMAIN-KEYWORD,amazontrust
 

@@ -1,7 +1,7 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月5日11:54:07
-# 数量：40条
+# 更新：2023年7月5日12:32:18
+# 数量：41条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -38,6 +38,7 @@ DOMAIN,registry.npmjs.org
 DOMAIN,zlc1.chaoyi996.com
 
 DOMAIN-KEYWORD,tdchat
+DOMAIN-KEYWORD,anti-ad.net
 DOMAIN-SUFFIX,logitech.com
 DOMAIN-SUFFIX,adtidy.org
 DOMAIN-SUFFIX,zerotier.com
@@ -50,6 +51,7 @@ DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,raidrive.com
 DOMAIN-SUFFIX,24xunlei.com
 DOMAIN-SUFFIX,crisp.chat
+anti-ad.net
 DOMAIN,ocsp.thawte.com
 DOMAIN,ts-ocsp.ws.symantec.com
 DOMAIN,www.xn--9kq01x6r3c.com

@@ -1,7 +1,7 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年07月06日03:33:50
-# 数量：42条
+# 更新：2023年07月06日03:53:55
+# 数量：43条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -40,6 +40,7 @@ DOMAIN,zlc1.chaoyi996.com
 DOMAIN-KEYWORD,tdchat
 DOMAIN-KEYWORD,anti-ad.net
 DOMAIN-SUFFIX,logitech.com
+DOMAIN-SUFFIX,logitech.io
 DOMAIN-SUFFIX,adtidy.org
 DOMAIN-SUFFIX,zerotier.com
 DOMAIN-SUFFIX,netify.ai

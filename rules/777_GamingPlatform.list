@@ -1,11 +1,12 @@
 # 内容：🎮游戏平台列表补充
-# 更新：2023年7月4日15:45:08
-# 数量：10条
+# 更新：2023年07月06日03:45:28
+# 数量：11条
 
 # pubg
 DOMAIN-SUFFIX,pubgbluehole.com
 DOMAIN-SUFFIX,playbattlegrounds.com
-DOMAIN-SUFFIX,pubgha.com	
+DOMAIN-SUFFIX,pubgha.com
+DOMAIN-SUFFIX,pubgbluehole.com
 
 # dota
 DOMAIN-SUFFIX,dota2.com

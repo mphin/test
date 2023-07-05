@@ -1,7 +1,7 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年07月06日04:49:30
-# 数量：46条
+# 更新：2023年07月06日05:06:59
+# 数量：47条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -40,8 +40,9 @@ DOMAIN,zlc1.chaoyi996.com
 # Blog
 DOMAIN,blog.dengxj.com
 
-# 下载资源
+# 资源
 DOMAIN,ygdy8.net
+DOMAIN,dygod.net
 DOMAIN-SUFFIX,24xunlei.com
 
 DOMAIN,anti-ad.net

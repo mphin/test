@@ -42,6 +42,7 @@ DOMAIN,blog.dengxj.com
 
 # 下载资源
 DOMAIN,ygdy8.net
+DOMAIN-SUFFIX,24xunlei.com
 
 DOMAIN,anti-ad.net
 DOMAIN,btwuji.com
@@ -64,6 +65,5 @@ DOMAIN-SUFFIX,telerik.com
 DOMAIN-SUFFIX,godaddy.com
 DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,raidrive.com
-DOMAIN-SUFFIX,24xunlei.com
 DOMAIN-SUFFIX,crisp.chat
 

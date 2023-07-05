@@ -1,7 +1,7 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年7月4日15:38:01
-# 数量：39条
+# 更新：2023年7月5日11:54:07
+# 数量：40条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -49,6 +49,7 @@ DOMAIN-SUFFIX,godaddy.com
 DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,raidrive.com
 DOMAIN-SUFFIX,24xunlei.com
+DOMAIN-SUFFIX,crisp.chat
 DOMAIN,ocsp.thawte.com
 DOMAIN,ts-ocsp.ws.symantec.com
 DOMAIN,www.xn--9kq01x6r3c.com

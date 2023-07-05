@@ -15,6 +15,7 @@ DOMAIN-KEYWORD,akamaiedge
 DOMAIN-KEYWORD,jsdelivr
 DOMAIN-KEYWORD,cloudflare
 DOMAIN-SUFFIX,edgekey.net
+DOMAIN-SUFFIX,amazonwebservicesss.com
 
 # 站点证书
 DOMAIN,x1.c.lencr.org
@@ -68,4 +69,4 @@ DOMAIN-SUFFIX,godaddy.com
 DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,raidrive.com
 DOMAIN-SUFFIX,crisp.chat
-DOMAIN-SUFFIX,amazonwebservicesss.com
+

@@ -1,7 +1,7 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年07月06日04:40:33
-# 数量：44条
+# 更新：2023年07月06日04:45:33
+# 数量：45条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -40,8 +40,19 @@ DOMAIN,zlc1.chaoyi996.com
 # Blog
 DOMAIN,blog.dengxj.com
 
+# 下载资源
+DOMAIN,ygdy8.net
+
+DOMAIN,anti-ad.net
+DOMAIN,btwuji.com
+DOMAIN,ocsp.thawte.com
+DOMAIN,ts-ocsp.ws.symantec.com
+DOMAIN,www.xn--9kq01x6r3c.com
+DOMAIN,dash.xn--fhqw5fm27b1pj.com
+DOMAIN,gllto.glpals.com
+DOMAIN,sv.symcb.com
+DOMAIN,chatai.98dongman.com
 DOMAIN-KEYWORD,tdchat
-DOMAIN-KEYWORD,anti-ad.net
 DOMAIN-SUFFIX,logitech.com
 DOMAIN-SUFFIX,logitech.io
 DOMAIN-SUFFIX,adtidy.org
@@ -55,12 +66,4 @@ DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,raidrive.com
 DOMAIN-SUFFIX,24xunlei.com
 DOMAIN-SUFFIX,crisp.chat
-DOMAIN,anti-ad.net
-DOMAIN,btwuji.com
-DOMAIN,ocsp.thawte.com
-DOMAIN,ts-ocsp.ws.symantec.com
-DOMAIN,www.xn--9kq01x6r3c.com
-DOMAIN,dash.xn--fhqw5fm27b1pj.com
-DOMAIN,gllto.glpals.com
-DOMAIN,sv.symcb.com
-DOMAIN,chatai.98dongman.com
+

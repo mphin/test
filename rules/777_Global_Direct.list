@@ -1,7 +1,7 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年07月06日04:45:33
-# 数量：45条
+# 更新：2023年07月06日04:49:30
+# 数量：46条
 
 # 时间同步服务器
 DOMAIN-SUFFIX,ntp.org
@@ -54,6 +54,7 @@ DOMAIN,gllto.glpals.com
 DOMAIN,sv.symcb.com
 DOMAIN,chatai.98dongman.com
 DOMAIN-KEYWORD,tdchat
+DOMAIN-SUFFIX,pushplus.plus
 DOMAIN-SUFFIX,logitech.com
 DOMAIN-SUFFIX,logitech.io
 DOMAIN-SUFFIX,adtidy.org

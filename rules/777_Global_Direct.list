@@ -54,7 +54,6 @@ DOMAIN,easylist-downloads.adblockplus.org
 DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,adtidy.org
 
-DOMAIN,gllto.glpals.com
 DOMAIN,sv.symcb.com
 
 # gpt类
@@ -69,6 +68,7 @@ DOMAIN-SUFFIX,fiddler2.com
 DOMAIN-SUFFIX,telerik.com
 DOMAIN-SUFFIX,godaddy.com
 
+DOMAIN,gllto.glpals.com
 DOMAIN-SUFFIX,crisp.chat
 DOMAIN-SUFFIX,netify.ai
 

@@ -1,6 +1,6 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年07月06日06:31:49
+# 更新：2023年07月07日03:13:43
 # 数量：48条
 
 # 时间同步服务器
@@ -43,7 +43,7 @@ DOMAIN,blog.dengxj.com
 
 DOMAIN,anti-ad.net
 DOMAIN,easylist-downloads.adblockplus.org
-DOMAIN,btwuji.com
+
 DOMAIN,ocsp.thawte.com
 DOMAIN,ts-ocsp.ws.symantec.com
 DOMAIN,gllto.glpals.com

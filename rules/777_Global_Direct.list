@@ -17,10 +17,11 @@ DOMAIN-KEYWORD,cloudflare
 DOMAIN-SUFFIX,edgekey.net
 DOMAIN-SUFFIX,amazonwebservicesss.com
 
-# 站点证书
+# 证书
 DOMAIN,x1.c.lencr.org
 DOMAIN,ocsp.sectigo.com
 DOMAIN,ocsp.thawte.com
+DOMAIN,sv.symcb.com
 DOMAIN,ts-ocsp.ws.symantec.com
 DOMAIN,digitalcertvalidation.com
 DOMAIN-SUFFIX,digicert.com
@@ -53,8 +54,6 @@ DOMAIN,anti-ad.net
 DOMAIN,easylist-downloads.adblockplus.org
 DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,adtidy.org
-
-DOMAIN,sv.symcb.com
 
 # gpt类
 DOMAIN,chatai.98dongman.com

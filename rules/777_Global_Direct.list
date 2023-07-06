@@ -41,6 +41,7 @@ DOMAIN,zlc1.chaoyi996.com
 # Blog
 DOMAIN,blog.dengxj.com
 
+# 过滤器
 DOMAIN,anti-ad.net
 DOMAIN,easylist-downloads.adblockplus.org
 DOMAIN-SUFFIX,adaway.org
@@ -49,18 +50,25 @@ DOMAIN,ocsp.thawte.com
 DOMAIN,ts-ocsp.ws.symantec.com
 DOMAIN,gllto.glpals.com
 DOMAIN,sv.symcb.com
+
 DOMAIN,chatai.98dongman.com
 DOMAIN-KEYWORD,tdchat
+
 DOMAIN-SUFFIX,pushplus.plus
+DOMAIN-SUFFIX,zerotier.com
+DOMAIN-SUFFIX,raidrive.com
+
 DOMAIN-SUFFIX,logitech.com
 DOMAIN-SUFFIX,logitech.io
-DOMAIN-SUFFIX,adtidy.org
-DOMAIN-SUFFIX,zerotier.com
-DOMAIN-SUFFIX,netify.ai
 DOMAIN-SUFFIX,intel.com
+
+DOMAIN-SUFFIX,adtidy.org
+
+DOMAIN-SUFFIX,netify.ai
+
 DOMAIN-SUFFIX,fiddler2.com
 DOMAIN-SUFFIX,telerik.com
 DOMAIN-SUFFIX,godaddy.com
-DOMAIN-SUFFIX,raidrive.com
+
 DOMAIN-SUFFIX,crisp.chat
 

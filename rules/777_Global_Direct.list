@@ -43,6 +43,7 @@ DOMAIN,blog.dengxj.com
 
 DOMAIN,anti-ad.net
 DOMAIN,easylist-downloads.adblockplus.org
+DOMAIN-SUFFIX,adaway.org
 
 DOMAIN,ocsp.thawte.com
 DOMAIN,ts-ocsp.ws.symantec.com
@@ -60,7 +61,6 @@ DOMAIN-SUFFIX,intel.com
 DOMAIN-SUFFIX,fiddler2.com
 DOMAIN-SUFFIX,telerik.com
 DOMAIN-SUFFIX,godaddy.com
-DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,raidrive.com
 DOMAIN-SUFFIX,crisp.chat
 

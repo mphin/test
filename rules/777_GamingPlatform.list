@@ -11,15 +11,11 @@ DOMAIN-SUFFIX,pubgbluehole.com
 # dota
 DOMAIN-SUFFIX,dota2.com
 
-# 华硕
-DOMAIN-SUFFIX,asus.com
-
-# nvidia
-DOMAIN-KEYWORD,nvidia
-
 # xbox
 DOMAIN-SUFFIX,xbox.com
 DOMAIN-SUFFIX,xboxlive.com
 DOMAIN-SUFFIX,xboxab.com
 
 DOMAIN-SUFFIX,king.com
+DOMAIN-KEYWORD,nvidia
+DOMAIN-SUFFIX,asus.com

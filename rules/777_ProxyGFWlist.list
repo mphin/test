@@ -5,7 +5,7 @@
 # 学习网站
 DOMAIN-KEYWORD,bulianglin
 
-# 国外ip检测
+# ip查询
 DOMAIN,api.ipify.org
 DOMAIN,api-ipv4.ip.sb
 

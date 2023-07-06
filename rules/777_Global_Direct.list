@@ -62,12 +62,11 @@ DOMAIN-KEYWORD,tdchat
 DOMAIN-SUFFIX,logitech.com
 DOMAIN-SUFFIX,logitech.io
 DOMAIN-SUFFIX,intel.com
-
-DOMAIN-SUFFIX,fiddler2.com
-DOMAIN-SUFFIX,telerik.com
 DOMAIN-SUFFIX,godaddy.com
 
 DOMAIN,gllto.glpals.com
+DOMAIN-SUFFIX,fiddler2.com
+DOMAIN-SUFFIX,telerik.com
 DOMAIN-SUFFIX,crisp.chat
 DOMAIN-SUFFIX,netify.ai
 

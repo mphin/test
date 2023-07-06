@@ -21,11 +21,11 @@ DOMAIN-SUFFIX,amazonwebservicesss.com
 DOMAIN,x1.c.lencr.org
 DOMAIN,ocsp.sectigo.com
 DOMAIN,ocsp.thawte.com
+DOMAIN,ts-ocsp.ws.symantec.com
 DOMAIN,digitalcertvalidation.com
 DOMAIN-SUFFIX,digicert.com
 DOMAIN-KEYWORD,verisign
 DOMAIN-KEYWORD,amazontrust
-
 
 # IP查询
 DOMAIN-SUFFIX,ip125.com
@@ -54,7 +54,6 @@ DOMAIN,easylist-downloads.adblockplus.org
 DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,adtidy.org
 
-DOMAIN,ts-ocsp.ws.symantec.com
 DOMAIN,gllto.glpals.com
 DOMAIN,sv.symcb.com
 

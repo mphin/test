@@ -9,9 +9,8 @@ DOMAIN-KEYWORD,bulianglin
 DOMAIN,api.ipify.org
 DOMAIN,api-ipv4.ip.sb
 
-# GPT
-DOMAIN-SUFFIX,gpt4all.io
-
 # 青龙
 DOMAIN-SUFFIX,ingest.sentry.io
 IP-CIDR,34.120.195.249/32
+
+DOMAIN-SUFFIX,gpt4all.io

@@ -19,9 +19,9 @@ jobs:
           rules_file="rules/*.list"
 
           # Update time and rule count
-          sed -i "s@^#更新：.*$@#更新：${current_date}@" $rules_file
-          rule_count=$(grep -c '^DOMAIN' $rules_file)
-          sed -i "s@^#数量：.*$@#数量：${rule_count}条@" $rules_file
+          sed -i "s@^#更新：.*\$@#更新：${current_date}@" $rules_file
+          rule_count=$(grep -c '^DOMAIN' "$rules_file")
+          sed -i "s@^#数量：.*\$@#数量：${rule_count}条@" "$rules_file"
 
       - name: Commit and push changes
         run: |

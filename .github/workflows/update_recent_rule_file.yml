@@ -1,4 +1,4 @@
-name: Update Recent Rule File
+name: Update Rules
 
 on:
   push:
@@ -6,23 +6,27 @@ on:
       - main
 
 jobs:
-  update:
+  update-rules:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Update rules file
+      - name: Update rule files
         run: |
-          sed -i "s#更新：.*#更新：$(date +'%Y年%m月%d日%H:%M:%S')#" rules/*.list
-          rule_count=$(grep -c 'DOMAIN' rules/*.list)
-          sed -i "s#数量：.*#数量：$rule_count#" rules/*.list
+          current_date=$(date +"%Y年%m月%d日%H:%M:%S")
+          rules_file="rules/*.list"
+
+          # Update time and rule count
+          sed -i "s/^#更新：.*$/#更新：${current_date}/" $rules_file
+          rule_count=$(grep -c '^DOMAIN' $rules_file)
+          sed -i "s/^#数量：.*$/#数量：${rule_count}条/" $rules_file
 
       - name: Commit and push changes
         run: |
-          git config --local user.email "632450362@qq.com"
-          git config --local user.name "mphin"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Update recent rule file"
+          git commit -m "Update rule files [skip ci]"
           git push

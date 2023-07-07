@@ -1,0 +1,40 @@
+name: Update Recent Rule File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-recent-rule-file:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Identify Recent Rule File
+        id: find_recent_file
+        run: |
+          recent_file=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep "path/to/.*\.list" | head -n 1)
+          echo "::set-output name=file_path::$recent_file"
+          
+      - name: Update Rules
+        run: |
+          file_path=${{ steps.find_recent_file.outputs.file_path }}
+          new_rules=$(expr $(grep -c "DOMAIN" $file_path) + 1)
+          new_update_time=$(date +"%Y年%m月%d日%H:%M:%S")
+          sed -i "s/更新：.*/更新：$new_update_time/" $file_path
+          sed -i "s/数量：.*/数量：$new_rules/" $file_path
+          
+      - name: Commit Changes
+        run: |
+          git config --local user.email "you@example.com"
+          git config --local user.name "Your Name"
+          git add ${{ steps.find_recent_file.outputs.file_path }}
+          git commit -m "Update recent rule file"
+          
+      - name: Push Changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

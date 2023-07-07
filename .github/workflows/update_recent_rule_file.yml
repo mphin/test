@@ -30,31 +30,3 @@ jobs:
           git add .
           git commit -m "Update rule files [skip ci]"
           git push
-    branches:
-      - main
-
-jobs:
-  update-rules:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-        
-      - name: Update .list file
-        run: |
-          # 获取最后修改时间和规则数量
-          updateTime=$(date +"%Y年%m月%d日%H:%M:%S")
-          ruleCount=$(grep -c '^DOMAIN-' rules/*.list)
-
-          # 更新时间和规则数量
-          sed -i "s/^#更新.*$/#更新：$updateTime/" rules/*.list
-          sed -i "s/^#数量.*$/#数量：$ruleCount条/" rules/*.list
-
-      - name: Commit changes
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add rules/*.list
-          git commit -m "Update rule files [skip ci]"
-          git push

@@ -16,12 +16,12 @@ jobs:
       - name: Identify Recent Rule File
         id: find_recent_file
         run: |
-          recent_file=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep "/ACL4SSR/rules/.*\.list" | head -n 1)
-          echo "::set-output name=file_path::$recent_file"
+          recent_file=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep "ACL4SSR/rules/.*\.list" | head -n 1)
+          echo "FILE_PATH=$recent_file" >> $GITHUB_ENV
           
       - name: Update Rules
         run: |
-          file_path=${{ steps.find_recent_file.outputs.file_path }}
+          file_path=$FILE_PATH
           new_rules=$(expr $(grep -c "DOMAIN" $file_path) + 1)
           new_update_time=$(date +"%Y年%m月%d日%H:%M:%S")
           sed -i "s/更新：.*/更新：$new_update_time/" $file_path
@@ -31,7 +31,7 @@ jobs:
         run: |
           git config --local user.email "632450362@qq.com"
           git config --local user.name "mphin"
-          git add ${{ steps.find_recent_file.outputs.file_path }}
+          git add $FILE_PATH
           git commit -m "Update recent rule file"
           
       - name: Push Changes

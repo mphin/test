@@ -16,7 +16,7 @@ jobs:
       - name: Identify Recent Rule File
         id: find_recent_file
         run: |
-          recent_file=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep "path/rules/.*\.list" | head -n 1)
+          recent_file=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep "ACL4SSR/rules/.*\.list" | head -n 1)
           echo "::set-output name=file_path::$recent_file"
           
       - name: Update Rules

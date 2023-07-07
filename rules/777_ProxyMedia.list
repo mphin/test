@@ -1,8 +1,7 @@
 # 内容：🌍国外媒体列表补充
 # 更新：2023年7月7日10:13:24
-# 数量：7条
+# 数量：8条
 
-# xhamster
 DOMAIN,trk.emt.stripchat.com
 DOMAIN-KEYWORD,xhamster
 DOMAIN-KEYWORD,xhcdn
@@ -10,5 +9,6 @@ DOMAIN-SUFFIX,lovense.com
 DOMAIN-SUFFIX,doppiocdn.com
 DOMAIN-SUFFIX,megaxh.com
 
-# JAVDB
 DOMAIN-SUFFIX,javdb.com
+
+DOMAIN-SUFFIX,stripchat.com

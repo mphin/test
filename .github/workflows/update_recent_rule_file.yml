@@ -17,16 +17,16 @@ jobs:
         run: |
           # 获取最后修改时间和规则数量
           updateTime=$(date +"%Y年%m月%d日%H:%M:%S")
-          ruleCount=$(grep -c '^DOMAIN-' rules/*.list)
+          ruleCount=$(grep -c '^DOMAIN-' rules/*.list || true)
 
           # 获取最近提交的文件列表
           commitFiles=$(git diff --name-only HEAD^)
 
           # 更新时间和规则数量
           for file in $commitFiles; do
-            if [[ "$file" == rules/*.list ]]; then
-              sed -i "s/^#更新.*$/#更新：$updateTime/" "$file"
-              sed -i "s/^#数量.*$/#数量：$ruleCount条/" "$file"
+            if [[ $file == rules/*.list ]]; then
+              sed -i "s/^#更新.*$/#更新：$updateTime/" "$file" || true
+              sed -i "s/^#数量.*$/#数量：$ruleCount条/" "$file" || true
             fi
           done
 
@@ -35,5 +35,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git commit -m "Update rule files [skip ci]"
+          git diff --quiet --exit-code || git commit -m "Update rule files [skip ci]"
           git push

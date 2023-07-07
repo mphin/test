@@ -3,30 +3,37 @@ name: Update Rules
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   update-rules:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v2
-
-      - name: Update rule files
+        
+      - name: Update .list files
         run: |
-          current_date=$(date +'%Y年%m月%d日%H:%M:%S')
-          rules_file="rules/*.list"
+          # 获取最后修改时间和规则数量
+          updateTime=$(date +"%Y年%m月%d日%H:%M:%S")
+          ruleCount=$(grep -c '^DOMAIN-' rules/*.list)
 
-          # Update time and rule count
-          sed -i "s@^#更新：.*\$@#更新：${current_date}@" $rules_file
-          rule_count=$(grep -c '^DOMAIN' "$rules_file")
-          sed -i "s@^#数量：.*\$@#数量：${rule_count}条@" "$rules_file"
+          # 获取最近提交的文件列表
+          commitFiles=$(git diff --name-only HEAD^)
 
-      - name: Commit and push changes
+          # 更新时间和规则数量
+          for file in $commitFiles; do
+            if [[ "$file" == rules/*.list ]]; then
+              sed -i "s/^#更新.*$/#更新：$updateTime/" "$file"
+              sed -i "s/^#数量.*$/#数量：$ruleCount条/" "$file"
+            fi
+          done
+
+      - name: Commit changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
           git commit -m "Update rule files [skip ci]"
           git push

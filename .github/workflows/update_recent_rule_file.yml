@@ -16,7 +16,8 @@ jobs:
       - name: Update rule files
         run: |
           current_date=$(date +'%Y年%m月%d日%H:%M:%S')
-          rules_file="rules/*.list"
+          cd ACL4SSR
+          rules_file="${PWD}/rules/*.list"
 
           # Update time and rule count
           sed -i "s@^#更新：.*\$@#更新：${current_date}@" $rules_file

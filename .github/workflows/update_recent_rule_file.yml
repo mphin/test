@@ -1,9 +1,6 @@
 name: Update Rules
 
 on:
-  pushname: Update Rules
-
-on:
   push:
     branches:
       - main

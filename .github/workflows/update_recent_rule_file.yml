@@ -17,16 +17,16 @@ jobs:
         run: |
           # 获取最后修改时间和规则数量
           updateTime=$(date +"%Y年%m月%d日%H:%M:%S")
-          ruleCount=$(grep -c '^DOMAIN-' rules/*.list)
+          ruleCount=$(grep -c '^DOMAIN-' ACL4SSR/rules/*.list)
 
           # 更新时间和规则数量
-          sed -i "s/^#更新.*$/#更新：$updateTime/" rules/*.list
-          sed -i "s/^#数量.*$/#数量：$ruleCount条/" rules/*.list
+          sed -i "s/^#更新.*$/#更新：$updateTime/" ACL4SSR/rules/*.list
+          sed -i "s/^#数量.*$/#数量：$ruleCount条/" ACL4SSR/rules/*.list
 
       - name: Commit changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add rules/*.list
+          git add ACL4SSR/rules/*.list
           git commit -m "Update rule files [skip ci]"
           git push

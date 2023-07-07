@@ -4,9 +4,9 @@
 
 # xhamster
 DOMAIN,trk.emt.stripchat.com
-DOMAIN,apps.lovense.com
 DOMAIN-KEYWORD,xhamster
 DOMAIN-KEYWORD,xhcdn
+DOMAIN-SUFFIX,lovense.com
 DOMAIN-SUFFIX,doppiocdn.com
 DOMAIN-SUFFIX,megaxh.com
 

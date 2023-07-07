@@ -15,9 +15,9 @@ jobs:
 
       - name: Update rules file
         run: |
-          sed -i "s/更新：.*/更新：$(date +'%Y年%m月%d日%H:%M:%S')/" rules/*.list
+          sed -i "s#更新：.*#更新：$(date +'%Y年%m月%d日%H:%M:%S')#" rules/*.list
           rule_count=$(grep -c 'DOMAIN' rules/*.list)
-          sed -i "s/数量：.*/数量：$rule_count/" rules/*.list
+          sed -i "s#数量：.*#数量：$rule_count#" rules/*.list
 
       - name: Commit and push changes
         run: |

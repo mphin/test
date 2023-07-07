@@ -55,7 +55,6 @@ DOMAIN,easylist-downloads.adblockplus.org
 DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,adtidy.org
 
-# gpt类
 DOMAIN,chatai.98dongman.com
 DOMAIN-KEYWORD,tdchat
 

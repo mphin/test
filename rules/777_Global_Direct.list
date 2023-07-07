@@ -9,6 +9,7 @@ DOMAIN-SUFFIX,ntp.org
 # github国内加速
 DOMAIN-SUFFIX,ghproxy.com
 DOMAIN-SUFFIX,fastgit.org
+DOMAIN-SUFFIX,fastgit.org
 
 # CDN
 DOMAIN-KEYWORD,akamaiedge

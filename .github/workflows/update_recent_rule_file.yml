@@ -15,7 +15,7 @@ jobs:
 
       - name: Update rule files
         run: |
-          current_date=$(date +"%Y年%m月%d日%H:%M:%S")
+          current_date=$(date +'%Y年%m月%d日%H\:%M\:%S')
           rules_file="rules/*.list"
 
           # Update time and rule count

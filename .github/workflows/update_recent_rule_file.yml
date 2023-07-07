@@ -15,13 +15,13 @@ jobs:
 
       - name: Update rule files
         run: |
-          current_date=$(date +'%Y年%m月%d日%H\:%M\:%S')
+          current_date=$(date +'%Y年%m月%d日%H:%M:%S')
           rules_file="rules/*.list"
 
           # Update time and rule count
-          sed -i "s|^#更新：.*$|#更新：${current_date}|" $rules_file
+          sed -i "s@^#更新：.*$@#更新：${current_date}@" $rules_file
           rule_count=$(grep -c '^DOMAIN' $rules_file)
-          sed -i "s|^#数量：.*$|#数量：${rule_count}条|" $rules_file
+          sed -i "s@^#数量：.*$@#数量：${rule_count}条@" $rules_file
 
       - name: Commit and push changes
         run: |

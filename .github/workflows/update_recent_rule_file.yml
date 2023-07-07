@@ -15,13 +15,12 @@ jobs:
         
       - name: Update .list files
         run: |
-          # 获取最后修改时间和规则数量
           updateTime=$(date +"%Y年%m月%d日%H:%M:%S")
           ruleCount=$(grep -c '^DOMAIN-' rules/*.list || true)
 
-          # 获取最近提交的文件列表
-          commitFiles=$(git diff --name-only HEAD^)
-
+          # 获取最近提交的文件列表，并排除掉删除的文件
+          commitFiles=$(git diff --name-only --diff-filter=d HEAD^ || true)
+          
           # 更新时间和规则数量
           for file in $commitFiles; do
             if [[ $file == rules/*.list ]]; then

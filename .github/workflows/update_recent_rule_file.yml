@@ -17,7 +17,7 @@ jobs:
         run: |
           # 获取最后修改时间和规则数量
           updateTime=$(date +"%Y年%m月%d日%H:%M:%S")
-          ruleCount=$(grep -c '^DOMAIN-' ACL4SSR/rules/*.list)
+          ruleCount=$(grep -c '^DOMAIN-' rules/*.list)
 
           # 获取最近提交的文件列表
           commitFiles=$(git diff --name-only HEAD^)

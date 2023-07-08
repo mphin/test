@@ -1,0 +1,33 @@
+name: Update List File
+on:
+  push:
+    branches:
+      - main  # 触发工作流程的分支
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Find list files
+        id: list_files
+        run: |
+          git diff --name-only --diff-filter=AMR origin/main | grep "list$"
+
+      - name: Update List Files
+        run: |
+          for file in ${{ steps.list_files.outputs.stdout }}; do
+            time=$(date +"%Y年%m月%d日%H:%M:%S")  # 当前时间
+            count=$(grep -E -v '^\s*#|^\s*$' "$file" | wc -l)  # 统计规则数量，排除注释行和空行
+            sed -i "s/^#更新：.*$/#更新：$time/" "$file"  # 替换更新时间
+            sed -i "s/^#数量：[0-9]*条$/#数量：$count条/" "$file"  # 替换规则数量
+          done
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -am "Update list files [skip ci]"
+          git push

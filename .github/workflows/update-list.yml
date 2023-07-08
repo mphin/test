@@ -18,7 +18,8 @@ jobs:
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
 
           # 获取当前提交的list文件
-          changed_files=$(git diff --name-only HEAD^ HEAD --diff-filter=AM -- '*.list')
+          commit_hash=$(git log -1 --format='%H')
+          changed_files=$(git diff --name-only $commit_hash HEAD --diff-filter=AM -- '*.list')
 
           # 处理每个修改的文件
           for file in $changed_files; do

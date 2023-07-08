@@ -23,7 +23,6 @@ jobs:
           # 更新文件内容
           sed -i "s/^# 更新：.*/# 更新：$current_date/" rules/*.list
           sed -i "s/^# 数量：.*/# 数量：$count/" rules/*.list
-        if: ${{ startsWith(github.event.head_commit.modified[0], 'rules/') && endsWith(github.event.head_commit.modified[0], '.list') }}
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -31,3 +30,4 @@ jobs:
           git add -A
           git commit -m "Update list files [skip ci]"
           git push
+          

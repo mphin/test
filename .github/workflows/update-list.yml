@@ -17,7 +17,11 @@ jobs:
     - name: Get changed list files
       id: changed_files
       run: |
-        echo "CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'rules/.*\.list')" >> $GITHUB_ENV
+        echo "CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'rules/.*\.list')" >> $RUNNER_TEMP/changed_files.env
+
+    - name: Load changed list files
+      run: |
+        source $RUNNER_TEMP/changed_files.env
 
     - name: Update List
       run: |
@@ -25,15 +29,15 @@ jobs:
         current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
 
         # 统计非空行和非注释行的数量
-        count=$(grep -v -e '^$' -e '^#' "${{ env.CHANGED_FILES }}" | wc -l)
+        count=$(grep -v -e '^$' -e '^#' $CHANGED_FILES | wc -l)
         # 更新文件内容
-        sed -i "s/^# 更新：.*/# 更新：$current_date/" "${{ env.CHANGED_FILES }}"
-        sed -i "s/^# 数量：.*/# 数量：$count/" "${{ env.CHANGED_FILES }}"
+        sed -i "s/^# 更新：.*/# 更新：$current_date/" $CHANGED_FILES
+        sed -i "s/^# 数量：.*/# 数量：$count/" $CHANGED_FILES
 
     - name: Commit and push changes
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add "${{ env.CHANGED_FILES }}"
+        git add $CHANGED_FILES
         git commit -m "Update list files [skip ci]"
         git push

@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'rules/*.list'
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -19,19 +17,22 @@ jobs:
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
 
-          # 获取修改的文件列表
-          modified_files=$(git diff --name-only HEAD"^" HEAD -- 'rules/*.list')
-          for file in $modified_files; do
+          # 获取当前提交的list文件
+          changed_files=$(git diff --name-only HEAD^ HEAD --diff-filter=AM -- '*.list')
+
+          # 处理每个修改的文件
+          for file in $changed_files; do
             # 统计非空行和非注释行的数量
             count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
             # 更新文件内容
             sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
             sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
           done
+          
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add .
+          git add -A
           git commit -m "Update list files [skip ci]"
           git push

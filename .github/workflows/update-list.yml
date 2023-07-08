@@ -20,19 +20,22 @@ jobs:
       - name: Get modified files
         id: modified_files
         run: |
-          echo "::set-output name=files::$(git diff --name-only --diff-filter=AM ${GITHUB_SHA}^)"
+          echo "##[set-env name=FILES]$(git diff --name-only --diff-filter=AM ${{ github.sha }}^)"
 
       - name: Update List
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
-        
+
+          # 获取修改的文件列表
+          modified_files="${{ env.FILES }}"
+
           # 统计非空行和非注释行的数量
-          count=$(grep -v -e '^$' -e '^#' "${{ steps.modified_files.outputs.files }}" | wc -l)
+          count=$(grep -v -e '^$' -e '^#' $modified_files | wc -l)
 
           # 更新文件内容
-          sed -i "s/^# 更新：.*/# 更新：$current_date/" "${{ steps.modified_files.outputs.files }}"
-          sed -i "s/^# 数量：.*/# 数量：$count/" "${{ steps.modified_files.outputs.files }}"
+          sed -i "s/^# 更新：.*/# 更新：$current_date/" $modified_files
+          sed -i "s/^# 数量：.*/# 数量：$count/" $modified_files
 
       - name: Commit and push changes
         run: |

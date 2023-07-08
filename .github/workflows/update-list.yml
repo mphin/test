@@ -11,13 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up time zone
+        run: sudo timedatectl set-timezone Asia/Shanghai
+
       - name: Check out code
         uses: actions/checkout@v2
 
       - name: Update List
         run: |
           # 获取当前时间
-          current_date=$(date '+%Y年%m月%d日%H:%M:%S')
+          current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
           
           # 统计非空行和非注释行的数量
           count=$(grep -v -e '^$' -e '^#' rules/*.list | wc -l)

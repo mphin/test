@@ -1,9 +1,10 @@
 name: Update List
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+    paths:
+      - 'rules/*.list'
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -30,4 +31,3 @@ jobs:
           git add -A
           git commit -m "Update list files [skip ci]"
           git push
-          

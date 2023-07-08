@@ -14,28 +14,16 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Get changed files
-        id: changed_files
-        run: |
-          echo "::set-env name=FILES::$(git diff --name-only HEAD^..HEAD)"
-
       - name: Update List
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
-
-          # 拆分文件列表为数组
-          IFS=$'\n' read -rd '' -a files <<< "$FILES"
-
-          # 处理每个文件
-          for file in "${files[@]}"; do
-            # 统计非空行和非注释行的数量
-            count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
-            # 更新文件内容
-            sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
-            sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
-          done
-
+          
+          # 统计非空行和非注释行的数量
+          count=$(grep -v -e '^$' -e '^#' ${{ github.event.inputs.list_file }} | wc -l)
+          # 更新文件内容
+          sed -i "s/^# 更新：.*/# 更新：$current_date/" ${{ github.event.inputs.list_file }}
+          sed -i "s/^# 数量：.*/# 数量：$count/" ${{ github.event.inputs.list_file }}
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

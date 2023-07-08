@@ -19,15 +19,18 @@ jobs:
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
           
-          # 查找当前提交的list文件并处理
-          find rules/ -name '*.list' -type f -exec sh -c '
-            file="$1"
-            # 统计非空行和非注释行的数量
-            count=$(grep -v -e "^$" -e "^#" "$file" | wc -l)
-            # 更新文件内容
-            sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
-            sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
-          ' sh {} \;
+          # 遍历提交的文件列表
+          for file in ${{ github.event.head_commit.modified }}
+          do
+            # 检查文件是否为list文件
+            if [[ $file == "rules/"*.list ]]; then
+              # 统计非空行和非注释行的数量
+              count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
+              # 更新文件内容
+              sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
+              sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
+            fi
+          done
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

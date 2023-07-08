@@ -20,7 +20,7 @@ jobs:
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
           
           # 获取当前提交的文件列表
-          file_list=$(git diff --name-only HEAD~ HEAD | grep 'rules/.*\.list')
+          file_list=$(git diff --name-only origin/main -- 'rules/*.list')
 
           # 统计非空行和非注释行的数量
           count=$(grep -v -e '^$' -e '^#' $file_list | wc -l)

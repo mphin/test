@@ -9,35 +9,29 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-    - name: Set up time zone
-      run: sudo timedatectl set-timezone Asia/Shanghai
-    - name: Check out code
-      uses: actions/checkout@v2
+      - name: Set up time zone
+        run: sudo timedatectl set-timezone Asia/Shanghai
+      - name: Check out code
+        uses: actions/checkout@v2
 
-    - name: Get changed list files
-      id: changed_files
-      run: |
-        echo "CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'rules/.*\.list')" >> $RUNNER_TEMP/changed_files.env
+      - name: Update List
+        run: |
+          # 获取当前时间
+          current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
 
-    - name: Load changed list files
-      run: |
-        source $RUNNER_TEMP/changed_files.env
-
-    - name: Update List
-      run: |
-        # 获取当前时间
-        current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
-
-        # 统计非空行和非注释行的数量
-        count=$(grep -v -e '^$' -e '^#' $CHANGED_FILES | wc -l)
-        # 更新文件内容
-        sed -i "s/^# 更新：.*/# 更新：$current_date/" $CHANGED_FILES
-        sed -i "s/^# 数量：.*/# 数量：$count/" $CHANGED_FILES
-
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git add $CHANGED_FILES
-        git commit -m "Update list files [skip ci]"
-        git push
+          # 获取当前提交的文件列表，并使用循环逐个处理
+          git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -E '^rules/.*\.list$' | while read -r file; do
+            # 统计非空行和非注释行的数量
+            count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
+            # 更新文件内容
+            sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
+            sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
+          done
+          
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git commit -m "Update list files [skip ci]"
+          git push

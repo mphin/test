@@ -16,7 +16,10 @@ jobs:
 
       - name: Get changed files
         id: changed_files
-        run: echo "::set-output name=files::$(git diff --name-only HEAD^..HEAD)"
+        run: |
+          echo "files=${{ steps.changed_files.outputs.files }}" >> $GITHUB_ENV
+        env:
+          files: $(git diff --name-only HEAD^..HEAD)
 
       - name: Update List
         run: |
@@ -24,10 +27,10 @@ jobs:
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
           
           # 统计非空行和非注释行的数量
-          count=$(grep -v -e '^$' -e '^#' ${{ steps.changed_files.outputs.files }} | wc -l)
+          count=$(grep -v -e '^$' -e '^#' $files | wc -l)
           # 更新文件内容
-          sed -i "s/^# 更新：.*/# 更新：$current_date/" ${{ steps.changed_files.outputs.files }}
-          sed -i "s/^# 数量：.*/# 数量：$count/" ${{ steps.changed_files.outputs.files }}
+          sed -i "s/^# 更新：.*/# 更新：$current_date/" $files
+          sed -i "s/^# 数量：.*/# 数量：$count/" $files
 
       - name: Commit and push changes
         run: |

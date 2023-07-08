@@ -1,42 +1,28 @@
 name: Update List
-
 on:
   workflow_dispatch:
   push:
     branches:
-      - main  # 更改为您的默认分支
-
+      - 'rules/**'  # 指定要监视的文件或目录
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - name: Set up time zone
         run: sudo timedatectl set-timezone Asia/Shanghai
-
       - name: Check out code
         uses: actions/checkout@v2
-
-      - name: Get modified files
-        id: modified_files
-        run: |
-          echo "##[set-env name=FILES]$(git diff --name-only --diff-filter=AM ${{ github.sha }}^)"
 
       - name: Update List
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
-
-          # 获取修改的文件列表
-          modified_files="${{ env.FILES }}"
-
+          
           # 统计非空行和非注释行的数量
-          count=$(grep -v -e '^$' -e '^#' $modified_files | wc -l)
-
+          count=$(grep -v -e '^$' -e '^#' rules/*.list | wc -l)
           # 更新文件内容
-          sed -i "s/^# 更新：.*/# 更新：$current_date/" $modified_files
-          sed -i "s/^# 数量：.*/# 数量：$count/" $modified_files
-
+          sed -i "s/^# 更新：.*/# 更新：$current_date/" rules/*.list
+          sed -i "s/^# 数量：.*/# 数量：$count/" rules/*.list
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -44,3 +30,4 @@ jobs:
           git add -A
           git commit -m "Update list files [skip ci]"
           git push
+          

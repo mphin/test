@@ -7,7 +7,7 @@ on:
       - 'rules/*.list'
 jobs:
   update:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Set up time zone
         run: sudo timedatectl set-timezone Asia/Shanghai
@@ -20,7 +20,7 @@ jobs:
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
           
           # 获取当前提交的文件列表
-          file_list=$(git diff --name-only HEAD^ HEAD | grep 'rules/.*.list')
+          file_list=$(git show --name-only --pretty=format: HEAD | grep 'rules/.*.list')
 
           # 统计非空行和非注释行的数量
           count=$(grep -v -e '^$' -e '^#' $file_list | wc -l)

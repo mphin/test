@@ -19,7 +19,7 @@ jobs:
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
           
           # 遍历提交中修改的文件
-          for file in $(git diff --name-only HEAD^ -- "rules/*.list"); do
+          for file in $(git diff --name-only -- "rules/*.list"); do
             # 检查文件路径是否匹配规则
             if [[ $file == "rules/"*.list ]]; then
               # 统计非空行和非注释行的数量

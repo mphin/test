@@ -18,8 +18,8 @@ jobs:
       - name: Get modified list files
         id: git_diff
         run: |
-          modified_files=$(git diff --name-only "$GITHUB_SHA~1" "$GITHUB_SHA" | grep -E 'rules/.*\.list$')
-          echo "::set-output name=diff::$modified_files"
+          git_diff=$(git diff --name-only "$GITHUB_SHA~1" -- 'rules/*.list')
+          echo "::set-output name=diff::$git_diff"
 
       - name: Update List
         run: |

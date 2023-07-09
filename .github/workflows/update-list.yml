@@ -17,13 +17,15 @@ jobs:
         id: git_files
         run: echo "::set-output name=files::$(git show --name-only | grep 'rules/.*\.list')"
       - name: Update List
+        id: update_list
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
           # 获取文件列表
           files="${{ steps.git_files.outputs.files }}"
-          # 循环遍历所有文件进行处理
-          for file in $files; do
+          # 逐个处理文件
+          IFS=$'\n' read -rd '' -a files_array <<<"$files"
+          for file in "${files_array[@]}"; do
             # 统计非空行和非注释行的数量
             count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
             # 更新文件内容

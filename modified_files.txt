@@ -1,9 +1,10 @@
-8f18065 更新 777_Apple.list
+406e2d1 更新 777_Apple.list
 .github/workflows/greetings.yml
 .github/workflows/update-list.yml
 README.md
 config/ACL4SSR_Online_Full_MultiMode_777.ini
 config/ACL4SSR_Online_Full_MultiMode_777_local.ini
+modified_files.txt
 rules/777_Apple.list
 rules/777_ChinaMedia.list
 rules/777_GamingPlatform.list

@@ -13,26 +13,23 @@ jobs:
         run: sudo timedatectl set-timezone Asia/Shanghai
       - name: Check out code
         uses: actions/checkout@v2
+      - name: Get last commit files
+        id: git_files
+        run: echo "::set-output name=files::$(git log --name-only -n 1 HEAD~1..HEAD | grep 'rules/.*\.list')"
       - name: Update List
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
-          
-          # 遍历提交中修改的文件
-          for file in $(git diff --name-only -- "rules/*.list"); do
-            # 检查文件路径是否匹配规则
-            if [[ $file == "rules/"*.list ]]; then
-              # 统计非空行和非注释行的数量
-              count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
-              # 更新文件内容
-              sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
-              sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
-              # 提交文件更改
-              git add "$file"
-            fi
-          done
 
+          # 统计非空行和非注释行的数量
+          count=$(grep -v -e '^$' -e '^#' ${{ steps.git_files.outputs.files }} | wc -l)
+          # 更新文件内容
+          sed -i "s/^# 更新：.*/# 更新：$current_date/" ${{ steps.git_files.outputs.files }}
+          sed -i "s/^# 数量：.*/# 数量：$count/" ${{ steps.git_files.outputs.files }}
+      - name: Commit and push changes
+        run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git add -A
           git commit -m "Update list files [skip ci]"
           git push

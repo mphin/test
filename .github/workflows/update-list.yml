@@ -11,29 +11,30 @@ jobs:
     steps:
       - name: Set up time zone
         run: sudo timedatectl set-timezone Asia/Shanghai
-
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Get modified list files
-        id: git_diff
+      - name: Get changed list files
+        id: get_changed_files
         run: |
-          git_diff=$(git diff --name-only "$GITHUB_SHA~1" -- 'rules/*.list')
-          echo "::set-output name=diff::$git_diff"
+          changed_files=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD | grep 'rules/.*\.list$')
+          echo "Changed files: $changed_files"
+          echo "::set-output name=changed_files::$changed_files"
 
       - name: Update List
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
+          
+          # 获取已更改的文件列表
+          changed_files=${{ steps.get_changed_files.outputs.changed_files }}
 
-          # 获取修改的列表文件
-          modified_files=$(echo "${{ steps.git_diff.outputs.diff }}")
-
-          # 统计非空行和非注释行的数量并更新文件内容
-          for file in $modified_files; do
-            count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
-            sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
-            sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
+          for file in $changed_files; do
+            # 统计非空行和非注释行的数量
+            count=$(grep -v -e '^$' -e '^#' $file | wc -l)
+            # 更新文件内容
+            sed -i "s/^# 更新：.*/# 更新：$current_date/" $file
+            sed -i "s/^# 数量：.*/# 数量：$count/" $file
           done
 
       - name: Commit and push changes

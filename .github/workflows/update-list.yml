@@ -16,7 +16,7 @@ jobs:
 
       - name: Get modified list files
         id: get_files
-        run: echo "::set-output name=files::$(git diff --name-only ${{ github.event.before }}..${{ github.sha }} -- 'rules/*.list')"
+        run: echo "::set-output name=files::$(git diff --name-only $(git rev-parse HEAD~1)..$(git rev-parse HEAD) -- 'rules/*.list')"
 
       - name: Update List
         run: |

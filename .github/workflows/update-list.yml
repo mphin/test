@@ -1,35 +1,44 @@
 name: Update List
+
 on:
   push:
     branches:
       - main
+    paths:
+      - 'rules/*.list'
+
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
       - name: Set up time zone
         run: sudo timedatectl set-timezone Asia/Shanghai
+
       - name: Check out code
         uses: actions/checkout@v2
+
+      - name: Get modified files
+        id: git_log
+        run: |
+          git log --oneline --name-only -1 > modified_files.txt
 
       - name: Update List
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
 
-          # 获取当前提交的list文件
-          commit_hash=$(git log -1 --format='%H')
-          changed_files=$(git diff --name-only $commit_hash HEAD --diff-filter=AM -- '*.list')
+          # 处理当前提交的列表文件
+          while IFS= read -r filename; do
+            if [[ $filename == rules/*.list ]]; then
+              # 统计非空行和非注释行的数量
+              count=$(grep -v -e '^$' -e '^#' "$filename" | wc -l)
+              # 更新文件内容
+              sed -i "s/^# 更新：.*/# 更新：$current_date/" "$filename"
+              sed -i "s/^# 数量：.*/# 数量：$count/" "$filename"
+            fi
+          done < modified_files.txt
 
-          # 处理每个修改的文件
-          for file in $changed_files; do
-            # 统计非空行和非注释行的数量
-            count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
-            # 更新文件内容
-            sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
-            sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
-          done
-          
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

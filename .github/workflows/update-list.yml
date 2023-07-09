@@ -31,10 +31,8 @@ jobs:
               git add "$file"
             fi
           done
-        # 确保至少有一个文件被更改了才提交和推送
-        if [ "$(git status --porcelain)" ]; then
+
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git commit -m "Update list files [skip ci]"
           git push
-        fi

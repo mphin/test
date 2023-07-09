@@ -1,16 +1,13 @@
 name: Update List
-
 on:
   push:
     branches:
       - main
     paths:
       - 'rules/*.list'
-
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - name: Set up time zone
         run: sudo timedatectl set-timezone Asia/Shanghai
@@ -18,21 +15,27 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - name: Get modified list files
+        id: git_diff
+        run: |
+          git_diff=$(git diff --name-only HEAD^ HEAD)
+          echo "::set-output name=diff::$git_diff"
+
       - name: Update List
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
 
-          # 处理当前提交的列表文件
-          while IFS= read -r filename; do
-            if [[ $filename == rules/*.list ]]; then
-              # 统计非空行和非注释行的数量
-              count=$(grep -v -e '^$' -e '^#' "$filename" | wc -l)
-              # 更新文件内容
-              sed -i "s/^# 更新：.*/# 更新：$current_date/" "$filename"
-              sed -i "s/^# 数量：.*/# 数量：$count/" "$filename"
-            fi
-          done < <(git diff --name-only HEAD^ HEAD | grep rules/)
+          # 获取修改的列表文件
+          modified_files=$(echo "${{ steps.git_diff.outputs.diff }}")
+          files_to_update=$(echo "$modified_files" | grep -E 'rules/.*\.list$')
+
+          # 统计非空行和非注释行的数量并更新文件内容
+          for file in $files_to_update; do
+            count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
+            sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
+            sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
+          done
 
       - name: Commit and push changes
         run: |

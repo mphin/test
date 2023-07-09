@@ -32,7 +32,7 @@ jobs:
               sed -i "s/^# 更新：.*/# 更新：$current_date/" "$filename"
               sed -i "s/^# 数量：.*/# 数量：$count/" "$filename"
             fi
-          done < <(git log --oneline --name-only -1 | grep rules/)
+          done < <(git diff --name-only HEAD^ HEAD | grep rules/)
 
       - name: Commit and push changes
         run: |

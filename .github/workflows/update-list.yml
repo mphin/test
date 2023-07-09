@@ -13,29 +13,28 @@ jobs:
         run: sudo timedatectl set-timezone Asia/Shanghai
       - name: Check out code
         uses: actions/checkout@v2
-
-      - name: Get modified list files
-        id: get_files
-        run: echo "::set-output name=files::$(git diff --name-only $(git rev-parse HEAD~1)..$(git rev-parse HEAD) -- 'rules/*.list')"
-
       - name: Update List
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
-
-          # 迭代每个文件并进行处理
-          for file in ${{ steps.get_files.outputs.files }}; do
-            # 统计非空行和非注释行的数量
-            count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
-            # 更新文件内容
-            sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
-            sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
+          
+          # 遍历提交中修改的文件
+          for file in $(git diff --name-only HEAD^); do
+            # 检查文件路径是否匹配规则
+            if [[ $file == "rules/"*.list ]]; then
+              # 统计非空行和非注释行的数量
+              count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
+              # 更新文件内容
+              sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
+              sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
+              # 提交文件更改
+              git add "$file"
+            fi
           done
-
-      - name: Commit and push changes
-        run: |
+        # 确保至少有一个文件被更改了才提交和推送
+        if [ "$(git status --porcelain)" ]; then
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add -A
           git commit -m "Update list files [skip ci]"
           git push
+        fi

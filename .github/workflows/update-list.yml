@@ -11,21 +11,28 @@ jobs:
     steps:
       - name: Set up time zone
         run: sudo timedatectl set-timezone Asia/Shanghai
+
       - name: Check out code
         uses: actions/checkout@v2
-      - name: Get last commit files
-        id: git_files
-        run: echo "::set-output name=files::$(git diff --name-only --diff-filter=ACMRTUXB origin/main..HEAD | grep 'rules/.*\.list')"
+
+      - name: Get the latest commit's file list
+        id: changedFiles
+        run: |
+          file_list=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -v path="rules/" '$0 ~ path')
+          echo "::set-output name=files::$file_list"
+
       - name: Update List
         run: |
           # 获取当前时间
           current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
+          
+          # 统计非空行和非注释行的数量，并更新文件内容
+          for file in ${{ steps.changedFiles.outputs.files }}; do
+            count=$(grep -v -e '^$' -e '^#' "$file" | wc -l)
+            sed -i "s/^# 更新：.*/# 更新：$current_date/" "$file"
+            sed -i "s/^# 数量：.*/# 数量：$count/" "$file"
+          done
 
-          # 统计非空行和非注释行的数量
-          count=$(grep -v -e '^$' -e '^#' ${{ steps.git_files.outputs.files }} | wc -l)
-          # 更新文件内容
-          sed -i "s/^# 更新：.*/# 更新：$current_date/" ${{ steps.git_files.outputs.files }}
-          sed -i "s/^# 数量：.*/# 数量：$count/" ${{ steps.git_files.outputs.files }}
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

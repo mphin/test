@@ -18,11 +18,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Get modified files
-        id: git_log
-        run: |
-          git log --oneline --name-only -1 > modified_files.txt
-
       - name: Update List
         run: |
           # 获取当前时间
@@ -37,7 +32,7 @@ jobs:
               sed -i "s/^# 更新：.*/# 更新：$current_date/" "$filename"
               sed -i "s/^# 数量：.*/# 数量：$count/" "$filename"
             fi
-          done < modified_files.txt
+          done < <(git log --oneline --name-only -1 | grep rules/)
 
       - name: Commit and push changes
         run: |

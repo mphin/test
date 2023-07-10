@@ -17,7 +17,7 @@ jobs:
       # 获取最后一次提交的文件列表
       - name: 获取最后一次提交的文件列表
         run: |
-          git log -n 1 --name-only --pretty=format: > changed_files.txt
+          git --no-pager log -n 1 --name-only --pretty=format: > changed_files.txt
 
       # 将文件列表输出到仓库中
       - name: 将文件列表输出到仓库中

@@ -1,4 +1,4 @@
-name: Update List
+name: CountUpdater
 on:
   push:
     branches:
@@ -18,28 +18,27 @@ jobs:
       - name: Get last commit files
         id: last_commit
         run: |
-          echo "::set-output name=sha::$(git rev-parse HEAD)"
+          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: Get changed files
         id: file_list
         run: |
-          COMMIT=${{ steps.last_commit.outputs.sha }}
+          COMMIT=${{ env.sha }}
           URL="https://api.github.com/repos/${{ github.repository }}/compare/${COMMIT}^...${COMMIT}"
           FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[] | select(.filename | test("^rules/.*\\.list$")) | .filename')
-          echo "$FILES" > changed_files.txt
-
-      - name: Update List
-        run: |
-          # 获取当前时间
-          current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
-
-          # 统计非空行和非注释行的数量
-          count=$(grep -v -e '^$' -e '^#' $(cat changed_files.txt) | wc -l)
-
+          
           # 更新文件内容
-          for file in $(cat changed_files.txt); do
+          for file in $FILES; do
+            # 获取当前时间
+            current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
+
+            # 统计非空行和非注释行的数量
+            count=$(grep -v -e '^$' -e '^#' $file | wc -l)
+            count_with_unit="${count}条"
+
+            # 更新文件内容
             sed -i "s/^# 更新：.*/# 更新：$current_date/" $file
-            sed -i "s/^# 数量：.*/# 数量：$count/" $file
+            sed -i "s/^# 数量：.*/# 数量：$count_with_unit/" $file
           done
 
       - name: Commit and push changes
@@ -47,5 +46,5 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add -A
-          git commit -m "Update list files [skip ci]"
+          git commit -m "Update quantity and date [skip ci]"
           git push

@@ -18,12 +18,12 @@ jobs:
       - name: Get last commit files
         id: last_commit
         run: |
-          echo "sha=${{ github.sha }}" >> $GITHUB_ENV
+          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: Get changed files
         id: file_list
         run: |
-          COMMIT=${{ steps.last_commit.outputs.sha }}
+          COMMIT=${{ env.sha }}
           URL="https://api.github.com/repos/${{ github.repository }}/compare/${COMMIT}^...${COMMIT}"
           FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[].filename')
           

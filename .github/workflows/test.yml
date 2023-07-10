@@ -10,15 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 检出代码并拉取最新提交
-      - name: 检出代码并拉取最新提交
+      # 检出代码
+      - name: 检出代码
         uses: actions/checkout@v2
       
       # 获取最后一次提交的文件列表
       - name: 获取最后一次提交的文件列表
+        id: last_commit
         run: |
-          git pull
-          git diff-tree --no-commit-id --name-only -r HEAD > changed_files.txt
+          echo "::set-output name=sha::$(git rev-parse HEAD)"
+      
+      - name: 获取文件列表
+        id: file_list
+        run: |
+          COMMIT=${{ steps.last_commit.outputs.sha }}
+          URL="https://api.github.com/repos/${{ github.repository }}/compare/${COMMIT}^...${COMMIT}"
+          FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[].filename')
+          echo "$FILES" > changed_files.txt
 
       # 将文件列表输出到仓库中
       - name: 将文件列表输出到仓库中

@@ -14,10 +14,12 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v2
 
-      # 获取最后一次提交的文件列表
-      - name: 获取最后一次提交的文件列表
+      # 获取最后一次提交和前一次提交的文件列表
+      - name: 获取最后一次提交和前一次提交的文件列表
         run: |
-          git diff --name-only HEAD^ > changed_files.txt
+          last_commit_hash=$(git rev-parse HEAD)  # 获取最后一次提交的哈希值
+          prev_commit_hash=$(git rev-parse HEAD^) # 获取前一次提交的哈希值
+          git diff --name-only $prev_commit_hash $last_commit_hash > changed_files.txt
 
       # 将文件列表输出到仓库中
       - name: 将文件列表输出到仓库中

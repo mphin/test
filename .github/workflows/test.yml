@@ -1,27 +1,27 @@
-name: Update List
+name: 提交更改的文件列表
+
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'rules/*.list'
+      - main  # 替换为您的默认分支
+
 jobs:
-  update:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Set up time zone
-        run: sudo timedatectl set-timezone Asia/Shanghai
-      - name: Check out code
+      # 检出代码
+      - name: 检出代码
         uses: actions/checkout@v2
-      - name: Get modified file list
-        id: files
+
+      # 获取提交更改的文件列表
+      - name: 获取提交更改的文件列表
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} > modified_files.txt
-          cat modified_files.txt
-      - name: Commit and push changes
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add modified_files.txt
-          git commit -m "Update modified file list [skip ci]"
-          git push
+          git diff --name-only HEAD~1..HEAD > changed_files.txt
+
+      # 将文件列表输出到仓库中
+      - name: 将文件列表输出到仓库中
+        uses: actions/upload-artifact@v2
+        with:
+          name: changed_files
+          path: changed_files.txt

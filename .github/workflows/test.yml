@@ -18,7 +18,7 @@ jobs:
       - name: Get last commit files
         id: last_commit
         run: |
-          echo "::set-output name=sha::$(git rev-parse HEAD)"
+          echo "sha=${{ github.sha }}" >> $GITHUB_ENV
 
       - name: Get changed files
         id: file_list
@@ -40,12 +40,6 @@ jobs:
             sed -i "s/^# 更新：.*/# 更新：$current_date/" $file
             sed -i "s/^# 数量：.*/# 数量：$count_with_unit/" $file
           done
-
-      - name: Update environment files
-        run: |
-          echo "updated_files='${FILES[@]}'" >> $GITHUB_ENV
-          echo "current_date='$current_date'" >> $GITHUB_ENV
-          echo "count_with_unit='$count_with_unit'" >> $GITHUB_ENV
 
       - name: Commit and push changes
         run: |

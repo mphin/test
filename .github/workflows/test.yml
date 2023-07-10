@@ -14,16 +14,10 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v2
 
-      # 获取最后一次提交的哈希值
-      - name: 获取最后一次提交的哈希值
-        id: last_commit
-        run: echo "::set-output name=commit::$(git log -1 --pretty=format:%H)"
-
       # 获取最后一次提交的文件列表
       - name: 获取最后一次提交的文件列表
         run: |
-          last_commit_hash=$(echo "${{ steps.last_commit.outputs.commit }}")
-          git diff --name-only $last_commit_hash^ $last_commit_hash > changed_files.txt
+          git log -n 1 --name-only --pretty=format: > changed_files.txt
 
       # 将文件列表输出到仓库中
       - name: 将文件列表输出到仓库中

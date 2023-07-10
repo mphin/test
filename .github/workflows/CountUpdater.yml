@@ -25,7 +25,7 @@ jobs:
         run: |
           COMMIT=${{ steps.last_commit.outputs.sha }}
           URL="https://api.github.com/repos/${{ github.repository }}/compare/${COMMIT}^...${COMMIT}"
-          FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[].filename')
+          FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[] | select(.filename | test("^rules/.*\\.list$")) | .filename')
           echo "$FILES" > changed_files.txt
 
       - name: Update List

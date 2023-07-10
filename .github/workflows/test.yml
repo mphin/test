@@ -10,18 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 检出代码
-      - name: 检出代码
-        uses: actions/checkout@v3
-
+      # 检出代码并拉取最新提交
+      - name: 检出代码并拉取最新提交
+        uses: actions/checkout@v2
+      
       # 获取最后一次提交的文件列表
       - name: 获取最后一次提交的文件列表
         run: |
+          git pull
           git show --name-only > changed_files.txt
 
       # 将文件列表输出到仓库中
       - name: 将文件列表输出到仓库中
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: changed_files
           path: changed_files.txt

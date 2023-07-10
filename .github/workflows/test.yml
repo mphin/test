@@ -12,7 +12,7 @@ jobs:
     steps:
       # 检出代码
       - name: 检出代码
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # 获取最后一次提交的文件列表
       - name: 获取最后一次提交的文件列表
@@ -21,7 +21,7 @@ jobs:
 
       # 将文件列表输出到仓库中
       - name: 将文件列表输出到仓库中
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: changed_files
           path: changed_files.txt

@@ -41,6 +41,12 @@ jobs:
             sed -i "s/^# 数量：.*/# 数量：$count_with_unit/" $file
           done
 
+      - name: Update environment files
+        run: |
+          echo "updated_files='${FILES[@]}'" >> $GITHUB_ENV
+          echo "current_date='$current_date'" >> $GITHUB_ENV
+          echo "count_with_unit='$count_with_unit'" >> $GITHUB_ENV
+
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -18,7 +18,7 @@ jobs:
       - name: 获取最后一次提交的文件列表
         run: |
           git pull
-          git show --name-only > changed_files.txt
+          git diff-tree --no-commit-id --name-only -r HEAD > changed_files.txt
 
       # 将文件列表输出到仓库中
       - name: 将文件列表输出到仓库中

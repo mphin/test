@@ -17,7 +17,8 @@ jobs:
       # 获取提交更改的文件列表
       - name: 获取提交更改的文件列表
         run: |
-          git diff --name-only HEAD~1..HEAD > changed_files.txt
+          git fetch --prune --unshallow
+          git diff --name-only origin/main...HEAD > changed_files.txt
 
       # 将文件列表输出到仓库中
       - name: 将文件列表输出到仓库中

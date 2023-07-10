@@ -1,4 +1,4 @@
-name: test
+name: Update List
 on:
   push:
     branches:
@@ -16,7 +16,7 @@ jobs:
       - name: Get modified file list
         id: files
         run: |
-          git diff --name-only --diff-filter=AMR > modified_files.txt
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} > modified_files.txt
           echo '::set-output name=modified_files::modified_files.txt'
       - name: Commit and push changes
         run: |

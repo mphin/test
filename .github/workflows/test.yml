@@ -17,7 +17,7 @@ jobs:
         id: files
         run: |
           git diff --name-only ${{ github.event.before }} ${{ github.sha }} > modified_files.txt
-          echo '::set-output name=modified_files::modified_files.txt'
+          cat modified_files.txt
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

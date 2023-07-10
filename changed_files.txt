@@ -1,2 +1,2 @@
-changed_files.txt
+rules/777_ProxyGFWlist.list
 rules/777_ProxyMedia.list

@@ -13,4 +13,4 @@ DOMAIN,api-ipv4.ip.sb
 DOMAIN-SUFFIX,ingest.sentry.io
 IP-CIDR,34.120.195.249/32
 
-DOMAIN-SUFFIX,gpt4all.
+DOMAIN-SUFFIX,gpt4all

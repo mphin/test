@@ -1,2 +1,2 @@
-.github/workflows/CountUpdater.yml
+changed_files.txt
 rules/777_ProxyMedia.list

@@ -1,36 +1,50 @@
-name: 获取最后一次提交的文件列表
-
+name: Update List
 on:
   push:
     branches:
-      - main  # 替换为您的默认分支
-
+      - main
+    paths:
+      - 'rules/*.list'
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
-
     steps:
-      # 检出代码
-      - name: 检出代码
-        uses: actions/checkout@v2
+      - name: Set up time zone
+        run: sudo timedatectl set-timezone Asia/Shanghai
       
-      # 获取最后一次提交的文件列表
-      - name: 获取最后一次提交的文件列表
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Get last commit files
         id: last_commit
         run: |
           echo "::set-output name=sha::$(git rev-parse HEAD)"
-      
-      - name: 获取文件列表
+
+      - name: Get changed files
         id: file_list
         run: |
           COMMIT=${{ steps.last_commit.outputs.sha }}
           URL="https://api.github.com/repos/${{ github.repository }}/compare/${COMMIT}^...${COMMIT}"
           FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[].filename')
-          echo "$FILES" > changed_files.txt
+          
+          # 更新文件内容
+          for file in $FILES; do
+            # 获取当前时间
+            current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
 
-      # 将文件列表输出到仓库中
-      - name: 将文件列表输出到仓库中
-        uses: actions/upload-artifact@v2
-        with:
-          name: changed_files
-          path: changed_files.txt
+            # 统计非空行和非注释行的数量
+            count=$(grep -v -e '^$' -e '^#' $file | wc -l)
+            count_with_unit="${count}条"
+
+            # 更新文件内容
+            sed -i "s/^# 更新：.*/# 更新：$current_date/" $file
+            sed -i "s/^# 数量：.*/# 数量：$count_with_unit/" $file
+          done
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git commit -m "Update list files [skip ci]"
+          git push

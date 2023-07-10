@@ -1,0 +1,27 @@
+name: test
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'rules/*.list'
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up time zone
+        run: sudo timedatectl set-timezone Asia/Shanghai
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Get modified file list
+        id: files
+        run: |
+          git diff --name-only --diff-filter=AMR > modified_files.txt
+          echo '::set-output name=modified_files::modified_files.txt'
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add modified_files.txt
+          git commit -m "Update modified file list [skip ci]"
+          git push

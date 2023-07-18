@@ -1,6 +1,6 @@
 # 内容：✈️ 国外常规列表补充
-# 更新：2023年07月10日20:33:20
-# 数量：6条
+# 更新：2023年07月09日12:52:51
+# 数量：6
 
 # 学习网站
 DOMAIN-KEYWORD,bulianglin
@@ -13,4 +13,4 @@ DOMAIN,api-ipv4.ip.sb
 DOMAIN-SUFFIX,ingest.sentry.io
 IP-CIDR,34.120.195.249/32
 
-DOMAIN-SUFFIX,gpt4al
+DOMAIN-SUFFIX,gpt4all.io

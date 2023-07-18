@@ -1,32 +1,36 @@
 # 内容：🎯全球直连列表补充
 # 本列表优先级高
-# 更新：2023年07月10日20:33:20
-# 数量：45条
+# 更新：2023年07月18日12:30:11
+# 数量：68条
 
-# 时间同步服务器
+# 时间同步
 DOMAIN-SUFFIX,ntp.org
 
-# github国内加速
+# CDN
 DOMAIN-SUFFIX,ghproxy.com
 DOMAIN-SUFFIX,fastgit.org
-DOMAIN-SUFFIX,fastgit.org
-
-# CDN
+DOMAIN-SUFFIX,edgekey.net
+DOMAIN-SUFFIX,amazonwebservicesss.com
+DOMAIN-SUFFIX,netlify.com
 DOMAIN-KEYWORD,akamaiedge
 DOMAIN-KEYWORD,jsdelivr
 DOMAIN-KEYWORD,cloudflare
-DOMAIN-SUFFIX,edgekey.net
-DOMAIN-SUFFIX,amazonwebservicesss.com
 
-# 证书
+# 网页服务
 DOMAIN,x1.c.lencr.org
-DOMAIN,ocsp.sectigo.com
 DOMAIN,ocsp.thawte.com
-DOMAIN,sv.symcb.com
+DOMAIN,polyfill.io
 DOMAIN,ts-ocsp.ws.symantec.com
 DOMAIN,digitalcertvalidation.com
+DOMAIN,browser.sentry-cdn.com
+DOMAIN-SUFFIX,symcb.com
+DOMAIN-SUFFIX,symcd.com
+DOMAIN-SUFFIX,ocsp.sectigo.com
 DOMAIN-SUFFIX,digicert.com
-DOMAIN-KEYWORD,verisig
+DOMAIN-SUFFIX,wpc.phicdn.net
+DOMAIN-SUFFIX,optimizely.com
+DOMAIN-SUFFIX,fortawesome.com
+DOMAIN-KEYWORD,verisign
 DOMAIN-KEYWORD,amazontrust
 
 # IP查询
@@ -41,14 +45,21 @@ DOMAIN,version.pm2.io
 DOMAIN,nodejs.org
 DOMAIN,registry.npmjs.org
 DOMAIN,zlc1.chaoyi996.com
+DOMAIN,kr.kingran.cf
 
 # Blog
 DOMAIN,blog.dengxj.com
 
 # 工具类
+DOMAIN,dbcha.com
+DOMAIN,winscp.net
+DOMAIN-SUFFIX,speedtest.net
 DOMAIN-SUFFIX,pushplus.plus
 DOMAIN-SUFFIX,zerotier.com
 DOMAIN-SUFFIX,raidrive.com
+DOMAIN-SUFFIX,alerts.home-assistant.io
+DOMAIN-SUFFIX,rclone.org
+DOMAIN-SUFFIX,verysync.com
 
 # 过滤器
 DOMAIN,anti-ad.net
@@ -56,18 +67,30 @@ DOMAIN,easylist-downloads.adblockplus.org
 DOMAIN-SUFFIX,adaway.org
 DOMAIN-SUFFIX,adtidy.org
 
+# BT下载
+DOMAIN-SUFFIX,loadbt.com
+DOMAIN-SUFFIX,abcvg.info
+DOMAIN-SUFFIX,stealth.si
+
 DOMAIN,chatai.98dongman.com
 DOMAIN-KEYWORD,tdchat
 
-DOMAIN-KEYWORD,nvidia
 DOMAIN-SUFFIX,asus.com
 DOMAIN-SUFFIX,logitech.com
 DOMAIN-SUFFIX,logitech.io
 DOMAIN-SUFFIX,intel.com
 DOMAIN-SUFFIX,godaddy.com
+DOMAIN-SUFFIX,lenovo.com
+DOMAIN-SUFFIX,lenovomm.com
+DOMAIN-SUFFIX,geforce.com
+DOMAIN-KEYWORD,nvidia
 
+DOMAIN,xiazai.cab
+DOMAIN,gllto.glpals.com
+DOMAIN,404world.in
+DOMAIN,giscus.app
+DOMAIN,www.thetradersden.org
 DOMAIN-SUFFIX,fiddler2.com
 DOMAIN-SUFFIX,telerik.com
 DOMAIN-SUFFIX,crisp.chat
 DOMAIN-SUFFIX,netify.ai
-

@@ -1,11 +1,66 @@
 # 内容：🌏国内媒体列表补充
-# 更新：2023年07月10日20:37:25
-# 数量：6条
+# 更新：2023年07月18日12:21:23
+# 数量：52条
 
 # 电影资源
-DOMAIN,ygdy8.net
 DOMAIN,dygod.net
-DOMAIN,btwuji.com
-DOMAIN,4l4ll.com
+DOMAIN,smdy91.com
+DOMAIN,szgpmy.com
+DOMAIN-SUFFIX,ygdy8.net
+DOMAIN-SUFFIX,btwuji.com
 DOMAIN-SUFFIX,24xunlei.com
+DOMAIN-SUFFIX,xinsheng168.com
 DOMAIN-SUFFIX,javdb008.com
+DOMAIN-SUFFIX,zjhuishu.com
+DOMAIN-SUFFIX,dgbosun.com
+
+DOMAIN,xcyy668.com
+DOMAIN,pv.ip1398.com
+DOMAIN,wujinyun.yaokanyao.com
+DOMAIN,xcyy668.dnsserverhe.com
+DOMAIN,jx1.hangzhou-aliyun-oss.com
+DOMAIN,vip.lz-cdn1.com
+DOMAIN,ukzy.ukubf4.com
+DOMAIN,baidu.sd-play.com
+DOMAIN,baidu.shanshanku.com
+DOMAIN,new.qoqkkhy.com
+DOMAIN,hey05.cjkypo.com
+DOMAIN,pic.wujinpp.com
+DOMAIN,youku.youkuphoto.com
+DOMAIN,dy47.live
+DOMAIN,dy44.live
+
+DOMAIN,v.zdxtd.com
+DOMAIN,image.maimn.com
+DOMAIN,hey10.cjkypo.com
+DOMAIN,hot.qoqkkhy.com
+
+DOMAIN,hshtcm.com
+DOMAIN,hey03.cjkypo.com
+
+DOMAIN,hl91.one
+DOMAIN-SUFFIX,msn90.com
+
+DOMAIN,bbs.zgogc.com
+DOMAIN,img.blr844.com
+
+DOMAIN-SUFFIX,4l4ll.com
+DOMAIN,cdn7.yzzy-tv1.com
+DOMAIN,dy2.yle888.vip
+DOMAIN,hey11.cjkypo.com
+DOMAIN,v3.dious.cc
+DOMAIN-SUFFIX,qoqkkhy.com
+
+DOMAIN,liangma.me
+DOMAIN,img.kuaibozy.net
+DOMAIN,m3u8.mstopq.com
+DOMAIN,tiao.cjkypo.com
+DOMAIN,ok.zuidapic.com
+DOMAIN,pic.huishij.com
+DOMAIN,deo.shopeemobile.com
+DOMAIN,v2.qoqliyu.com
+DOMAIN,vod6.bdzybf7.com
+DOMAIN-SUFFIX,dious.cc
+
+# 资讯
+DOMAIN-SUFFIX,ft.com

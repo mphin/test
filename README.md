@@ -2,6 +2,7 @@
 * 自用subconverter订阅转换配置文件含自用补充规则，修改自ACL4SSR https://github.com/ACL4SSR/ACL4SSR    
 * 适合多节点用户，不定时更新补充规则  
 * 本项目创建于2023年7月2日
+# 更新时间：2023年7月18日14:37:35
 # 远程配置地址
 `https://raw.githubusercontent.com/mphin/ACL4SSR/main/config/ACL4SSR_Online_Full_MultiMode_777.ini`
 # 修改内容

@@ -41,6 +41,11 @@ jobs:
             sed -i "s/^# 数量：.*/# 数量：$count_with_unit/" $file
           done
 
+      - name: Update README
+        run: |
+          new_date=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H:%M:%S')
+          sed -i "s/更新时间：.*/更新时间：$new_date/" README.md
+          
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

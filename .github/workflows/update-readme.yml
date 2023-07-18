@@ -1,0 +1,37 @@
+name: Update README
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update README
+        run: |
+          # Get current date and time in Beijing timezone
+          new_date=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H:%M:%S')
+
+          # Replace the update time in README.md
+          sed -i "s/更新时间：.*/更新时间：$new_date/" README.md
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -a -m "Update README with current time"
+          git push origin main

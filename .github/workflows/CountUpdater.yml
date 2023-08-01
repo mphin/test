@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - 'rules/*.list'
+      - '*.txt'
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
         run: sudo timedatectl set-timezone Asia/Shanghai
       
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Get last commit files
         id: last_commit
@@ -25,27 +25,32 @@ jobs:
         run: |
           COMMIT=${{ env.sha }}
           URL="https://api.github.com/repos/${{ github.repository }}/compare/${COMMIT}^...${COMMIT}"
-          FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[] | select(.filename | test("^rules/.*\\.list$")) | .filename')
+          FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[] | select(.filename | test("^.*\\.txt$")) | .filename')
           
           # 更新文件内容
           for file in $FILES; do
             # 获取当前时间
-            current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
+            current_date=$(TZ=Asia/Shanghai date '+%Y%m%d%H%M')
 
             # 统计非空行和非注释行的数量
-            count=$(grep -v -e '^$' -e '^#' $file | wc -l)
-            count_with_unit="${count}条"
+            count=$(grep -v -e '^$' -e '^!' $file | wc -l)
+            count_with_unit="${count}"
 
             # 更新文件内容
-            sed -i "s/^# 更新：.*/# 更新：$current_date/" $file
-            sed -i "s/^# 数量：.*/# 数量：$count_with_unit/" $file
+            sed -i "s/^! Version:.*/! Version:$current_date/" $file
+            sed -i "s/^! Total lines:.*/! Total lines:$count_with_unit/" $file
           done
 
       - name: Update README
         run: |
+          # 获取变量
           new_date=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H:%M:%S')
-          sed -i "s/更新时间：.*/更新时间：$new_date/" README.md
-          
+          count_1=$(grep -v -e '^$' -e '^!' *.txt | wc -l)
+
+          # 更新README.md内容
+          sed -i "s/最近更新：.*/最近更新：$new_date/" README.md
+          sed -i "s/补充数量：.*/补充数量：$count_1条/" README.md
+
       - name: Commit and push changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

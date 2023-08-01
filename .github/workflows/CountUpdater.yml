@@ -40,7 +40,7 @@ jobs:
             sed -i "s/^! Version:.*/! Version:$current_date/" $file
             sed -i "s/^! Total lines:.*/! Total lines:$count_with_unit/" $file
             # 在 ! 开头的行和 ! 开头的行之间进行正向排序
-            sed -i '/^!/,/^!/ { /^!/b; /^$/b; H; d; }; /^!/ { x; /^\n/ { s/^\n//; b; }; g; s/\n/&&/g; y/\n/ /; s/.\(...\)/\1\n/g; P; D; }' $file
+            sed -i '/^!/,/^!/ { /^!/b; /^$/b; /^[[:space:]]*$/b; H; d; }; /^!/ { x; /^\n/ { s/^\n//; b; }; g; s/\n/&&/g; y/\n/ /; s/.\(...\)/\1\n/g; P; D; }' $file
           done
 
       - name: Update README

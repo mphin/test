@@ -37,7 +37,7 @@ fexclick.baidu.com
 ms.bdimg.com
 wan.baidu.com
 123.sh
-c.un
+c.un2
 
 ! 淘宝
 click.mz.simba.taobao.com

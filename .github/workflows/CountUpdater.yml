@@ -57,7 +57,6 @@ jobs:
               echo "$domain_list" | sort | sed '/^$/d' >> "$temp_file"
             fi
             mv "$temp_file" "$file"
-            rm "$temp_file"
           done
 
       - name: Update README

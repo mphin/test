@@ -1,5 +1,5 @@
 ! Title:白名单补充
-! Version:202308021905
+! Version:202308021911
 ! Homepage:https://github.com/mphin/AdGuardHome_rules
 ! Total lines:34
 
@@ -31,13 +31,13 @@ se.360.cn
 click.linksynergy.com
 
 ! 百度
+123.sh
+c.un2
 fc3tn.baidu.com
 fc5tn.baidu.com
 fexclick.baidu.com
 ms.bdimg.com
 wan.baidu.com
-123.sh
-c.un2
 
 ! 淘宝
 click.mz.simba.taobao.com

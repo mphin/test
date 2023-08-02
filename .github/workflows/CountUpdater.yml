@@ -36,11 +36,28 @@ jobs:
             count=$(grep -v -e '^$' -e '^!' $file | wc -l)
             count_with_unit="${count}"
 
-            # 更新文件内容
+            # 修改文件内容
             sed -i "s/^! Version:.*/! Version:$current_date/" $file
             sed -i "s/^! Total lines:.*/! Total lines:$count_with_unit/" $file
-            # 在 ! 开头的行和 ! 开头的行之间进行正向排序
-            sed -i '/^!/,/^!/ { /^!/b; /^$/b; /^[[:space:]]*$/b; H; d; }; /^!/ { x; /^\n/ { s/^\n//; b; }; g; s/\n/&&/g; y/\n/ /; s/.\(...\)/\1\n/g; P; D; }' $file
+            # 规则正向排序
+            temp_file=$(mktemp)
+            domain_list=""
+            while IFS= read -r line; do
+              if [[ ! $line =~ ^[![:space:]]*$ && $line =~ ^[a-zA-Z0-9.-]+$ ]]; then
+                domain_list="$domain_list"$'\n'"$line"
+              else
+                if [[ $domain_list ]]; then
+                  echo "$domain_list" | sort | sed '/^$/d' >> "$temp_file"
+                  domain_list=""
+                fi
+                echo "$line" >> "$temp_file"
+              fi
+            done < "$file"
+            if [[ $domain_list ]]; then
+              echo "$domain_list" | sort | sed '/^$/d' >> "$temp_file"
+            fi
+            mv "$temp_file" "$file"
+            rm "$temp_file"
           done
 
       - name: Update README

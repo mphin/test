@@ -40,23 +40,23 @@ jobs:
             sed -i "s/^! Version:.*/! Version:$current_date/" $file
             sed -i "s/^! Total lines:.*/! Total lines:$count_with_unit/" $file
             # 将文件中的规则正序
-            temp_file=$(mktemp)
             domain_list=""
             while IFS= read -r line; do
-              if [[ ! $line =~ ^[!#[:space:]]*$ && $line =~ ^([a-zA-Z0-9.-]+|\|\||@@) ]]; then
+             if [[ ! $line =~ ^[!#[:space:]]*$ && $line =~ ^([a-zA-Z0-9.-]+|\|\||@@) ]]; then
                 domain_list="$domain_list"$'\n'"$line"
               else
                 if [[ $domain_list ]]; then
-                  echo "$domain_list" | sort | sed '/^$/d' >> "$temp_file"
+                  sorted_domain_list=$(echo "$domain_list" | sort | sed '/^$/d')
+                  echo "$sorted_domain_list"
                   domain_list=""
                 fi
-                echo "$line" >> "$temp_file"
+                echo "$line"
               fi
             done < "$file"
             if [[ $domain_list ]]; then
-              echo "$domain_list" | sort | sed '/^$/d' >> "$temp_file"
+              sorted_domain_list=$(echo "$domain_list" | sort | sed '/^$/d')
+              echo "$sorted_domain_list"
             fi
-            mv "$temp_file" "$file"
           done
 
       - name: Update README

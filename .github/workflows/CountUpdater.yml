@@ -39,6 +39,24 @@ jobs:
             # 更新文件内容
             sed -i "s/^# 更新：.*/# 更新：$current_date/" $file
             sed -i "s/^# 数量：.*/# 数量：$count_with_unit/" $file
+            # 规则正序
+            temp_file=$(mktemp)
+            domain_list=""
+            while IFS= read -r line; do
+              if [[ ! $line =~ ^[!#[:space:]]*$ && $line =~ ^([a-zA-Z0-9.-]+|\|\||@@) ]]; then
+                domain_list="$domain_list"$'\n'"$line"
+              else
+                if [[ $domain_list ]]; then
+                  echo "$domain_list" | sort | sed '/^$/d' >> "$temp_file"
+                  domain_list=""
+                fi
+                echo "$line" >> "$temp_file"
+              fi
+            done < "$file"
+            if [[ $domain_list ]]; then
+              echo "$domain_list" | sort | sed '/^$/d' >> "$temp_file"
+            fi
+            mv "$temp_file" "$file"
           done
 
       - name: Commit and push changes

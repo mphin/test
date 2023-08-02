@@ -36,6 +36,8 @@ fc5tn.baidu.com
 fexclick.baidu.com
 ms.bdimg.com
 wan.baidu.com
+123.sh
+c.un
 
 ! 淘宝
 click.mz.simba.taobao.com

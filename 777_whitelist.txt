@@ -1,7 +1,7 @@
 ! Title:白名单补充
-! Version:202308061944
+! Version:202308061946
 ! Homepage:https://github.com/mphin/AdGuardHome_rules
-! Total lines:35
+! Total lines:36
 
 ! 资讯新闻
 ! ＞ 搜狐
@@ -65,4 +65,3 @@ uri6.com
 ! ＞ 天气预报
 aa.hb
 gggg.hn
-aa.gg

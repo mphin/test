@@ -55,6 +55,8 @@ jobs:
             done < "$file"
             if [[ $domain_list ]]; then
               echo "$domain_list" | sort| sed '/^$/d' >> "$temp_file"
+            else
+              echo "测试" >> "$temp_file"
             fi
             mv "$temp_file" "$file"
           done

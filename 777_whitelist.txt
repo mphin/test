@@ -1,5 +1,5 @@
 ! Title:白名单补充
-! Version:202308061942
+! Version:202308061943
 ! Homepage:https://github.com/mphin/AdGuardHome_rules
 ! Total lines:35
 
@@ -62,5 +62,5 @@ mac.bmcx.com
 uri6.com
 
 ! ＞ 天气预报
-gggg.hn
 aa.hb
+gggg.hn

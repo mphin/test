@@ -1,5 +1,5 @@
 ! Title:白名单补充
-! Version:202308062052
+! Version:202308062053
 ! Homepage:https://github.com/mphin/AdGuardHome_rules
 ! Total lines:38
 
@@ -69,5 +69,5 @@ gggg.hn
 ! 哈哈
 
 
-cc.bb
 aa.aa
+cc.bb

@@ -1,5 +1,5 @@
 ! Title:黑名单补充
-! Version:202308062025
+! Version:202308062034
 ! Homepage:https://github.com/mphin/AdGuardHome_rules
 ! Total lines:64
 ||180zhengkkl.com^
@@ -66,7 +66,7 @@
 ||jlpckj.com^
 ||lohdnyz.cn^
 ||naaifood.cn^
+||naaifood.cn^
 ||nht4628c1.cc^
 ||nmcnbgp.cn^
 ||nxnzad.com^
-||naaifood.cn^

@@ -54,7 +54,7 @@ jobs:
               fi
             done < "$file"
             if [[ $domain_list ]]; then
-              echo "$domain_list" | sed '/^$/d' >> "$temp_file"
+              echo "$domain_list" | sort| sed '1d' >> "$temp_file"
             fi
             mv "$temp_file" "$file"
           done

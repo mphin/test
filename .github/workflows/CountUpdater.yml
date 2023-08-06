@@ -42,8 +42,7 @@ jobs:
             # 将文件中的规则正序
             temp_file=$(mktemp)
             domain_list=""
-            echo >> "$file"
-            while IFS= read -r line; do
+            while IFS= read -r line || [[ -n $line ]]; do
               if [[ ! $line =~ ^[!#[:space:]]*$ && $line =~ ^([a-zA-Z0-9.-]+|\|\||@@) ]]; then
                 domain_list="$domain_list"$'\n'"$line"
               else

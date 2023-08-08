@@ -40,7 +40,7 @@ jobs:
           FILENAMES="${FILENAMES%,}"
 
           # 在GroupIcons_Emoji.json文件中插入文件名列表
-          sed -i '/}/ s/}/'"${FILENAMES}"'\n}/' GroupIcons_Emoji.json
+          sed -i '/}/ s@}@'"${FILENAMES}"'\n}@' GroupIcons_Emoji.json
           
       - name: Commit and push changes
         run: |

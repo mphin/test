@@ -26,7 +26,7 @@ jobs:
           COMMIT=${{ env.sha }}
           URL="https://api.github.com/repos/${{ github.repository }}/compare/${COMMIT}^...${COMMIT}"
           FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r 'select(.filename | test("^icon/emoji/.*\\.png$")) | .filename')
-          
+
           # 生成JSON格式的文件名列表
           FILENAMES=""
           for filename in $FILES; do

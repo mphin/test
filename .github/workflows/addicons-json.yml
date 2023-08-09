@@ -11,17 +11,14 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install jq
         run: sudo apt-get install jq
 
       - name: Update JSON file
         run: |
-          # 构建 jq 命令的输入字符串
           input=$(find icon/emoji -name "*.png" -exec bash -c 'name=$(basename "$1"); url="https://raw.githubusercontent.com/mphin/GroupIcons/main/$1"; echo "{\"name\": \"${name/emojiall_/}\", \"url\": \"$url\"}"' _ {} \; | jq -s '. | {name: "GroupIconsEmoji", icons: ., description: "策略组Emoji图标集，收集好看的Emoji表情，图像来源于Emojiall"}')
-
-          # 使用 jq 更新 GroupIcons_Emoji.json 文件
           echo "$input" > GroupIcons_Emoji.json
 
       - name: Commit and push changes

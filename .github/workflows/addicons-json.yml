@@ -24,6 +24,7 @@ jobs:
           # 或相应地删除 JSON 对象
 
           # 以下是一个示例脚本（Python）来更新 JSON 文件：
+          from PIL import Image
           import json
           import os
 
@@ -44,7 +45,7 @@ jobs:
                           file_path = os.path.join(root, file)
                           png_files.append(file_path)
               return png_files
-          
+
           png_files = find_png_files(icons_dir)
 
           for png_file in png_files:

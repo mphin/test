@@ -2,10 +2,6 @@
   "name": "GroupIconsEmoji",
   "icons": [
     {
-      "name": "apple.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_apple.png"
-    },
-    {
       "name": "fish.png",
       "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_fish.png"
     },

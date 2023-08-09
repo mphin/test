@@ -1,32 +1,51 @@
-name: Update GroupIcons_Emoji.json
-
+name: Update GroupIcons Emoji
 on:
   push:
+    branches:
+      - main
     paths:
-      - '**/*.png'
-  delete:
-    paths:
-      - '**/*.png'
+      - 'icon/emoji/**.png'
+      - 'icon/emoji/**/'
 
 jobs:
-  update-json:
+  update_groupicons_emoji:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Install jq
-        run: sudo apt-get install jq -y
+    - name: Install jq
+      run: sudo apt-get install jq
 
-      - name: Update GroupIcons_Emoji.json
-        run: |
-          jq -s '.[0] + {"icons": .[1]}' GroupIcons_Emoji.json $(find . -name "*.png" -type f | awk -F/ '{sub("^./",""); printf "{\"name\": \"%s\", \"url\": \"https://raw.githubusercontent.com/mphin/GroupIcons/main/%s\"}\n", $NF, $0}') > updated.json
-          mv updated.json GroupIcons_Emoji.json
+    - name: Update GroupIcons_Emoji.json
+      run: |
+        icons_dir="icon/emoji"
+        json_file="GroupIcons_Emoji.json"
+        prefix="https://raw.githubusercontent.com/mphin/GroupIcons/main"
 
-      - name: Commit changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -am "Update GroupIcons_Emoji.json" --allow-empty
-          git push
+        # Retrieve all PNG files in icon/emoji directory
+        png_files=$(find $icons_dir -type f -name "*.png")
+        urls=()
+        for file_path in ${png_files[@]}; do
+          # Extract file name from path
+          file_name=$(basename $file_path)
+          # Generate URL using prefix and file path
+          file_url="$prefix/$file_path"
+
+          # Add name and URL to the array
+          urls+=("{\"name\": \"$file_name\", \"url\": \"$file_url\"}")
+        done
+
+        # Create JSON object with name, icons, and description
+        json_obj="{\"name\": \"GroupIconsEmoji\", \"icons\": [${urls[*]}], \"description\": \"策略组Emoji图标集，收集好看的Emoji表情，图像来源于Emojiall\"}"
+
+        # Update GroupIcons_Emoji.json file
+        echo $json_obj | jq . > $json_file
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "Your Name"
+        git config --global user.email "your@email.com"
+        git commit -am "Update GroupIcons_Emoji.json" --author="GitHub Action <action@github.com>"
+        git push

@@ -18,17 +18,11 @@ jobs:
 
       - name: Update JSON file
         run: |
-          # 构建 json 变量以存储所有 PNG 文件的名称和 URL
-          json='{"name": "GroupIconsEmoji", "icons": ['
-          for file in icon/emoji/**/*.png; do
-            name=$(basename "$file")
-            url="https://raw.githubusercontent.com/mphin/GroupIcons/main/$file"
-            json="$json{\"name\": \"$name\", \"url\": \"$url\"}, "
-          done
-          json="${json%??}],"description": "策略组Emoji图标集，收集好看的Emoji表情，图像来源于Emojiall"}"
+          # 构建 jq 命令的输入字符串
+          input=$(find icon/emoji -name "*.png" -exec echo '[{"name": "'{}'", "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/'{}'"}]' \; | jq -s add)
 
           # 使用 jq 更新 GroupIcons_Emoji.json 文件
-          echo "$json" | jq '.' > GroupIcons_Emoji.json
+          echo "$input" | jq '{name: "GroupIconsEmoji", icons: ., description: "策略组Emoji图标集，收集好看的Emoji表情，图像来源于Emojiall"}' > GroupIcons_Emoji.json
 
       - name: Commit and push changes
         run: |

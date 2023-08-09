@@ -3,10 +3,10 @@ name: Update GroupIcons_Emoji.json
 on:
   push:
     paths:
-      - 'icon/emoji/**/*.png'
+      - '**/*.png'
   delete:
     paths:
-      - 'icon/emoji/**/*.png'
+      - '**/*.png'
 
 jobs:
   update-json:

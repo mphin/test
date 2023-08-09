@@ -26,21 +26,7 @@ jobs:
           COMMIT=${{ env.sha }}
           URL="https://api.github.com/repos/${{ github.repository }}/compare/${COMMIT}^...${COMMIT}"
           FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[] | select(.filename | test("^icon/emoji/.*\\.png$")) | .filename')
-
-          # 生成JSON格式的文件名列表
-          FILENAMES=""
-          for filename in $FILES; do
-            name=$(basename "$filename")
-            url="https://raw.githubusercontent.com/mphin/GroupIcons/main/$filename"
-            entry=$(printf '\n        {\n            "name": "%s",\n            "url": "%s"\n        }' "$name" "$url")
-            FILENAMES="${FILENAMES}${entry},"
-          done
-
-          # 删除最后一个逗号
-          FILENAMES="${FILENAMES%,}"
-
-          # 在GroupIcons_Emoji.json文件中插入文件名列表
-          sed -i '/}/ s@}@'"${FILENAMES}"'\n}@' GroupIcons_Emoji.json
+          echo "$FILES" > 123.txt
           
       - name: Commit and push changes
         run: |

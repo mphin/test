@@ -4,9 +4,8 @@ on:
     branches:
       - main
     paths:
-      - 'icon/emoji/**.png'
-      - 'icon/emoji/**/'
-
+      - 'icon/emoji/**'
+      
 jobs:
   update_groupicons_emoji:
     runs-on: ubuntu-latest
@@ -16,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install jq
-      run: sudo apt-get install jq
+      run: sudo apt-get install jq -y
 
     - name: Update GroupIcons_Emoji.json
       run: |
@@ -25,11 +24,11 @@ jobs:
         prefix="https://raw.githubusercontent.com/mphin/GroupIcons/main"
 
         # Retrieve all PNG files in icon/emoji directory
-        png_files=$(find $icons_dir -type f -name "*.png")
+        png_files=$(find "$icons_dir" -type f -name "*.png")
         urls=()
         for file_path in ${png_files[@]}; do
           # Extract file name from path
-          file_name=$(basename $file_path)
+          file_name=$(basename "$file_path")
           # Generate URL using prefix and file path
           file_url="$prefix/$file_path"
 
@@ -41,7 +40,7 @@ jobs:
         json_obj="{\"name\": \"GroupIconsEmoji\", \"icons\": [${urls[*]}], \"description\": \"策略组Emoji图标集，收集好看的Emoji表情，图像来源于Emojiall\"}"
 
         # Update GroupIcons_Emoji.json file
-        echo $json_obj | jq . > $json_file
+        echo "$json_obj" | jq . > "$json_file"
 
     - name: Commit and push changes
       run: |

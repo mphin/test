@@ -1,37 +1,69 @@
-name: Add Icons Workflow
+name: Update Icons
+
 on:
   push:
     branches:
       - main
-    paths:
-      - 'icon/emoji/**'
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  update:
+  update_icons:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Set up time zone
-        run: sudo timedatectl set-timezone Asia/Shanghai
-      
-      - name: Check out code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Get last commit files
-        id: last_commit
+      - name: Update JSON file
         run: |
-          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          # 使用适当的脚本语言（如Python、Node.js等）编写脚本来读取目录中的文件并更新 JSON 文件
+          # 找到 icon/emoji 文件夹下的所有 *.png 文件并生成 JSON 对象
+          # 将 JSON 对象添加到 GroupIcons_Emoji.json 文件中
+          # 或相应地删除 JSON 对象
 
-      - name: Get changed files
-        id: file_list
-        run: |
-          COMMIT=${{ env.sha }}
-          URL="https://api.github.com/repos/${{ github.repository }}/compare/${COMMIT}^...${COMMIT}"
-          FILES=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.files[] | select(.filename | test("^icon/emoji/.*\\.png$")) | .filename')
-          echo "$FILES" > 123.txt
+          # 以下是一个示例脚本（Python）来更新 JSON 文件：
+          import json
+          import os
+
+          json_file = 'GroupIcons_Emoji.json'
+          icons_dir = 'icon/emoji'
+
+          data = {
+              'name': 'GroupIconsEmoji',
+              'icons': [],
+              'description': '策略组Emoji图标集，收集好看的Emoji表情，图像来源于Emojiall'
+          }
+
+          def find_png_files(directory):
+              png_files = []
+              for root, _, files in os.walk(directory):
+                  for file in files:
+                      if file.endswith('.png'):
+                          file_path = os.path.join(root, file)
+                          png_files.append(file_path)
+              return png_files
           
-      - name: Commit and push changes
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add -A
-          git commit -m "Update GroupIcons_Emoji.json [skip ci]"
+          png_files = find_png_files(icons_dir)
+
+          for png_file in png_files:
+              file_name = os.path.basename(png_file)
+              relative_path = os.path.relpath(png_file, os.getcwd())
+
+              icon = {
+                  'name': file_name,
+                  'url': f'https://raw.githubusercontent.com/mphin/GroupIcons/main/{relative_path}'
+              }
+
+              data['icons'].append(icon)
+
+          with open(json_file, 'w') as json_file:
+              json.dump(data, json_file, indent=4)
+
+          # 将更新后的 JSON 文件提交回存储库
+          git add $json_file
+          git config --global user.name "Your Name"
+          git config --global user.email "youremail@example.com"
+          git commit -m "Update GroupIcons_Emoji.json"
           git push

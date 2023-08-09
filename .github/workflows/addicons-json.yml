@@ -21,10 +21,8 @@ jobs:
 
       - name: Update GroupIcons_Emoji.json
         run: |
-          find icon/emoji -type f -name "*.png" -exec basename {} \; |
-          awk -F. '{printf "{\"name\": \"%s\", \"url\": \"https://raw.githubusercontent.com/owner/repo/main/icon/emoji/%s\"}\n", $0, $0}' > updated.json
-          jq --slurpfile new_icons updated.json '.icons = .icons + $new_icons' GroupIcons_Emoji.json > temp.json
-          mv temp.json GroupIcons_Emoji.json
+          jq -s '.[0] + {"icons": .[1]}' GroupIcons_Emoji.json $(find . -name "*.png" -type f | awk -F/ '{sub("^./",""); printf "{\"name\": \"%s\", \"url\": \"https://raw.githubusercontent.com/mphin/GroupIcons/main/%s\"}\n", $NF, $0}') > updated.json
+          mv updated.json GroupIcons_Emoji.json
 
       - name: Commit changes
         run: |

@@ -2,216 +2,100 @@
   "name": "GroupIconsEmoji",
   "icons": [
     {
-      "name": "singapore.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_singapore.png"
-    },
-    {
-      "name": "hong_kong.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_hong_kong.png"
-    },
-    {
-      "name": "cn.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_cn.png"
-    },
-    {
-      "name": "us.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_us.png"
-    },
-    {
-      "name": "jp.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_jp.png"
-    },
-    {
-      "name": "kr.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_kr.png"
-    },
-    {
-      "name": "scale.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_balance_scale.png"
-    },
-    {
-      "name": "dart.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_dart.png"
-    },
-    {
-      "name": "loudspeaker.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_loudspeaker.png"
-    },
-    {
-      "name": "m.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_m.png"
-    },
-    {
-      "name": "apple.png",
+      "name": "icon/emoji/apple/emojiall_apple.png",
       "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_apple.png"
     },
     {
-      "name": "tv.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_tv.png"
-    },
-    {
-      "name": "calling.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_calling.png"
-    },
-    {
-      "name": "robot.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_robot.png"
-    },
-    {
-      "name": "satellite.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_satellite.png"
-    },
-    {
-      "name": "movie_camera.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_movie_camera.png"
-    },
-    {
-      "name": "airplane.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_airplane.png"
-    },
-    {
-      "name": "fish.png",
+      "name": "icon/emoji/apple/emojiall_fish.png",
       "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_fish.png"
     },
     {
-      "name": "joystick.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_joystick.png"
-    },
-    {
-      "name": "recycle.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_recycle.png"
-    },
-    {
-      "name": "construction.png",
+      "name": "icon/emoji/apple/emojiall_construction.png",
       "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_construction.png"
     },
     {
-      "name": "pushpin.png",
-      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_pushpin.png"
+      "name": "icon/emoji/apple/emojiall_satellite.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_satellite.png"
     },
     {
-      "name": "crystal_ball.png",
+      "name": "icon/emoji/apple/emojiall_calling.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_calling.png"
+    },
+    {
+      "name": "icon/emoji/apple/emojiall_recycle.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_recycle.png"
+    },
+    {
+      "name": "icon/emoji/apple/emojiall_airplane.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_airplane.png"
+    },
+    {
+      "name": "icon/emoji/apple/emojiall_movie_camera.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_movie_camera.png"
+    },
+    {
+      "name": "icon/emoji/apple/emojiall_joystick.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_joystick.png"
+    },
+    {
+      "name": "icon/emoji/apple/emojiall_dart.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_dart.png"
+    },
+    {
+      "name": "icon/emoji/apple/emojiall_tv.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_tv.png"
+    },
+    {
+      "name": "icon/emoji/apple/emojiall_balance_scale.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/apple/emojiall_balance_scale.png"
+    },
+    {
+      "name": "icon/emoji/microsoft/emojiall_crystal_ball.png",
       "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/microsoft/emojiall_crystal_ball.png"
     },
     {
-      "name": "toolbox.png",
+      "name": "icon/emoji/microsoft/emojiall_toolbox.png",
       "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/microsoft/emojiall_toolbox.png"
     },
     {
-      "name": "christmas_tree.png",
+      "name": "icon/emoji/222/111.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/222/111.png"
+    },
+    {
+      "name": "icon/emoji/222/11.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/222/11.png"
+    },
+    {
+      "name": "icon/emoji/twitter/111.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/111.png"
+    },
+    {
+      "name": "icon/emoji/twitter/emojiall_cn.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_cn.png"
+    },
+    {
+      "name": "icon/emoji/twitter/emojiall_christmas_tree.png",
       "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_christmas_tree.png"
     },
     {
-      "name": "emojiall_apple.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_apple.png"
+      "name": "icon/emoji/twitter/emojiall_us.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_us.png"
     },
     {
-      "name": "emojiall_fish.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_fish.png"
+      "name": "icon/emoji/twitter/emojiall_hong_kong.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_hong_kong.png"
     },
     {
-      "name": "emojiall_construction.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_construction.png"
+      "name": "icon/emoji/twitter/emojiall_jp.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_jp.png"
     },
     {
-      "name": "emojiall_satellite.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_satellite.png"
+      "name": "icon/emoji/twitter/emojiall_singapore.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_singapore.png"
     },
     {
-      "name": "emojiall_loudspeaker.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_loudspeaker.png"
-    },
-    {
-      "name": "emojiall_calling.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_calling.png"
-    },
-    {
-      "name": "emojiall_recycle.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_recycle.png"
-    },
-    {
-      "name": "emojiall_m.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_m.png"
-    },
-    {
-      "name": "emojiall_airplane.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_airplane.png"
-    },
-    {
-      "name": "emojiall_robot.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_robot.png"
-    },
-    {
-      "name": "emojiall_movie_camera.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_movie_camera.png"
-    },
-    {
-      "name": "emojiall_joystick.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_joystick.png"
-    },
-    {
-      "name": "emojiall_dart.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_dart.png"
-    },
-    {
-      "name": "emojiall_tv.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_tv.png"
-    },
-    {
-      "name": "emojiall_pushpin.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_pushpin.png"
-    },
-    {
-      "name": "emojiall_balance_scale.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_balance_scale.png"
-    },
-    {
-      "name": "emojiall_crystal_ball.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_crystal_ball.png"
-    },
-    {
-      "name": "emojiall_toolbox.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_toolbox.png"
-    },
-    {
-      "name": "222.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/222.png"
-    },
-    {
-      "name": "11.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/11.png"
-    },
-    {
-      "name": "111.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/111.png"
-    },
-    {
-      "name": "emojiall_cn.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_cn.png"
-    },
-    {
-      "name": "emojiall_christmas_tree.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_christmas_tree.png"
-    },
-    {
-      "name": "emojiall_us.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_us.png"
-    },
-    {
-      "name": "emojiall_hong_kong.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_hong_kong.png"
-    },
-    {
-      "name": "emojiall_jp.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_jp.png"
-    },
-    {
-      "name": "emojiall_singapore.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_singapore.png"
-    },
-    {
-      "name": "emojiall_kr.png",
-      "url": "https://raw.githubusercontent.com/owner/repo/main/icon/emoji/emojiall_kr.png"
+      "name": "icon/emoji/twitter/emojiall_kr.png",
+      "url": "https://raw.githubusercontent.com/mphin/GroupIcons/main/icon/emoji/twitter/emojiall_kr.png"
     }
   ],
   "description": "策略组Emoji图标集，收集好看的Emoji表情，图像来源于Emojiall"

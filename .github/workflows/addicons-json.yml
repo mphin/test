@@ -21,7 +21,7 @@ jobs:
           python update_icons.py
 
           # 将更新后的 JSON 文件提交回存储库
-          git add $json_file
+          git add path/to/GroupIcons_Emoji.json
           git config --global user.name "Your Name"
           git config --global user.email "youremail@example.com"
           git commit -m "Update GroupIcons_Emoji.json"

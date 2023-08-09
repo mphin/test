@@ -1,28 +1,34 @@
-name: Update Icons
+name: Update GroupIcons_Emoji.json
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    paths:
+      - 'icon/emoji/**/*.png'
+  delete:
+    paths:
+      - 'icon/emoji/**/*.png'
 
 jobs:
-  update_icons:
+  update-json:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Update JSON file
-        run: |
-          python update_icons.py
+      - name: Install jq
+        run: sudo apt-get install jq -y
 
-          # 将更新后的 JSON 文件提交回存储库
-          git add GroupIcons_Emoji.json
-          git config --global user.name "Your Name"
-          git config --global user.email "youremail@example.com"
-          git commit -m "Update GroupIcons_Emoji.json"
+      - name: Update GroupIcons_Emoji.json
+        run: |
+          find icon/emoji -type f -name "*.png" -exec basename {} \; |
+          awk -F. '{printf "{\"name\": \"%s\", \"url\": \"https://raw.githubusercontent.com/owner/repo/main/icon/emoji/%s\"}\n", $0, $0}' > updated.json
+          jq --slurpfile new_icons updated.json '.icons = .icons + $new_icons' GroupIcons_Emoji.json > temp.json
+          mv temp.json GroupIcons_Emoji.json
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Update GroupIcons_Emoji.json" --allow-empty
           git push

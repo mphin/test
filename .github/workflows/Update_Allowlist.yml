@@ -23,7 +23,7 @@ jobs:
     - name: Update Allowlist and push changes
       run: |
         while read -r allowlist_line; do
-          sed -i "/$allowlist_line/d" surge.txt
+          sed -i "\|$allowlist_line|d" surge.txt
         done < 777_Allowlist.txt
 
         git config user.name "GitHub Actions"

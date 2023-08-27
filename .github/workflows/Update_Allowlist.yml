@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Download new Surge.txt
       run: |
@@ -26,6 +26,7 @@ jobs:
         while IFS= read -r line; do
           sed -i "/$line/d" new_surge.txt
         done < allowlist.txt
+        sed -i '/^[#!]/d' new_surge.txt # Remove lines starting with # or !
 
     - name: Replace old Surge.txt with modified version
       run: |

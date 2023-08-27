@@ -1,5 +1,5 @@
 # 名称: anti-ad_surge
-# 版本: 2023082718:13:05
+# 版本: 20230827181426
 # 备注: 以anti-AD为基础，删除自用误杀名单，增加自用黑名单
 # 原作者: https://github.com/privacy-protection-tools/anti-AD
 # 规则数量: 72364

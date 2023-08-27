@@ -20,6 +20,9 @@ jobs:
     - name: Download surge.txt
       run: curl -o surge.txt https://anti-ad.net/surge.txt
 
+    - name: Create empty surge.tmp file
+      run: touch surge.tmp
+
     - name: Update Allowlist
       run: |
         while read -r allowlist_line; do

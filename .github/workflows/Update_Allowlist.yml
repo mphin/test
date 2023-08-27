@@ -30,6 +30,8 @@ jobs:
     - name: Replace old Surge.txt with modified version
       run: |
         mv new_surge.txt surge.txt
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git add surge.txt
         git commit -m "Update Surge.txt"
         git push

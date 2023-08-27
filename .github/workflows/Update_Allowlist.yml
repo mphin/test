@@ -24,5 +24,5 @@ jobs:
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
+        git add surge.txt
         git commit -am "Update surge.txt by removing lines from allowlist"
-        git push

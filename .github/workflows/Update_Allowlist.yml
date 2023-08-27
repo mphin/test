@@ -13,32 +13,28 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    - name: Download new Surge.txt
+    - name: 下载新版本anti-AD
       run: |
         curl -o new_surge.txt https://anti-ad.net/surge.txt
 
-    - name: Extract Allowlist from 777_Allowlist.txt and modify
+    - name: 添加黑名单
       run: |
-        awk '/^[^!#]/{print "DOMAIN-SUFFIX,"$1}' 777_Allowlist.txt > allowlist.txt
-
-    - name: Modify Blacklist and append to new_surge.txt
-      run: |
-        sed -i -e '/^[#!]/d' -e 's/||\|^\^//g' -e 's/^/DOMAIN-SUFFIX,/' 777_Blacklist.txt
-        sed -i 's/\^//g' 777_Blacklist.txt # Remove '^' characters
+        sed -i -e '/^[#!]/d' -e 's/||\|^@//g' -e 's/\^//g' -e 's/^/DOMAIN-SUFFIX,/' 777_Blacklist.txt
         cat 777_Blacklist.txt >> new_surge.txt
 
-    - name: Modify Surge.txt
+    - name: 根据白名单内容，移除黑名单
       run: |
+        awk '/^[^!#]/{print "DOMAIN-SUFFIX,"$1}' 777_Allowlist.txt > allowlist.txt
         while IFS= read -r line; do
           sed -i "/$line/d" new_surge.txt
         done < allowlist.txt
-        sed -i '/^[#!]/d' new_surge.txt # Remove lines starting with # or !
 
-    - name: Update version and rule count in Surge.txt
+    - name: 移除原注释，添加新注释
       run: |
+        sed -i '/^[#!]/d' new_surge.txt
         new_version=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
         rule_count=$(grep -E 'DOMAIN-SUFFIX' new_surge.txt | wc -l)
-        sed -i "1i\\# 内容: anti-AD 广告过滤规则集\\n# 备注: 以anti-AD为基础，移除自用误杀，增加自用黑名单，原作者: https://github.com/privacy-protection-tools/anti-AD\\n# 更新: $new_version\\n# 数量: $rule_count条" new_surge.txt
+        sed -i "1i\\# 内容: 🚫 广告过滤 规则集\\n# 备注: 以anti-AD为基础，移除自用误杀，增加自用黑名单，anti-AD作者: https://github.com/privacy-protection-tools/anti-AD\\n# 更新: $new_version\\n# 数量: $rule_count条" new_surge.txt
 
     - name: Replace old Surge.txt with modified version
       run: |

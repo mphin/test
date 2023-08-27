@@ -28,14 +28,6 @@ jobs:
         done < allowlist.txt
         sed -i '/^[#!]/d' new_surge.txt # Remove lines starting with # or !
 
-    - name: Update version and rule count in Surge.txt
-      run: |
-        old_version=$(grep '# 版本:' surge.txt | cut -d' ' -f3)
-        new_version=202308090104
-        rule_count=$(grep 'DOMAIN-SUFFIX,' new_surge.txt | wc -l)
-        sed -i "s/# 版本: $old_version/# 版本: $new_version/" new_surge.txt
-        sed -i "s/# 规则数量: [0-9]*/# 规则数量: $rule_count/" new_surge.txt
-
     - name: Replace old Surge.txt with modified version
       run: |
         mv new_surge.txt surge.txt

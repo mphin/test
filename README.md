@@ -1,14 +1,42 @@
-# GroupIconCollection
-策略组图标的收集和管理
+# 介绍
+AdGuardHome自用黑白名单补充规则  
+* 黑名单为补充下面几个规则的漏网之鱼
+* 白名单为不能影响常用网站的使用
+* 自用规则发现广告或误拦即添加！
+* 补充数量: 106条
+* 最近更新: 2023年08月27日09:22:35
+# 黑名单地址
+* 直链:  
+`https://raw.githubusercontent.com/mphin/AdGuardHome_rules/main/777_Blacklist.txt`  
+* CDN:  
+`https://cdn.jsdelivr.net/gh/mphin/AdGuardHome_rules@main/777_Blacklist.txt`  
+# 白名单地址 
+* 直链:  
+`https://raw.githubusercontent.com/mphin/AdGuardHome_rules/main/777_Allowlist.txt`  
+* CDN:  
+`https://cdn.jsdelivr.net/gh/mphin/AdGuardHome_rules@main/777_Allowlist.txt`  
+
+# 使用以下规则进行补充  
+黑名单：   
+* AdAway  
+`https://adaway.org/hosts.txt`  
+* 乘风视频广告  
+`https://cdn.jsdelivr.net/gh/xinggsf/Adblock-Plus-Rule@master/mv.txt`
+* 乘风广告  
+`https://cdn.jsdelivr.net/gh/xinggsf/Adblock-Plus-Rule@master/rule.txt`  
+* adgk手机去广告规则  
+`https://fastly.jsdelivr.net/gh/banbendalao/ADgk@master/ADgk.txt`  
+* anti-AD  
+`https://anti-ad.net/easylist.txt`  
+* EasyList针对国内的补充规则  
+`https://easylist-downloads.adblockplus.org/easylistchina.txt`  
+* EasyList去除国际  
+`https://easylist-downloads.adblockplus.org/easylist.txt`  
+
+白名单：  
+* anti白名单  
+`https://fastly.jsdelivr.net/gh/privacy-protection-tools/dead-horse@master/anti-ad-white-list.txt`  
 
 
-
-# 免责声明：
-1. 本策略组图标集中部分使用的 Emoji 图像来源于 EmojiAll（https://www.emojiall.com ），这些图像经过处理和压缩，调整为 108 像素 × 108 像素的尺寸，以满足资源共享和学习参考需求。每个图像文件的命名中包含 EmojiAll 的名称，以明确标注来源。
-2. 所涉及的 Emoji 图标仅为资源共享和学习参考之目的，不保证其合法性、正当性、准确性。请注意，严禁将这些图标用于任何商业用途或进行牟利活动。它们仅供我们的策略组图标集使用。
-3. 根据避风港原则，请在发现任何涉及图片和内容侵权的情况时，在 Issues 中告知我们。在核实后，我们将立即删除有侵权嫌疑的内容，并确保版权归原作者及其网站所有。
-4. 本人不对任何内容承担任何责任，包括但不限于因内容错误导致的任何损失或损害。您使用这些图标和资源时应自行承担风险。
-5. 其他人通过任何方式登录本网站或直接、间接使用我们提供的 Emoji 图标和其他相关资源时，应仔细阅读并理解本声明。一旦使用、转载我们的图标集或任何相关教程或资源，即表示您已接受此免责声明的所有条款。
-6. 我们尊重 EmojiAll 的知识产权，并遵循版权法的合理使用原则。在使用这些 Emoji 图像时，我们力求遵守相关法律法规和许可要求。感谢 EmojiAll 提供了这些精美的 Emoji 表情供我们使用。
-7. 如有其他疑问或侵权相关问题，请与 EmojiAll 相关团队联系，以获取更多信息和授权要求。
-
+        
+本仓库创建于2023年7月2日

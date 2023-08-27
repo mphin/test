@@ -1,2 +1,0 @@
-icon/emoji/222/222.png
-icon/emoji/twitter/111.png

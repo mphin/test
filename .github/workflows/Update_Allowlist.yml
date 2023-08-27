@@ -30,9 +30,9 @@ jobs:
 
     - name: Update version and rule count in Surge.txt
       run: |
-        new_version=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
+        new_version=$(TZ=Asia/Shanghai date '+%Y%m%d%H:%M:%S')
         rule_count=$(grep -E 'DOMAIN-SUFFIX' new_surge.txt | wc -l)
-        sed -i "1s|.*|# 名称: anti-ad_surge\\n# 版本: $new_version\\n# 备注: 以anti-AD为基础，删除自用误杀名单，增加自用黑名单\\n# 原作者: https://github.com/privacy-protection-tools/anti-AD\\n# 规则数量: $rule_count|" new_surge.txt
+        sed -i "1i\\# 名称: anti-ad_surge\\n# 版本: $new_version\\n# 备注: 以anti-AD为基础，删除自用误杀名单，增加自用黑名单\\n# 原作者: https://github.com/privacy-protection-tools/anti-AD\\n# 规则数量: $rule_count" new_surge.txt
 
     - name: Replace old Surge.txt with modified version
       run: |

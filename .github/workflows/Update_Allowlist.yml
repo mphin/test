@@ -17,9 +17,9 @@ jobs:
       run: |
         curl -o new_surge.txt https://anti-ad.net/surge.txt
 
-    - name: Extract Allowlist from 777_Allowlist.txt
+    - name: Extract Allowlist from 777_Allowlist.txt and modify
       run: |
-        awk '/^[^!#]/{print $1}' 777_Allowlist.txt > allowlist.txt
+        awk '/^[^!#]/{print "DOMAIN-SUFFIX,"$1}' 777_Allowlist.txt > allowlist.txt
 
     - name: Modify Surge.txt
       run: |

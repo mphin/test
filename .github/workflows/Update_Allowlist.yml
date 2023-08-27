@@ -15,10 +15,19 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Download surge.txt
       run: curl -o surge.txt https://anti-ad.net/surge.txt
+      
+    - name: Update Allowlist and push changes
+      run: |
+          while read -r allowlist_line; do
+            if [[ ! "$allowlist_line" =~ ^[#!] ]]; then
+              grep -v "$allowlist_line" surge.txt > surge.tmp
+              mv surge.tmp surge.txt
+            fi
+          done < 777_Allowlist.txt
 
     - name: Commit and push changes
       run: |

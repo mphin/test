@@ -21,6 +21,11 @@ jobs:
       run: |
         awk '/^[^!#]/{print "DOMAIN-SUFFIX,"$1}' 777_Allowlist.txt > allowlist.txt
 
+    - name: Modify Blacklist and append to new_surge.txt
+      run: |
+        sed -i -e '/^[#!]/d' -e 's/||\|^\^//g' -e 's/^/DOMAIN-SUFFIX,/' 777_Blacklist.txt
+        cat 777_Blacklist.txt >> new_surge.txt
+
     - name: Modify Surge.txt
       run: |
         while IFS= read -r line; do

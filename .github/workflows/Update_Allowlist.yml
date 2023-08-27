@@ -20,7 +20,7 @@ jobs:
     - name: Download surge.txt
       run: curl -o surge.txt https://anti-ad.net/surge.txt
 
-    - name: Update Allowlist
+    - name: Update Allowlist and push changes
       run: |
         while read -r allowlist_line; do
           while read -r surge_line; do

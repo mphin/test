@@ -17,25 +17,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: Download surge.txt
+      run: curl -o surge.txt https://anti-ad.net/surge.txt
+
     - name: Update Allowlist and push changes
       run: |
-        (
-          cd $GITHUB_WORKSPACE
+        while read -r allowlist_line; do
+          sed -i "/$allowlist_line/d" surge.txt
+        done < 777_Allowlist.txt
 
-          curl -o surge.txt https://anti-ad.net/surge.txt
-          touch surge.tmp
-
-          while read -r allowlist_line; do
-            while read -r surge_line; do
-              if [[ "$surge_line" != *"$allowlist_line"* ]]; then
-                echo "$surge_line" >> surge.tmp
-              fi
-            done < surge.txt
-            mv surge.tmp surge.txt
-          done < 777_Allowlist.txt
-
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git commit -am "Update surge.txt by removing lines from allowlist"
-          git push
-        )
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git commit -am "Update surge.txt by removing lines from allowlist"
+        git push

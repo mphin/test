@@ -1,7 +1,3 @@
-#TITLE=anti-AD
-#VER=20230826023249
-#URL=https://github.com/privacy-protection-tools/anti-AD
-#TOTAL_LINES=72376
 DOMAIN-SUFFIX,0008d6ba2e.com
 DOMAIN-SUFFIX,000dn.com
 DOMAIN-SUFFIX,0013.cc

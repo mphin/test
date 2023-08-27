@@ -19,7 +19,7 @@ jobs:
 
     - name: Extract Allowlist from 777_Allowlist.txt
       run: |
-        awk '!/#/{print $1}' 777_Allowlist.txt > allowlist.txt
+        awk '/^[^!#]/{print $1}' 777_Allowlist.txt > allowlist.txt
 
     - name: Modify Surge.txt
       run: |

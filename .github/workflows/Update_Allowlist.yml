@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Download new Surge.txt
       run: |
@@ -32,7 +32,7 @@ jobs:
       run: |
         old_version=$(grep '# 版本:' surge.txt | cut -d' ' -f3)
         new_version=$(date +"%Y%m%d%H%M")
-        rule_count=$(grep 'DOMAIN-SUFFIX,' new_surge.txt | wc -l)
+        rule_count=$(grep -E 'DOMAIN-SUFFIX' new_surge.txt | wc -l)
         sed -i "s/# 版本: $old_version/# 版本: $new_version/" new_surge.txt
         sed -i "s/# 规则数量: [0-9]*/# 规则数量: $rule_count/" new_surge.txt
 

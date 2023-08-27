@@ -1,8 +1,8 @@
 # 名称: anti-ad_surge
-# 版本: 20230827181426
+# 版本: 20230827182451
 # 备注: 以anti-AD为基础，删除自用误杀名单，增加自用黑名单
 # 原作者: https://github.com/privacy-protection-tools/anti-AD
-# 规则数量: 72364
+# 规则数量: 72439
 DOMAIN-SUFFIX,0008d6ba2e.com
 DOMAIN-SUFFIX,000dn.com
 DOMAIN-SUFFIX,0013.cc
@@ -72367,3 +72367,78 @@ DOMAIN-SUFFIX,zzxmcp.com
 DOMAIN-SUFFIX,zzyanhushi.com
 DOMAIN-SUFFIX,a8.zzz-land.com
 DOMAIN-SUFFIX,zzzhuoxiaqu.online
+DOMAIN-SUFFIX,180zhengkkl.com^
+DOMAIN-SUFFIX,18479.pw^
+DOMAIN-SUFFIX,26v8aqv56.cc^
+DOMAIN-SUFFIX,4l7e.top^
+DOMAIN-SUFFIX,55001.fyi^
+DOMAIN-SUFFIX,5598tp.com^
+DOMAIN-SUFFIX,5ityx.com^
+DOMAIN-SUFFIX,6c8d.top^
+DOMAIN-SUFFIX,7566dh1.com^
+DOMAIN-SUFFIX,7566dh9.com^
+DOMAIN-SUFFIX,7859tz10.com^
+DOMAIN-SUFFIX,8122888tp.com^
+DOMAIN-SUFFIX,84893573.com^
+DOMAIN-SUFFIX,86649334.com^
+DOMAIN-SUFFIX,87012670.com^
+DOMAIN-SUFFIX,87318.xyz^
+DOMAIN-SUFFIX,87336.xyz^
+DOMAIN-SUFFIX,87367.xyz^
+DOMAIN-SUFFIX,9129666tp.com^
+DOMAIN-SUFFIX,9831tc.com^
+DOMAIN-SUFFIX,aefdcxoi.com^
+DOMAIN-SUFFIX,awiudbyqbpo.com^
+DOMAIN-SUFFIX,bc2n2q6kt.cc^
+DOMAIN-SUFFIX,bk23de3dgd.cc^
+DOMAIN-SUFFIX,czd367.com^
+DOMAIN-SUFFIX,dimcxt191r.cn^
+DOMAIN-SUFFIX,dsawdsc.com^
+DOMAIN-SUFFIX,dshasdzxc.com^
+DOMAIN-SUFFIX,dshtyubnjgvmb.com^
+DOMAIN-SUFFIX,dy44.live^
+DOMAIN-SUFFIX,dy47.live^
+DOMAIN-SUFFIX,dysohvv.com^
+DOMAIN-SUFFIX,e61auf6t8.cc^
+DOMAIN-SUFFIX,evdbcnk.cn^
+DOMAIN-SUFFIX,f7853.com^
+DOMAIN-SUFFIX,fi11av37.com^
+DOMAIN-SUFFIX,g6afvmg48.cc^
+DOMAIN-SUFFIX,h21n.top^
+DOMAIN-SUFFIX,hao45.click^
+DOMAIN-SUFFIX,hza01.com^
+DOMAIN-SUFFIX,j1u9nlr3k.cc^
+DOMAIN-SUFFIX,jlpckj.com^
+DOMAIN-SUFFIX,kodje3d3d.cc^
+DOMAIN-SUFFIX,krb8qmdc7.cc^
+DOMAIN-SUFFIX,lohdnyz.cn^
+DOMAIN-SUFFIX,mjhsghnwg.xyz^
+DOMAIN-SUFFIX,monroe4825edcs.xyz^
+DOMAIN-SUFFIX,mv8l4bj34.cc^
+DOMAIN-SUFFIX,myehm.xyz^
+DOMAIN-SUFFIX,naaifood.cn^
+DOMAIN-SUFFIX,newton5194sctf.xyz^
+DOMAIN-SUFFIX,nht4628c1.cc^
+DOMAIN-SUFFIX,nmcnbgp.cn^
+DOMAIN-SUFFIX,ns01.fyi^
+DOMAIN-SUFFIX,nxnzad.com^
+DOMAIN-SUFFIX,ojen23sdg.cc^
+DOMAIN-SUFFIX,ptfxh.com^
+DOMAIN-SUFFIX,qiehdybvjm.com^
+DOMAIN-SUFFIX,qisaoba.com^
+DOMAIN-SUFFIX,qwiudbnaiio.com^
+DOMAIN-SUFFIX,shmszv3r2.cc^
+DOMAIN-SUFFIX,sk1dupf2k.cc^
+DOMAIN-SUFFIX,tanju.vip^
+DOMAIN-SUFFIX,tczyt8.cn^
+DOMAIN-SUFFIX,tyrwtm.com^
+DOMAIN-SUFFIX,v871.cc^
+DOMAIN-SUFFIX,vta3vy85f.cc^
+DOMAIN-SUFFIX,xckj0623.com^
+DOMAIN-SUFFIX,xutmnla.cn^
+DOMAIN-SUFFIX,xygj.cc^
+DOMAIN-SUFFIX,yikanghuitang.cn^
+DOMAIN-SUFFIX,youquantao.com^
+DOMAIN-SUFFIX,zhjw2d2he.cc^
+DOMAIN-SUFFIX,zouohohnglnzh.xyz^
+DOMAIN-SUFFIX,fun.360.cn^

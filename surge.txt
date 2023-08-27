@@ -1,8 +1,7 @@
-# 名称: anti-ad_surge
-# 版本: 20230827182722
-# 备注: 以anti-AD为基础，删除自用误杀名单，增加自用黑名单
-# 原作者: https://github.com/privacy-protection-tools/anti-AD
-# 规则数量: 72439
+# 内容: anti-AD 广告过滤规则集
+# 备注: 以anti-AD为基础，移除自用误杀，增加自用黑名单，原作者: https://github.com/privacy-protection-tools/anti-AD
+# 更新: 2023年08月27日18:37:29
+# 数量: 72439条
 DOMAIN-SUFFIX,0008d6ba2e.com
 DOMAIN-SUFFIX,000dn.com
 DOMAIN-SUFFIX,0013.cc

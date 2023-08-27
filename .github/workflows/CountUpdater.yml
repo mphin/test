@@ -5,8 +5,7 @@ on:
       - main
     paths:
       - '*.txt'
-    paths-ignore:
-      - 'surge.txt'
+      - '!surge.txt'
 jobs:
   update:
     runs-on: ubuntu-latest

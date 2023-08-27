@@ -20,14 +20,20 @@ jobs:
     - name: Download surge.txt
       run: curl -o surge.txt https://anti-ad.net/surge.txt
 
+    - name: Debug Allowlist
+      run: |
+        echo "Allowlist content:"
+        cat 777_Allowlist.txt
+
     - name: Update Allowlist and push changes
       run: |
-        while read -r allowlist_line; do
+        cat 777_Allowlist.txt | while read -r allowlist_line; do
           if [[ ! "$allowlist_line" =~ ^[#!] ]]; then
+            echo "Processing line: $allowlist_line"
             grep -v "$allowlist_line" surge.txt > surge.tmp
             mv surge.tmp surge.txt
           fi
-        done < 777_Allowlist.txt
+        done
 
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"

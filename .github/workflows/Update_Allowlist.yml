@@ -24,6 +24,7 @@ jobs:
     - name: Modify Blacklist and append to new_surge.txt
       run: |
         sed -i -e '/^[#!]/d' -e 's/||\|^\^//g' -e 's/^/DOMAIN-SUFFIX,/' 777_Blacklist.txt
+        sed -i 's/\^//g' 777_Blacklist.txt # Remove '^' characters
         cat 777_Blacklist.txt >> new_surge.txt
 
     - name: Modify Surge.txt

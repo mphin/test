@@ -22,6 +22,8 @@ jobs:
 
     - name: Update Allowlist and push changes
       run: |
+        touch surge.tmp
+
         while read -r allowlist_line; do
           while read -r surge_line; do
             if [[ "$surge_line" != *"$allowlist_line"* ]]; then

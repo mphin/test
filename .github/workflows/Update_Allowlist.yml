@@ -13,23 +13,23 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    - name: 下载新版本anti-AD
+    - name: Download New Version of anti-AD
       run: |
         curl -o new_surge.txt https://anti-ad.net/surge.txt
 
-    - name: 添加黑名单
+    - name: Add Blacklist
       run: |
         sed -i -e '/^[#!]/d' -e 's/||\|^@//g' -e 's/\^//g' -e 's/^/DOMAIN-SUFFIX,/' 777_Blacklist.txt
         cat 777_Blacklist.txt >> new_surge.txt
 
-    - name: 根据白名单内容，移除黑名单
+    - name: Remove Blacklist Based on Whitelist
       run: |
         awk '/^[^!#]/{print "DOMAIN-SUFFIX,"$1}' 777_Allowlist.txt > allowlist.txt
         while IFS= read -r line; do
           sed -i "/$line/d" new_surge.txt
         done < allowlist.txt
 
-    - name: 移除原注释，添加新注释
+    - name: Remove Original Comments, Add New Comments
       run: |
         sed -i '/^[#!]/d' new_surge.txt
         new_version=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')

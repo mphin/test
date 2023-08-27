@@ -1,38 +1,35 @@
-name: Update Allowlist
+name: Update Surge File
 
 on:
   workflow_dispatch:
-    inputs:
-      manual_run:
-        description: 'Manually trigger the workflow'
-        required: false
   schedule:
-    - cron: '0 4 * * *'  # 每天的4点运行
+    - cron: "0 4 * * *"
 
 jobs:
-  update_allowlist:
+  update-surge:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v3
 
-    - name: Download surge.txt
-      run: curl -o surge.txt https://anti-ad.net/surge.txt
-      
-    - name: Update Allowlist and push changes
+    - name: Download new Surge.txt
       run: |
-          while read -r allowlist_line; do
-            if [[ ! "$allowlist_line" =~ ^[#!] ]]; then
-              grep -v "$allowlist_line" surge.txt > surge.tmp
-              mv surge.tmp surge.txt
-            fi
-          done < 777_Allowlist.txt
+        curl -o new_surge.txt https://anti-ad.net/surge.txt
 
-    - name: Commit and push changes
+    - name: Extract Allowlist from 777_Allowlist.txt
       run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
+        awk '!/#/{print $1}' 777_Allowlist.txt > allowlist.txt
+
+    - name: Modify Surge.txt
+      run: |
+        while IFS= read -r line; do
+          sed -i "/$line/d" new_surge.txt
+        done < allowlist.txt
+
+    - name: Replace old Surge.txt with modified version
+      run: |
+        mv new_surge.txt surge.txt
         git add surge.txt
-        git commit -am "Update surge.txt by removing lines from allowlist"
+        git commit -m "Update Surge.txt"
         git push

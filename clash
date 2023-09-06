@@ -1,0 +1,645 @@
+mixed-port: 7890
+redir-port: 7892
+tproxy-port: 7893
+authentication: [""]
+allow-lan: true
+mode: Rule
+log-level: info
+ipv6: false
+external-controller: :9999
+external-ui: ui
+secret: 
+tun: {enable: false}
+experimental: {ignore-resolve-fail: true, interface-name: en0}
+sniffer: {enable: true, skip-domain: [Mijia Cloud], sniff: {tls: {ports: [443, 8443]}, http: {ports: [80, 8080-8880]}}}
+store-selected: true
+find-process-mode: "off"
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  use-hosts: true
+  ipv6: false
+  default-nameserver:
+    - 114.114.114.114
+    - 223.5.5.5
+    - https://223.5.5.5/dns-query
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '+.*'
+  nameserver: [https://223.5.5.5/dns-query, https://doh.pub/dns-query, tls://dns.rubyfish.cn:853]
+  fallback: [tls://1.0.0.1:853, tls://8.8.4.4:853, https://doh.opendns.com/dns-query]
+  fallback-filter:
+    geoip: true
+    domain:
+      - '+.bing.com'
+      - '+.linkedin.com'
+hosts:
+   'time.android.com': 203.107.6.88
+   'time.facebook.com': 203.107.6.88  
+#用于编写自定义设定(可参考https://lancellc.gitbook.io/clash/clash-config-file/general 或 https://docs.metacubex.one/function/general)
+#端口之类请在脚本中修改，否则不会加载
+#port: 7890
+#用于编写自定义的锚点、入站、proxy-providers、sub-rules、rule-set、script等功能
+#可参考 https://github.com/MetaCubeX/Clash.Meta/blob/Meta/docs/config.yaml 或 https://lancellc.gitbook.io/clash/clash-config-file/an-example-configuration-file
+#此处内容会被添加在配置文件的“proxy-group：”模块的末尾与“rules：”模块之前的位置
+#例如：
+proxy-providers:
+  KTM:
+    type: http
+    url: "http://192.168.10.2:6081/download/ktm?target=ClashMeta"
+    interval: 36000
+    path: ./providers/proxy/ktm.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+  性价比:
+    type: http
+    url: "http://192.168.10.2:6081/download/xjb?target=ClashMeta"
+    interval: 36000
+    path: ./providers/proxy/xjb.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+  极速云:
+    type: http
+    url: "http://192.168.10.2:6081/download/jsy?target=ClashMeta"
+    interval: 36000
+    path: ./providers/proxy/jsy.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+  XFLTD:
+    type: http
+    url: "http://192.168.10.2:6081/download/xfltd?target=ClashMeta"
+    interval: 36000
+    path: ./providers/proxy/xfltd.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+  亿点连接:
+    type: http
+    url: "http://192.168.10.2:6081/download/ydlj?target=ClashMeta"
+    interval: 36000
+    path: ./providers/proxy/ydlj.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+  一元机场:
+    type: http
+    url: "http://192.168.10.2:6081/download/yyjc?target=ClashMeta"
+    interval: 36000
+    path: ./providers/proxy/yyjc.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+  星辰:
+    type: http
+    url: "http://192.168.10.2:6081/download/xc?target=ClashMeta"
+    interval: 36000
+    path: ./providers/proxy/xc.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+  次元云:
+    type: http
+    url: "http://192.168.10.2:6081/download/cyy?target=ClashMeta"
+    interval: 36000
+    path: ./providers/proxy/cyy.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+  八戒:
+    type: http
+    url: "http://192.168.10.2:6081/download/bj?target=ClashMeta"
+    interval: 36000
+    path: ./providers/proxy/bj.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+#rule-providers:
+#sub-rules:
+#tunnels:
+#script:
+#listeners:
+proxy-groups:
+  - name: 🕹 手动切换
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🚧 故障转移
+      - ⚖️ 负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+    use:
+      - KTM
+      - 性价比
+      - 极速云
+      - XFLTD
+      - 亿点连接
+      - 一元机场
+      - 星辰
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+    use:
+      - KTM
+      - 性价比
+      - 极速云
+      - XFLTD
+      - 亿点连接
+      - 一元机场
+      - 星辰
+  - name: 🚧 故障转移
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+    use:
+      - KTM
+      - 性价比
+      - 极速云
+      - XFLTD
+      - 亿点连接
+      - 一元机场
+      - 星辰
+  - name: ⚖️ 负载均衡
+    type: load-balance
+    strategy: consistent-hashing
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+    use:
+      - KTM
+      - 性价比
+      - 极速云
+      - XFLTD
+      - 亿点连接
+      - 一元机场
+      - 星辰
+  - name: ✈️ 国外常规
+    type: select
+    proxies:
+      - 🕹 手动切换
+      - ♻️ 自动选择
+      - 🚧 故障转移
+      - ⚖️ 负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+      - DIRECT
+  - name: 📲 电报消息
+    type: select
+    proxies:
+      - 🕹 手动切换
+      - ♻️ 自动选择
+      - 🚧 故障转移
+      - ⚖️ 负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+      - DIRECT
+  - name: 🎥 国外媒体
+    type: select
+    proxies:
+      - 🕹 手动切换
+      - ♻️ 自动选择
+      - 🚧 故障转移
+      - ⚖️ 负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+      - DIRECT
+  - name: 🤖 AI｜奈飞
+    type: select
+    proxies:
+      - 🕹 手动切换
+      - 🔓 解锁节点
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+      - DIRECT
+  - name: 📡 IP｜测速
+    type: select
+    proxies:
+      - DIRECT
+      - 🕹 手动切换
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+  - name: 📢 谷歌服务
+    type: select
+    proxies:
+      - DIRECT
+      - 🕹 手动切换
+      - ♻️ 自动选择
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - DIRECT
+      - 🕹 手动切换
+      - ♻️ 自动选择
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - DIRECT
+      - 🕹 手动切换
+      - ♻️ 自动选择
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+  - name: 📺 国内媒体
+    type: select
+    proxies:
+      - DIRECT
+      - 🕹 手动切换
+      - ♻️ 自动选择
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+  - name: 🎮 游戏平台
+    type: select
+    proxies:
+      - DIRECT
+      - 🕹 手动切换
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🕹 手动切换
+      - ♻️ 自动选择
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - DIRECT
+      - 🕹 手动切换
+      - ♻️ 自动选择
+  - name: 🔓 解锁节点
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 50
+    proxies:
+    filter: "NF|奈飞|解锁|Netflix|NETFLIX|Media|GPT|AI|家宽|游戏|GAME|game|次元云|八戒"
+    use:
+      - KTM
+      - 性价比
+      - 极速云
+      - XFLTD
+      - 亿点连接
+      - 一元机场
+      - 星辰
+      - 次元云
+      - 八戒
+  - name: 🇭🇰 香港节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - DIRECT
+  - name: 🇨🇳 台湾节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - DIRECT
+  - name: 🇸🇬 狮城节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - DIRECT
+  - name: 🇺🇲 美国节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - DIRECT
+  - name: 🇯🇵 日本节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - DIRECT
+  - name: 🇰🇷 韩国节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - DIRECT
+rules:
+ - RULE-SET,LocalAreaNetwork_domain,🎯 全球直连
+ - RULE-SET,LocalAreaNetwork_ipcidr,🎯 全球直连
+ - RULE-SET,Google_domain,📢 谷歌服务
+ - RULE-SET,Google_ipcidr,📢 谷歌服务
+ - DOMAIN-KEYWORD,openai,🤖 AI｜奈飞
+ - RULE-SET,OpenaiNetflix_domain,🤖 AI｜奈飞
+ - RULE-SET,OpenaiNetflix_ipcidr,🤖 AI｜奈飞
+ - DOMAIN-KEYWORD,abematv.akamaized.net,🎥 国外媒体
+ - DOMAIN-KEYWORD,avoddashs,🎥 国外媒体
+ - DOMAIN-KEYWORD,bbcfmt,🎥 国外媒体
+ - DOMAIN-KEYWORD,uk-live,🎥 国外媒体
+ - DOMAIN-KEYWORD,voddazn,🎥 国外媒体
+ - DOMAIN-KEYWORD,.hbogoasia.,🎥 国外媒体
+ - DOMAIN-KEYWORD,hbogoasia,🎥 国外媒体
+ - DOMAIN-KEYWORD,jooxweb-api,🎥 国外媒体
+ - DOMAIN-KEYWORD,japonx,🎥 国外媒体
+ - DOMAIN-KEYWORD,japronx,🎥 国外媒体
+ - DOMAIN-KEYWORD,nowtv100,🎥 国外媒体
+ - DOMAIN-KEYWORD,rthklive,🎥 国外媒体
+ - DOMAIN-KEYWORD,apiproxy-device-prod-nlb-,🎥 国外媒体
+ - DOMAIN-KEYWORD,dualstack.apiproxy-,🎥 国外媒体
+ - DOMAIN-KEYWORD,netflixdnstest,🎥 国外媒体
+ - DOMAIN-KEYWORD,nivod,🎥 国外媒体
+ - DOMAIN-KEYWORD,olevod,🎥 国外媒体
+ - DOMAIN-KEYWORD,-spotify-,🎥 国外媒体
+ - DOMAIN-KEYWORD,spotify.com,🎥 国外媒体
+ - DOMAIN-KEYWORD,tiktokcdn,🎥 国外媒体
+ - DOMAIN-KEYWORD,ttvnw,🎥 国外媒体
+ - DOMAIN-KEYWORD,youtube,🎥 国外媒体
+ - DOMAIN-KEYWORD,porn,🎥 国外媒体
+ - RULE-SET,ProxyMedia_domain,🎥 国外媒体
+ - RULE-SET,ProxyMedia_ipcidr,🎥 国外媒体
+ - DOMAIN-KEYWORD,1drv,Ⓜ️ 微软服务
+ - DOMAIN-KEYWORD,microsoft,Ⓜ️ 微软服务
+ - DOMAIN-KEYWORD,1drv,Ⓜ️ 微软服务
+ - DOMAIN-KEYWORD,onedrive,Ⓜ️ 微软服务
+ - DOMAIN-KEYWORD,skydrive,Ⓜ️ 微软服务
+ - RULE-SET,Microsoft_domain,Ⓜ️ 微软服务
+ - RULE-SET,Microsoft_ipcidr,Ⓜ️ 微软服务
+ - RULE-SET,Apple_domain,🍎 苹果服务
+ - RULE-SET,Apple_ipcidr,🍎 苹果服务
+ - DOMAIN-KEYWORD,vip.lz-cdn,📺 国内媒体
+ - DOMAIN-KEYWORD,javdb,📺 国内媒体
+ - RULE-SET,ChinaMedia_domain,📺 国内媒体
+ - RULE-SET,ChinaMedia_ipcidr,📺 国内媒体
+ - RULE-SET,GamesPlatform_domain,🎮 游戏平台
+ - DOMAIN-KEYWORD,speedtest,📡 IP｜测速
+ - DOMAIN-KEYWORD,ipv4-test,📡 IP｜测速
+ - DOMAIN-KEYWORD,ipv4.test,📡 IP｜测速
+ - DOMAIN-KEYWORD,ipv6-test,📡 IP｜测速
+ - DOMAIN-KEYWORD,test-ipv6,📡 IP｜测速
+ - RULE-SET,IpinfoSpeedtest_domain,📡 IP｜测速
+ - RULE-SET,Telegram_domain,📲 电报消息
+ - RULE-SET,Telegram_ipcidr,📲 电报消息
+ - DOMAIN-KEYWORD,1e100,✈️ 国外常规
+ - DOMAIN-KEYWORD,abema,✈️ 国外常规
+ - DOMAIN-KEYWORD,appledaily,✈️ 国外常规
+ - DOMAIN-KEYWORD,avtb,✈️ 国外常规
+ - DOMAIN-KEYWORD,beetalk,✈️ 国外常规
+ - DOMAIN-KEYWORD,blogspot,✈️ 国外常规
+ - DOMAIN-KEYWORD,dropbox,✈️ 国外常规
+ - DOMAIN-KEYWORD,facebook,✈️ 国外常规
+ - DOMAIN-KEYWORD,fbcdn,✈️ 国外常规
+ - DOMAIN-KEYWORD,github,✈️ 国外常规
+ - DOMAIN-KEYWORD,gmail,✈️ 国外常规
+ - DOMAIN-KEYWORD,google,✈️ 国外常规
+ - DOMAIN-KEYWORD,instagram,✈️ 国外常规
+ - DOMAIN-KEYWORD,porn,✈️ 国外常规
+ - DOMAIN-KEYWORD,sci-hub,✈️ 国外常规
+ - DOMAIN-KEYWORD,spotify,✈️ 国外常规
+ - DOMAIN-KEYWORD,telegram,✈️ 国外常规
+ - DOMAIN-KEYWORD,twitter,✈️ 国外常规
+ - DOMAIN-KEYWORD,whatsapp,✈️ 国外常规
+ - DOMAIN-KEYWORD,youtube,✈️ 国外常规
+ - DOMAIN-KEYWORD,1drv,✈️ 国外常规
+ - DOMAIN-KEYWORD,onedrive,✈️ 国外常规
+ - DOMAIN-KEYWORD,skydrive,✈️ 国外常规
+ - DOMAIN-KEYWORD,ttvnw,✈️ 国外常规
+ - RULE-SET,ProxyGFWlist_domain,✈️ 国外常规
+ - RULE-SET,ProxyGFWlist_ipcidr,✈️ 国外常规
+ - DOMAIN-KEYWORD,torrent,🎯 全球直连
+ - DOMAIN-KEYWORD,tracker,🎯 全球直连
+ - DOMAIN-KEYWORD,xn--,🎯 全球直连
+ - DOMAIN-KEYWORD,360buy,🎯 全球直连
+ - DOMAIN-KEYWORD,alicdn,🎯 全球直连
+ - DOMAIN-KEYWORD,alimama,🎯 全球直连
+ - DOMAIN-KEYWORD,alipay,🎯 全球直连
+ - DOMAIN-KEYWORD,appzapp,🎯 全球直连
+ - DOMAIN-KEYWORD,baidupcs,🎯 全球直连
+ - DOMAIN-KEYWORD,bilibili,🎯 全球直连
+ - DOMAIN-KEYWORD,ccgslb,🎯 全球直连
+ - DOMAIN-KEYWORD,chinacache,🎯 全球直连
+ - DOMAIN-KEYWORD,duobao,🎯 全球直连
+ - DOMAIN-KEYWORD,jdpay,🎯 全球直连
+ - DOMAIN-KEYWORD,moke,🎯 全球直连
+ - DOMAIN-KEYWORD,qhimg,🎯 全球直连
+ - DOMAIN-KEYWORD,vpimg,🎯 全球直连
+ - DOMAIN-KEYWORD,xiami,🎯 全球直连
+ - DOMAIN-KEYWORD,xiaomi,🎯 全球直连
+ - DOMAIN-KEYWORD,aria2,🎯 全球直连
+ - RULE-SET,GlobalDirect_domain,🎯 全球直连
+ - RULE-SET,GlobalDirect_ipcidr,🎯 全球直连
+ - GEOIP,CN,🎯 全球直连
+ - MATCH,🐟 漏网之鱼
+rule-providers:
+  LocalAreaNetwork_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9Mb2NhbEFyZWFOZXR3b3JrLmxpc3Q
+    path: ./providers/rule-provider_LocalAreaNetwork_domain.yaml
+    interval: 86400
+  LocalAreaNetwork_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9Mb2NhbEFyZWFOZXR3b3JrLmxpc3Q
+    path: ./providers/rule-provider_LocalAreaNetwork_ipcidr.yaml
+    interval: 86400
+  Google_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9Hb29nbGUubGlzdA
+    path: ./providers/rule-provider_Google_domain.yaml
+    interval: 86400
+  Google_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9Hb29nbGUubGlzdA
+    path: ./providers/rule-provider_Google_ipcidr.yaml
+    interval: 86400
+  OpenaiNetflix_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9PcGVuYWlOZXRmbGl4Lmxpc3Q
+    path: ./providers/rule-provider_OpenaiNetflix_domain.yaml
+    interval: 86400
+  OpenaiNetflix_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9PcGVuYWlOZXRmbGl4Lmxpc3Q
+    path: ./providers/rule-provider_OpenaiNetflix_ipcidr.yaml
+    interval: 86400
+  ProxyMedia_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9Qcm94eU1lZGlhLmxpc3Q
+    path: ./providers/rule-provider_ProxyMedia_domain.yaml
+    interval: 86400
+  ProxyMedia_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9Qcm94eU1lZGlhLmxpc3Q
+    path: ./providers/rule-provider_ProxyMedia_ipcidr.yaml
+    interval: 86400
+  Microsoft_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9NaWNyb3NvZnQubGlzdA
+    path: ./providers/rule-provider_Microsoft_domain.yaml
+    interval: 86400
+  Microsoft_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9NaWNyb3NvZnQubGlzdA
+    path: ./providers/rule-provider_Microsoft_ipcidr.yaml
+    interval: 86400
+  Apple_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9BcHBsZS5saXN0
+    path: ./providers/rule-provider_Apple_domain.yaml
+    interval: 86400
+  Apple_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9BcHBsZS5saXN0
+    path: ./providers/rule-provider_Apple_ipcidr.yaml
+    interval: 86400
+  ChinaMedia_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9DaGluYU1lZGlhLmxpc3Q
+    path: ./providers/rule-provider_ChinaMedia_domain.yaml
+    interval: 86400
+  ChinaMedia_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9DaGluYU1lZGlhLmxpc3Q
+    path: ./providers/rule-provider_ChinaMedia_ipcidr.yaml
+    interval: 86400
+  GamesPlatform_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9HYW1lc1BsYXRmb3JtLmxpc3Q
+    path: ./providers/rule-provider_GamesPlatform_domain.yaml
+    interval: 86400
+  IpinfoSpeedtest_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9JcGluZm9TcGVlZHRlc3QubGlzdA
+    path: ./providers/rule-provider_IpinfoSpeedtest_domain.yaml
+    interval: 86400
+  Telegram_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9UZWxlZ3JhbS5saXN0
+    path: ./providers/rule-provider_Telegram_domain.yaml
+    interval: 86400
+  Telegram_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9UZWxlZ3JhbS5saXN0
+    path: ./providers/rule-provider_Telegram_ipcidr.yaml
+    interval: 86400
+  ProxyGFWlist_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9Qcm94eUdGV2xpc3QubGlzdA
+    path: ./providers/rule-provider_ProxyGFWlist_domain.yaml
+    interval: 86400
+  ProxyGFWlist_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9Qcm94eUdGV2xpc3QubGlzdA
+    path: ./providers/rule-provider_ProxyGFWlist_ipcidr.yaml
+    interval: 86400
+  GlobalDirect_domain:
+    type: http
+    behavior: domain
+    url: http://192.168.10.2:25500/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9HbG9iYWxEaXJlY3QubGlzdA
+    path: ./providers/rule-provider_GlobalDirect_domain.yaml
+    interval: 86400
+  GlobalDirect_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: http://192.168.10.2:25500/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21waGluL0FDTDRTU1IvbWFpbi9ydWxlcy9HbG9iYWxEaXJlY3QubGlzdA
+    path: ./providers/rule-provider_GlobalDirect_ipcidr.yaml
+    interval: 86400

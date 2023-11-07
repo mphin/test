@@ -1,7 +1,7 @@
 # 内容: 🚫 广告过滤 规则集
 # 备注: 以anti-AD为基础，移除自用误杀，增加自用黑名单，anti-AD作者: https://github.com/privacy-protection-tools/anti-AD
-# 更新: 2023年11月06日12:12:27
-# 数量: 74866条
+# 更新: 2023年11月07日12:12:06
+# 数量: 74869条
 DOMAIN-SUFFIX,0008d6ba2e.com
 DOMAIN-SUFFIX,000dn.com
 DOMAIN-SUFFIX,0013.cc
@@ -42110,6 +42110,7 @@ DOMAIN-SUFFIX,ggx01.miguvideo.com
 DOMAIN-SUFFIX,ggx02.miguvideo.com
 DOMAIN-SUFFIX,ggx10.miguvideo.com
 DOMAIN-SUFFIX,mihouse.pw
+DOMAIN-SUFFIX,hkrpg-log-upload.mihoyo.com
 DOMAIN-SUFFIX,a8clk.miidas.jp
 DOMAIN-SUFFIX,miidi.net
 DOMAIN-SUFFIX,gg.miinaa.com
@@ -62585,6 +62586,7 @@ DOMAIN-SUFFIX,telanggyppery.com
 DOMAIN-SUFFIX,smetrics.tienda.telcel.com
 DOMAIN-SUFFIX,eulerian.telechargement.fr
 DOMAIN-SUFFIX,telechargementdirect.net
+DOMAIN-SUFFIX,telecome.cn
 DOMAIN-SUFFIX,novedades.telecomfibercorp.com.ar
 DOMAIN-SUFFIX,ea.telecommandeonline.com
 DOMAIN-SUFFIX,marketing.telecomreseller.com
@@ -64576,6 +64578,7 @@ DOMAIN-SUFFIX,trackeverything.co
 DOMAIN-SUFFIX,trackfeed.com
 DOMAIN-SUFFIX,tracking202.com
 DOMAIN-SUFFIX,trackingca.com
+DOMAIN-SUFFIX,trackingio.com
 DOMAIN-SUFFIX,trackinglabs.com
 DOMAIN-SUFFIX,trackingmembers.com
 DOMAIN-SUFFIX,trackingpro.pro
@@ -65855,7 +65858,6 @@ DOMAIN-SUFFIX,track.uc.cn
 DOMAIN-SUFFIX,woodpecker.uc.cn
 DOMAIN-SUFFIX,adslot.uc.cn
 DOMAIN-SUFFIX,api.mp.uc.cn
-DOMAIN-SUFFIX,api.open.uc.cn
 DOMAIN-SUFFIX,dispatcher.upmc.uc.cn
 DOMAIN-SUFFIX,hao.uc.cn
 DOMAIN-SUFFIX,puds.test.uae.uc.cn
@@ -66442,6 +66444,7 @@ DOMAIN-SUFFIX,js.union123.me
 DOMAIN-SUFFIX,union178.com
 DOMAIN-SUFFIX,union55.com
 DOMAIN-SUFFIX,unionbig.com
+DOMAIN-SUFFIX,unioncom.cc
 DOMAIN-SUFFIX,unioncpm.com
 DOMAIN-SUFFIX,marketing.unionhousesf.com
 DOMAIN-SUFFIX,unionli.com

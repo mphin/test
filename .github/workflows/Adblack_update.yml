@@ -28,11 +28,7 @@ jobs:
         echo 处理黑名单，添加进主规则
         sed -i -e '/^[#![:space:]]*$/d' -e 's/[||^@]//g' -e 's/^/DOMAIN-SUFFIX,/' Blacklist.txt
         cat Blacklist.txt >> Adblack.txt
-        echo 处理白名单，删除对应规则
-        sed -i -e '/^[#![:space:]]*$/d' -e 's/[||^@]//g' -e 's/^/DOMAIN-SUFFIX,/' Allowlist.txt
-        while IFS= read -r line; do
-          sed -i "/$line/d" Adblack.txt
-        done < Allowlist.txt
+
 
 
     - name: Commit And Push

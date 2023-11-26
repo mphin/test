@@ -33,25 +33,12 @@ jobs:
         while IFS= read -r line; do
           sed -i "/$line/d" Adblack.txt
         done < Allowlist.txt
-        echo 比较新规则和已存在规则
-        if cmp -s Adblack.txt <(sed '/^[#!]/d' "${{ github.workspace }}/rules/Adblack.txt"); then
-          echo "未检测到变化，退出工作流程"
-          exit 0
-        fi
-        echo 添加注释数量时间备注
-        version=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
-        count=$(grep -E 'DOMAIN-SUFFIX' Adblack.txt | wc -l)
-        sed -i "1i\\# 内容: 🚫 广告过滤 规则集\\n# 备注: 以anti-AD为基础，添加自用规则，原作者: https://github.com/privacy-protection-tools/anti-AD\\n# 更新: $version\\n# 数量: $count条" Adblack.txt
-        echo 创建DOMAIN-SET格式规则
-        cp Adblack.txt Adblack2.txt
-        sed -i 's/DOMAIN-SUFFIX,/\./g' Adblack2.txt
 
-        mv Adblack.txt Adblack2.txt rules/
 
     - name: Commit And Push
       run: |
         git config --global user.email "long632450362@qq.com" && git config --global user.name "Bot"
-        git add rules/Adblack.txt rules/Adblack2.txt && git commit -m "自动更新广告拦截规则" || exit 0
+        git add * && git commit -m "自动更新广告拦截规则" || exit 0
         git push
 
     - name: Cleanup Workflow

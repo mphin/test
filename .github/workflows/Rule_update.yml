@@ -74,7 +74,7 @@ jobs:
       - name: Commit And Push
         run: |
           git config --global user.email "long632450362@qq.com" && git config --global user.name "Bot"
-          git add . && git commit -m "自动处理规则文件"
+          git add . && git commit -m "$(date +'%Y-%m-%d %H:%M:%S')"
           git push
 
       - name: Cleanup Workflow

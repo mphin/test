@@ -33,11 +33,7 @@ jobs:
         while IFS= read -r line; do
           sed -i "/$line/d" Adblack.txt
         done < Allowlist.txt
-        echo 比较新规则和已存在规则
-        if cmp -s Adblack.txt <(sed '/^[#!]/d' "${{ github.workspace }}/rules/Adblack.txt"); then
-          echo "未检测到变化，退出工作流程"
-          exit 0
-        fi
+
         echo 添加注释数量时间备注
         version=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
         count=$(grep -E 'DOMAIN-SUFFIX' Adblack.txt | wc -l)
@@ -46,7 +42,7 @@ jobs:
         cp Adblack.txt Adblack2.txt
         sed -i 's/DOMAIN-SUFFIX,/\./g' Adblack2.txt
 
-        mv Adblack.txt Adblack2.txt rules/
+
 
     - name: Commit And Push
       run: |

@@ -1,7 +1,3 @@
-DOMAIN-SUFFIX,! Title: 黑名单补充
-DOMAIN-SUFFIX,! Version: 202311020440
-DOMAIN-SUFFIX,! Homepage: https://github.com/mphin/AdGuardHome_rules
-DOMAIN-SUFFIX,! Total lines: 109
 DOMAIN-SUFFIX,1377a.xyz
 DOMAIN-SUFFIX,180zhengkkl.com
 DOMAIN-SUFFIX,18479.pw

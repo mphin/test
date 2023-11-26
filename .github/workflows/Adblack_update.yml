@@ -36,13 +36,11 @@ jobs:
         done < allowlist.txt
         
         sed -i '/^[#!]/d' new_surge.txt
-
-        # 比较新规则和已存在规则
+        echo 比较新规则和已存在规则
         if cmp -s new_surge.txt <(sed '/^[#!]/d' "${{ github.workspace }}/rules/Adblack.txt"); then
-          echo "未检测到变化。退出工作流程。"
+          echo "未检测到变化，退出工作流程"
           exit 0
         fi
-
         echo 添加注释数量时间备注
         new_version=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
         rule_count=$(grep -E 'DOMAIN-SUFFIX' new_surge.txt | wc -l)

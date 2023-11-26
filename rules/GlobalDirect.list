@@ -1,7 +1,7 @@
 # 内容: 🎯 全球直连 规则集
 # 备注: 本列表为直连域名，不含谷歌、苹果、微软、游戏及IP测速相关，移步至https://github.com/mphin/ACL4SSR
-# 更新: 2023年11月16日12:02:54
-# 数量: 1220条
+# 更新: 2023年11月26日03:54:13
+# 数量: 1219条
 
 # 网站服务
 DOMAIN,giscus.app
@@ -82,6 +82,7 @@ DOMAIN-SUFFIX,ssl-images-amazon.com
 DOMAIN-SUFFIX,static-ecst.licdn.com
 DOMAIN-SUFFIX,swiftype.com
 DOMAIN-SUFFIX,swiftypecdn.com
+DOMAIN-SUFFIX,tailwindui.com
 DOMAIN-SUFFIX,telerik.com
 DOMAIN-SUFFIX,tidio.co
 DOMAIN-SUFFIX,tidio.com
@@ -395,9 +396,7 @@ DOMAIN-SUFFIX,nsloon.com
 DOMAIN-SUFFIX,sollico.com
 DOMAIN-SUFFIX,zwjpai.com
 # > Surge
-DOMAIN-SUFFIX,nssurge.com
 DOMAIN-SUFFIX,surge-activation.com
-IP-CIDR,35.190.88.7/32,no-resolve
 
 # 电脑类
 DOMAIN-SUFFIX,asus.com
@@ -405,8 +404,8 @@ DOMAIN-SUFFIX,gateworks.com
 DOMAIN-SUFFIX,geforce.com
 DOMAIN-SUFFIX,intel.com
 # > Nvidia
-DOMAIN,static.nvidiagrid.net
 DOMAIN-SUFFIX,nvidia.com
+DOMAIN-SUFFIX,nvidiagrid.net
 # > 罗技
 DOMAIN-SUFFIX,logi.com
 DOMAIN-SUFFIX,logitech.io

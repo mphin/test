@@ -3659,6 +3659,7 @@ payload:
   - DOMAIN-SUFFIX,ns2.name
   - DOMAIN-SUFFIX,ns3.name
   - DOMAIN-SUFFIX,nsc.gov.tw
+  - DOMAIN-SUFFIX,nssurge.com
   - DOMAIN-SUFFIX,ntbk.gov.tw
   - DOMAIN-SUFFIX,ntbna.gov.tw
   - DOMAIN-SUFFIX,ntbt.gov.tw

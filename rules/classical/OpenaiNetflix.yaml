@@ -2,7 +2,6 @@ payload:
   - DOMAIN-KEYWORD,openai
   - DOMAIN-SUFFIX,ai.com
   - DOMAIN-SUFFIX,auth0.com
-  - DOMAIN-SUFFIX,cdn.oaistatic.com
   - DOMAIN-SUFFIX,challenges.cloudflare.com
   - DOMAIN-SUFFIX,client-api.arkoselabs.com
   - DOMAIN-SUFFIX,events.statsigapi.net
@@ -27,8 +26,8 @@ payload:
   - DOMAIN-SUFFIX,nflximg.net
   - DOMAIN-SUFFIX,nflxso.net
   - DOMAIN-SUFFIX,nflxvideo.net
-  - DOMAIN-SUFFIX,openai.com
-  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net
+  - DOMAIN-SUFFIX,oaistatic.com
+  - DOMAIN-SUFFIX,oaiusercontent.com
   - IP-CIDR,108.175.32.0/20,no-resolve
   - IP-CIDR,185.2.220.0/22,no-resolve
   - IP-CIDR,185.9.188.0/22,no-resolve

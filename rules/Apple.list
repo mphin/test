@@ -6,7 +6,6 @@
 DOMAIN-SUFFIX,cable.auth.com
 IP-CIDR,172.224.18.6/32,no-resolve
 IP-CIDR,18.136.166.61/32,no-resolve
-
 # ------------------------------------------------
 # 以下规则来源为ACL4SSR，仅删除部分重复
 DOMAIN,apple.comscoreresearch.com

@@ -26,10 +26,27 @@ jobs:
       run: |
         sed -i '/^[#!]/d' Adblack.txt
         echo 处理黑名单，添加进主规则
-        sed -i -e '/^[#![:space:]]*$/d' -e 's/[||^@]//g' -e 's/^/DOMAIN-SUFFIX,/' Blacklist.txt
+        sed -i -e '/^[#!]/d' -e '/^[[:space:]]*$/d' -e 's/[||^@]//g' -e 's/^/DOMAIN-SUFFIX,/' Blacklist.txt
         cat Blacklist.txt >> Adblack.txt
+        echo 处理白名单，删除对应规则
+        sed -i -e '/^[#!]/d' -e '/^[[:space:]]*$/d' -e 's/[||^@]//g' -e 's/^/DOMAIN-SUFFIX,/' Allowlist.txt
+        while IFS= read -r line; do
+          sed -i "/$line/d" Adblack.txt
+        done < Allowlist.txt
+        echo 比较新规则和已存在规则
+        if cmp -s Adblack.txt <(sed '/^[#!]/d' "${{ github.workspace }}/rules/Adblack.txt"); then
+          echo "未检测到变化，退出工作流程"
+          exit 0
+        fi
+        echo 添加注释数量时间备注
+        version=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
+        count=$(grep -E 'DOMAIN-SUFFIX' Adblack.txt | wc -l)
+        sed -i "1i\\# 内容: 🚫 广告过滤 规则集\\n# 备注: 以anti-AD为基础，添加自用规则，原作者: https://github.com/privacy-protection-tools/anti-AD\\n# 更新: $version\\n# 数量: $count条" Adblack.txt
+        echo 创建DOMAIN-SET格式规则
+        cp Adblack.txt Adblack2.txt
+        sed -i 's/DOMAIN-SUFFIX,/\./g' Adblack2.txt
 
-
+        mv Adblack.txt Adblack2.txt rules/
 
     - name: Commit And Push
       run: |

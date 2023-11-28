@@ -9,4 +9,4 @@
 http-response ^https?:\/\/nicegram\.cloud\/api\/v6\/user\/info script-path=https://raw.githubusercontent.com/Yu9191/Rewrite/main/Nicegram.js, requires-body=true, timeout=10 ,tag=Nicegram解锁
 
 [MITM]
-hostname = nicegram.cloud
+hostname = nicegram.cloud,restore-access.indream.app

@@ -108,6 +108,7 @@ DOMAIN-SUFFIX,lc-cn-n1-shared.com
 DOMAIN-SUFFIX,livere.com
 DOMAIN-SUFFIX,profile.csdnimg.cn
 DOMAIN-SUFFIX,s0.2mdn.net
+DOMAIN-SUFFIX,statsig.com
 DOMAIN-SUFFIX,tagtic.cn
 DOMAIN-SUFFIX,w8.com.cn
 DOMAIN-SUFFIX,widget.gleamjs.io

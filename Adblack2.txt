@@ -1,7 +1,7 @@
 # 内容: 🚫 广告过滤 规则集
 # 备注: 以anti-AD为基础，添加自用规则，原作者: https://github.com/privacy-protection-tools/anti-AD
-# 更新: 2023年12月06日04:19:50
-# 数量: 74755条
+# 更新: 2023年12月07日04:19:34
+# 数量: 74753条
 .0008d6ba2e.com
 .000dn.com
 .0013.cc
@@ -501,7 +501,6 @@
 .crash.163.com
 .qipt.1632j6.cn
 .163ren.com
-.ac.dun.163yun.com
 .tr.newsletter.1664france.fr
 .166br.com
 .166f.com
@@ -9156,7 +9155,6 @@
 .tracker.baidu.com
 .tuijian.baidu.com
 .ucstat.baidu.com
-.udpolimenew.baidu.com
 .ulic.baidu.com
 .ulog.imap.baidu.com
 .union.baidu.com

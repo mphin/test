@@ -1,7 +1,7 @@
 # 内容: 🚫 广告过滤 规则集
 # 备注: 以anti-AD为基础，添加自用规则，原作者: https://github.com/privacy-protection-tools/anti-AD
-# 更新: 2023年12月06日04:19:50
-# 数量: 74755条
+# 更新: 2023年12月07日04:19:34
+# 数量: 74753条
 DOMAIN-SUFFIX,0008d6ba2e.com
 DOMAIN-SUFFIX,000dn.com
 DOMAIN-SUFFIX,0013.cc
@@ -501,7 +501,6 @@ DOMAIN-SUFFIX,yaolu.yuedu.163.com
 DOMAIN-SUFFIX,crash.163.com
 DOMAIN-SUFFIX,qipt.1632j6.cn
 DOMAIN-SUFFIX,163ren.com
-DOMAIN-SUFFIX,ac.dun.163yun.com
 DOMAIN-SUFFIX,tr.newsletter.1664france.fr
 DOMAIN-SUFFIX,166br.com
 DOMAIN-SUFFIX,166f.com
@@ -9156,7 +9155,6 @@ DOMAIN-SUFFIX,toolbar.baidu.com
 DOMAIN-SUFFIX,tracker.baidu.com
 DOMAIN-SUFFIX,tuijian.baidu.com
 DOMAIN-SUFFIX,ucstat.baidu.com
-DOMAIN-SUFFIX,udpolimenew.baidu.com
 DOMAIN-SUFFIX,ulic.baidu.com
 DOMAIN-SUFFIX,ulog.imap.baidu.com
 DOMAIN-SUFFIX,union.baidu.com

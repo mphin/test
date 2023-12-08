@@ -1,6 +1,6 @@
 # 内容: 🚫 广告过滤 规则集
 # 备注: 以anti-AD为基础，添加自用规则，原作者: https://github.com/privacy-protection-tools/anti-AD
-# 更新: 2023年12月08日04:19:47
+# 更新: 2023年12月09日04:19:21
 # 数量: 74912条
 DOMAIN-SUFFIX,0008d6ba2e.com
 DOMAIN-SUFFIX,000dn.com

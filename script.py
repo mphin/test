@@ -21,18 +21,16 @@ def read_conf_file(file_path):
     return conf_data
 
 def generate_plugin_file(conf_file, script_folder, plugin_folder):
-    # 从配置文件中获取信息或从已下载的 JavaScript 文件中读取信息
-    name = conf_file.get('name') or read_script_info(script_folder, os.path.splitext(conf_file['path'])[0] + '.js', '项目名称')
-    desc = conf_file.get('desc') or read_script_info(script_folder, os.path.splitext(conf_file['path'])[0] + '.js', '使用声明')
-    open_url = conf_file.get('openUrl') or read_script_info(script_folder, os.path.splitext(conf_file['path'])[0] + '.js', '下载地址')
-    author = conf_file.get('author') or read_script_info(script_folder, os.path.splitext(conf_file['path'])[0] + '.js', '脚本作者')
-    homepage = conf_file.get('homepage') or read_script_info(script_folder, os.path.splitext(conf_file['path'])[0] + '.js', '电报频道')
+    name = conf_file.get('name') or read_script_info(script_folder, '项目名称')
+    desc = conf_file.get('desc') or read_script_info(script_folder, '使用声明')
+    open_url = conf_file.get('openUrl') or read_script_info(script_folder, '下载地址')
+    author = conf_file.get('author') or read_script_info(script_folder, '脚本作者')
+    homepage = conf_file.get('homepage') or read_script_info(script_folder, '电报频道')
     icon = conf_file.get('icon') or ''
-    date = conf_file.get('date') or read_script_info(script_folder, os.path.splitext(conf_file['path'])[0] + '.js', '更新日期')
-    mitm = conf_file.get('MITM') or read_script_info(script_folder, os.path.splitext(conf_file['path'])[0] + '.js', '[MITM]')
-    script = conf_file.get('Script') or read_script_info(script_folder, os.path.splitext(conf_file['path'])[0] + '.js', '[rewrite_local]')
+    date = conf_file.get('date') or read_script_info(script_folder, '更新日期')
+    mitm = conf_file.get('MITM') or read_script_info(script_folder, '[MITM]')
+    script = conf_file.get('Script') or read_script_info(script_folder, '[rewrite_local]')
 
-    # 构建插件文件内容
     plugin_content = f'''#!name = {name}
 #!desc = {desc}
 #!openUrl = {open_url}
@@ -48,19 +46,16 @@ def generate_plugin_file(conf_file, script_folder, plugin_folder):
 {script}
 '''
 
-    # 生成插件文件的文件名
     plugin_filename = os.path.splitext(os.path.basename(conf_file['path']))[0] + '.plugin'
-    # 插件文件的完整路径
     plugin_path = os.path.join(plugin_folder, plugin_filename)
 
-    # 将插件内容写入插件文件
     with open(plugin_path, 'w', encoding='utf-8') as plugin_file:
         plugin_file.write(plugin_content)
 
-def read_script_info(script_folder, keyword):
-    script_info_file = os.path.join(script_folder, 'info.txt')
-    if os.path.exists(script_info_file):
-        with open(script_info_file, 'r', encoding='utf-8') as file:
+def read_script_info(script_folder, keyword, script_filename):
+    js_file_path = os.path.join(script_folder, script_filename)
+    if os.path.exists(js_file_path):
+        with open(js_file_path, 'r', encoding='utf-8') as file:
             lines = file.readlines()
             for line in lines:
                 if keyword in line:

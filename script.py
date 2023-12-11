@@ -2,16 +2,6 @@ import os
 import re
 import requests
 
-def ensure_directories_exist():
-    directories = ['tmp', 'Script', 'plugin']
-    for directory in directories:
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-
-if __name__ == "__main__":
-    ensure_directories_exist()
-    main()
-
 def download_file(url, destination):
     response = requests.get(url)
     with open(destination, 'wb') as file:

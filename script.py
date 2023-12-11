@@ -62,6 +62,12 @@ def get_value_from_script(key, script_folder, conf_file, is_block=False):
     match = re.search(pattern, content, re.IGNORECASE)
     return match.group(1).strip() if match else ""
 
+def ensure_directories_exist():
+    directories = ['tmp', 'Script', 'plugin']
+    for directory in directories:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
 def main():
     tmp_folder = 'tmp'
     script_folder = 'Script'
@@ -78,12 +84,7 @@ def main():
                     download_file(download_url, download_destination)
                     generate_plugin_file(conf_file, script_folder, plugin_folder)
 
-def ensure_directories_exist():
-    directories = ['tmp', 'Script', 'plugin']
-    for directory in directories:
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-
 if __name__ == "__main__":
     ensure_directories_exist()
     main()
+

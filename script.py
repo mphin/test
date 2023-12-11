@@ -1,108 +1,72 @@
 import os
 import re
-import shutil
+import requests
 
-# 定义文件夹路径
-tmp_folder = "tmp"
-script_folder = "Script"
-plugin_folder = "plugin"
+def download_file(url, destination):
+    response = requests.get(url)
+    with open(destination, 'wb') as file:
+        file.write(response.content)
 
-# 创建plugin文件夹
-if not os.path.exists(plugin_folder):
-    os.makedirs(plugin_folder)
+def generate_plugin_file(conf_file, script_folder, plugin_folder):
+    conf_path = os.path.join(script_folder, conf_file)
+    plugin_name = os.path.splitext(conf_file)[0] + ".plugin"
 
-# 遍历tmp文件夹中的conf后缀文件
-for filename in os.listdir(tmp_folder):
-    if filename.endswith(".conf"):
-        conf_file_path = os.path.join(tmp_folder, filename)
-        plugin_file_path = os.path.join(plugin_folder, filename.replace(".conf", ".plugin"))
+    with open(conf_path, 'r', encoding='utf-8') as conf_file:
+        content = conf_file.read()
 
-        # 读取conf文件内容
-        with open(conf_file_path, "r", encoding="utf-8") as conf_file:
-            conf_content = conf_file.read()
+    name_match = re.search(r'#!name\s*=\s*(.*)', content)
+    desc_match = re.search(r'#!desc\s*=\s*(.*)', content)
+    openurl_match = re.search(r'#!openUrl\s*=\s*(.*)', content)
+    author_match = re.search(r'#!author\s*=\s*(.*)', content)
+    homepage_match = re.search(r'#!homepage\s*=\s*(.*)', content)
+    icon_match = re.search(r'#!icon\s*=\s*(.*)', content)
+    date_match = re.search(r'#!date\s*=\s*(.*)', content)
+    mitm_match = re.search(r'\[MITM\]\s*=\s*(.*)', content, re.IGNORECASE)
+    script_match = re.search(r'\[Script\]\s*=\s*(.*)', content, re.IGNORECASE)
 
-        # 提取各项信息
-        name_match = re.search(r'#!name = (.+)', conf_content)
-        name = name_match.group(1).strip() if name_match else None
-
-        desc_match = re.search(r'#!desc = (.+)', conf_content)
-        desc = desc_match.group(1).strip() if desc_match else None
-
-        openUrl_match = re.search(r'#!openUrl = (.+)', conf_content)
-        openUrl = openUrl_match.group(1).strip() if openUrl_match else None
-
-        author_match = re.search(r'#!author = (.+)', conf_content)
-        author = author_match.group(1).strip() if author_match else None
-
-        homepage_match = re.search(r'#!homepage = (.+)', conf_content)
-        homepage = homepage_match.group(1).strip() if homepage_match else None
-
-        icon_match = re.search(r'#!icon = (.+)', conf_content)
-        icon = icon_match.group(1).strip() if icon_match else None
-
-        date_match = re.search(r'#!date = (.+)', conf_content)
-        date = date_match.group(1).strip() if date_match else None
-
-        mitm_match = re.search(r'\[MITM\]\n(.+)', conf_content, re.DOTALL | re.IGNORECASE)
-        mitm = mitm_match.group(1).strip() if mitm_match else None
-
-        script_match = re.search(r'\[Script\]\n(.+)', conf_content, re.DOTALL | re.IGNORECASE)
-        script = script_match.group(1).strip() if script_match else None
-
-        # 如果信息为空，则从下载文件中提取
-        if not name:
-            name_match = re.search(r'项目名称：(.+)', conf_content)
-            name = name_match.group(1).strip() if name_match else None
-
-        if not desc:
-            desc_match = re.search(r'使用声明：(.+)', conf_content)
-            desc = desc_match.group(1).strip() if desc_match else None
-
-        if not openUrl:
-            openUrl_match = re.search(r'下载地址：(.+)', conf_content)
-            openUrl = openUrl_match.group(1).strip() if openUrl_match else None
-
-        if not author:
-            author_match = re.search(r'脚本作者：(.+)', conf_content)
-            author = author_match.group(1).strip() if author_match else None
-
-        if not homepage:
-            homepage_match = re.search(r'电报频道：(.+)', conf_content)
-            homepage = homepage_match.group(1).strip() if homepage_match else None
-
-        if not date:
-            date_match = re.search(r'更新日期：(.+)', conf_content)
-            date = date_match.group(1).strip() if date_match else None
-
-        if not mitm:
-            mitm_match = re.search(r'\[MITM\]\n(.+)', conf_content, re.DOTALL | re.IGNORECASE)
-            mitm = mitm_match.group(1).strip() if mitm_match else None
-
-        if not script:
-            script_match = re.search(r'\[rewrite_local\]\n(.+)', conf_content, re.DOTALL | re.IGNORECASE)
-            script = script_match.group(1).strip() if script_match else None
-
-        # 生成plugin文件内容
-        plugin_content = f'''#!name = {name}
-#!desc = {desc}
-#!openUrl = {openUrl}
-#!author = {author}
-#!homepage = {homepage}
-#!icon = {icon}
-#!date = {date}
+    plugin_content = f'''#!name = {name_match.group(1) if name_match else get_value_from_script("项目名称", script_folder, conf_file)}
+#!desc = {desc_match.group(1) if desc_match else get_value_from_script("使用声明", script_folder, conf_file)}
+#!openUrl = {openurl_match.group(1) if openurl_match else get_value_from_script("下载地址", script_folder, conf_file)}
+#!author = {author_match.group(1) if author_match else get_value_from_script("脚本作者", script_folder, conf_file)}
+#!homepage = {homepage_match.group(1) if homepage_match else get_value_from_script("电报频道", script_folder, conf_file)}
+#!icon = {icon_match.group(1) if icon_match else ""}
+#!date = {date_match.group(1) if date_match else get_value_from_script("更新日期", script_folder, conf_file)}
 
 [MITM]
-{mitm}
+{mitm_match.group(1) if mitm_match else get_value_from_script("[MITM]", script_folder, conf_file, True)}
 
 [Script]
-{script}
+{script_match.group(1) if script_match else get_value_from_script("[rewrite_local]", script_folder, conf_file, True)}
 '''
 
-        # 写入plugin文件
-        with open(plugin_file_path, "w", encoding="utf-8") as plugin_file:
-            plugin_file.write(plugin_content)
+    plugin_path = os.path.join(plugin_folder, plugin_name)
+    with open(plugin_path, 'w', encoding='utf-8') as plugin_file:
+        plugin_file.write(plugin_content)
 
-        # 将下载文件拷贝到Script文件夹
-        shutil.copy(openUrl, os.path.join(script_folder, f"{filename.replace('.conf', '')}.js"))
+def get_value_from_script(key, script_folder, conf_file, is_block=False):
+    script_path = os.path.join(script_folder, conf_file)
+    with open(script_path, 'r', encoding='utf-8') as script_file:
+        content = script_file.read()
+    
+    pattern = f'{key}：' if not is_block else f'{key}\n([\s\S]*?)(?=\[|$)'
+    match = re.search(pattern, content, re.IGNORECASE)
+    return match.group(1).strip() if match else ""
 
-print("工作流脚本执行完毕。")
+def main():
+    tmp_folder = 'tmp'
+    script_folder = 'Script'
+    plugin_folder = 'plugin'
+
+    for conf_file in os.listdir(tmp_folder):
+        if conf_file.endswith('.conf'):
+            conf_path = os.path.join(tmp_folder, conf_file)
+            with open(conf_path, 'r', encoding='utf-8') as conf_file:
+                download_url_match = re.search(r'#!url\s*=\s*(.*)', conf_file.read())
+                if download_url_match:
+                    download_url = download_url_match.group(1)
+                    download_destination = os.path.join(script_folder, conf_file)
+                    download_file(download_url, download_destination)
+                    generate_plugin_file(conf_file, script_folder, plugin_folder)
+
+if __name__ == "__main__":
+    main()

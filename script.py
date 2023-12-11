@@ -78,5 +78,12 @@ def main():
                     download_file(download_url, download_destination)
                     generate_plugin_file(conf_file, script_folder, plugin_folder)
 
+def ensure_directories_exist():
+    directories = ['tmp', 'Script', 'plugin']
+    for directory in directories:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
 if __name__ == "__main__":
+    ensure_directories_exist()
     main()

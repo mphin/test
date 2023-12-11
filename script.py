@@ -59,8 +59,8 @@ def read_script_info(script_folder, keyword, script_filename):
             lines = file.readlines()
             for line in lines:
                 if keyword in line:
-                    return line.split(':', 1)[1].strip()
-    return ''
+                    return line.split('：', 1)[1].strip()
+    return '1'
 
 def main():
     tmp_folder = 'tmp'

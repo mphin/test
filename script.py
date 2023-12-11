@@ -70,7 +70,7 @@ def main():
                 download_url_match = re.search(r'#!url\s*=\s*(.*)', conf_file.read())
                 if download_url_match:
                     download_url = download_url_match.group(1)
-                    download_destination = os.path.join(script_folder, conf_file.name)
+                    download_destination = os.path.join(script_folder, os.path.basename(conf_file.name))
                     download_file(download_url, download_destination)
                     generate_plugin_file(conf_file, script_folder, plugin_folder)
 

@@ -1,80 +1,86 @@
 import os
 import re
+import shutil
 import requests
 
-def download_file(url, destination):
-    response = requests.get(url)
-    with open(destination, 'wb') as file:
-        file.write(response.content)
+def download_file(url, dest_folder, dest_filename):
+    response = requests.get(url, stream=True)
+    file_path = os.path.join(dest_folder, dest_filename)
+    with open(file_path, 'wb') as file:
+        shutil.copyfileobj(response.raw, file)
+    del response
+
+def read_conf_file(file_path):
+    conf_data = {}
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if line.startswith("#!"):
+                key, value = re.match(r'#!(\w+)\s*=\s*(.*)', line).groups()
+                conf_data[key] = value.strip()
+    return conf_data
 
 def generate_plugin_file(conf_file, script_folder, plugin_folder):
-    conf_path = os.path.join(script_folder, conf_file)
-    plugin_name = os.path.splitext(conf_file)[0] + ".plugin"
+    name = conf_file.get('name') or read_script_info(script_folder, '项目名称')
+    desc = conf_file.get('desc') or read_script_info(script_folder, '使用声明')
+    open_url = conf_file.get('openUrl') or read_script_info(script_folder, '下载地址')
+    author = conf_file.get('author') or read_script_info(script_folder, '脚本作者')
+    homepage = conf_file.get('homepage') or read_script_info(script_folder, '电报频道')
+    icon = conf_file.get('icon') or ''
+    date = conf_file.get('date') or read_script_info(script_folder, '更新日期')
+    mitm = conf_file.get('MITM') or read_script_info(script_folder, '[MITM]')
+    script = conf_file.get('Script') or read_script_info(script_folder, '[rewrite_local]')
 
-    with open(conf_path, 'r', encoding='utf-8') as conf_file:
-        content = conf_file.read()
-
-    name_match = re.search(r'#!name\s*=\s*(.*)', content)
-    desc_match = re.search(r'#!desc\s*=\s*(.*)', content)
-    openurl_match = re.search(r'#!openUrl\s*=\s*(.*)', content)
-    author_match = re.search(r'#!author\s*=\s*(.*)', content)
-    homepage_match = re.search(r'#!homepage\s*=\s*(.*)', content)
-    icon_match = re.search(r'#!icon\s*=\s*(.*)', content)
-    date_match = re.search(r'#!date\s*=\s*(.*)', content)
-    mitm_match = re.search(r'\[MITM\]\s*=\s*(.*)', content, re.IGNORECASE)
-    script_match = re.search(r'\[Script\]\s*=\s*(.*)', content, re.IGNORECASE)
-
-    plugin_content = f'''#!name = {name_match.group(1) if name_match else get_value_from_script("项目名称", script_folder, conf_file)}
-#!desc = {desc_match.group(1) if desc_match else get_value_from_script("使用声明", script_folder, conf_file)}
-#!openUrl = {openurl_match.group(1) if openurl_match else get_value_from_script("下载地址", script_folder, conf_file)}
-#!author = {author_match.group(1) if author_match else get_value_from_script("脚本作者", script_folder, conf_file)}
-#!homepage = {homepage_match.group(1) if homepage_match else get_value_from_script("电报频道", script_folder, conf_file)}
-#!icon = {icon_match.group(1) if icon_match else ""}
-#!date = {date_match.group(1) if date_match else get_value_from_script("更新日期", script_folder, conf_file)}
+    plugin_content = f'''#!name = {name}
+#!desc = {desc}
+#!openUrl = {open_url}
+#!author = {author}
+#!homepage = {homepage}
+#!icon = {icon}
+#!date = {date}
 
 [MITM]
-{mitm_match.group(1) if mitm_match else get_value_from_script("[MITM]", script_folder, conf_file, True)}
+{mitm}
 
 [Script]
-{script_match.group(1) if script_match else get_value_from_script("[rewrite_local]", script_folder, conf_file, True)}
+{script}
 '''
 
-    plugin_path = os.path.join(plugin_folder, plugin_name)
-    with open(plugin_path, 'w', encoding='utf-8') as plugin_file:
+    plugin_filename = os.path.splitext(os.path.basename(conf_file['path']))[0] + '.plugin'
+    plugin_path = os.path.join(plugin_folder, plugin_filename)
+
+    with open(plugin_path, 'w') as plugin_file:
         plugin_file.write(plugin_content)
 
-def get_value_from_script(key, script_folder, conf_file, is_block=False):
-    script_path = os.path.join(script_folder, conf_file)
-    with open(script_path, 'r', encoding='utf-8') as script_file:
-        content = script_file.read()
-    
-    pattern = f'{key}：' if not is_block else f'{key}\n([\s\S]*?)(?=\[|$)'
-    match = re.search(pattern, content, re.IGNORECASE)
-    return match.group(1).strip() if match else ""
-
-def ensure_directories_exist():
-    directories = ['tmp', 'Script', 'plugin']
-    for directory in directories:
-        if not os.path.exists(directory):
-            os.makedirs(directory)
+def read_script_info(script_folder, keyword):
+    script_info_file = os.path.join(script_folder, 'info.txt')
+    if os.path.exists(script_info_file):
+        with open(script_info_file, 'r') as file:
+            lines = file.readlines()
+            for line in lines:
+                if keyword in line:
+                    return line.split(':', 1)[1].strip()
+    return ''
 
 def main():
     tmp_folder = 'tmp'
     script_folder = 'Script'
     plugin_folder = 'plugin'
 
-    for conf_file in os.listdir(tmp_folder):
-        if conf_file.endswith('.conf'):
-            conf_path = os.path.join(tmp_folder, conf_file)
-            with open(conf_path, 'r', encoding='utf-8') as conf_file:
-                download_url_match = re.search(r'#!url\s*=\s*(.*)', conf_file.read())
-                if download_url_match:
-                    download_url = download_url_match.group(1)
-                    download_destination = os.path.join(script_folder, os.path.basename(conf_file.name))
-                    download_file(download_url, download_destination)
-                    generate_plugin_file(conf_file, script_folder, plugin_folder)
+    if not os.path.exists(script_folder):
+        os.makedirs(script_folder)
+    if not os.path.exists(plugin_folder):
+        os.makedirs(plugin_folder)
+
+    for conf_filename in os.listdir(tmp_folder):
+        if conf_filename.endswith('.conf'):
+            conf_filepath = os.path.join(tmp_folder, conf_filename)
+            conf_data = read_conf_file(conf_filepath)
+            conf_data['path'] = conf_filepath  # 保存文件路径供后续使用
+            download_url = conf_data.get('url')
+            if download_url:
+                download_file(download_url, script_folder, os.path.splitext(conf_filename)[0] + '.js')
+                generate_plugin_file(conf_data, script_folder, plugin_folder)
 
 if __name__ == "__main__":
-    ensure_directories_exist()
     main()
-

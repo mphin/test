@@ -25,7 +25,7 @@ def generate_plugin_file(conf_file, script_folder, plugin_folder):
     desc = conf_file.get('desc') or read_script_info(script_folder, '使用声明', os.path.splitext(conf_file['path'])[0] + '.js')
     open_url = conf_file.get('openUrl') or read_script_info(script_folder, '下载地址', os.path.splitext(conf_file['path'])[0] + '.js')
     author = conf_file.get('author') or read_script_info(script_folder, '脚本作者', os.path.splitext(conf_file['path'])[0] + '.js')
-    homepage = conf_file.get('homepage') or read_script_info(script_folder, '电报频道', os.path.splitext(conf_filename['path'])[0] + '.js')
+    homepage = conf_file.get('homepage') or read_script_info(script_folder, '电报频道', os.path.splitext(conf_file['path'])[0] + '.js')
     icon = conf_file.get('icon') or ''
     date = conf_file.get('date') or read_script_info(script_folder, '更新日期', os.path.splitext(conf_file['path'])[0] + '.js')
     mitm = conf_file.get('MITM') or read_script_info(script_folder, '[MITM]', os.path.splitext(conf_file['path'])[0] + '.js')
@@ -59,7 +59,7 @@ def read_script_info(script_folder, keyword, script_filename):
             lines = file.readlines()
             for line in lines:
                 if keyword in line:
-                    return line.split('：', 1)[1].strip()
+                    return line.split(keyword, 1)[1].strip()
     return '1'
 
 def main():

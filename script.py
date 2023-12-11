@@ -59,7 +59,9 @@ def read_script_info(script_folder, keyword, script_filename):
             lines = file.readlines()
             for line in lines:
                 if keyword in line:
-                    return line.split('：', 1)[1].strip()
+                    value = line.split('：', 1)[1].strip()
+                    print(f"Read {keyword}: {value}")
+                    return value
     return ''
 
 def main():

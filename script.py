@@ -6,8 +6,8 @@ import requests
 def download_file(url, dest_folder, dest_filename):
     response = requests.get(url, stream=True)
     file_path = os.path.join(dest_folder, dest_filename)
-    with open(file_path, 'wb') as file:
-        file.write(response.content)
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(response.text)
     del response
 
 def read_conf_file(file_path):
@@ -64,7 +64,7 @@ def read_script_info(script_folder, keyword, script_filename):
 
 def main():
     tmp_folder = 'tmp'
-    script_folder = 'Script'
+    script_folder = 'script'
     plugin_folder = 'plugin'
 
     if not os.path.exists(script_folder):

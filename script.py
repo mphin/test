@@ -59,10 +59,7 @@ def read_script_info(script_folder, keyword, script_filename):
             lines = file.readlines()
             for line in lines:
                 if keyword in line:
-                    # 使用正则表达式匹配关键字后的内容
-                    match = re.match(r'.*?\/\/.*?' + re.escape(keyword) + r'：(.+)', line)
-                    if match:
-                        return match.group(1).strip()
+                    return line.split('：', 1)[1].strip()
     return ''
 
 def main():

@@ -6,13 +6,13 @@ import requests
 def download_file(url, dest_folder, dest_filename):
     response = requests.get(url, stream=True)
     file_path = os.path.join(dest_folder, dest_filename)
-    with open(file_path, 'wb') as file:
-        shutil.copyfileobj(response.raw, file)
+    with open(file_path, 'wb', encoding='utf-8') as file:
+        file.write(response.content.decode('utf-8'))
     del response
 
 def read_conf_file(file_path):
     conf_data = {}
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             if line.startswith("#!"):
@@ -55,7 +55,7 @@ def generate_plugin_file(conf_file, script_folder, plugin_folder):
 def read_script_info(script_folder, keyword):
     script_info_file = os.path.join(script_folder, 'info.txt')
     if os.path.exists(script_info_file):
-        with open(script_info_file, 'r') as file:
+        with open(script_info_file, 'r', encoding='utf-8') as file:
             lines = file.readlines()
             for line in lines:
                 if keyword in line:

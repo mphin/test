@@ -12,7 +12,7 @@ def download_file(url, dest_folder, dest_filename):
 
 def read_conf_file(file_path):
     conf_data = {}
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, 'r') as file:
         lines = file.readlines()
         for line in lines:
             if line.startswith("#!"):
@@ -49,7 +49,7 @@ def generate_plugin_file(conf_file, script_folder, plugin_folder):
     plugin_filename = os.path.splitext(os.path.basename(conf_file['path']))[0] + '.plugin'
     plugin_path = os.path.join(plugin_folder, plugin_filename)
 
-    with open(plugin_path, 'w', encoding='utf-8') as plugin_file:
+    with open(plugin_path, 'w') as plugin_file:
         plugin_file.write(plugin_content)
 
 def read_script_info(script_folder, keyword, script_filename):

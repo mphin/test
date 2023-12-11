@@ -21,15 +21,15 @@ def read_conf_file(file_path):
     return conf_data
 
 def generate_plugin_file(conf_file, script_folder, plugin_folder):
-    name = conf_file.get('name') or read_script_info(script_folder, '项目名称')
-    desc = conf_file.get('desc') or read_script_info(script_folder, '使用声明')
-    open_url = conf_file.get('openUrl') or read_script_info(script_folder, '下载地址')
-    author = conf_file.get('author') or read_script_info(script_folder, '脚本作者')
-    homepage = conf_file.get('homepage') or read_script_info(script_folder, '电报频道')
+    name = conf_file.get('name') or read_script_info(script_folder, '项目名称', os.path.splitext(conf_file['path'])[0] + '.js')
+    desc = conf_file.get('desc') or read_script_info(script_folder, '使用声明', os.path.splitext(conf_file['path'])[0] + '.js')
+    open_url = conf_file.get('openUrl') or read_script_info(script_folder, '下载地址', os.path.splitext(conf_file['path'])[0] + '.js')
+    author = conf_file.get('author') or read_script_info(script_folder, '脚本作者', os.path.splitext(conf_file['path'])[0] + '.js')
+    homepage = conf_file.get('homepage') or read_script_info(script_folder, '电报频道', os.path.splitext(conf_file['path'])[0] + '.js')
     icon = conf_file.get('icon') or ''
-    date = conf_file.get('date') or read_script_info(script_folder, '更新日期')
-    mitm = conf_file.get('MITM') or read_script_info(script_folder, '[MITM]')
-    script = conf_file.get('Script') or read_script_info(script_folder, '[rewrite_local]')
+    date = conf_file.get('date') or read_script_info(script_folder, '更新日期', os.path.splitext(conf_file['path'])[0] + '.js')
+    mitm = conf_file.get('MITM') or read_script_info(script_folder, '[MITM]', os.path.splitext(conf_file['path'])[0] + '.js')
+    script = conf_file.get('Script') or read_script_info(script_folder, '[rewrite_local]', os.path.splitext(conf_file['path'])[0] + '.js')
 
     plugin_content = f'''#!name = {name}
 #!desc = {desc}

@@ -6,7 +6,7 @@ import requests
 def download_file(url, dest_folder, dest_filename):
     response = requests.get(url, stream=True)
     file_path = os.path.join(dest_folder, dest_filename)
-    with open(file_path, 'wb') as file:
+    with open(file_path, 'wb', encoding='utf-8') as file:
         file.write(response.content)
     del response
 

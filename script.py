@@ -53,7 +53,7 @@ def generate_plugin_file(conf_file, script_folder, plugin_folder):
         plugin_file.write(plugin_content)
 
 def read_script_info(script_folder, keyword, script_filename):
-    js_file_path = os.path.join(script_folder)
+    js_file_path = os.path.join(script_folder, script_filename)
     if os.path.exists(js_file_path):
         with open(js_file_path, 'r') as file:
             lines = file.readlines()

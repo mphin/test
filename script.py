@@ -49,7 +49,7 @@ def generate_plugin_file(conf_file, script_folder, plugin_folder):
     plugin_filename = os.path.splitext(os.path.basename(conf_file['path']))[0] + '.plugin'
     plugin_path = os.path.join(plugin_folder, plugin_filename)
 
-    with open(plugin_path, 'w') as plugin_file:
+    with open(plugin_path, 'w', encoding='utf-8') as plugin_file:
         plugin_file.write(plugin_content)
 
 def read_script_info(script_folder, keyword):

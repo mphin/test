@@ -6,8 +6,8 @@ import requests
 def download_file(url, dest_folder, dest_filename):
     response = requests.get(url, stream=True)
     file_path = os.path.join(dest_folder, dest_filename)
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(response.text)
+    with open(file_path, 'wb') as file:
+        file.write(response.content)
     del response
 
 def read_conf_file(file_path):

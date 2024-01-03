@@ -1,7 +1,7 @@
 # 内容: 🚫 广告过滤 规则集
 # 备注: 以anti-AD为基础，添加自用规则，原作者: https://github.com/privacy-protection-tools/anti-AD
-# 更新: 2024年01月03日04:19:10
-# 数量: 76021条
+# 更新: 2024年01月04日04:17:46
+# 数量: 76020条
 DOMAIN-SUFFIX,0008d6ba2e.com
 DOMAIN-SUFFIX,000dn.com
 DOMAIN-SUFFIX,0013.cc
@@ -2441,7 +2441,6 @@ DOMAIN-SUFFIX,13023.url.7wkw.com
 DOMAIN-SUFFIX,m.7wx8f.cn
 DOMAIN-SUFFIX,7x-star.info
 DOMAIN-SUFFIX,7x1u.icu
-DOMAIN-SUFFIX,7x24s.com
 DOMAIN-SUFFIX,7x4.fr
 DOMAIN-SUFFIX,7x5.fr
 DOMAIN-SUFFIX,7xixi.site

@@ -78,6 +78,7 @@ DOMAIN-SUFFIX,similarweb.com
 DOMAIN-SUFFIX,ucweb.com
 DOMAIN-SUFFIX,duote.com
 DOMAIN-SUFFIX,api-shoulei-ssl.xunlei.com
+DOMAIN-SUFFIX,7x24s.com
 DOMAIN-SUFFIX,mac.bmcx.com
 DOMAIN-SUFFIX,uri6.com
 DOMAIN-SUFFIX,e.weather.com.cn

@@ -1,6 +1,6 @@
 # 内容: 🚫 广告过滤 规则集
 # 备注: 以anti-AD为基础，添加自用规则，原作者: https://github.com/privacy-protection-tools/anti-AD
-# 更新: 2024年01月09日04:19:53
+# 更新: 2024年01月10日04:19:59
 # 数量: 85544条
 .0008d6ba2e.com
 .000dn.com

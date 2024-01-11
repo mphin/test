@@ -22,7 +22,7 @@ jobs:
         for conf_file in $tmp_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 download_url=$(grep '^#!url =' "$conf_file" | sed 's/^#!url = //')
-                download_file="$script_folder/$(basename "$conf_file" .conf)"
+                download_file="$script_folder/$(basename "$conf_file" .conf).js"
                 wget -O "$download_file" "$download_url"
 
                 name=$(grep '^#!name =' "$conf_file" | sed 's/^#!name = //' || grep '项目名称：' "$download_file" | sed 's/^项目名称：//')

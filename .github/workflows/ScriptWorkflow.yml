@@ -1,33 +1,59 @@
-name: Script Workflow
+name: Process Conf Files
 
 on:
   push:
     branches:
-      - main  # 根据你的主分支名调整
+      - main
 
 jobs:
-  build:
+  process_conf:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: 3.8  # 根据你的 Python 版本调整
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install requests
-
     - name: Run script
-      run: python script.py  # 将脚本文件名替换成实际的文件名
-
-    - name: 提交更改
       run: |
-        git config --global user.email "long632450362@qq.com" && git config --global user.name "Bot"
-        git add . && git commit -m "自动更新$(date +'%Y-%m-%d %H:%M')" || exit 0
+        tmp_folder="tmp"
+        script_folder="Script"
+        plugin_folder="plugin"
+
+        for conf_file in $tmp_folder/*.conf; do
+            if [ -f "$conf_file" ]; then
+                download_url=$(grep '^#!url =' "$conf_file" | sed 's/^#!url = //')
+                download_file="$script_folder/$(basename "$conf_file" .conf)"
+                wget -O "$download_file" "$download_url"
+
+                name=$(grep '^#!name =' "$conf_file" | sed 's/^#!name = //' || grep '项目名称：' "$download_file" | sed 's/^项目名称：//')
+                desc=$(grep '^#!desc =' "$conf_file" | sed 's/^#!desc = //' || grep '使用声明：' "$download_file" | sed 's/^使用声明：//')
+                openUrl=$(grep '^#!openUrl =' "$conf_file" | sed 's/^#!openUrl = //' || grep '下载地址：' "$download_file" | sed 's/^下载地址：//')
+                author=$(grep '^#!author =' "$conf_file" | sed 's/^#!author = //' || grep '脚本作者：' "$download_file" | sed 's/^脚本作者：//')
+                homepage=$(grep '^#!homepage =' "$conf_file" | sed 's/^#!homepage = //' || grep '电报频道：' "$download_file" | sed 's/^电报频道：//')
+                icon=$(grep '^#!icon =' "$conf_file" | sed 's/^#!icon = //')
+                date=$(grep '^#!date =' "$conf_file" | sed 's/^#!date = //' || grep '更新日期：' "$download_file" | sed 's/^更新日期：//')
+
+                plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"
+                echo "#!name = $name" > "$plugin_file"
+                echo "#!desc = $desc" >> "$plugin_file"
+                echo "#!openUrl = $openUrl" >> "$plugin_file"
+                echo "#!author = $author" >> "$plugin_file"
+                echo "#!homepage = $homepage" >> "$plugin_file"
+                echo "#!icon = $icon" >> "$plugin_file"
+                echo "#!date = $date" >> "$plugin_file"
+
+                mitm=$(grep '^\[MITM\]' "$conf_file" | sed 's/^\[MITM\]//' || grep -i '^\[MITM\]' "$download_file" | sed 's/^\[MITM\]//')
+                script=$(grep '^\[Script\]' "$conf_file" | sed 's/^\[Script\]//' || grep -i '^\[Script\]' "$download_file" | sed 's/^\[Script\]//')
+
+                echo -e "\n[MITM]\n$mitm" >> "$plugin_file"
+                echo -e "\n[Script]\n$script" >> "$plugin_file"
+            fi
+        done
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git add -A
+        git commit -m "Update plugin files"
         git push

@@ -25,7 +25,7 @@ jobs:
                 download_url=$(grep '^#!url =' "$conf_file" | sed 's/^#!url = //')
                 download_file="$script_folder/$(basename "$conf_file" .conf).js"
                 wget -O "$download_file" "$download_url"
-                grep -oE '^\d{4}[-/\.]\d{1,2}[-/\.]\d{1,2}$' "$download_file"
+                grep -oE '^\d{4}([-/.年])\d{1,2}\1\d{1,2}$' "$download_file"
 
                 name=$(grep '^#!name =' "$conf_file" | sed 's/^#!name = //')
                 desc=$(grep '^#!desc =' "$conf_file" | sed 's/^#!desc = //')

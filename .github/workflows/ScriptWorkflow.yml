@@ -20,6 +20,10 @@ jobs:
         plugin_folder="plugin"
         mkdir -p "$tmp_folder" "$script_folder" "$plugin_folder"
         
+        current_year=$(date +'%Y')
+        previous_year_1=$((current_year - 1))
+        previous_year_2=$((current_year - 2))
+        
         for conf_file in $tmp_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 download_url=$(grep '^#!url =' "$conf_file" | sed 's/^#!url = //')
@@ -32,7 +36,7 @@ jobs:
                 author=$(grep '^#!author =' "$conf_file" | sed 's/^#!author = //')
                 homepage=$(grep '^#!homepage =' "$conf_file" | sed 's/^#!homepage = //')
                 icon=$(grep '^#!icon =' "$conf_file" | sed 's/^#!icon = //')
-                date=$(current_year=$(date +'%Y'); previous_year_1=$((current_year - 1)); previous_year_2=$((current_year - 2)); grep -oE "$current_year[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}|$previous_year_1[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}|$previous_year_2[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}" "$download_file" || grep '^#!date =' "$conf_file" | sed 's/^#!date = //')
+                date=$(grep -oE "$current_year[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}|$previous_year_1[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}|$previous_year_2[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}" "$download_file" || grep '^#!date =' "$conf_file" | sed 's/^#!date = //')
                 echo "$date"
 
                 plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"
@@ -54,8 +58,6 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --local user.email "actions@github.com"
-        git config --local user.name "GitHub Actions"
-        git add -A
-        git commit -m "Update plugin files"
+        git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"
+        git add . && git commit -m "自动更新$(date +'%Y-%m-%d %H:%M')" || exit 0
         git push

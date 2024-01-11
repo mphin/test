@@ -25,7 +25,7 @@ jobs:
                 download_url=$(grep '^#!url =' "$conf_file" | sed 's/^#!url = //')
                 download_file="$script_folder/$(basename "$conf_file" .conf).js"
                 wget -O "$download_file" "$download_url"
-                #grep -oE '\b\d{4}[-/.年]\d{1,2}[-/.年]\d{1,2}\b' "$download_file"
+                #grep -oE '\s\d{4}[-/.年]\d{1,2}[-/.年]\d{1,2}\b' "$download_file"
 
                 name=$(grep '^#!name =' "$conf_file" | sed 's/^#!name = //')
                 desc=$(grep '^#!desc =' "$conf_file" | sed 's/^#!desc = //')
@@ -33,7 +33,7 @@ jobs:
                 author=$(grep '^#!author =' "$conf_file" | sed 's/^#!author = //')
                 homepage=$(grep '^#!homepage =' "$conf_file" | sed 's/^#!homepage = //')
                 icon=$(grep '^#!icon =' "$conf_file" | sed 's/^#!icon = //')
-                date=$(grep '^#!date =' "$conf_file" | sed 's/^#!date = //' || grep -E '\b\d{4}[-/.年]\d{1,2}[-/.年]\d{1,2}\b' "$download_file")
+                date=$(grep '^#!date =' "$conf_file" | sed 's/^#!date = //' || grep -E '\s\d{4}[-/.年]\d{1,2}[-/.年]\d{1,2}\b' "$download_file")
 
                 plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"
                 echo "#!name = $name" > "$plugin_file"

@@ -16,7 +16,7 @@ jobs:
     - name: Run script
       run: |
         tmp_folder="tmp"
-        script_folder="Script"
+        script_folder="script"
         plugin_folder="plugin"
 
         for conf_file in $tmp_folder/*.conf; do

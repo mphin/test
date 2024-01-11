@@ -18,7 +18,8 @@ jobs:
         tmp_folder="tmp"
         script_folder="script"
         plugin_folder="plugin"
-
+        mkdir -p "$tmp_folder" "$script_folder" "$plugin_folder"
+        
         for conf_file in $tmp_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 download_url=$(grep '^#!url =' "$conf_file" | sed 's/^#!url = //')

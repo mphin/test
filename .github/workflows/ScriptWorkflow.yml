@@ -32,7 +32,7 @@ jobs:
                 author=$(grep '^#!author =' "$conf_file" | sed 's/^#!author = //')
                 homepage=$(grep '^#!homepage =' "$conf_file" | sed 's/^#!homepage = //')
                 icon=$(grep '^#!icon =' "$conf_file" | sed 's/^#!icon = //')
-                date=$(grep -oE '[[:digit:]]{4}[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}' "$download_file" || grep '^#!date =' "$conf_file" | sed 's/^#!date = //')
+                date=$(current_year=$(date +'%Y'); previous_year_1=$((current_year - 1)); previous_year_2=$((current_year - 2)); grep -oE "$current_year[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}|$previous_year_1[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}|$previous_year_2[-/.年][[:digit:]]{1,2}[-/.年][[:digit:]]{1,2}" "$download_file" || grep '^#!date =' "$conf_file" | sed 's/^#!date = //')
                 echo "$date"
 
                 plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"

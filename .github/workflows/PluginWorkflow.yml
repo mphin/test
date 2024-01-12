@@ -48,7 +48,7 @@ jobs:
                 echo "#!date = $date" >> "$plugin_file"
 
                 mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file")
-                script=$(grep '^\[Script\]' "$conf_file" | sed 's/^\[Script\]\s*//' | sed 's/\//\\\//g' || grep -i '^\[Script\]' "$download_file" | sed 's/^\[Script\]//')
+                script=$(grep -Pzo '\[Script\](.*?(\n|$)){1,}' "$conf_file" || grep -i '^\[Script\]' "$download_file" | sed 's/^\[Script\]//')
 
                 echo -e "\n[MITM]\n$mitm" >> "$plugin_file"
                 echo -e "\n[Script]\n$script" >> "$plugin_file"

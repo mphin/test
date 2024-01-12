@@ -9,8 +9,6 @@ https://api.github.com/graphql url script-response-body https://raw.githubuserco
 hostname = api.github.com
 
 */
-[rewrite_local]
-https://api.github.com/graphql url script-response-body https://raw.githubusercontent.com/Yu9191/Rewrite/main/Github.js
 
 let obj = JSON.parse($response.body);
 if (obj.data && obj.data.viewer) {

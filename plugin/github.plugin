@@ -10,4 +10,4 @@
 hostname = api.github.com
 
 [Script]
-
+https://api.github.com/graphql url script-response-body https://raw.githubusercontent.com/Yu9191/Rewrite/main/Github.js

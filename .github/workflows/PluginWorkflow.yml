@@ -48,7 +48,7 @@ jobs:
                 echo "#!date = $date" >> "$plugin_file"
 
                 mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file")
-                script=$(awk '/\[Script\]/{flag=1; next} /^\[/{flag=0} flag' "$conf_file" || grep -Pzo '(?<=\[rewrite_local\]\n)(.*?(\n|$)){1,}' "$download_file")
+                script=$(awk '/\[Script\]/{flag=1; next} /^\[/{flag=0} flag' "$conf_file" || awk '/\[Script\]/{flag=1; next} /^\[/{flag=0} flag' "$download_file")
 
                 echo -e "\n[MITM]\n$mitm" >> "$plugin_file"
                 echo -e "\n[Script]\n$script" >> "$plugin_file"

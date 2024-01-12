@@ -7,7 +7,7 @@
 #!date = 2024-01-11
 
 [MITM]
-[mitm]
+hostname = api.github.com
 
 [Script]
 

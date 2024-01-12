@@ -7,7 +7,7 @@
 #!date = 2024-01-11
 
 [MITM]
-[mitm]
+hostname = *.xiuxiu.meitu.com, api.posters.meitu.com, api-sub.meitu.com
 
 [Script]
 

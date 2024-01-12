@@ -7,7 +7,7 @@
 #!date = 2023-12-02
 
 [MITM]
-hostname = *.cyapi.cn, *.caiyunapp.com
+hostname = *.cyapi.cn, *.caiyunapp.co
 
 [Script]
 

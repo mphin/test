@@ -47,7 +47,7 @@ jobs:
                 echo "#!icon = $icon" >> "$plugin_file"
                 echo "#!date = $date" >> "$plugin_file"
 
-                mitm=$(grep '^\[MITM\]' "$conf_file" | sed 's/^\[MITM\]\n//' || grep -i '^\[MITM\]' "$download_file" | sed 's/^\[MITM\]//')
+                mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\[MITM\]' "$download_file" | sed 's/^\[MITM\]//')
                 script=$(grep '^\[Script\]' "$conf_file" | sed 's/^\[Script\]//' || grep -i '^\[Script\]' "$download_file" | sed 's/^\[Script\]//')
 
                 echo -e "\n[MITM]\n$mitm" >> "$plugin_file"

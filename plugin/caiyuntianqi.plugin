@@ -11,6 +11,6 @@ hostname = *.cyapi.cn, *.caiyunapp.com
 
 [Script]
 # VIP信息
-^https?:\/\/(biz|wrapper|starplucker)\.(cyapi|caiyunapp)\.(cn|com)\/(.+\/(user\?app_name|activity\?app_name|visitors|operation\/banners)|p\/v\d\/(vip_info|user_info)) script-path = http-response url script-response-body , requires-body = true, tag =  https://raw.githubusercontent.com/chxm1023/Rewrite/main/caiyuntianqi.js, requires-body = true, tag =  VIP信息
+^https?:\/\/(biz|wrapper|starplucker)\.(cyapi|caiyunapp)\.(cn|com)\/(.+\/(user\?app_name|activity\?app_name|visitors|operation\/banners)|p\/v\d\/(vip_info|user_info)) script-path = http-response url script-response-body , requires-body = true, tag =  https://raw.githubusercontent.com/chxm1023/Rewrite/main/caiyuntianqi.js, requires-body = true, tag = VIP信息
 # SVIP地图-48小时预报(方法来源:苍井灰灰)
 ^https?:\/\/(api|wrapper)\.(cyapi|caiyunapp)\.(cn|com)\/v\d\/(satellite|nafp\/origin_images) url script-request-header https://raw.githubusercontent.com/chxm1023/Rewrite/main/caiyuntianqi.js

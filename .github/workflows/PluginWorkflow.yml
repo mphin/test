@@ -55,8 +55,9 @@ jobs:
                 echo -e "\n[Script]\n$script" >> "$plugin_file"
                 
                 # 查找并替换
-                sed -i -e 's/url script-response-body/script-path = http-response & , requires-body = true, tag = /g' "$plugin_file"
-                sed -i -e '/http-response/ s/$/, requires-body = true, tag =/' "$plugin_file"
+                sed -i 's/url script-response-body/script-path =/' "$plugin_file"
+                sed -i '/script-path =/ s/^/http-response /' "$plugin_file"
+                sed -i '/script-path =/ s/$/, requires-body = true, tag =/' "$plugin_file"
                 # 在该行的上一行首查找是否存在‘#’
                 line_number=$(grep -n 'http-response' "$plugin_file" | cut -d: -f1)
                 if [ "$line_number" ]; then

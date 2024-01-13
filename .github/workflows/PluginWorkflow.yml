@@ -57,7 +57,7 @@ jobs:
                 # 查找并替换
                 sed -i 's/url script-response-body/script-path =/' "$plugin_file"
                 sed -i '/script-path =/ s/^/http-response /' "$plugin_file"
-                sed -i '/script-path =/ s/$/, requires-body = true, tag = /' "$plugin_file"
+                sed -i '/script-path =/ s/$/, requires-body = true, tag =/' "$plugin_file"
                 # 在行上查找并添加
                 line_number=$(grep -n 'script-path =' "$plugin_file" | cut -d: -f1)
                 if [ $line_number -gt 1 ]; then
@@ -66,7 +66,7 @@ jobs:
                   sed -i "${line_number}s/$/ $comment_value/" "$plugin_file"
                 else
                   # 如果不存在'#'，查找'#!name ='读取值并添加到行尾
-                  name_value=$(grep '#!name =' "$plugin_file" | awk -F' = ' '{print $2}' | tr -d '[:space:]')
+                  name_value=$(grep '#!name =' "$conf_file" | awk -F' = ' '{print $2}' | tr -d '[:space:]')
                   sed -i "${line_number}s/$/ $name_value/" "$plugin_file"
                 fi
             fi

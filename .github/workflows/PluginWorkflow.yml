@@ -66,7 +66,7 @@ jobs:
                   sed -i "${line_number}s/$/ $comment_value/" "$plugin_file"
                 else
                   # 如果不存在'#'，查找'#!name ='读取值并添加到行尾
-                  name_value=$(grep '#!name =' "$conf_file" | awk -F' = ' '{print $2}' | tr -d '[:space:]')
+                  name_value=$(2122)
                   sed -i "${line_number}s/$/ $name_value/" "$plugin_file"
                 fi
             fi

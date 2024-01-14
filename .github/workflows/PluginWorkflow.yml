@@ -93,8 +93,8 @@ jobs:
                     script_download_url="$(grep '^script-path =' "$conf_file" | sed 's/^script-path = \([^,]*\),/\1/')"
                     wget -O "$script_folder/$(basename "$script_download_url")" "$script_download_url"
                     base_url="https://raw.githubusercontent.com/mphin/test/main/"
-                    full_url="$base_url$script_folder/$(basename $script_download_url)"
-                    sed -i "s|$script_download_url|$full_url|" "$plugin_file"
+                    full_url="$base_url$script_folder/$(basename "$script_download_url")"
+                    sed -i "s#$script_download_url#$full_url#" "$plugin_file"
                   fi
                 done < "$plugin_file"
             fi

@@ -15,8 +15,8 @@ jobs:
 
     - name: Update Plugin
       run: |
-        conf_folder="conf"
-        script_folder="script"
+        conf_folder="plugin/conf"
+        script_folder="plugin/script"
         plugin_folder="plugin"
         mkdir -p "$conf_folder" "$script_folder" "$plugin_folder"
         

@@ -87,11 +87,11 @@ jobs:
                         sed -i -e "/http-request/ s/$/ $name_value/" "$plugin_file"
                     fi
                 fi
-                echo "$plugin_file"
+
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path = "* ]]; then
                     script_download_url="$(grep '^script-path =' "$plugin_file" | sed 's/^script-path = \([^,]*\),/\1/')"
-                    echo "$script_download_url"
+                    echo "123$script_download_url"
                     wget -O "$script_folder/$(basename "$script_download_url")" "$script_download_url" || true
                     base_url="https://raw.githubusercontent.com/mphin/test/main/"
                     full_url="$base_url$script_folder/$(basename "$script_download_url")"

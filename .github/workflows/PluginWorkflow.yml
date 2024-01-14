@@ -90,13 +90,11 @@ jobs:
 
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path = "* ]]; then
-                    download_url="${line#*script-path = }"
-                    base_url="https://raw.githubusercontent.com"
-                    full_url="$base_url$download_url"
-                    file_name=$(basename "$download_url")
-                    local_path="$script_folder/$file_name"
-                    wget -O "$local_path" "$full_url"
-                    sed -i "s|$download_url|$local_path|" "$plugin_file"
+                    script_download_url="$(grep '^script-path =' "$conf_file" | sed 's/^script-path = //')
+                    wget -O "$script_folder/$(basename $script_download_url)" "$script_download_url"
+                    base_url="https://raw.githubusercontent.com/mphin/test/main/"
+                    full_url="$base_url$script_folder/$(basename $script_download_url)"
+                    sed -i "s|$script_download_url|$full_url|" "$plugin_file"
                   fi
                 done < "$plugin_file"
             fi

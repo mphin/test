@@ -87,7 +87,7 @@ jobs:
                         sed -i -e "/http-request/ s/$/ $name_value/" "$plugin_file"
                     fi
                 fi
-
+                echo "$plugin_file"
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path = "* ]]; then
                     script_download_url="$(grep '^script-path =' "$plugin_file" | sed 's/^script-path = \([^,]*\),/\1/')"

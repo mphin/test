@@ -90,7 +90,7 @@ jobs:
 
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path = "* ]]; then
-                    script_download_url=$(sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p' "$plugin_file")
+                    script_download_url=$(sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p' "$line")
                     echo "$script_download_url"
                     wget -O "$script_folder/$(basename "$script_download_url")" "$script_download_url" || true
                     base_url="https://raw.githubusercontent.com/mphin/test/main/"

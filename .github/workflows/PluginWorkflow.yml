@@ -69,7 +69,7 @@ jobs:
                             sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
                         else
                             name_value=$(grep -m 1 '#!name = ' "$plugin_file" | sed 's/^#!name = //')
-                            sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
+                            sed -i -e "${line_number}s/$/ $name_value/" "$plugin_file"
                         fi
                     fi
                 done
@@ -88,7 +88,7 @@ jobs:
                             sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
                         else
                             name_value=$(grep -m 1 '#!name = ' "$plugin_file" | sed 's/^#!name = //')
-                            sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
+                            sed -i -e "${line_number}s/$/ $name_value/" "$plugin_file"
                         fi
                     fi
                 done

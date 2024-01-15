@@ -83,7 +83,7 @@ jobs:
                     if [ "$line_number" ]; then
                         previous_line_number=$((line_number - 1))
                         previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
-                        if [[ "$previous_line" == *"# "* ]]; then
+                        if [[ "$previous_line" == "#"* ]]; then
                             comment_value=$(echo "$previous_line" | sed 's/^# *//')
                             sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
                         else

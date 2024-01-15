@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set up time zone
+      run: sudo timedatectl set-timezone Asia/Shanghai
+
     - name: Checkout repository
       uses: actions/checkout@v3
 

@@ -44,9 +44,15 @@ jobs:
                 plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"
                 echo "#!name = $name" > "$plugin_file"
                 echo "#!desc = $desc" >> "$plugin_file"
-                echo "#!openUrl = $openUrl" >> "$plugin_file"
-                echo "#!author = $author" >> "$plugin_file"
-                echo "#!homepage = $homepage" >> "$plugin_file"
+                if [ -n "$openUrl" ]; then
+                    echo "#!openUrl = $openUrl" >> "$plugin_file"
+                fi
+                if [ -n "$author" ]; then
+                    echo "#!author = $author" >> "$plugin_file"
+                fi
+                if [ -n "$homepage" ]; then
+                    echo "#!homepage = $homepage" >> "$plugin_file"
+                fi
                 if [ -n "$icon" ]; then
                     echo "#!icon = $icon" >> "$plugin_file"
                 fi

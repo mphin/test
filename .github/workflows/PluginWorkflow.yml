@@ -42,7 +42,7 @@ jobs:
                 homepage=$(grep '^#!homepage =' "$conf_file" | sed 's/^#!homepage = //')
                 icon=$(grep '^#!icon =' "$conf_file" | sed 's/^#!icon = //')
                 date=$(grep -oE "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" "$download_file" || echo "$current_date")
-                date=$(echo "$date" | awk -F '[^0-9]+' '{printf "%04d-%02d-%02d 00:00:00\n", $1, $2, $3}' | xargs date +"%Y-%m-%d %H:%M:%S" 2>/dev/null)
+                date=$(echo "$date" | tr '\\' '-' | awk -F '-' '{printf "%04d-%02d-%02d 00:00:00\n", $1, $2, $3}' | xargs date +"%Y-%m-%d %H:%M:%S" 2>/dev/null)
 
                 plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"
                 echo "#!name = $name" > "$plugin_file"

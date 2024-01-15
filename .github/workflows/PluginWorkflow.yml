@@ -21,7 +21,7 @@ jobs:
         mkdir -p "$conf_folder" "$script_folder" "$plugin_folder"
         
         current_year=$(date +'%Y')
-        current_date=$(date "+%Y-%m-%d")
+        current_date=$(date "+%Y-%m-%d %H:%M:%S")
         previous_year_1=$((current_year - 1))
         previous_year_2=$((current_year - 2))
         

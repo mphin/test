@@ -47,7 +47,9 @@ jobs:
                 echo "#!openUrl = $openUrl" >> "$plugin_file"
                 echo "#!author = $author" >> "$plugin_file"
                 echo "#!homepage = $homepage" >> "$plugin_file"
-                echo "#!icon = $icon" >> "$plugin_file"
+                if [ -n "$icon" ]; then
+                    echo "#!icon = $icon" >> "$plugin_file"
+                fi
                 echo "#!date = $date" >> "$plugin_file"
 
                 mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file")

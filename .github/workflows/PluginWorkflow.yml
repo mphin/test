@@ -79,17 +79,19 @@ jobs:
                 sed -i '/script-request-header/ s/$/, tag =/' "$plugin_file"
                 sed -i 's/url script-request-header/script-path =/' "$plugin_file"
                 line_number=$(grep -n 'http-request' "$plugin_file" | cut -d: -f1)
-                if [ "$line_number" ]; then
-                    previous_line_number=$((line_number - 1))
-                    previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
-                    if [[ "$previous_line" == *"# "* ]]; then
-                        comment_value=$(echo "$previous_line" | sed 's/^# *//')
-                        sed -i -e "/http-request/ s/$/ $comment_value/" "$plugin_file"
-                    else
-                        name_value=$(grep -m 1 '#!name = ' "$plugin_file" | sed 's/^#!name = //')
-                        sed -i -e "/http-request/ s/$/ $name_value/" "$plugin_file"
+                for line_number in $line_numbers; do
+                    if [ "$line_number" ]; then
+                        previous_line_number=$((line_number - 1))
+                        previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
+                        if [[ "$previous_line" == *"# "* ]]; then
+                            comment_value=$(echo "$previous_line" | sed 's/^# *//')
+                            sed -i -e "/http-request/ s/$/ $comment_value/" "$plugin_file"
+                        else
+                            name_value=$(grep -m 1 '#!name = ' "$plugin_file" | sed 's/^#!name = //')
+                            sed -i -e "/http-request/ s/$/ $name_value/" "$plugin_file"
+                        fi
                     fi
-                fi
+                done
                 
                 rm "$download_file"
                 while IFS= read -r line; do

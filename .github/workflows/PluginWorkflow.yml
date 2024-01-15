@@ -60,7 +60,7 @@ jobs:
                 sed -i '/script-response-body/ s/$/, requires-body = true, tag =/' "$plugin_file"
                 sed -i 's/url script-response-body/script-path =/' "$plugin_file"
                 line_number=$(grep -n 'http-response' "$plugin_file" | cut -d: -f1)
-                for line_number in $line_numbers; do
+                for line_number in $line_number; do
                     if [ "$line_number" ]; then
                         previous_line_number=$((line_number - 1))
                         previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")

@@ -34,15 +34,15 @@ jobs:
                 download_file="$script_folder/$(basename "$conf_file" .conf).js"
                 wget -O "$download_file" "$download_url"
 
-                name=$(grep '^#!name =' "$conf_file" | sed 's/^#!name = //')
+                name=$(grep '^#!name =' "$conf_file" | sed -e 's/^#!name =//' -e 's/ //g')
                 desc=$(grep '^#!desc =' "$conf_file" | sed 's/^#!desc = //')
                 [ -z "$desc" ] && desc="仅供学习和个人使用，不得用于商业目的或其他非法用途"
                 openUrl=$(grep '^#!openUrl =' "$conf_file" | sed 's/^#!openUrl = //')
                 author=$(grep '^#!author =' "$conf_file" | sed 's/^#!author = //')
                 homepage=$(grep '^#!homepage =' "$conf_file" | sed 's/^#!homepage = //')
                 icon=$(grep '^#!icon =' "$conf_file" | sed 's/^#!icon = //')
-                date=$(grep -oE "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" "$download_file" || grep '^#!date =' "$conf_file" | sed 's/^#!date =//')
-                [ -z "$date" ] && date="$current_date" && sed -i 's/#!date =/#!date = "$current_date"/' "$conf_file"
+                date=$(grep -oE "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" "$download_file" || grep '^#!date =' "$conf_file" | sed -e 's/^#!date =//' -e 's/ //g')
+                [ -z "$date" ] && date="$current_date" && sed -i 's/#!date =/#!date = \"$current_date\"/' "$conf_file"
                 date=$(echo "$date" | sed 's/[\/年.]/-/g' | sed '/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}/! s/$/ 00:00:00/')
 
                 plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"

@@ -2,7 +2,7 @@
 #!desc = 除了Ai功能，其他功能都可用
 #!author = chxm1023
 #!homepage = https://t.me/chxm1023
-#!date = "$current_date" 00:00:00
+#!date = 2024-01-16 12:39:30
 
 [MITM]
 hostname = api.github.com

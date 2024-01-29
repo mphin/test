@@ -26,7 +26,7 @@ jobs:
         plugin_folder="loon/plugin"
         conf_folder="loon/plugin/conf"
         script_folder="loon/plugin/script"
-        base_url="https://raw.githubusercontent.com/mphin/test/main/"
+        base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/"
         mkdir -p "$conf_folder" "$script_folder" "$plugin_folder"
         
         current_year=$(date +'%Y')

@@ -125,15 +125,16 @@ jobs:
             fi
         done
         
+        # Update README
         plugin_files=$(find "$plugin_folder" -type f -name "*.plugin")
         readme_file="$plugin_folder/README.md"
         echo "# Loon插件" > "$readme_file"
-        echo "- **.plugin文件查找#!name =后面的值**：" >> "$readme_file"
         while IFS= read -r file; do
           plugin_name=$(grep -oP '#!name = \K(.+)' "$file" | head -n 1)
           if [ -n "$plugin_name" ]; then
             install_link="https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/$file"
             raw_link="https://raw.githubusercontent.com/mphin/test/main/$file"
+            echo "- **$plugin_name**：" >> "$readme_file"
             echo "  - [$plugin_name]($install_link)" >> "$readme_file"
             echo "  - [$raw_link]($raw_link)" >> "$readme_file"
           fi

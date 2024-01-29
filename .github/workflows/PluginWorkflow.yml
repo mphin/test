@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - 'plugin/**'
+      - 'loon/plugin/**'
 
 jobs:
   Plugin_update:
@@ -22,9 +22,10 @@ jobs:
 
     - name: Update Plugin
       run: |
-        conf_folder="plugin/conf"
-        script_folder="plugin/script"
-        plugin_folder="plugin"
+        plugin_folder="loon/plugin"
+        conf_folder="loon/plugin/conf"
+        script_folder="loon/plugin/script"
+        base_url="https://raw.githubusercontent.com/mphin/test/main/"
         mkdir -p "$conf_folder" "$script_folder" "$plugin_folder"
         
         current_year=$(date +'%Y')
@@ -117,13 +118,26 @@ jobs:
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
                     echo "$script_download_url"
                     wget -O "$script_folder/$(basename "$script_download_url")" "$script_download_url"
-                    base_url="https://raw.githubusercontent.com/mphin/test/main/"
                     full_url="$base_url$script_folder/$(basename "$script_download_url")"
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi
                 done < "$plugin_file"
             fi
         done
+        
+        plugin_files=$(find "$plugin_folder" -type f -name "*.plugin")
+        readme_file="$plugin_folder/README.md"
+        echo "# Loon插件" > "$readme_file"
+        echo "- **.plugin文件查找#!name =后面的值**：" >> "$readme_file"
+        while IFS= read -r file; do
+          plugin_name=$(grep -oP '#!name = \K(.+)' "$file" | head -n 1)
+          if [ -n "$plugin_name" ]; then
+            install_link="https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/$file"
+            raw_link="https://raw.githubusercontent.com/mphin/test/main/$file"
+            echo "  - [$plugin_name]($install_link)" >> "$readme_file"
+            echo "  - [$raw_link]($raw_link)" >> "$readme_file"
+          fi
+        done <<< "$plugin_files"
 
     - name: Commit and push
       run: |

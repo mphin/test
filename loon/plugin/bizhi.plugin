@@ -1,0 +1,24 @@
+#!name = 壁纸-精选高清壁纸
+#!desc = 仅供学习和个人使用，不得用于商业目的或其他非法用途
+#!date = 2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+2024-01-17 00:00:00
+
+[MITM]
+hostname = buy.itunes.apple.com
+
+[Script]
+
+
+http-response ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script/bizhi.js, requires-body = true, tag = 壁纸-精选高清壁纸

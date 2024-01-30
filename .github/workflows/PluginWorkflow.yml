@@ -47,7 +47,7 @@ jobs:
                 author=$(grep '^#!author =' "$conf_file" | sed -e 's/^#!author =//' -e 's/ //g')
                 homepage=$(grep '^#!homepage =' "$conf_file" | sed -e 's/^#!homepage =//' -e 's/ //g')
                 icon=$(grep '^#!icon =' "$conf_file" | sed -e 's/^#!icon =//' -e 's/ //g')
-                date=$(grep -oE "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}\s*|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}\s*|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}\s*" "$download_file" || grep '^#!date =' "$conf_file" | sed -E 's/^#!date[[:space:]]*=[[:space:]]*//')
+                date=$(grep -oP "(?<=$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2} )[[:space:]]*|(?<=$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2} )[[:space:]]*|(?<=$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2} )[[:space:]]*" "$download_file" || grep '^#!date =' "$conf_file" | sed -E 's/^#!date[[:space:]]*=[[:space:]]*//')
                 [ -z "$date" ] && date="$current_date" && sed -i "s/#!date =.*/#!date = $current_date/" "$conf_file"
                 date=$(echo "$date" | sed -e 's/[\/年.]/-/g' -e '/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}/! s/$/ 00:00:00/')
 

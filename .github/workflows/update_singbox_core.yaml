@@ -82,7 +82,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           repository: SagerNet/sing-box
-          ref: ${latest_version}
+          ref: ${{ latest_version }}
           fetch-depth: 0
       - name: Get latest go version
         id: version

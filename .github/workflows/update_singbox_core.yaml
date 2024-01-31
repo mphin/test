@@ -27,6 +27,7 @@ jobs:
         run: |
           if [ "${latest_version}" == "${latest_version}" ]; then
             echo "Sing-Box版本为最新，退出workflow."
+            echo "${latest_version}" and "${latest_version}"
             exit 0
           fi
 
@@ -104,7 +105,7 @@ jobs:
       - name: Commit and push
         run: |
           git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"
-          git add . && git commit -m "更新sing-box内核至${latest_version }" || exit 0
+          git add . && git commit -m "更新sing-box内核至${latest_version}" || exit 0
           git push
       - name: Cleanup Workflow
         uses: Mattraks/delete-workflow-runs@main

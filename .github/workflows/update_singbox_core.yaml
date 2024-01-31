@@ -81,7 +81,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           repository: SagerNet/sing-box
-          ref: ${{ latest_version }}
+          ref: ${latest_version}
           fetch-depth: 0
       - name: Get latest go version
         id: version
@@ -104,7 +104,7 @@ jobs:
       - name: Commit and push
         run: |
           git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"
-          git add . && git commit -m "更新sing-box内核至${{ latest_version }}" || exit 0
+          git add . && git commit -m "更新sing-box内核至${latest_version }" || exit 0
           git push
       - name: Cleanup Workflow
         uses: Mattraks/delete-workflow-runs@main

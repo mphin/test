@@ -15,12 +15,12 @@ jobs:
       - name: Get current sing-box version
         id: current_version
         run: |
-          current_version=$(cat ./bin/version | grep singbox_v | cut -d'=' -f2 | tr -d '[:space:]')
+          current_version="$(cat ./bin/version | grep singbox_v | cut -d'=' -f2 | tr -d '[:space:]')"
 
       - name: Get latest sing-box version
         id: latest_version
         run: |
-          latest_version=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .tag_name)
+          latest_version="$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .tag_name)"
 
       - name: Compare versions and exit if they match
         run: |
@@ -80,7 +80,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           repository: SagerNet/sing-box
-          ref: $latest_version
+          ref: "$latest_version"
           fetch-depth: 0
       - name: Get latest go version
         id: version

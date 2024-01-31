@@ -25,7 +25,7 @@ jobs:
 
       - name: Compare versions and exit if they match
         run: |
-          if [ "$current_version" == "$latest_version" ]; then
+          if [ "${latest_version}" == "${latest_version}" ]; then
             echo "Sing-Box版本为最新，退出workflow."
             exit 0
           fi

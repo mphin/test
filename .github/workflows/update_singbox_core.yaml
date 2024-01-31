@@ -98,7 +98,12 @@ jobs:
       - name: Build
         id: build
         run: make
-        
+      - name: Upload file to workspace
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}
+          path: sing-box
+          
   push_ShellCrash:
     needs: cross
     runs-on: ubuntu-latest

@@ -1,0 +1,115 @@
+name: Update Sing-Box
+
+on: 
+    schedule:
+        - cron: 35 5 * * 3
+    workflow_dispatch:
+
+jobs:
+  check_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Get current sing-box version
+        id: current_version
+        run: |
+          echo "::set-output name=version::$(cat ./bin/version | grep singbox_v | cut -d'=' -f2 | tr -d '[:space:]')"
+
+      - name: Get latest sing-box version
+        id: latest_version
+        run: |
+          echo "::set-output name=version::$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .tag_name)"
+
+      - name: Compare versions and exit if they match
+        run: |
+          if [ "${{ steps.current_version.outputs.version }}" == "${{ steps.latest_version.outputs.version }}" ]; then
+            echo "Sing-Box版本为最新，退出workflow."
+            exit 0
+          fi
+
+  cross_and_push:
+    needs: check_version
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - name: linux-amd64
+            goos: linux
+            goarch: amd64
+            goamd64: v1
+          - name: linux-386
+            goos: linux
+            goarch: 386
+          - name: linux-arm64
+            goos: linux
+            goarch: arm64
+          - name: linux-armv5
+            goos: linux
+            goarch: arm
+            goarm: 5
+          - name: linux-armv7
+            goos: linux
+            goarch: arm
+            goarm: 7
+          - name: linux-mips-softfloat
+            goos: linux
+            goarch: mips
+            gomips: softfloat
+          - name: linux-mipsel-softfloat
+            goos: linux
+            goarch: mipsle
+            gomips: softfloat
+          - name: linux-mipsel-hardfloat
+            goos: linux
+            goarch: mipsle
+            gomips: hardfloat
+
+      fail-fast: false
+    env:
+      GOOS: ${{ matrix.goos }}
+      GOARCH: ${{ matrix.goarch }}
+      GOAMD64: ${{ matrix.goamd64 }}
+      CGO_ENABLED: 0
+      TAGS: with_quic,with_wireguard,with_ech,with_utls,with_reality_server,with_acme,with_clash_api
+    steps:
+      - name: Checkout sing-box
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          repository: SagerNet/sing-box
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Get latest go version
+        id: version
+        run: |
+          echo go_version=$(curl -s https://raw.githubusercontent.com/actions/go-versions/main/versions-manifest.json | grep -oE '"version": "[0-9]{1}.[0-9]{1,}(.[0-9]{1,})?"' | head -1 | cut -d':' -f2 | sed 's/ //g; s/"//g') >> $GITHUB_ENV
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ steps.version.outputs.go_version }}
+      - name: Build
+        id: build
+        run: make
+      - name: Update
+        run: |
+          mkdir -p ./bin/singbox
+          rm -fr ./bin/singbox/*
+          mv -f ./sing-box ./bin/singbox/singbox-linux-amd64
+          sed -i "s/singbox_v=.*/singbox_v=$(./bin/singbox/singbox-linux-amd64 version 2>/dev/null | grep -Eo 'version .*' | sed 's/version //')/" bin/version
+          
+      - name: Commit and push
+        run: |
+          git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"
+          git add . && git commit -m "更新sing-box内核至${{ github.event.inputs.tag }}" || exit 0
+          git push
+      - name: Cleanup Workflow
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 2    
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sing-box-${{ matrix.name }}
+          path: sing-box*

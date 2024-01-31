@@ -71,6 +71,8 @@ jobs:
       GOOS: ${{ matrix.goos }}
       GOARCH: ${{ matrix.goarch }}
       GOAMD64: ${{ matrix.goamd64 }}
+      GOARM: ${{ matrix.goarm }}
+      GOMIPS: ${{ matrix.gomips }}
       CGO_ENABLED: 0
       TAGS: with_quic,with_wireguard,with_ech,with_utls,with_reality_server,with_acme,with_clash_api
     steps:
@@ -78,7 +80,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           repository: SagerNet/sing-box
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.inputs.tag }}
           fetch-depth: 0
       - name: Get latest go version
         id: version
@@ -91,7 +93,7 @@ jobs:
       - name: Build
         id: build
         run: make
-      - name: Update
+      - name: 更新
         run: |
           mkdir -p ./bin/singbox
           rm -fr ./bin/singbox/*

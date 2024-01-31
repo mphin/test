@@ -34,7 +34,7 @@ jobs:
             exit 0
           fi
 
-  cross_and_push:
+  cross:
     needs: check_version
     runs-on: ubuntu-latest
     strategy:
@@ -98,6 +98,14 @@ jobs:
       - name: Build
         id: build
         run: make
+        
+  push_ShellCrash:
+    needs: cross
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+        
       - name: 更新
         run: |
           mkdir -p ./bin/singbox

@@ -16,13 +16,13 @@ jobs:
         id: current_version
         run: |
           current_version=$(cat bin/version | grep singbox_v | cut -d'=' -f2 | tr -d '[:space:]')
-          #echo "current_version=${current_version}" >> $GITHUB_ENV
+          echo "current_version=${current_version}" >> $GITHUB_ENV
 
       - name: Get latest sing-box version
         id: latest_version
         run: |
           latest_version=$(curl -sL https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .tag_name)
-          #echo "latest_version=${latest_version}" >> $GITHUB_ENV
+          echo "latest_version=${latest_version}" >> $GITHUB_ENV
 
       - name: Compare versions and exit if they match
         run: |
@@ -85,7 +85,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           repository: SagerNet/sing-box
-          ref: ${{ steps.latest_version.outputs.latest_version }}
+          ref: ${latest_version}
           fetch-depth: 0
       - name: Get latest go version
         id: version

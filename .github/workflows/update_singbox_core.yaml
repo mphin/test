@@ -28,9 +28,7 @@ jobs:
         run: |
           echo "当前版本: $current_version，最新版本: $latest_version"
           if [ "$current_version" == "$latest_version" ]; then
-            echo "Sing-Box版本为最新，退出workflow."
-            echo "$latest_version"
-            echo "$current_version"
+            echo "Sing-Box版本为最新，退出workflow"
             exit 0
           fi
 
@@ -85,7 +83,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           repository: SagerNet/sing-box
-          ref: ${{ env.latest_version }}
+          ref: ${{ check_version.steps.latest_version.env.latest_version }}
           fetch-depth: 0
       - name: Get latest go version
         id: version

@@ -110,7 +110,8 @@ jobs:
         run: |
           mkdir -p ./bin/singbox
           rm -fr ./bin/singbox/*
-          mv -f ./sing-box ./bin/singbox/singbox-linux-amd64
+          mv -f ./tmp/singbox-linux-* ./bin/singbox/
+          rm -fr ./tmp
           sed -i "s/singbox_v=.*/singbox_v=$(./bin/singbox/singbox-linux-amd64 version 2>/dev/null | grep -Eo 'version .*' | sed 's/version //')/" bin/version
           
       - name: Commit and push

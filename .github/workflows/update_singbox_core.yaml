@@ -77,6 +77,11 @@ jobs:
       CGO_ENABLED: 0
       TAGS: with_quic,with_wireguard,with_ech,with_utls,with_reality_server,with_acme,with_clash_api
     steps:
+      - name: Check if workflow should be stopped
+        run: |
+          if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
+            exit 0
+          fi
       - name: Checkout sing-box
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
@@ -104,6 +109,11 @@ jobs:
     needs: cross
     runs-on: ubuntu-latest
     steps:
+      - name: Check if workflow should be stopped
+        run: |
+          if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
+            exit 0
+          fi
       - name: Checkout
         uses: actions/checkout@main
       - name: Get upx

@@ -27,7 +27,7 @@ jobs:
           echo "当前版本: ${{ env.singbox_v }}，最新版本: ${{ env.latest_version }}"
           if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
             echo "Sing-Box版本为最新，退出workflow"
-            exit 0
+            curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${{ github.repository }}/actions/workflows/你的空工作流.yml/dispatches -d '{"ref":"master"}'
           fi
 
   cross:

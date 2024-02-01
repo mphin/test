@@ -27,7 +27,7 @@ jobs:
           echo "当前版本: ${{ env.singbox_v }}，最新版本: ${{ env.latest_version }}"
           if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
             echo "Sing-Box版本为最新，退出workflow"
-            return
+            exit 0
           fi
 
   cross:

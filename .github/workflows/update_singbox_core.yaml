@@ -24,8 +24,8 @@ jobs:
 
       - name: Compare versions and exit if they match
         run: |
-          echo "当前版本: ${{ env.singbox_v }}，最新版本: ${{ env.latest_version }}"
-          if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
+          echo "当前版本: "$singbox_v"，最新版本: "$latest_version""
+          if [ "$singbox_v" == "$latest_version" ]; then
             echo "Sing-Box版本为最新，退出workflow"
             echo "::set-output name=skip_steps::true"
           fi
@@ -82,7 +82,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           repository: SagerNet/sing-box
-          ref: ${{ env.latest_version }}
+          ref: "$latest_version"
           fetch-depth: 0
       - name: Get latest go version
         id: version

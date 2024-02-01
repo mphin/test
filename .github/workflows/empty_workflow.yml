@@ -1,0 +1,10 @@
+name: Empty Workflow
+
+on: {}
+
+jobs:
+  empty_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do nothing
+        run: echo "This job does nothing."

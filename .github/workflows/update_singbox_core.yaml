@@ -27,13 +27,11 @@ jobs:
           echo "当前版本: "$singbox_v"，最新版本: "$latest_version""
           if [ "$singbox_v" == "$latest_version" ]; then
             echo "Sing-Box版本为最新，退出workflow"
-            echo "::set-output name=skip_steps::true"
           fi
 
   cross:
     needs: check_version
     runs-on: ubuntu-latest
-    if: ${{ needs.check_version.outputs.skip_steps != 'true' }}
     strategy:
       matrix:
         include:
@@ -82,7 +80,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           repository: SagerNet/sing-box
-          ref: $latest_version
+          ref: ${{ env.latest_version }}
           fetch-depth: 0
       - name: Get latest go version
         id: version
@@ -104,7 +102,6 @@ jobs:
   push_ShellCrash:
     needs: cross
     runs-on: ubuntu-latest
-    if: ${{ needs.check_version.outputs.skip_steps != 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@main

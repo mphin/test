@@ -15,17 +15,17 @@ jobs:
       - name: Get current sing-box version
         id: current_version
         run: |
-          echo current_version=$(cat bin/version | grep singbox_v | cut -d'=' -f2 | tr -d '[:space:]') >> $GITHUB_OUTPUT
+          echo "singbox_v=$(cat bin/version | grep singbox_v | cut -d'=' -f2 | tr -d '[:space:]')" >> $GITHUB_ENV
 
       - name: Get latest sing-box version
         id: latest_version
         run: |
-          echo latest_version=$(curl -sL https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .tag_name) >> $GITHUB_OUTPUT
+          echo "latest_version=$(curl -sL https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r '.tag_name[1:]')" >> $GITHUB_ENV
 
       - name: Compare versions and exit if they match
         run: |
-          echo "当前版本: ${{ steps.current_version.outputs.current_version }}，最新版本: ${{ steps.latest_version.outputs.latest_version }}"
-          if [ "${{ steps.current_version.outputs.current_version }}" == "${{ steps.latest_version.outputs.latest_version }}" ]; then
+          echo "当前版本: ${{ env.singbox_v }}，最新版本: ${{ env.latest_version }}"
+          if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
             echo "Sing-Box版本为最新，退出workflow"
             exit 0
           fi
@@ -81,7 +81,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           repository: SagerNet/sing-box
-          ref: v1.8.4
+          ref: ${{ env.latest_version }}
           fetch-depth: 0
       - name: Get latest go version
         id: version
@@ -143,7 +143,7 @@ jobs:
       - name: Commit and push
         run: |
           git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"
-          git add . && git commit -m "更新sing-box内核至${{ steps.latest_version.outputs.latest_version }}" || exit 0
+          git add . && git commit -m "更新sing-box内核至${{ env.latest_version }}" || exit 0
           git push
       - name: Cleanup Workflow
         uses: Mattraks/delete-workflow-runs@main

@@ -27,12 +27,13 @@ jobs:
           echo "当前版本: ${{ env.singbox_v }}，最新版本: ${{ env.latest_version }}"
           if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
             echo "Sing-Box版本为最新，退出workflow"
+            echo "::set-output name=skip_steps::true"
           fi
 
   cross:
     needs: check_version
     runs-on: ubuntu-latest
-    if: ${{ env.singbox_v != env.latest_version }}
+    if: ${{ needs.check_version.outputs.skip_steps != 'true' }}
     strategy:
       matrix:
         include:
@@ -103,7 +104,7 @@ jobs:
   push_ShellCrash:
     needs: cross
     runs-on: ubuntu-latest
-    if: ${{ env.singbox_v != env.latest_version }}
+    if: ${{ needs.check_version.outputs.skip_steps != 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@main

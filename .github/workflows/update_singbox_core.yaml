@@ -27,12 +27,13 @@ jobs:
           echo "当前版本: ${{ env.singbox_v }}，最新版本: ${{ env.latest_version }}"
           if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
             echo "Sing-Box版本为最新，退出workflow"
-            exit 0
+            echo "::set-output name=exit_workflow::true"
           fi
 
   cross:
     needs: check_version
     runs-on: ubuntu-latest
+    if: ${{ needs.check_version.outputs.exit_workflow != 'true' }}
     strategy:
       matrix:
         include:
@@ -77,11 +78,6 @@ jobs:
       CGO_ENABLED: 0
       TAGS: with_quic,with_wireguard,with_ech,with_utls,with_reality_server,with_acme,with_clash_api
     steps:
-      - name: Check if workflow should be stopped
-        run: |
-          if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
-            exit 0
-          fi
       - name: Checkout sing-box
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
@@ -108,12 +104,8 @@ jobs:
   push_ShellCrash:
     needs: cross
     runs-on: ubuntu-latest
+    if: ${{ needs.check_version.outputs.exit_workflow != 'true' }}
     steps:
-      - name: Check if workflow should be stopped
-        run: |
-          if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
-            exit 0
-          fi
       - name: Checkout
         uses: actions/checkout@main
       - name: Get upx

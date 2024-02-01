@@ -27,12 +27,11 @@ jobs:
           echo "当前版本: ${{ env.singbox_v }}，最新版本: ${{ env.latest_version }}"
           if [ "${{ env.singbox_v }}" == "${{ env.latest_version }}" ]; then
             echo "Sing-Box版本为最新，退出workflow"
-            exit 0
+            exit 78
           fi
 
   cross:
     needs: check_version
-    if: ${{ singbox_v != latest_version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:

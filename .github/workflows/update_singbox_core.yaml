@@ -32,7 +32,7 @@ jobs:
 
   cross:
     needs: check_version
-    if: env.singbox_v != env.latest_version
+    if: ${{ env.singbox_v != env.latest_version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:

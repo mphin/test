@@ -117,9 +117,9 @@ jobs:
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path"* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
-                    mkdir -p "$(basename "$conf_file" .conf)/$script_folder"
-                    wget -O "$(basename "$conf_file" .conf)/$script_folder/$(basename "$script_download_url")" "$script_download_url"
-                    full_url="$base_url$(basename "$conf_file" .conf)/$script_folder/$(basename "$script_download_url")"
+                    mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
+                    wget -O "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$script_download_url"
+                    full_url="$base_url$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi
                 done < "$plugin_file"

@@ -33,7 +33,6 @@ jobs:
         previous_year_1=$((current_year - 1))
         previous_year_2=$((current_year - 2))
 
-        rm $plugin_folder
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 download_url=$(grep '^#!url =' "$conf_file" | sed -e 's/^#!url =//' -e 's/ //g')
@@ -41,7 +40,7 @@ jobs:
                 mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                 wget -O "$download_file" "$download_url"
 
-                name=$(grep '^#!name =' "$conf_file" | sed -e 's/^#!name =//' -e 's/ //g')
+                name=$(grep '^#!name =' "$conf_file" | sed -e 's/^#!name =//' -e 's/ //g' || grep '^#!name =' "$download_file" | sed -e 's/^#!name =//' -e 's/ //g')
                 desc=$(grep '^#!desc =' "$conf_file" | sed -e 's/^#!desc =//' -e 's/ //g')
                 [ -z "$desc" ] && desc="仅供学习和个人使用，不得用于商业目的或其他非法用途"
                 openUrl=$(grep '^#!openUrl =' "$conf_file" | sed -e 's/^#!openUrl =//' -e 's/ //g')

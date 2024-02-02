@@ -86,8 +86,8 @@ jobs:
                 sed -i '/script-response-body/ s/^/http-response /' "$plugin_file"
                 sed -i '/script-response-body/ s/$/, requires-body = true, tag =/' "$plugin_file"
                 sed -i 's/url script-response-body/script-path =/' "$plugin_file"
-                line_number=$(grep -n 'http-response' "$plugin_file" | cut -d: -f1)
-                for line_number in $line_number; do
+                #line_number=$(grep -n 'http-response' "$plugin_file" | cut -d: -f1)
+                #for line_number in $line_number; do
                     if [ "$line_number" ]; then
                         previous_line_number=$((line_number - 1))
                         previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
@@ -105,8 +105,8 @@ jobs:
                 sed -i '/script-request-header/ s/^/http-request /' "$plugin_file"
                 sed -i '/script-request-header/ s/$/, tag =/' "$plugin_file"
                 sed -i 's/url script-request-header/script-path =/' "$plugin_file"
-                line_number=$(grep -n 'http-request' "$plugin_file" | cut -d: -f1)
-                for line_number in $line_number; do
+                #line_number=$(grep -n 'http-request' "$plugin_file" | cut -d: -f1)
+                #for line_number in $line_number; do
                     if [ "$line_number" ]; then
                         previous_line_number=$((line_number - 1))
                         previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
@@ -119,7 +119,24 @@ jobs:
                         fi
                     fi
                 done
-                
+                #tag=
+                for keyword in 'http-response' 'http-request'; do
+                    line_number=$(grep -n "$keyword" "$plugin_file" | cut -d: -f1)
+                    for line_number in $line_number; do
+                        if [ "$line_number" ]; then
+                            previous_line_number=$((line_number - 1))
+                            previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
+                            if [[ "$previous_line" == "#"* ]]; then
+                                comment_value=$(echo "$previous_line" | sed 's/^# *//')
+                                sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
+                            else
+                                name_value=$(grep -m 1 '#!name = ' "$plugin_file" | sed 's/^#!name = //')
+                                sed -i -e "${line_number}s/$/ $name_value/" "$plugin_file"
+                            fi
+                        fi
+                    done
+                done
+
                 rm "$download_file"
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path"* ]]; then

@@ -56,7 +56,7 @@ jobs:
                 [ -z "$homepage" ] && homepage=$(grep '^#!homepage =' "$download_file" | sed -e 's/^#!homepage =//' -e 's/ //g')
                 
                 icon=$(grep '^#!icon =' "$conf_file" | sed -e 's/^#!icon =//' -e 's/ //g')
-                [ -z "$icon" ] && icon=$(grep '^#!icon =' "$download_file" | sed -e 's/^#!icon =//' -e 's/ //g')
+                [ -z "$icon" ] && icon=$(grep '^#!icon =' "$download_file" | sed -e 's/^#!icon =//' -e 's/ //g' -e 's/\r//g')
                 
                 date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep '^#!date =' "$conf_file" | sed -E 's/^#!date[[:space:]]*=[[:space:]]*//')
                 [ -z "$date" ] && date=$(grep '^#!date =' "$download_file" | sed -e 's/^#!date =//' -e 's/ //g')

@@ -68,12 +68,17 @@ jobs:
                 fi
                 echo "#!date = $date" >> "$plugin_file"
 
-                mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file")
+                mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file" | sed 's/%INSERT% //')
                 script=$(awk '/\[Script\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$conf_file")
                 [ -z "$script" ] && script=$(awk '/\[rewrite_local\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$download_file")
+                rewrite=$(awk '/\[Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$conf_file")
+                [ -z "$rewrite" ] && rewrite=$(awk '/\[URL Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$download_file")
 
                 echo -e "\n[MITM]\n$mitm" >> "$plugin_file"
                 echo -e "\n[Script]\n$script" >> "$plugin_file"
+                if [ -n "$rewrite" ]; then
+                    echo -e "\n[Rewrite]\n$rewrite" >> "$plugin_file"
+                fi
                 
                 # http-response
                 sed -i '/script-response-body/ s/^/http-response /' "$plugin_file"

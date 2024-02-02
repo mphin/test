@@ -1,4 +1,7 @@
 # Loon插件
+- **修复美团DNS**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
 - **美图秀秀SVIP解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)

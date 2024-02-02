@@ -41,14 +41,10 @@ jobs:
                 wget -O "$download_file" "$download_url"
 
                 name=$(grep '^#!name =' "$conf_file" | sed -e 's/^#!name =//' -e 's/ //g')
-                if [ -z "$name" ]; then
-                    name=$(grep '^#!name =' "$download_file" | sed -e 's/^#!name =//' -e 's/ //g')
-                fi
+                [ -z "$name" ] && name=$(grep '^#!name =' "$download_file" | sed -e 's/^#!name =//' -e 's/ //g')
                 
                 desc=$(grep '^#!desc =' "$conf_file" | sed -e 's/^#!desc =//' -e 's/ //g')
-                if [ -z "$desc" ]; then
-                    desc=$(grep '^#!desc =' "$download_file" | sed -e 's/^#!desc =//' -e 's/ //g')
-                fi
+                [ -z "$desc" ] && desc=$(grep '^#!desc =' "$download_file" | sed -e 's/^#!desc =//' -e 's/ //g')
                 [ -z "$desc" ] && desc="仅供学习和个人使用，不得用于商业目的或其他非法用途"
                 
                 openUrl=$(grep '^#!openUrl =' "$conf_file" | sed -e 's/^#!openUrl =//' -e 's/ //g')
@@ -77,8 +73,10 @@ jobs:
                 echo "#!date = $date" >> "$plugin_file"
 
                 mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file" | sed 's/%INSERT% //')
+                
                 script=$(awk '/\[Script\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$conf_file")
-                [ -z "$script" ] && script=$(awk '/\[rewrite_local\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$download_file")
+                [ -z "$script" ] && script=$(awk '/\[Script\]|\[rewrite_local\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$download_file")
+                
                 rewrite=$(awk '/\[Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$conf_file")
                 [ -z "$rewrite" ] && rewrite=$(awk '/\[URL Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$download_file")
 

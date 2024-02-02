@@ -20,3 +20,6 @@
 - **YouTube去广告**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
+- **YouTube去广告**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight.plugin)

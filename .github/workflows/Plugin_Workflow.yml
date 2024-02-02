@@ -153,7 +153,7 @@ jobs:
           if [ -n "$plugin_name" ]; then
             install_link="https://www.nsloon.com/openloon/import?plugin=$base_url$file"
             raw_link="$base_url$file"
-            echo "- **$plugin_name**：" >> "$readme_file"
+            echo "- **"$plugin_name"**：" >> "$readme_file"
             echo "  - [点击安装]($install_link)" >> "$readme_file"
             echo "  - [$raw_link]($raw_link)" >> "$readme_file"
           fi

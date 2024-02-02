@@ -47,8 +47,8 @@ jobs:
                 [ -z "$desc" ] && desc=$(awk -F' *=' '/^#!desc/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$download_file")
                 [ -z "$desc" ] && desc="仅供学习和个人使用，不得用于商业目的或其他非法用途"
                 
-                openUrl=$(awk -F' *=' '/^#!openUrl/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$conf_file")
-                [ -z "$openUrl" ] && openUrl=$(awk -F' *=' '/^#!openUrl/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$download_file")
+                openUrl=$(awk -F' *=' '/^#!openUrl/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$conf_file" | tr -d '\n')
+                [ -z "$openUrl" ] && openUrl=$(awk -F' *=' '/^#!openUrl/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$download_file" | tr -d '\n')
                 
                 author=$(grep '^#!author =' "$conf_file" | sed -e 's/^#!author =//' -e 's/ //g' -e 's/\r//g')
                 [ -z "$author" ] && author=$(awk -F' *=' '/^#!author/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' $download_file)
@@ -149,7 +149,7 @@ jobs:
         readme_file="$plugin_folder/README.md"
         echo "# Loon插件" > "$readme_file"
         while IFS= read -r file; do
-          plugin_name=$(awk -F' *=' '/^#!name/{gsub(/^[ \t]+|[ \t]+$/, "", $2); printf "%s", $2}' "$file")
+          plugin_name=$(awk -F' *=' '/^#!name/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$file" | tr -d '\n')
           if [ -n "$plugin_name" ]; then
             install_link="https://www.nsloon.com/openloon/import?plugin=$base_url$file"
             raw_link="$base_url$file"

@@ -57,8 +57,8 @@ jobs:
                 homepage=$(grep '^#!homepage =' "$conf_file" | sed -e 's/^#!homepage =//' -e 's/ //g' -e 's/\r//g')
                 [ -z "$homepage" ] && homepage=$(grep '^#!homepage =' "$download_file" | sed -e 's/^#!homepage =//' -e 's/ //g' -e 's/\r//g')
                 
-                icon=$(grep '^#!icon =' "$conf_file" | sed -e 's/^#!icon =//' -e 's/ //g' -e 's/\r//g')
-                [ -z "$icon" ] && icon=$(grep '^#!icon =' "$download_file" | sed -e 's/^#!icon =//' -e 's/ //g' -e 's/\r//g')
+                icon=$(grep "#!icon" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                [ -z "$icon" ] && icon=$(grep "#!name" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 
                 date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep '^#!date =' "$download_file" | sed -e 's/^#!date =//' -e 's/\r//g')
                 [ -z "$date" ] && date=$(grep '^#!date =' "$conf_file" | sed -E 's/^#!date[[:space:]]*=[[:space:]]*//')

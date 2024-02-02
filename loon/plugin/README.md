@@ -2,9 +2,6 @@
 - **修复美团DNS**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
-- **YouTube去广告**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube/YouTube_remove_ads.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube/YouTube_remove_ads.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube/YouTube_remove_ads.plugin)
 - **美图秀秀SVIP解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)

@@ -21,8 +21,5 @@
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin)
 - **YouTube去广告**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube_remove_ads/YouTube_remove_ads.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube_remove_ads/YouTube_remove_ads.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube_remove_ads/YouTube_remove_ads.plugin)
-- **YouTube去广告**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)

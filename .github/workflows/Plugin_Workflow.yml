@@ -115,7 +115,7 @@ jobs:
                 
                 #rm "$download_file"
                 while IFS= read -r line; do
-                  if [[ "$line" == *"script-path = "* ]]; then
+                  if [[ "$line" == *"script-path"* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
                     mkdir -p "$script_folder/$(basename "$conf_file" .conf)"
                     wget -O "$script_folder/$(basename "$conf_file" .conf)/$(basename "$script_download_url")" "$script_download_url"

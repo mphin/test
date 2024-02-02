@@ -41,8 +41,8 @@ jobs:
                 mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                 wget -O "$download_file" "$download_url"
 
-                name=$(sed -n -E '/^#!name/s/^[[:space:]]*=[[:space:]]*//p' "$conf_file")
-                [ -z "$name" ] && name=$(sed -n -E '/^#!name/s/^[[:space:]]*=[[:space:]]*//p' "$download_file")
+                name=$(grep '^\s*name\s*=' $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+                [ -z "$name" ] && name=$(grep '^\s*name\s*=' $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 
                 desc=$(awk -F' *=' '/^#!desc/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$conf_file")
                 [ -z "$desc" ] && desc=$(awk -F' *=' '/^#!desc/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$download_file")
@@ -150,7 +150,7 @@ jobs:
         readme_file="$plugin_folder/README.md"
         echo "# Loon插件" > "$readme_file"
         while IFS= read -r file; do
-          plugin_name=$(sed -n -E '/^#!name/s/^[[:space:]]*=[[:space:]]*//p' "$file")
+          plugin_name=$(grep '^\s*name\s*=' $file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
           if [ -n "$plugin_name" ]; then
             install_link="https://www.nsloon.com/openloon/import?plugin=$base_url$file"
             raw_link="$base_url$file"

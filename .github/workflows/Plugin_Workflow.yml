@@ -51,7 +51,7 @@ jobs:
                 [ -z "$openUrl" ] && openUrl=$(grep '^#!openUrl =' "$download_file" | sed -e 's/^#!openUrl =//' -e 's/ //g' -e 's/\r//g')
                 
                 author=$(grep '^#!author =' "$conf_file" | sed -e 's/^#!author =//' -e 's/ //g' -e 's/\r//g')
-                [ -z "$author" ] && author=$(sed 's/^#!author[[:space:]]*=[[:space:]]*||' "$download_file")
+                [ -z "$author" ] && author=$(sed 's|^#!author[[:space:]]*=[[:space:]]*||' "$download_file")
                 
                 homepage=$(grep '^#!homepage =' "$conf_file" | sed -e 's/^#!homepage =//' -e 's/ //g' -e 's/\r//g')
                 [ -z "$homepage" ] && homepage=$(grep '^#!homepage =' "$download_file" | sed -e 's/^#!homepage =//' -e 's/ //g' -e 's/\r//g')

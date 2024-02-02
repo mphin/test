@@ -1,13 +1,10 @@
 #!name = 修复美团DNS
 #!desc = 保持插件开启状态
-#!author = chxm1023
+#!author = cntrump
 #!date = 2024-02-02 19:41:11
 
 [MITM]
 hostname = route-stats.d.meituan.net, metrics-picture.d.meituan.net, maplocatesdksnapshot.d.meituan.net
-
-[Script]
-
 
 [Rewrite]
 http(s)?://route-stats.d.meituan.net(.*)? http$1://route-stats.dreport.meituan.net$2 302

@@ -37,7 +37,7 @@ jobs:
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 download_url=$(grep '^#!url =' "$conf_file" | sed -e 's/^#!url =//' -e 's/ //g')
-                download_file="$script_folder/$(basename "$conf_file" .conf).js"
+                download_file="$script_folder/$(basename "$conf_file" .conf)/$(basename "$download_url")"
                 wget -O "$download_file" "$download_url"
 
                 name=$(grep '^#!name =' "$conf_file" | sed -e 's/^#!name =//' -e 's/ //g')
@@ -86,39 +86,12 @@ jobs:
                 sed -i '/script-response-body/ s/^/http-response /' "$plugin_file"
                 sed -i '/script-response-body/ s/$/, requires-body = true, tag =/' "$plugin_file"
                 sed -i 's/url script-response-body/script-path =/' "$plugin_file"
-                #line_number=$(grep -n 'http-response' "$plugin_file" | cut -d: -f1)
-                #for line_number in $line_number; do
-                    #if [ "$line_number" ]; then
-                        #previous_line_number=$((line_number - 1))
-                        #previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
-                        #if [[ "$previous_line" == "#"* ]]; then
-                            #comment_value=$(echo "$previous_line" | sed 's/^# *//')
-                            #sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
-                        #else
-                            #name_value=$(grep -m 1 '#!name = ' "$plugin_file" | sed 's/^#!name = //')
-                            #sed -i -e "${line_number}s/$/ $name_value/" "$plugin_file"
-                        #fi
-                    #fi
-                #done
 
                 # http-request
                 sed -i '/script-request-header/ s/^/http-request /' "$plugin_file"
                 sed -i '/script-request-header/ s/$/, tag =/' "$plugin_file"
                 sed -i 's/url script-request-header/script-path =/' "$plugin_file"
-                #line_number=$(grep -n 'http-request' "$plugin_file" | cut -d: -f1)
-                #for line_number in $line_number; do
-                    #if [ "$line_number" ]; then
-                        #previous_line_number=$((line_number - 1))
-                        #previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
-                        #if [[ "$previous_line" == "#"* ]]; then
-                            #comment_value=$(echo "$previous_line" | sed 's/^# *//')
-                            #sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
-                        #else
-                            #name_value=$(grep -m 1 '#!name = ' "$plugin_file" | sed 's/^#!name = //')
-                            #sed -i -e "${line_number}s/$/ $name_value/" "$plugin_file"
-                        #fi
-                    #fi
-                #done
+
                 #tag=
                 for keyword in 'http-response' 'http-request'; do
                     line_numbers=$(grep -n "$keyword" "$plugin_file" | cut -d: -f1)
@@ -140,7 +113,7 @@ jobs:
                     done
                 done
 
-                rm "$download_file"
+                #rm "$download_file"
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path"* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')

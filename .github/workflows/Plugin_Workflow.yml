@@ -40,7 +40,7 @@ jobs:
                 mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                 wget -O "$download_file" "$download_url"
 
-                name=$(sed 's/^#!name[[:space:]]*=[[:space:]]*// "$conf_file" | sed -e 's/^#!name =//' -e 's/ //g' -e 's/\r//g')
+                name=$(sed 's/^#!name[[:space:]]*=[[:space:]]*// "$conf_file")
                 [ -z "$name" ] && name=$(grep '^#!name =' "$download_file" | sed -e 's/^#!name =//' -e 's/ //g' -e 's/\r//g')
                 
                 desc=$(grep '^#!desc =' "$conf_file" | sed -e 's/^#!desc =//' -e 's/ //g' -e 's/\r//g')

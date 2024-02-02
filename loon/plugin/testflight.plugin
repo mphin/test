@@ -2,10 +2,11 @@
 #!desc = 自动存储/合并多个TestFlight账户列表, 并可分享/导出TestFlight APP.
 #!author = NobyDa
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight/icon/testflight.png
-#!date = 2024-02-03 06:48:16
+#!date = 2024-02-03 07:16:16
 
 [General]
-skip-proxy = iosapps.itunes.apple.com
+[General]
+[General]
 skip-proxy = iosapps.itunes.apple.com
 
 [MITM]

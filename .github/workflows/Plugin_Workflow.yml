@@ -75,7 +75,7 @@ jobs:
                 mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file" | sed 's/%INSERT% //')
                 
                 script=$(awk '/\[Script\]/{flag=1; next} /^\[/{flag=0} flag && NF {print $0}' "$conf_file")
-                [ -z "$script" ] && script=$(awk '/\[Script\]|\[rewrite_local\]/{flag=1; next} /^\[/{flag=0} flag && NF {print $0}' "$download_file")
+                [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/^\[/p;/\[rewrite_local\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 
                 rewrite=$(awk '/\[Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF {print $0}' "$conf_file")
                 [ -z "$rewrite" ] && rewrite=$(awk '/\[URL Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF {print $0}' "$download_file")

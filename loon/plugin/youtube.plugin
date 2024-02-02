@@ -1,0 +1,6 @@
+#!name = 
+#!desc = 仅供学习和个人使用，不得用于商业目的或其他非法用途
+#!date = 2024-02-03 00:23:08
+
+[MITM]
+hostname = *.googlevideo.com, youtubei.googleapis.com

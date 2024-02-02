@@ -47,8 +47,8 @@ jobs:
                 [ -z "$desc" ] && desc=$(awk -F' *=' '/^#!desc/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$download_file")
                 [ -z "$desc" ] && desc="仅供学习和个人使用，不得用于商业目的或其他非法用途"
                 
-                openUrl=$(grep '^#!openUrl =' "$conf_file" | sed -e 's/^#!openUrl =//' -e 's/ //g' -e 's/\r//g')
-                [ -z "$openUrl" ] && openUrl=$(grep '^#!openUrl =' "$download_file" | sed -e 's/^#!openUrl =//' -e 's/ //g' -e 's/\r//g')
+                openUrl=$(awk -F' *=' '/^#!openUrl/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$conf_file")
+                [ -z "$openUrl" ] && openUrl=$(awk -F' *=' '/^#!openUrl/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$download_file")
                 
                 author=$(grep '^#!author =' "$conf_file" | sed -e 's/^#!author =//' -e 's/ //g' -e 's/\r//g')
                 [ -z "$author" ] && author=$(awk -F' *=' '/^#!author/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' $download_file)
@@ -145,11 +145,11 @@ jobs:
         done
         
         # Update README
-        plugin_files=$(find "$plugin_folder" -type f -name "*.plugin")
+        plugin_files=$(find "$plugin_folder" -maxdepth 1 -type f -name "*.plugin")
         readme_file="$plugin_folder/README.md"
         echo "# Loon插件" > "$readme_file"
         while IFS= read -r file; do
-          plugin_name=$(grep -oP '#!name = \K(.+)' "$file" | head -n 1)
+          plugin_name=$(awk -F' *=' '/^#!name/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$file")
           if [ -n "$plugin_name" ]; then
             install_link="https://www.nsloon.com/openloon/import?plugin=$base_url$file"
             raw_link="$base_url$file"

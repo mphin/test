@@ -113,12 +113,12 @@ jobs:
                     fi
                 done
                 
-                rm "$download_file"
+                #rm "$download_file"
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path = "* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
                     echo "$script_download_url"
-                    wget -O "$script_folder/$(basename "$script_download_url")" "$script_download_url"
+                    wget -O "$script_folder/$(basename "$conf_file")/$(basename "$script_download_url")" "$script_download_url"
                     full_url="$base_url$script_folder/$(basename "$script_download_url")"
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi

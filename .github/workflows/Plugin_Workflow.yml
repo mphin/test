@@ -25,9 +25,8 @@ jobs:
       run: |
         plugin_folder="loon/plugin"
         conf_folder="loon/plugin/conf"
-        script_folder="loon/plugin/script"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/"
-        mkdir -p "$conf_folder" "$script_folder" "$plugin_folder"
+        mkdir -p "$conf_folder" "$plugin_folder"
         
         current_year=$(date +'%Y')
         current_date=$(date "+%Y-%m-%d %H:%M:%S")
@@ -37,7 +36,8 @@ jobs:
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 download_url=$(grep '^#!url =' "$conf_file" | sed -e 's/^#!url =//' -e 's/ //g')
-                download_file="$script_folder/$(basename "$conf_file" .conf)/$(basename "$download_url")"
+                download_file="$plugin_folder/$(basename "$conf_file" .conf)/$(basename "$download_url")"
+                mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                 wget -O "$download_file" "$download_url"
 
                 name=$(grep '^#!name =' "$conf_file" | sed -e 's/^#!name =//' -e 's/ //g')
@@ -117,7 +117,7 @@ jobs:
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path"* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
-                    mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
+                    #mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                     wget -O "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$script_download_url"
                     full_url="$base_url$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"

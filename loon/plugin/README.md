@@ -1,22 +1,1 @@
 # Loon插件
-- **修复美团DNS**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
-- **美图秀秀SVIP解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
-- **彩云天气解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)
-- **壁纸-精选高清壁纸**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin)
-- **GitHub解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
-- **芒果TV解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin)
-- **YouTube去广告**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)

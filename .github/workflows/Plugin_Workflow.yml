@@ -40,7 +40,7 @@ jobs:
                 mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                 wget -O "$download_file" "$download_url"
 
-                name=$(sed 's/^#!name[[:space:]]*=[[:space:]]*//' "$conf_file")
+                name=$(sed 's|^#!name[[:space:]]*=[[:space:]]*||' "$conf_file")
                 [ -z "$name" ] && name=$(grep '^#!name =' "$download_file" | sed -e 's/^#!name =//' -e 's/ //g' -e 's/\r//g')
                 
                 desc=$(grep '^#!desc =' "$conf_file" | sed -e 's/^#!desc =//' -e 's/ //g' -e 's/\r//g')
@@ -51,7 +51,7 @@ jobs:
                 [ -z "$openUrl" ] && openUrl=$(grep '^#!openUrl =' "$download_file" | sed -e 's/^#!openUrl =//' -e 's/ //g' -e 's/\r//g')
                 
                 author=$(grep '^#!author =' "$conf_file" | sed -e 's/^#!author =//' -e 's/ //g' -e 's/\r//g')
-                [ -z "$author" ] && author=$(sed 's/^#!author[[:space:]]*=[[:space:]]*//' "$download_file")
+                [ -z "$author" ] && author=$(sed 's/^#!author[[:space:]]*=[[:space:]]*||' "$download_file")
                 
                 homepage=$(grep '^#!homepage =' "$conf_file" | sed -e 's/^#!homepage =//' -e 's/ //g' -e 's/\r//g')
                 [ -z "$homepage" ] && homepage=$(grep '^#!homepage =' "$download_file" | sed -e 's/^#!homepage =//' -e 's/ //g' -e 's/\r//g')

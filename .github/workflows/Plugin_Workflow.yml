@@ -37,7 +37,7 @@ jobs:
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 download_url=$(grep '^#!url =' "$conf_file" | sed -e 's/^#!url =//' -e 's/ //g')
-                download_file="$script_folder/$(basename "$conf_file" .conf).js"
+                download_file="$script_folder/$(basename -a "$conf_file").js"
                 wget -O "$download_file" "$download_url"
 
                 name=$(grep '^#!name =' "$conf_file" | sed -e 's/^#!name =//' -e 's/ //g')
@@ -51,7 +51,7 @@ jobs:
                 [ -z "$date" ] && date="$current_date" && sed -i "s/#!date =.*/#!date = $current_date/" "$conf_file"
                 date=$(echo "$date" | sed -e 's/[\/年.]/-/g' -e '/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}/! s/$/ 00:00:00/')
 
-                plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"
+                plugin_file="$plugin_folder/$(basename -a "$conf_file").plugin"
                 echo "#!name = $name" > "$plugin_file"
                 echo "#!desc = $desc" >> "$plugin_file"
                 if [ -n "$openUrl" ]; then

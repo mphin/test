@@ -74,11 +74,11 @@ jobs:
 
                 mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file" | sed 's/%INSERT% //')
                 
-                script=$(awk '/\[Script\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$conf_file")
-                [ -z "$script" ] && script=$(awk '/\[Script\]|\[rewrite_local\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$download_file")
+                script=$(awk '/\[Script\]/{flag=1; next} /^\[/{flag=0} flag && NF {print}' "$conf_file")
+                [ -z "$script" ] && script=$(awk '/\[Script\]|\[rewrite_local\]/{flag=1; next} /^\[/{flag=0} flag && NF {print}' "$download_file")
                 
-                rewrite=$(awk '/\[Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$conf_file")
-                [ -z "$rewrite" ] && rewrite=$(awk '/\[URL Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF' "$download_file")
+                rewrite=$(awk '/\[Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF {print}' "$conf_file")
+                [ -z "$rewrite" ] && rewrite=$(awk '/\[URL Rewrite\]/{flag=1; next} /^\[/{flag=0} flag && NF {print}' "$download_file")
 
                 echo -e "\n[MITM]\n$mitm" >> "$plugin_file"
                 if [ -n "$script" ]; then

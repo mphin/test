@@ -8,6 +8,9 @@
 - **美图秀秀SVIP解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
+- **BoxJS**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs.plugin)
 - **彩云天气解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)

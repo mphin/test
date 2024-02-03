@@ -3,7 +3,15 @@
 #!author = NobyDa
 #!homepage = https://github.com/NobyDa/Script/tree/master
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight/icon/testflight.png
-#!date = 2024-02-03 12:43:32
+#!date = 2024-02-03 12:45:14
+
+[General]
+[General]
+[Script]
 
 [MITM]
+[MITM]
 
+[Script]
+[Script]
+[MITM]

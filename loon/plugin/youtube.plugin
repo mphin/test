@@ -6,4 +6,11 @@
 #!date = 2023-12-21 18:49:17
 
 [MITM]
-hostname = *.googlevideo.com, youtubei.googleapis.com
+[MITM]
+[Script]
+
+[Script]
+[Script]
+
+[Rewrite]
+[Rewrite]

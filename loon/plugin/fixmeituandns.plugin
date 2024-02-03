@@ -3,5 +3,14 @@
 #!author = cntrump
 #!date = 2024-02-02 22:14:43
 
+[General]
+[General]
+
+[Mitm]
+[MITM]
+
+[Script]
+[Script]
+
 [Rewrite]
-always-raw-tcp-hosts = %INSERT% -route-stats.d.meituan.net, -metrics-picture.d.meituan.net, -maplocatesdksnapshot.d.meituan.net
+[URL Rewrite]

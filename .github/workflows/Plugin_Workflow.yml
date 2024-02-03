@@ -36,32 +36,32 @@ jobs:
 
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
-                download_url=$(grep "#!url" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                download_url=$(grep "#!url" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 download_file="$plugin_folder/$(basename "$conf_file" .conf)/$(basename "$download_url")"
                 mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                 wget -O "$download_file" "$download_url"
 
-                name=$(grep "#!name" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
-                [ -z "$name" ] && name=$(grep "#!name" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                name=$(grep "#!name" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+                [ -z "$name" ] && name=$(grep "#!name" $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 
-                desc=$(grep "#!desc" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
-                [ -z "$desc" ] && desc=$(grep "#!desc" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                desc=$(grep "#!desc" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+                [ -z "$desc" ] && desc=$(grep "#!desc" $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 [ -z "$desc" ] && desc="仅供学习和个人使用，不得用于商业目的或其他非法用途"
                 
-                openUrl=$(grep "#!openUrl" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
-                [ -z "$openUrl" ] && openUrl=$(grep "#!openUrl" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                openUrl=$(grep "#!openUrl" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+                [ -z "$openUrl" ] && openUrl=$(grep "#!openUrl" $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 
                 author=$(grep "#!author" "$conf_file" | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 [ -z "$author" ] && author=$(grep "#!author" "$download_file" | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 
-                homepage=$(grep "#!homepage" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
-                [ -z "$homepage" ] && homepage=$(grep "#!homepage" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                homepage=$(grep "#!homepage" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+                [ -z "$homepage" ] && homepage=$(grep "#!homepage" $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 
-                icon=$(grep "#!icon" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
-                [ -z "$icon" ] && icon=$(grep "#!icon" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                icon=$(grep "#!icon" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+                [ -z "$icon" ] && icon=$(grep "#!icon" $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 
-                date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep "#!date" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
-                [ -z "$date" ] && date=$(grep "#!date" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep "#!date" $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+                [ -z "$date" ] && date=$(grep "#!date" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 [ -z "$date" ] && date="$current_date" && sed -i "s/#!date =.*/#!date = $current_date/" "$conf_file"
                 date=$(echo "$date" | sed -e 's/[\/年.]/-/g' -e '/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}/! s/$/ 00:00:00/')
 

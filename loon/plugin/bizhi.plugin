@@ -1,7 +1,7 @@
 #!name = 壁纸-精选高清壁纸
 #!desc = 一次性解锁，点击恢复购买，切记关闭同域名脚本
 #!author = ios151
-#!date = 2024-01-3019:31:59 00:00:00
+#!date = 2024-01-30 19:31:59
 
 [MITM]
 hostname = buy.itunes.apple.com

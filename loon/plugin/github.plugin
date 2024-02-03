@@ -7,6 +7,17 @@
 [MITM]
 hostname = api.github.com
 */
+let obj = JSON.parse($response.body);
+if (obj.data && obj.data.viewer) {
+  obj.data.viewer.isProPlan = true;
+  obj.data.viewer.isEmployee = true;
+  obj.data.viewer.hasAppleIapSubscription = true;
+  $done({
+    body: JSON.stringify(obj)
+  });
+} else {
+  $done({});
+}
 
 [Script]
 http-response https://api.github.com/graphql script-path = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github/script/Github.js, requires-body = true, tag = GitHub解锁

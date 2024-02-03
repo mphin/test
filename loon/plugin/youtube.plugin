@@ -6,7 +6,7 @@
 #!date = 2023-12-21 18:49:17
 
 [MITM]
-hostname = *.googlevideo.com, youtubei.googleapis.com
+
 
 [Script]
 # YouTube去广告 - 来自Maasea的作品

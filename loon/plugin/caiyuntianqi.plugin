@@ -6,7 +6,7 @@
 #!date = 2023-12-02 00:00:00
 
 [MITM]
-hostname = *.cyapi.cn, *.caiyunapp.com
+
 
 [Script]
 # VIP信息

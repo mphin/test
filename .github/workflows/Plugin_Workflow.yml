@@ -87,7 +87,7 @@ jobs:
                     echo "#!icon = $icon" >> "$plugin_file"
                 fi
                 if [ -n "$select" ]; then
-                    echo "#!select = $select" >> "$plugin_file"
+                    echo "$select" | sed 's/^/#!select = /' >> "$plugin_file"
                 fi
                 echo "#!date = $date" >> "$plugin_file"
 

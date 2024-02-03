@@ -3,8 +3,5 @@
 #!author = ios151
 #!date = 2024-01-30 19:31:59
 
-[Mitm]
-[MITM]
-
 [Script]
-[Script]
+[rewrite_local]

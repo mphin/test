@@ -98,7 +98,7 @@ jobs:
                 echo "#!date = $date" >> "$plugin_file"
 
                 mitm=$(sed -n '/\[Mitm\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
-                [ -z "$mitm" ] &&mitm=$(grep -i '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file" | sed 's/%INSERT% //')
+                [ -z "$mitm" ] &&mitm=$(grep -i "hostname" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//' | sed 's/%INSERT% //')
                 
                 script=$(sed -n '/\[Script\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/^\[/p;/\[rewrite_local\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
@@ -125,7 +125,7 @@ jobs:
                     echo -e "\n[Script]\n$script" >> "$plugin_file"
                 fi
                 if [ -n "$mitm" ]; then
-                    echo -e "\n[Mitm]\n$mitm" >> "$plugin_file"
+                    echo -e "\n[Mitm]\nhostname = $mitm" >> "$plugin_file"
                 fi
                 
                 # http-response

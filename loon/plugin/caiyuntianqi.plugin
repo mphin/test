@@ -6,19 +6,10 @@
 #!date = 2023-12-02 00:00:00
 
 [MITM]
-hostname = *.cyapi.cn, *.caiyunapp.com
-*************************************/
-const chxm1024 = {};
-const chxm1023 = JSON.parse(typeof $response != "undefined" && $response.body || null);
-const url = $request.url;
-const adUrl = /(activity\?app_name|operation\/banners)/;
-const vipUrl = /https:\/\/biz\.(cyapi\.cn|caiyunapp\.com)\/p\/v\d\/vip_info/;
-const userUrl = /https:\/\/biz\.(cyapi\.cn|caiyunapp\.com)\/v\d\/user\?app_name/;
-const infoUrl = /https:\/\/biz\.(cyapi\.cn|caiyunapp\.com)\/p\/v\d\/user_info/;
-if (typeof $response == "undefined") {
-  chxm1024.headers = $request.headers;
-  chxm1024.headers['device-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZXJzaW9uIjoxLCJ1c2VyX2lkIjoiNWY1YmZjNTdkMmM2ODkwMDE0ZTI2YmI4Iiwic3ZpcF9leHBpcmVkX2F0IjoxNzA1MzMxMTY2LjQxNjc3MSwidmlwX2V4cGlyZWRfYXQiOjB9.h_Cem89QarTXxVX9Z_Wt-Mak6ZHAjAJqgv3hEY6wpps';
+[MITM]
+[Script]
 
+[Script]
 [Script]
 # VIP信息
 http-response ^https?:\/\/(biz|wrapper|starplucker)\.(cyapi|caiyunapp)\.(cn|com)\/(.+\/(user\?app_name=weather|activity\?app_name=weather|visitors|operation\/banners)|p\/v\d\/(vip_info|user_info)) script-path=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi/script/caiyuntianqi.js, requires-body=true, timeout=60, tag=VIP信息

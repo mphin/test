@@ -11,6 +11,9 @@
 - **壁纸-精选高清壁纸**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin)
+- **ScriptHub:重写&规则集转换**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin)
 - **GitHub解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)

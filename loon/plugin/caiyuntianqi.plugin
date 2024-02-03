@@ -5,5 +5,33 @@
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi/icon/caiyuntianqi.png
 #!date = 2023-12-02 00:00:00
 
-[MITM]
+[General]
+**************************************
+*************************************/
 
+[MITM]
+**************************************
+hostname = *.cyapi.cn, *.caiyunapp.com
+*************************************/
+*************************************/
+const chxm1024 = {};
+const chxm1023 = JSON.parse(typeof $response != "undefined" && $response.body || null);
+const url = $request.url;
+const adUrl = /(activity\?app_name|operation\/banners)/;
+const vipUrl = /https:\/\/biz\.(cyapi\.cn|caiyunapp\.com)\/p\/v\d\/vip_info/;
+const userUrl = /https:\/\/biz\.(cyapi\.cn|caiyunapp\.com)\/v\d\/user\?app_name/;
+const infoUrl = /https:\/\/biz\.(cyapi\.cn|caiyunapp\.com)\/p\/v\d\/user_info/;
+if (typeof $response == "undefined") {
+  chxm1024.headers = $request.headers;
+
+[Script]
+# VIP信息
+http-response ^https?:\/\/(biz|wrapper|starplucker)\.(cyapi|caiyunapp)\.(cn|com)\/(.+\/(user\?app_name=weather|activity\?app_name=weather|visitors|operation\/banners)|p\/v\d\/(vip_info|user_info)) script-path=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi/script/caiyuntianqi.js, requires-body=true, timeout=60, tag=VIP信息
+# SVIP地图-48小时预报(方法来源:苍井灰灰)
+http-request ^https?:\/\/(api|wrapper)\.(cyapi|caiyunapp)\.(cn|com)\/v\d\/(satellite|nafp\/origin_images) script-path=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi/script/caiyuntianqi.js, timeout=60, tag=SVIP地图-48小时预报
+
+[Rewrite]
+**************************************
+**************************************
+*************************************/
+*************************************/

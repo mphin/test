@@ -4,5 +4,18 @@
 #!homepage = https://t.me/chxm1023
 #!date = 2023-12-5 00:00:00
 
-[MITM]
+[General]
+*/
 
+[MITM]
+hostname = *.mgtv.com
+*/
+*/
+
+[Script]
+*/
+*/
+
+[Rewrite]
+*/
+*/

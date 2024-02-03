@@ -86,7 +86,7 @@ jobs:
                 echo "#!date = $date" >> "$plugin_file"
 
                 mitm=$(sed -n '/\[Mitm\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
-                [ -z "$mitm" ] &&mitm=$(awk 'BEGIN{IGNORECASE=1} /^\[Mitm\]/ {flag=1} flag; /^(\[|\*)/ && flag {flag=0}' "$download_file" | sed 's/%INSERT% //')
+                [ -z "$mitm" ] &&mitm=$(awk 'BEGIN{IGNORECASE=1} /^[Mm][Ii][Tt][Mm]/, /^([*\[])|^$/ {print}' $download_file | sed '/^\[M/d;/^[*\[]/d' | sed 's/%INSERT% //')
                 
                 script=$(sed -n '/\[Script\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/^\[/p;/\[rewrite_local\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')

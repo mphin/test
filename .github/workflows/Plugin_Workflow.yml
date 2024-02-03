@@ -51,8 +51,8 @@ jobs:
                 openUrl=$(grep "#!openUrl" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 [ -z "$openUrl" ] && openUrl=$(grep "#!openUrl" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 
-                author=$(grep "#!author" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
-                [ -z "$author" ] && author=$(grep "#!author" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                author=$(grep "#!author" "$conf_file" | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+                [ -z "$author" ] && author=$(grep "#!author" "$download_file" | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 
                 homepage=$(grep "#!homepage" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 [ -z "$homepage" ] && homepage=$(grep "#!homepage" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')

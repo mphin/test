@@ -85,17 +85,17 @@ jobs:
                 fi
                 echo "#!date = $date" >> "$plugin_file"
 
-                mitm=$(awk 'tolower($0) ~ /\[mitm\]/, /^\[|\*/' "$conf_file")
-                [ -z "$mitm" ] &&mitm=$(awk 'tolower($0) ~ /\[mitm\]/, /^\[|\*/' "$download_file")
+                mitm=$(sed -n '/\[Mitm\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                [ -z "$mitm" ] &&mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file" | sed 's/%INSERT% //')
                 
-                script=$(awk 'tolower($0) ~ /\[script\]/, /^\[|\*/' "$conf_file")
-                [ -z "$script" ] && script=$(awk 'tolower($0) ~ /\[script\]|\[rewrite_local\]/, /^\[|\*/' "$download_file")
+                script=$(sed -n '/\[Script\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/^\[/p;/\[rewrite_local\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 
-                rewrite=$(awk 'tolower($0) ~ /\[rewrite\]/, /^\[|\*/' "$conf_file")
-                [ -z "$rewrite" ] && rewrite=$(awk 'tolower($0) ~ /\[rewrite\]|\[url rewrite\]/, /^\[|\*/' "$download_file")
+                rewrite=$(sed -n '/\[Rewrite\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                [ -z "$rewrite" ] && rewrite=$(sed -n '/\[URL Rewrite\]/,/^\[/p;/\[Rewrite\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 
-                general=$(awk 'tolower($0) ~ /\[general\]/, /^\[|\*/' "$conf_file")
-                [ -z "$general" ] && general=$(awk 'tolower($0) ~ /\[general\]/, /^\[|\*/' "$download_file" | sed '/always-raw-tcp-hosts/d')
+                general=$(sed -n '/\[General\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                [ -z "$general" ] && general=$(sed -n '/\[General\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d' | sed '/always-raw-tcp-hosts/d')
                 if [ -n "$general" ]; then
                     echo -e "\n[General]\n$general" >> "$plugin_file"
                 fi

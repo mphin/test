@@ -85,8 +85,8 @@ jobs:
                 fi
                 echo "#!date = $date" >> "$plugin_file"
 
-                mitm=$(awk 'BEGIN {IGNORECASE=1} /\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$conf_file" | sed 's/%INSERT% //')
-                [ -z "$mitm" ] &&mitm=$(awk 'BEGIN {IGNORECASE=1} /\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$download_file" | sed 's/%INSERT% //')
+                mitm=$(awk 'BEGIN {IGNORECASE=1} /^[[:space:]]*\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$conf_file" | sed 's/%INSERT% //')
+                [ -z "$mitm" ] &&mitm=$(awk 'BEGIN {IGNORECASE=1} /^[[:space:]]*\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$download_file" | sed 's/%INSERT% //')
                 
                 script=$(awk 'BEGIN {IGNORECASE=1} /\[Script\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$conf_file")
                 [ -z "$script" ] && script=$(awk 'BEGIN {IGNORECASE=1} /\[Script\]|\[rewrite_local\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$download_file")
@@ -99,8 +99,9 @@ jobs:
                 if [ -n "$general" ]; then
                     echo -e "\n[General]\n$general" >> "$plugin_file"
                 fi
-                
-                echo -e "\n[MITM]\n$mitm" >> "$plugin_file"
+                if [ -n "$mitm" ]; then
+                    echo -e "\n[Mitm]\n$mitm" >> "$plugin_file"
+                fi
                 if [ -n "$script" ]; then
                     echo -e "\n[Script]\n$script" >> "$plugin_file"
                 fi

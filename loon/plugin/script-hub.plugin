@@ -4,7 +4,11 @@
 #!author = @小白脸 @xream @keywos @ckyb
 #!homepage = https://github.com/Script-Hub-Org/Script-Hub/tree/main
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub/icon/script-hub.png
-#!date = 2024-02-04 00:49:32
+#!select = 启用插件随机图标, 启用, 禁用
+替换原始插件图标, 启用, 禁用
+插件随机图标合集, Doraemon(100P),Shin-chan(100P),Weslie-Wolffy(100P),Tom-Jerry(100P),Genshin(160P),Shin-Miya(100P),OnePiece(100P),Stitch(100P),Pokemon(112P),PokemonGif(56P),Digimon(56P),Transformers(48P),Maruko-chan(100P),AttackOnTitan(84P),Naruto(284P)
+ScriptHub通知, 开启通知, 关闭通知
+#!date = 2024-02-04 01:01:57
 
 [General]
 force-http-engine-hosts = script.hub, *.script.hub

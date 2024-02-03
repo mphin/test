@@ -63,6 +63,9 @@ jobs:
                 select=$(grep -i "#!select" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$select" ] && select=$(grep -i "#!select" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 
+                input=$(grep -i "#!input" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
+                [ -z "$input" ] && input=$(grep -i "#!input" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
+                
                 date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep -i "#!date" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$date" ] && date=$(grep -i "#!date" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$date" ] && date="$current_date" && sed -i "s/#!date =.*/#!date = $current_date/" "$conf_file"
@@ -88,6 +91,9 @@ jobs:
                 fi
                 if [ -n "$select" ]; then
                     echo "$select" | sed 's/^/#!select = /' >> "$plugin_file"
+                fi
+                if [ -n "$input" ]; then
+                    echo "$input" | sed 's/^/#!input = /' >> "$plugin_file"
                 fi
                 echo "#!date = $date" >> "$plugin_file"
 

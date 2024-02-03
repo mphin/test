@@ -89,7 +89,7 @@ jobs:
                 [ -z "$mitm" ] &&mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file" | sed 's/%INSERT% //')
                 
                 script=$(sed -n '/\[Script\]/,/\[\|\*\]/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
-                [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/\[\|\*\]/p;/\[rewrite_local\]/,/\[\|\*\]/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/\[\|\*\]/p;/\[rewrite_local\]/,/\[\|\*\]/p' "$download_file")
                 
                 rewrite=$(sed -n '/\[Rewrite\]/,/\[\|\*\]/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 [ -z "$rewrite" ] && rewrite=$(sed -n '/\[URL Rewrite\]/,/\[\|\*\]/p;/\[Rewrite\]/,/\[\|\*\]/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')

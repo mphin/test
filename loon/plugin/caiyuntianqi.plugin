@@ -7,7 +7,6 @@
 
 [MITM]
 hostname = *.cyapi.cn, *.caiyunapp.com
-*************************************/
 
 [Script]
 # VIP信息

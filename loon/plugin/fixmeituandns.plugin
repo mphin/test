@@ -1,7 +1,7 @@
 #!name = 修复美团DNS
 #!desc = 保持插件开启状态
 #!author = cntrump
-#!date = 2024-02-02 22:14:43
+#!date = 2024-02-0222:14:43 00:00:00
 
 [MITM]
 hostname = route-stats.d.meituan.net, metrics-picture.d.meituan.net, maplocatesdksnapshot.d.meituan.net

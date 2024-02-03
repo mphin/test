@@ -3,7 +3,7 @@
 #!author = ios151
 #!date = 2024-01-30 19:31:59
 
-[MITM]
+[Mitm]
 hostname = buy.itunes.apple.com
 
 [Script]

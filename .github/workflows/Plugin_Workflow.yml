@@ -96,11 +96,18 @@ jobs:
                 
                 general=$(sed -n '/\[General\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 [ -z "$general" ] && general=$(sed -n '/\[General\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d' | sed '/always-raw-tcp-hosts/d')
+                
+                rule=$(sed -n '/\[Rule\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                [ -z "$rule" ] && rule=$(sed -n '/\[Rule\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                
                 if [ -n "$general" ]; then
                     echo -e "\n[General]\n$general" >> "$plugin_file"
                 fi
                 if [ -n "$rewrite" ]; then
                     echo -e "\n[Rewrite]\n$rewrite" >> "$plugin_file"
+                fi
+                if [ -n "$rule" ]; then
+                    echo -e "\n[Rule]\n$rule" >> "$plugin_file"
                 fi
                 if [ -n "$script" ]; then
                     echo -e "\n[Script]\n$script" >> "$plugin_file"

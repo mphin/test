@@ -85,8 +85,8 @@ jobs:
                 fi
                 echo "#!date = $date" >> "$plugin_file"
 
-                mitm=$(awk 'BEGIN {IGNORECASE=1} /^[[:space:]]*\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$conf_file" | sed 's/%INSERT% //')
-                [ -z "$mitm" ] &&mitm=$(awk 'BEGIN {IGNORECASE=1} /^[[:space:]]*\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$download_file" | sed 's/%INSERT% //')
+                mitm=$(awk 'BEGIN {IGNORECASE=1} /\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$conf_file")
+                [ -z "$mitm" ] &&mitm=$(awk 'BEGIN {IGNORECASE=1} /\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$download_file")
                 
                 script=$(awk 'BEGIN {IGNORECASE=1} /\[Script\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$conf_file")
                 [ -z "$script" ] && script=$(awk 'BEGIN {IGNORECASE=1} /\[Script\]|\[rewrite_local\]/{flag=1; next} /^\[|\*/{flag=0} flag && !/^[[:space:]]*$/ {print}' "$download_file")

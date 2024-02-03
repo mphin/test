@@ -57,8 +57,8 @@ jobs:
                 homepage=$(grep "#!homepage" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 [ -z "$homepage" ] && homepage=$(grep "#!homepage" $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 
-                icon=$(grep "#!icon" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
-                [ -z "$icon" ] && icon=$(grep "#!icon" $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+                icon=$(grep "#!icon" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
+                [ -z "$icon" ] && icon=$(grep "#!icon" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 
                 date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep "#!date" $download_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
                 [ -z "$date" ] && date=$(grep "#!date" $conf_file | awk -F '=' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')

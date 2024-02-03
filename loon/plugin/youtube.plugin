@@ -17,3 +17,5 @@
 [Rewrite]
 # 使用reject-200方法以减少开销
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad reject-200
+
+[Script]

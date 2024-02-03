@@ -85,17 +85,17 @@ jobs:
                 fi
                 echo "#!date = $date" >> "$plugin_file"
 
-                mitm=$(awk 'BEGIN {IGNORECASE=1} /\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF' "$conf_file" | sed 's/%INSERT% //')
-                [ -z "$mitm" ] &&mitm=$(awk 'BEGIN {IGNORECASE=1} /\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF' "$download_file" | sed 's/%INSERT% //')
+                mitm=$(awk 'BEGIN {IGNORECASE=1} /\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF {print}' "$conf_file" | sed 's/%INSERT% //')
+                [ -z "$mitm" ] &&mitm=$(awk 'BEGIN {IGNORECASE=1} /\[Mitm\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF {print}' "$download_file" | sed 's/%INSERT% //')
                 
-                script=$(awk 'BEGIN {IGNORECASE=1} /\[Script\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF' "$conf_file")
-                [ -z "$script" ] && script=$(awk 'BEGIN {IGNORECASE=1} /\[Script\]|\[rewrite_local\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF' "$download_file")
+                script=$(awk 'BEGIN {IGNORECASE=1} /\[Script\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF {print}' "$conf_file")
+                [ -z "$script" ] && script=$(awk 'BEGIN {IGNORECASE=1} /\[Script\]|\[rewrite_local\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF {print}' "$download_file")
                 
-                rewrite=$(awk 'BEGIN {IGNORECASE=1} /\[Rewrite\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF' "$conf_file")
-                [ -z "$rewrite" ] && rewrite=$(awk 'BEGIN {IGNORECASE=1} /\[Rewrite\]|\[URL Rewrite\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF' "$download_file")
+                rewrite=$(awk 'BEGIN {IGNORECASE=1} /\[Rewrite\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF {print}' "$conf_file")
+                [ -z "$rewrite" ] && rewrite=$(awk 'BEGIN {IGNORECASE=1} /\[Rewrite\]|\[URL Rewrite\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF {print}' "$download_file")
                 
-                general=$(awk 'BEGIN {IGNORECASE=1} /\[General\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF' "$conf_file")
-                [ -z "$general" ] && general=$(awk 'BEGIN {IGNORECASE=1} /\[General\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF' "$download_file" | sed '/always-raw-tcp-hosts/d')
+                general=$(awk 'BEGIN {IGNORECASE=1} /\[General\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF {print}' "$conf_file")
+                [ -z "$general" ] && general=$(awk 'BEGIN {IGNORECASE=1} /\[General\]/{flag=1; next} /^\[|\*/{flag=0} flag && NF {print}' "$download_file" | sed '/always-raw-tcp-hosts/d')
                 if [ -n "$general" ]; then
                     echo -e "\n[General]\n$general" >> "$plugin_file"
                 fi

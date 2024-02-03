@@ -4,4 +4,4 @@
 #!date = 2024-02-02 22:14:43
 
 [Mitm]
-hostname = route-stats.d.meituan.net, metrics-picture.d.meituan.net, maplocatesdksnapshot.d.meituan.net
+hostname = %INSERT% route-stats.d.meituan.net, metrics-picture.d.meituan.net, maplocatesdksnapshot.d.meituan.net

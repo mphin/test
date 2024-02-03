@@ -16,4 +16,4 @@
 
 [Rewrite]
 [URL Rewrite]
-http(s)?://route-stats.d.meituan.net(.*)? http$1://route-stats.dreport.meituan.net$2 302
+[MITM]

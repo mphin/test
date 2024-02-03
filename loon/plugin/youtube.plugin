@@ -6,7 +6,7 @@
 #!date = 2023-12-21 18:49:17
 
 [MITM]
-
+hostname = *.googlevideo.com, youtubei.googleapis.com
 
 [Script]
 # YouTube去广告 - 来自Maasea的作品
@@ -15,3 +15,4 @@ http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|p
 
 [Rewrite]
 # 使用reject-200方法以减少开销
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad reject-200

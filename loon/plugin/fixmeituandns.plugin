@@ -9,4 +9,4 @@ http(s)?://metrics-picture.d.meituan.net(.*)? http$1://metrics-picture.dreport.m
 http(s)?://maplocatesdksnapshot.d.meituan.net(.*)? http$1://maplocatesdksnapshot.dreport.meituan.net$2 302
 
 [Mitm]
-hostname = route-stats.d.meituan.net, metrics-picture.d.meituan.net, maplocatesdksnapshot.d.meituan.net
+[MITM]

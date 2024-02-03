@@ -3,7 +3,7 @@
 #!author = NobyDa
 #!homepage = https://github.com/NobyDa/Script/tree/master
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight/icon/testflight.png
-#!date = 2024-02-04 00:40:49
+#!date = 2024-02-04 00:49:32
 
 [General]
 skip-proxy = iosapps.itunes.apple.com

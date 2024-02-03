@@ -4,7 +4,7 @@
 #!author = @小白脸 @xream @keywos @ckyb
 #!homepage = https://github.com/Script-Hub-Org/Script-Hub/tree/main
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub/icon/script-hub.png
-#!date = 2024-02-04 00:40:49
+#!date = 2024-02-04 00:49:32
 
 [General]
 force-http-engine-hosts = script.hub, *.script.hub

@@ -25,7 +25,7 @@ jobs:
     - name: Update Plugin
       run: |
         plugin_folder="loon/plugin"
-        conf_folder="loon/plugin/conf"
+        conf_folder="loon/plugin/.conf"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/"
         mkdir -p "$conf_folder" "$plugin_folder"
         

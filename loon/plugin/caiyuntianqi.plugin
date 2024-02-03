@@ -5,5 +5,8 @@
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi/icon/caiyuntianqi.png
 #!date = 2023-12-02 00:00:00
 
+[Mitm]
+[MITM]
+
 [Script]
-[rewrite_local]
+[Script]

@@ -36,7 +36,7 @@ jobs:
 
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
-                download_url=$(awk -F' *=' '/^#!url/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$conf_file")
+                download_url=$(grep "#!url" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 download_file="$plugin_folder/$(basename "$conf_file" .conf)/$(basename "$download_url")"
                 mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                 wget -O "$download_file" "$download_url"
@@ -44,24 +44,24 @@ jobs:
                 name=$(grep "#!name" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 [ -z "$name" ] && name=$(grep "#!name" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 
-                desc=$(awk -F' *=' '/^#!desc/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$conf_file")
-                [ -z "$desc" ] && desc=$(awk -F' *=' '/^#!desc/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' "$download_file")
+                desc=$(grep "#!desc" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                [ -z "$desc" ] && desc=$(grep "#!desc" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 [ -z "$desc" ] && desc="仅供学习和个人使用，不得用于商业目的或其他非法用途"
                 
                 openUrl=$(grep "#!openUrl" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 [ -z "$openUrl" ] && openUrl=$(grep "#!openUrl" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 
-                author=$(grep '^#!author =' "$conf_file" | sed -e 's/^#!author =//' -e 's/ //g' -e 's/\r//g')
-                [ -z "$author" ] && author=$(awk -F' *=' '/^#!author/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}' $download_file)
+                author=$(grep "#!author" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                [ -z "$author" ] && author=$(grep "#!author" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 
-                homepage=$(grep '^#!homepage =' "$conf_file" | sed -e 's/^#!homepage =//' -e 's/ //g' -e 's/\r//g')
-                [ -z "$homepage" ] && homepage=$(grep '^#!homepage =' "$download_file" | sed -e 's/^#!homepage =//' -e 's/ //g' -e 's/\r//g')
+                homepage=$(grep "#!homepage" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                [ -z "$homepage" ] && homepage=$(grep "#!homepage" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 
                 icon=$(grep "#!icon" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 [ -z "$icon" ] && icon=$(grep "#!icon" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 
-                date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep '^#!date =' "$download_file" | sed -e 's/^#!date =//' -e 's/\r//g')
-                [ -z "$date" ] && date=$(grep '^#!date =' "$conf_file" | sed -E 's/^#!date[[:space:]]*=[[:space:]]*//')
+                date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep "#!date" $download_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+                [ -z "$date" ] && date=$(grep "#!date" $conf_file | awk -F '=' '{print $2}' | tr -d '[:space:]')
                 [ -z "$date" ] && date="$current_date" && sed -i "s/#!date =.*/#!date = $current_date/" "$conf_file"
                 date=$(echo "$date" | sed -e 's/[\/年.]/-/g' -e '/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}/! s/$/ 00:00:00/')
 
@@ -85,16 +85,17 @@ jobs:
                 fi
                 echo "#!date = $date" >> "$plugin_file"
 
-                mitm=$(grep '^\hostname =' "$conf_file" || grep -i '^\hostname =' "$download_file" | sed 's/%INSERT% //')
+                mitm=$(sed -n '/\[MITM\]/I,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d' | sed 's/%INSERT% //')
+                [ -z "$mitm" ] &&mitm=$(sed -n '/\[MITM\]/I,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d' | sed 's/%INSERT% //')
                 
-                script=$(sed -n '/\[Script\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
-                [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/^\[/p;/\[rewrite_local\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                script=$(sed -n '/\[Script\]/I,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                [ -z "$script" ] && script=$(sed -n '/\[Script\]/I,/^\[/p;/\[rewrite_local\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 
-                rewrite=$(sed -n '/\[Rewrite\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
-                [ -z "$rewrite" ] && rewrite=$(sed -n '/\[URL Rewrite\]/,/^\[/p;/\[Rewrite\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                rewrite=$(sed -n '/\[Rewrite\]/I,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                [ -z "$rewrite" ] && rewrite=$(sed -n '/\[URL Rewrite\]/I,/^\[/p;/\[Rewrite\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 
-                general=$(sed -n '/\[General\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
-                [ -z "$general" ] && general=$(sed -n '/\[General\]/, /^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /always-raw-tcp-hosts/d')
+                general=$(sed -n '/\[General\]/I,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
+                [ -z "$general" ] && general=$(sed -n '/\[General\]/I, /^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /always-raw-tcp-hosts/d')
                 if [ -n "$general" ]; then
                     echo -e "\n[General]\n$general" >> "$plugin_file"
                 fi
@@ -138,7 +139,6 @@ jobs:
                     done
                 done
 
-                #rm "$download_file"
                 # script下载
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path"* ]]; then

@@ -27,7 +27,7 @@ jobs:
         plugin_folder="loon/plugin"
         conf_folder="loon/plugin/.conf"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/"
-        mkdir -p "$conf_folder" "$plugin_folder" "tmp"
+        mkdir -p "$conf_folder" "$plugin_folder" tmp
         
         current_year=$(date +'%Y')
         current_date=$(date "+%Y-%m-%d %H:%M:%S")
@@ -36,7 +36,9 @@ jobs:
 
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
-                grep -qi '^#!url' "$conf_file" || sed -i '1s/^/#!url = /' "$conf_file"
+                if ! grep -qi '^#!url' "$conf_file"; then
+                    sed -i '1s/^/#!url = /' "$conf_file"
+                fi
                 download_url=$(grep -i "#!url" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 download_file="tmp/$(basename "$conf_file" .conf)/$(basename "$download_url")"
                 wget -O "$download_file" "$download_url"

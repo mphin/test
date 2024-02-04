@@ -20,6 +20,9 @@
 - **彩云天气解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)
+- **TestFlight账户管理**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
 - **插件仓库**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery.plugin)

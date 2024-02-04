@@ -6,7 +6,7 @@
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store/icon/sub-store.png
 #!select = 节点缓存有效期,1分钟,5分钟,10分钟,30分钟,1小时,2小时,3小时,6小时,12小时,24小时,48小时,72小时,参数传入
 #!select = 响应头缓存有效期,1分钟,5分钟,10分钟,30分钟,1小时,2小时,3小时,6小时,12小时,24小时,48小时,72小时,参数传入
-#!date = 2024-02-04 13:16:00
+#!date = 2024-02-04 13:19:38
 
 [Rule]
 DOMAIN,sub-store.vercel.app,PROXY

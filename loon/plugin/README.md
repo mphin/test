@@ -2,6 +2,9 @@
 - **修复美团DNS**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
+- **节点检测工具**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin)
 - **TikTok解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin)

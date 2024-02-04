@@ -185,6 +185,7 @@ jobs:
             echo "  - [$raw_link]($raw_link)" >> "$readme_file"
           fi
         done <<< "$plugin_files"
+        sed -i '/# Loon插件/,$d' loon/README.md && cat $readme_file >> loon/README.md
 
     - name: Commit and push
       run: |

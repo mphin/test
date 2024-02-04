@@ -38,6 +38,9 @@
 - **YouTube去广告**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
+- **🍟Fries:🌐GeneralEnhanced**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/General.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/General.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/General.plugin)
 - **TestFlight账户管理**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight.plugin)

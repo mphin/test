@@ -8,3 +8,33 @@
 - **TikTok解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin)
+- **美图秀秀SVIP解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
+- **BoxJS**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs.plugin)
+- **彩云天气解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)
+- **壁纸-精选高清壁纸**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin)
+- **ScriptHub:重写&规则集转换**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin)
+- **Sub-Store**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin)
+- **GitHub解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
+- **芒果TV解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin)
+- **YouTube去广告**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
+- **TestFlight账户管理**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/testflight.plugin)

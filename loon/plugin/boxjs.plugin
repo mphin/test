@@ -6,18 +6,8 @@
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs/icon/boxjs.png
 #!date = 2024-01-25 00:30:03
 
-[General]
-# [General]
-# force-http-engine-hosts = boxjs.com:80, boxjs.net:80
-
-[Rewrite]
-# [Rewrite]
-# ^https?:\/\/(.+\.)?boxjs\.(com|net) 302 https://dompling.github.io/boxjs.react
-
 [Rule]
 DOMAIN-SUFFIX, jsdelivr.net, PROXY
-# [Rewrite]
-# ^https?:\/\/(.+\.)?boxjs\.(com|net) 302 https://dompling.github.io/boxjs.react
 
 [Script]
 http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs/script/BoxJS.js, requires-body =  true, tag = BoxJS, timeout = 120

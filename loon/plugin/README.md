@@ -2,6 +2,9 @@
 - **修复美团DNS**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
+- **1.1.1.1配置管理**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
 - **节点检测工具**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin)

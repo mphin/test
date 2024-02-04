@@ -4,6 +4,7 @@
 #!homepage = https://github.com/VirgilClyne/GetSomeFries/wiki/🌐-通用
 #!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/General/icon/General.png
 #!date = 2024-02-04 19:01:45
+2024-02-04 19:01:45
 
 [General]
 skip-proxy = localhost, *.local, captive.apple.com, e.crashlytics.com, www.baidu.com, passenger.t3go.cn, yunbusiness.ccb.com, wxh.wo.cn, gate.lagou.com, www.abchina.com.cn, login-service.mobile-bank.psbc.com, mobile-bank.psbc.com, 10.0.0.0/8, 127.0.0.1/32, 172.16.0.0/12, 192.168.0.0/16, 192.168.122.1/32, 193.168.0.1/32, ::1/128, fe80::/10

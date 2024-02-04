@@ -191,8 +191,13 @@ jobs:
         sed -i '/# Loon插件/,$d' loon/README.md && cat $readme_file >> loon/README.md
         # 删除不符合条件的文件夹和.plugin文件
         cd $plugin_folder
-        find . \( -type d ! -name "$(ls -A $conf_folder/*.conf | sed -e 's|.conf$||')" \) -o \( -type f ! -name "$(ls -A $conf_folder/*.conf | sed -e 's|.conf$|.plugin|')" \) -exec rm -r {} +
-
+        for file in *.plugin; do
+            folder="${file%.*}"
+            if [ ! -e "$conf_folder/$folder.conf" ]; then
+                rm -rf "$folder" "$file"
+            fi
+        done
+        
     - name: Commit and push
       run: |
         git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"

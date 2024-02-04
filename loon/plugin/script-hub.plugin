@@ -10,7 +10,7 @@
 #!select = ScriptHub通知, 开启通知, 关闭通知
 #!input = Parser_body_max
 #!input = Parser_http_timeout
-#!date = 2024-02-04 12:54:08
+#!date = 2024-02-04 12:56:05
 
 [General]
 force-http-engine-hosts = script.hub, *.script.hub

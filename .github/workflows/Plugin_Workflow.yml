@@ -36,11 +36,10 @@ jobs:
 
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
-                if ! grep -qi '^#!url' "$conf_file"; then
-                    sed -i '1s/^/#!url = /' "$conf_file"
-                fi
+                grep -qi '^#!url' "$conf_file" || sed -i '1s/^/#!url = /' "$conf_file"
                 download_url=$(grep -i "#!url" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 download_file="tmp/$(basename "$conf_file" .conf)/$(basename "$download_url")"
+                mkdir -p "tmp/$(basename "$conf_file" .conf)/"
                 wget -O "$download_file" "$download_url"
 
                 name=$(grep -i "#!name" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')

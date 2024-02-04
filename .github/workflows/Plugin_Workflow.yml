@@ -190,10 +190,10 @@ jobs:
         done <<< "$plugin_files"
         sed -i '/# Loon插件/,$d' loon/README.md && cat $readme_file >> loon/README.md
         # 删除不符合条件的文件夹和.plugin文件
-        cd $plugin_folder
-        for file in *.plugin; do
+        for file in "$plugin_folder"/*.plugin; do
             folder="${file%.*}"
-            if [ ! -e "$conf_folder/$file.conf" ]; then
+            conf_file="$conf_folder/$folder.conf"
+            if [ ! -e "$conf_file" ]; then
                 rm -rf "$folder" "$file"
             fi
         done

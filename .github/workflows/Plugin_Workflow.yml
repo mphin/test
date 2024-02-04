@@ -144,9 +144,9 @@ jobs:
                 done < "$plugin_file"
 
                 # 对比文件内容更新date值
-                grep -v '^#!date' "$plugin_file" > "$plugin_file.tmp"
-                grep -v '^#!date' "$plugin_folder/$(basename "$conf_file" .conf).plugin" > "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"
-                if ! cmp -s "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"; then
+                grep -v '^#!date' "$plugin_file" > "$plugin_file.tmp" || true
+                grep -v '^#!date' "$plugin_folder/$(basename "$conf_file" .conf).plugin" > "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp" || true
+                if ! cmp -s "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp" || true; then
                     sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
                 fi
                 rm "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"

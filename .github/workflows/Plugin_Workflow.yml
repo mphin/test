@@ -190,17 +190,19 @@ jobs:
         done <<< "$plugin_files"
         sed -i '/# Loon插件/,$d' loon/README.md && cat $readme_file >> loon/README.md
         # 删除不符合条件的文件夹和.plugin文件
-        plugin_files=("$plugin_folder"/*.{plugin,/})
-        for file_path in "${plugin_files[@]}"; do
-            file_name=$(basename "$file_path")
-            if [ "$file_name" == ".conf" ]; then
-                continue
-            fi
-            conf_file="$conf_folder/${file_name%.*}.conf"
-            if [ ! -e "$conf_file" ] && [ "$file_name" != "*.conf" ]; then
-                rm -rf "$file_path"
-            fi
-        done
+        find "$plugin_folder" -type d -exec sh -c '
+            folder="$1"
+            folder_name=$(basename "$folder")
+            conf_file="$2/$folder_name.conf"
+            [ ! -e "$conf_file" ] && rm -r "$folder"
+        ' sh {} "$conf_folder" \;
+        find "$plugin_folder" -type f -exec sh -c '
+            file="$1"
+            file_name=$(basename "$file")
+            file_name_no_ext=$(echo "$file_name" | cut -f 1 -d '.')
+            conf_file="$2/$file_name_no_ext.conf"
+            [ ! -e "$conf_file" ] && rm "$file"
+        ' sh {} "$conf_folder" \;
         
     - name: Commit and push
       run: |

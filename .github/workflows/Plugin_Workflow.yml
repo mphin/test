@@ -141,6 +141,12 @@ jobs:
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi
                 done < "$plugin_file"
+
+                grep -v '^#!date' "$plugin_file" > "$plugin_file.tmp"
+                grep -v '^#!date' "$plugin_folder/$(basename "$conf_file" .conf).plugin" > "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"
+                if ! cmp -s "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"; then
+                    sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
+                fi
             fi
         done
         

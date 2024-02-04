@@ -144,8 +144,11 @@ jobs:
             fi
         done
         
+        cp -r tmp/. "$plugin_folder/"
+        rm -fr tmp
+        
         # Update README
-        plugin_files=$(find "tmp" -maxdepth 1 -type f -name "*.plugin")
+        plugin_files=$(find "$plugin_folder" -maxdepth 1 -type f -name "*.plugin")
         readme_file="tmp/README.md"
         echo "# Loon插件" > "$readme_file"
         while IFS= read -r file; do
@@ -159,9 +162,7 @@ jobs:
           fi
         done <<< "$plugin_files"
         sed -i '/# Loon插件/,$d' loon/README.md && cat $readme_file >> loon/README.md
-        cp -r tmp/. "$plugin_folder/"
-        rm -fr tmp
-        
+
     - name: Commit and push
       run: |
         git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"

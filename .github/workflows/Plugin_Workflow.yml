@@ -145,8 +145,6 @@ jobs:
         done
         
         cp -r tmp/. "$plugin_folder/"
-        rm -fr tmp
-        
         # Update README
         plugin_files=$(find "$plugin_folder" -maxdepth 1 -type f -name "*.plugin")
         readme_file="tmp/README.md"
@@ -162,6 +160,7 @@ jobs:
           fi
         done <<< "$plugin_files"
         sed -i '/# Loon插件/,$d' loon/README.md && cat $readme_file >> loon/README.md
+        rm -fr tmp
 
     - name: Commit and push
       run: |

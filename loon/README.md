@@ -11,7 +11,7 @@
 - **节点检测工具**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin)
-- **tukabizhi**：
+- **图卡壁纸解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tukabizhi.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tukabizhi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tukabizhi.plugin)
 - **TikTok解锁**：

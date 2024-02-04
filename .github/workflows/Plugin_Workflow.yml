@@ -36,7 +36,7 @@ jobs:
 
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
-                if ! grep -q '^#!url' "$conf_file"; then
+                if ! grep -qi '^#!url' "$conf_file"; then
                     sed -i '1s/^/#!url = /' "$conf_file"
                 fi
                 download_url=$(grep -i "#!url" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')

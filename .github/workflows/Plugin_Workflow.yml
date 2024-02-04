@@ -28,6 +28,8 @@ jobs:
         conf_folder="loon/plugin/.conf"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/"
         mkdir -p "$conf_folder" "$plugin_folder"
+        mkdir -p ./tmp/
+        cp -r "$plugin_folder"/* ./tmp/
         
         current_year=$(date +'%Y')
         current_date=$(date "+%Y-%m-%d %H:%M:%S")
@@ -41,7 +43,6 @@ jobs:
                 fi
                 download_url=$(grep -i "#!url" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 download_file="$plugin_folder/$(basename "$conf_file" .conf)/$(basename "$download_url")"
-                mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                 wget -O "$download_file" "$download_url"
 
                 name=$(grep -i "#!name" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
@@ -63,7 +64,7 @@ jobs:
                 [ -z "$input" ] && input=$(grep -i "#!input" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep -i "#!date" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$date" ] && date=$(grep -i "#!date" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                [ -z "$date" ] && date="$current_date" && sed -i "s/#!date =.*/#!date = $current_date/" "$conf_file"
+                [ -z "$date" ] && date="$current_date" && sed -i "s/#!date.*/#!date = $current_date/" "$conf_file"
                 date=$(echo "$date" | sed -e 's/[\/年.]/-/g' -e '/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}/! s/$/ 00:00:00/')
 
                 plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"
@@ -135,6 +136,7 @@ jobs:
                 done
 
                 # script下载
+                mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path"* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')

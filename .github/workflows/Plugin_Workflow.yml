@@ -46,29 +46,21 @@ jobs:
 
                 name=$(grep -i "#!name" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$name" ] && name=$(grep -i "#!name" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                
                 desc=$(grep -i "#!desc" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$desc" ] && desc=$(grep -i "#!desc" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$desc" ] && desc="仅供学习和个人使用，不得用于商业目的或其他非法用途"
-                
                 openUrl=$(grep -i "#!openUrl" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$openUrl" ] && openUrl=$(grep -i "#!openUrl" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                
                 author=$(grep -i "#!author" "$conf_file" | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$author" ] && author=$(grep -i "#!author" "$download_file" | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                
                 homepage=$(grep -i "#!homepage" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$homepage" ] && homepage=$(grep -i "#!homepage" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                
                 icon=$(grep -i "#!icon" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$icon" ] && icon=$(grep -i "#!icon" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                
                 select=$(grep -i "#!select" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$select" ] && select=$(grep -i "#!select" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                
                 input=$(grep -i "#!input" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$input" ] && input=$(grep -i "#!input" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                
                 date=$(awk '/\/\*/,/\*\// || /#/' "$download_file" | grep -oEm 1 "$current_year[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_1[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}|$previous_year_2[-/年.][[:digit:]]{1,2}[-/年.][[:digit:]]{1,2}" || grep -i "#!date" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$date" ] && date=$(grep -i "#!date" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$date" ] && date="$current_date" && sed -i "s/#!date =.*/#!date = $current_date/" "$conf_file"
@@ -77,27 +69,17 @@ jobs:
                 plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"
                 echo "#!name = $name" > "$plugin_file"
                 echo "#!desc = $desc" >> "$plugin_file"
-                if [ -n "$openUrl" ]; then
-                    echo "#!openUrl = $openUrl" >> "$plugin_file"
-                fi
-                if [ -n "$author" ]; then
-                    echo "#!author = $author" >> "$plugin_file"
-                fi
-                if [ -n "$homepage" ]; then
-                    echo "#!homepage = $homepage" >> "$plugin_file"
-                fi
+                [ -n "$openUrl" ] && echo "#!openUrl = $openUrl" >> "$plugin_file"
+                [ -n "$author" ] && echo "#!author = $author" >> "$plugin_file"
+                [ -n "$homepage" ] && echo "#!homepage = $homepage" >> "$plugin_file"
                 if [ -n "$icon" ]; then
                     mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/icon"
                     wget -O "$plugin_folder/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" "$icon"
                     icon="$base_url$plugin_folder/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png"
                     echo "#!icon = $icon" >> "$plugin_file"
                 fi
-                if [ -n "$select" ]; then
-                    echo "$select" | sed 's/^/#!select = /' >> "$plugin_file"
-                fi
-                if [ -n "$input" ]; then
-                    echo "$input" | sed 's/^/#!input = /' >> "$plugin_file"
-                fi
+                [ -n "$select" ] && echo "$select" | sed 's/^/#!select = /' >> "$plugin_file"
+                [ -n "$input" ] && echo "$input" | sed 's/^/#!input = /' >> "$plugin_file"
                 echo "#!date = $date" >> "$plugin_file"
 
                 mitm=$(sed -n '/\[Mitm\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
@@ -115,21 +97,11 @@ jobs:
                 rule=$(sed -n '/\[Rule\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$rule" ] && rule=$(sed -n '/\[Rule\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 
-                if [ -n "$general" ]; then
-                    echo -e "\n[General]\n$general" >> "$plugin_file"
-                fi
-                if [ -n "$rewrite" ]; then
-                    echo -e "\n[Rewrite]\n$rewrite" >> "$plugin_file"
-                fi
-                if [ -n "$rule" ]; then
-                    echo -e "\n[Rule]\n$rule" >> "$plugin_file"
-                fi
-                if [ -n "$script" ]; then
-                    echo -e "\n[Script]\n$script" >> "$plugin_file"
-                fi
-                if [ -n "$mitm" ]; then
-                    echo -e "\n[Mitm]\nhostname = $mitm" >> "$plugin_file"
-                fi
+                [ -n "$general" ] && echo -e "\n[General]\n$general" >> "$plugin_file"
+                [ -n "$rewrite" ] && echo -e "\n[Rewrite]\n$rewrite" >> "$plugin_file"
+                [ -n "$rule" ] && echo -e "\n[Rule]\n$rule" >> "$plugin_file"
+                [ -n "$script" ] && echo -e "\n[Script]\n$script" >> "$plugin_file"
+                [ -n "$mitm" ] && echo -e "\n[Mitm]\nhostname = $mitm" >> "$plugin_file"
                 
                 # http-response
                 sed -i '/script-response-body/ s/^/http-response /' "$plugin_file"

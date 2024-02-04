@@ -142,12 +142,14 @@ jobs:
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi
                 done < "$plugin_file"
-
+                
                 # 对比文件内容更新date值
                 grep -v '^#!date' "$plugin_file" > "$plugin_file.tmp" || true
                 grep -v '^#!date' "$plugin_folder/$(basename "$conf_file" .conf).plugin" > "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp" || true
-                if ! cmp -s "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp" || true; then
-                    sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
+                if [ -f "$plugin_file.tmp" ] && [ -f "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp" ]; then
+                    if ! cmp -s "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"; then
+                        sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
+                    fi
                 fi
                 rm "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"
             fi

@@ -193,7 +193,7 @@ jobs:
         cd $plugin_folder
         for file in *.plugin; do
             folder="${file%.*}"
-            if [ ! -e "$conf_folder/$folder.conf" ]; then
+            if [ ! -e "$conf_folder/$file.conf" ]; then
                 rm -rf "$folder" "$file"
             fi
         done

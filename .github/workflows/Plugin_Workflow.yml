@@ -22,12 +22,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@main
 
-    - name: Update Plugin
+    - name: 更新 Plugin
       run: |
         plugin_folder="loon/plugin"
         conf_folder="loon/plugin/.conf"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/"
-        mkdir -p "$conf_folder" "$plugin_folder" tmp
+        mkdir -p "$conf_folder" "$plugin_folder" "tmp"
         
         current_year=$(date +'%Y')
         current_date=$(date "+%Y-%m-%d %H:%M:%S")

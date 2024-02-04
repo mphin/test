@@ -39,8 +39,7 @@ jobs:
                 grep -qi '^#!url' "$conf_file" || sed -i '1s/^/#!url = /' "$conf_file"
                 download_url=$(grep -i "#!url" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 download_file="tmp/$(basename "$conf_file" .conf)/$(basename "$download_url")"
-                mkdir -p "tmp/$(basename "$conf_file" .conf)/"
-                wget -O "$download_file" "$download_url"
+                mkdir -p "tmp/$(basename "$conf_file" .conf)/" && wget -O "$download_file" "$download_url"
 
                 name=$(grep -i "#!name" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$name" ] && name=$(grep -i "#!name" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
@@ -151,7 +150,7 @@ jobs:
         # Update README
         plugin_files=$(find "$plugin_folder" -maxdepth 1 -type f -name "*.plugin")
         readme_file="tmp/README.md"
-        echo "# Loon插件" > "$readme_file"
+        touch "$readme_file" && echo "# Loon插件" > "$readme_file"
         while IFS= read -r file; do
           plugin_name=$(grep -i "#!name" $file | awk -F '=' '{print $2}' | tr -d '[:space:]')
           if [ -n "$plugin_name" ]; then

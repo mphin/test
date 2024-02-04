@@ -10,7 +10,7 @@ on:
     paths:
       - 'loon/plugin/**'
       - '.github/workflows/Plugin_Workflow.yml'
-
+（）
 jobs:
   Plugin_update:
     runs-on: ubuntu-latest
@@ -189,6 +189,9 @@ jobs:
           fi
         done <<< "$plugin_files"
         sed -i '/# Loon插件/,$d' loon/README.md && cat $readme_file >> loon/README.md
+        # 删除不符合条件的文件夹和.plugin文件
+        cd $plugin_folder
+        find . \( -type d ! -name "$(ls -A $conf_folder/*.conf | sed -e 's|.conf$||')" \) -o \( -type f ! -name "$(ls -A $conf_folder/*.conf | sed -e 's|.conf$|.plugin|')" \) -exec rm -r {} +
 
     - name: Commit and push
       run: |

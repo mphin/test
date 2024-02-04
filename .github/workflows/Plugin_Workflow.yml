@@ -10,7 +10,7 @@ on:
     paths:
       - 'loon/plugin/**'
       - '.github/workflows/Plugin_Workflow.yml'
-（）
+      
 jobs:
   Plugin_update:
     runs-on: ubuntu-latest

@@ -83,16 +83,12 @@ jobs:
 
                 mitm=$(sed -n '/\[Mitm\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$mitm" ] &&mitm=$(grep -i "hostname" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//' | sed 's/%INSERT% //' | sed 's/%APPEND% //')
-                
                 script=$(sed -n '/\[Script\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/^\[/p;/\[rewrite_local\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
-                
                 rewrite=$(sed -n '/\[Rewrite\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$rewrite" ] && rewrite=$(sed -n '/\[URL Rewrite\]/,/^\[/p;/\[Rewrite\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
-                
                 general=$(sed -n '/\[General\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$general" ] && general=$(sed -n '/\[General\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d' | sed '/always-raw-tcp-hosts/d')
-                
                 rule=$(sed -n '/\[Rule\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$rule" ] && rule=$(sed -n '/\[Rule\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 

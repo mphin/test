@@ -27,9 +27,7 @@ jobs:
         plugin_folder="loon/plugin"
         conf_folder="loon/plugin/.conf"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/"
-        mkdir -p "$conf_folder" "$plugin_folder"
-        mkdir -p ./tmp/
-        cp -r "$plugin_folder"/* ./tmp/
+        mkdir -p "$conf_folder" "$plugin_folder" tmp
         
         current_year=$(date +'%Y')
         current_date=$(date "+%Y-%m-%d %H:%M:%S")
@@ -38,11 +36,9 @@ jobs:
 
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
-                if ! grep -qi '^#!url' "$conf_file"; then
-                    sed -i '1s/^/#!url = /' "$conf_file"
-                fi
+                grep -qi '^#!url' "$conf_file" || sed -i '1s/^/#!url = /' "$conf_file"
                 download_url=$(grep -i "#!url" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                download_file="$plugin_folder/$(basename "$conf_file" .conf)/$(basename "$download_url")"
+                download_file="tmp/$(basename "$conf_file" .conf)/$(basename "$download_url")"
                 wget -O "$download_file" "$download_url"
 
                 name=$(grep -i "#!name" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
@@ -67,15 +63,15 @@ jobs:
                 [ -z "$date" ] && date="$current_date" && sed -i "s/#!date.*/#!date = $current_date/" "$conf_file"
                 date=$(echo "$date" | sed -e 's/[\/年.]/-/g' -e '/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}/! s/$/ 00:00:00/')
 
-                plugin_file="$plugin_folder/$(basename "$conf_file" .conf).plugin"
+                plugin_file="tmp/$(basename "$conf_file" .conf).plugin"
                 echo "#!name = $name" > "$plugin_file"
                 echo "#!desc = $desc" >> "$plugin_file"
                 [ -n "$openUrl" ] && echo "#!openUrl = $openUrl" >> "$plugin_file"
                 [ -n "$author" ] && echo "#!author = $author" >> "$plugin_file"
                 [ -n "$homepage" ] && echo "#!homepage = $homepage" >> "$plugin_file"
                 if [ -n "$icon" ]; then
-                    mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/icon"
-                    wget -O "$plugin_folder/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" "$icon"
+                    mkdir -p "tmp/$(basename "$conf_file" .conf)/icon"
+                    wget -O "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" "$icon"
                     icon="$base_url$plugin_folder/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png"
                     echo "#!icon = $icon" >> "$plugin_file"
                 fi
@@ -136,11 +132,11 @@ jobs:
                 done
 
                 # script下载
-                mkdir -p "$plugin_folder/$(basename "$conf_file" .conf)/script"
+                mkdir -p "tmp/$(basename "$conf_file" .conf)/script"
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path"* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
-                    wget -O "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$script_download_url"
+                    wget -O "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$script_download_url"
                     full_url="$base_url$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi
@@ -149,8 +145,8 @@ jobs:
         done
         
         # Update README
-        plugin_files=$(find "$plugin_folder" -maxdepth 1 -type f -name "*.plugin")
-        readme_file="$plugin_folder/README.md"
+        plugin_files=$(find "tmp" -maxdepth 1 -type f -name "*.plugin")
+        readme_file="tmp/README.md"
         echo "# Loon插件" > "$readme_file"
         while IFS= read -r file; do
           plugin_name=$(grep -i "#!name" $file | awk -F '=' '{print $2}' | tr -d '[:space:]')
@@ -163,6 +159,8 @@ jobs:
           fi
         done <<< "$plugin_files"
         sed -i '/# Loon插件/,$d' loon/README.md && cat $readme_file >> loon/README.md
+        cp -r tmp/. "$plugin_folder/"
+        rm -fr tmp
         
     - name: Commit and push
       run: |

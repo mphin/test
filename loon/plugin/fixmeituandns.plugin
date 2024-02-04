@@ -1,7 +1,7 @@
 #!name = 修复美团DNS
 #!desc = 保持插件开启状态
 #!author = cntrump
-#!date = 2024-02-02 22:14:43
+#!date = 2024-02-04 20:21:14
 
 [Rewrite]
 http(s)?://route-stats.d.meituan.net(.*)? http$1://route-stats.dreport.meituan.net$2 302

@@ -197,7 +197,7 @@ jobs:
                 continue
             fi
             conf_file="$conf_folder/${file_name%.*}.conf"
-            if [ ! -e "$conf_file" ]; then
+            if [ ! -e "$conf_file" ] && [ "$file_name" != "*.conf" ]; then
                 rm -rf "$file_path"
             fi
         done

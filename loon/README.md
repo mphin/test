@@ -17,6 +17,9 @@
 - **TikTok解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin)
+- **驾照学典解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/jzxd.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/jzxd.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/jzxd.plugin)
 - **美图秀秀SVIP解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)

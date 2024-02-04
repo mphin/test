@@ -193,6 +193,9 @@ jobs:
         plugin_files=("$plugin_folder"/*.{plugin,/})
         for file_path in "${plugin_files[@]}"; do
             file_name=$(basename "$file_path")
+            if [ "$file_name" == ".conf" ]; then
+                continue
+            fi
             conf_file="$conf_folder/${file_name%.*}.conf"
             if [ ! -e "$conf_file" ]; then
                 rm -rf "$file_path"

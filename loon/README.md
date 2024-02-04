@@ -3,53 +3,53 @@
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
 # Loon插件
 - **修复美团DNS**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/fixmeituandns.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/fixmeituandns.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/fixmeituandns.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/fixmeituandns.plugin)
 - **1.1.1.1配置管理**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/1.1.1.1.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/1.1.1.1.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/1.1.1.1.plugin)
 - **节点检测工具**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Node_detection_tool.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/Node_detection_tool.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/Node_detection_tool.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/Node_detection_tool.plugin)
 - **TikTok解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/tiktok.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/tiktok.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/tiktok.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/tiktok.plugin)
 - **美图秀秀SVIP解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mtxx.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/mtxx.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/mtxx.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/mtxx.plugin)
 - **BoxJS**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/boxjs.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/boxjs.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/boxjs.plugin)
 - **彩云天气解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/caiyuntianqi.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/caiyuntianqi.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/caiyuntianqi.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/caiyuntianqi.plugin)
 - **TestFlight账户管理**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/TF_Account.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/TF_Account.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/TF_Account.plugin)
 - **插件仓库**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/LoonGallery.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/LoonGallery.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/LoonGallery.plugin)
 - **壁纸-精选高清壁纸**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/bizhi.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/bizhi.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/bizhi.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/bizhi.plugin)
 - **ScriptHub:重写&规则集转换**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/script-hub.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/script-hub.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/script-hub.plugin)
 - **Sub-Store**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/sub-store.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/sub-store.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/sub-store.plugin)
 - **入口落地查询**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/netisp.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/netisp.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/netisp.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/netisp.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/netisp.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/netisp.plugin)
 - **GitHub解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/github.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/github.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/github.plugin)
 - **芒果TV解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/mgtv.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/mgtv.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/mgtv.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/mgtv.plugin)
 - **YouTube去广告**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/youtube.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/youtube.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/youtube.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/youtube.plugin)
 - **跳过代理**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/General.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/General.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/General.plugin)
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/tmp/General.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/tmp/General.plugin](https://raw.githubusercontent.com/mphin/test/main/tmp/General.plugin)

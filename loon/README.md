@@ -41,6 +41,9 @@
 - **ScriptHub:重写&规则集转换**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/script-hub.plugin)
+- **VVebo修复**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/vvebo.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/vvebo.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/vvebo.plugin)
 - **Sub-Store**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin)

@@ -22,18 +22,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@main
 
-    - name: 更新 Plugin
+    - name: Update Plugin
       run: |
         plugin_folder="loon/plugin"
         conf_folder="loon/plugin/.conf"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/"
-        mkdir -p "$conf_folder" "$plugin_folder" tmp
-        
         current_year=$(date +'%Y')
         current_date=$(date "+%Y-%m-%d %H:%M:%S")
         previous_year_1=$((current_year - 1))
         previous_year_2=$((current_year - 2))
-
+        
+        mkdir -p "$conf_folder" "$plugin_folder" tmp
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 grep -qi '^#!url' "$conf_file" || sed -i '1s/^/#!url = /' "$conf_file"
@@ -41,9 +40,9 @@ jobs:
                 download_file="tmp/$(basename "$conf_file" .conf)/$(basename "$download_url")"
                 mkdir -p "tmp/$(basename "$conf_file" .conf)/" && wget -O "$download_file" "$download_url"
 
-                name=$(grep -i "#!name" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
-                [ -z "$name" ] && name=$(grep -i "#!name" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
+                name=$(grep -i "#!name" $conf_file $download_file 2>/dev/null | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$name" ] && name=$(basename "$conf_file" .conf)
+                #
                 desc=$(grep -i "#!desc" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$desc" ] && desc=$(grep -i "#!desc" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$desc" ] && desc="仅供学习和个人使用，不得用于商业目的或其他非法用途"

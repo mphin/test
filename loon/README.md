@@ -47,6 +47,9 @@
 - **Sub-Store**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/sub-store.plugin)
+- **Google搜索重定向**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)
 - **入口落地查询**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/netisp.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/netisp.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/netisp.plugin)

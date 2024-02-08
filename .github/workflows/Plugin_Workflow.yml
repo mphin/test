@@ -85,7 +85,7 @@ jobs:
                 fi
                 [ -n "$select" ] && echo "$select" | sed 's/^/#!select = /' >> "$plugin_file"
                 [ -n "$input" ] && echo "$input" | sed 's/^/#!input = /' >> "$plugin_file"
-                echo "#!date = $date" >> "$plugin_file"
+                echo "#!date = " >> "$plugin_file"
 
                 mitm=$(sed -n '/\[Mitm\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$mitm" ] &&mitm=$(grep -i "hostname" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//' | sed 's/%INSERT% //' | sed 's/%APPEND% //')
@@ -141,6 +141,12 @@ jobs:
                   if [[ "$line" == *"script-path"* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
                     wget -O "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$script_download_url"
+                    # 对比script内容更新date值
+                    if [ -f "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ] && [ -f "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ]; then
+                        if ! cmp -s "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"; then
+                            sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
+                        fi
+                    fi
                     full_url="$base_url$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi

@@ -85,7 +85,7 @@ jobs:
                 fi
                 [ -n "$select" ] && echo "$select" | sed 's/^/#!select = /' >> "$plugin_file"
                 [ -n "$input" ] && echo "$input" | sed 's/^/#!input = /' >> "$plugin_file"
-                echo "#!date = " >> "$plugin_file"
+                echo "#!date = $date" >> "$plugin_file"
 
                 mitm=$(sed -n '/\[Mitm\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$mitm" ] &&mitm=$(grep -i "hostname" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//' | sed 's/%INSERT% //' | sed 's/%APPEND% //')

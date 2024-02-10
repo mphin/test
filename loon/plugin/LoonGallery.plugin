@@ -3,15 +3,15 @@
 #!openUrl = https://🎈.com
 #!author = Peng-YM
 #!homepage = https://gitlab.com/lodepuly/vpn_tool/-/tree/master/Tool/Loon/Plugin
-#!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery/icon/LoonGallery.png
-#!date = 2023-09-08 13:48:55
+#!icon = https://raw.githubusercontent.com/mphin/test/refs/heads/main/loon/plugin/LoonGallery/icon/LoonGallery.png
+#!date = 2024-02-11 04:35:02
 
 [Rule]
 DOMAIN, loon-plugin.vercel.app, PROXY
 DOMAIN, raw.githubusercontent.com, PROXY
 
 [Script]
-http-request ^https?:\/\/xn--ck8h\.com script-path = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery/script/gallery.js, requires-body = true, timeout = 120, tag = Loon插件仓库
+http-request ^https?:\/\/xn--ck8h\.com script-path = https://raw.githubusercontent.com/mphin/test/refs/heads/main/loon/plugin/LoonGallery/script/gallery.js, requires-body = true, timeout = 120, tag = Loon插件仓库
 
 [Mitm]
 hostname = xn--ck8h.com

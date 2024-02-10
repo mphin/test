@@ -3,14 +3,14 @@
 #!openUrl = http://boxjs.com
 #!author = chavyleung
 #!homepage = https://gitlab.com/lodepuly/vpn_tool/-/tree/master/Tool/Loon/Plugin
-#!icon = https://raw.githubusercontent.com/mphin/test//loon/plugin/boxjs/icon/boxjs.png
-#!date = 2024-02-11 04:37:47
+#!icon = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs/icon/boxjs.png
+#!date = 2024-02-11 05:31:12
 
 [Rule]
 DOMAIN-SUFFIX, jsdelivr.net, PROXY
 
 [Script]
-http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path = https://raw.githubusercontent.com/mphin/test//loon/plugin/boxjs/script/BoxJS.js, requires-body =  true, tag = BoxJS, timeout = 120
+http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path = https://raw.githubusercontent.com/mphin/test/main/loon/plugin/boxjs/script/BoxJS.js, requires-body =  true, tag = BoxJS, timeout = 120
 
 [Mitm]
 hostname = boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net

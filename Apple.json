@@ -1,10 +1,10 @@
 {
     "version": 1,
     "rules": [
-    {\n      "domain": [
+    {\n      domain: [
         "apple.comscoreresearch.com",
         ]\n    },
-    {\n      "domain_suffix": [
+    {\n      domain_suffix: [
         ".cable.auth.com",
         ".aaplimg.com",
         ".apple-cloudkit.com",
@@ -24,7 +24,7 @@
         ".me.com",
         ".mzstatic.com",
         ]\n    },
-    {\n      "ip_cidr": [
+    {\n      ip_cidr: [
         "139.178.128.0/18",
         "144.178.0.0/19",
         "144.178.36.0/22",

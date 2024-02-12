@@ -66,59 +66,54 @@ jobs:
            mv "rules/classical/$(basename $file .list).yaml.sorted" "rules/classical/$(basename $file .list).yaml"
            
            # 转换singbox规则
-           mkdir -p rules/singbox
-           version="1"
-           domain=()
-           domain_suffix=()
-           ip_cidr=()
-           domain_keyword=()
+           # 定义JSON文件名
+           json_file="$(basename "$file" .list).json"
 
+           # 创建JSON文件并写入初始内容
+           echo "{" > "$json_file"
+           echo '    "version": 1,' >> "$json_file"
+           echo '    "rules": {' >> "$json_file"
+
+           # 处理文件内容
            while IFS= read -r line; do
-               # 忽略注释行和空行
-               if [[ $line =~ ^\ *# ]] || [[ -z $line ]]; then
+               # 跳过空行和注释行
+               if [[ -z "$line" || "$line" == \#* ]]; then
                    continue
                fi
-    
-               # DOMAIN
-               if [[ $line =~ ^DOMAIN, ]]; then
-                   domain_value=$(echo "$line" | cut -d ',' -f 2)
-                   domain+=("$domain_value")
+
+               # 处理DOMAIN行
+               if [[ "$line" == DOMAIN,* ]]; then
+                   domain=$(echo "$line" | cut -d, -f2)
+                   echo '        "domain": "'"$domain"'",' >> "$json_file"
                fi
-    
-               # DOMAIN-SUFFIX
-               if [[ $line =~ ^DOMAIN-SUFFIX, ]]; then
-                   domain_suffix_value=".${line#DOMAIN-SUFFIX,}"
-                   domain_suffix+=("$domain_suffix_value")
+
+               # 处理DOMAIN-SUFFIX行
+               if [[ "$line" == DOMAIN-SUFFIX,* ]]; then
+                   domain_suffix=$(echo "$line" | cut -d, -f2)
+                   domain_suffix=".$domain_suffix"
+                   echo '        "domain_suffix": "'"$domain_suffix"'",' >> "$json_file"
                fi
-    
-               # IP-CIDR
-               if [[ $line =~ ^IP-CIDR, ]]; then
-                   ip_cidr_value=$(echo "$line" | cut -d ',' -f 2 | sed 's/,no-resolve//')
-                   ip_cidr+=("$ip_cidr_value")
+
+               # 处理IP-CIDR行
+               if [[ "$line" == IP-CIDR,* ]]; then
+                   ip_cidr=$(echo "$line" | cut -d, -f2)
+                   ip_cidr=$(echo "$ip_cidr" | sed 's/,no-resolve//g')
+                   echo '        "ip_cidr": "'"$ip_cidr"'",' >> "$json_file"
                fi
-    
-               # DOMAIN-KEYWORD
-               if [[ $line =~ ^DOMAIN-KEYWORD, ]]; then
-                   domain_keyword_value=$(echo "$line" | cut -d ',' -f 2)
-                   domain_keyword+=("$domain_keyword_value")
+
+               # 处理DOMAIN-KEYWORD行
+               if [[ "$line" == DOMAIN-KEYWORD,* ]]; then
+                   domain_keyword=$(echo "$line" | cut -d, -f2)
+                   echo '        "domain_keyword": "'"$domain_keyword"'",' >> "$json_file"
                fi
-    
            done < "$file"
 
-           output_file="$(basename "$file" .list).json"
+           # 移除最后一个逗号
+           sed -i '$ s/,$//' "$json_file"
 
-           # 生成JSON文件
-           {
-               echo "{"
-               echo "    \"version\": \"$version\","
-               echo "    \"rules\": {"
-               echo "        \"domain\": $(printf '%s\n' "${domain[@]}" | jq -R . | jq -s .),"
-               echo "        \"domain_suffix\": $(printf '%s\n' "${domain_suffix[@]}" | jq -R . | jq -s .),"
-               echo "        \"ip_cidr\": $(printf '%s\n' "${ip_cidr[@]}" | jq -R . | jq -s .),"
-               echo "        \"domain_keyword\": $(printf '%s\n' "${domain_keyword[@]}" | jq -R . | jq -s .)"
-               echo "    }"
-               echo "}" > "$output_file"
-           }
+           # 添加JSON文件结束标记
+           echo '    }' >> "$json_file"
+           echo "}" >> "$json_file"
           done
 
           echo 更新README.md

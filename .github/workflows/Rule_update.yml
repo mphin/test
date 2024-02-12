@@ -67,32 +67,58 @@ jobs:
            
            # 转换singbox规则
            mkdir -p rules/singbox
-           # 提取文件名（不含扩展名）
-           base=$(basename "$file" .list)
-           # 输出到JSON文件
-           output="$base.json"
-           # 版本号
            version="1"
-           # 规则
-           rules=$(awk '/^[^#]/ && NF { 
-               if ($1 == "DOMAIN") {
-                   printf "\"domain\": \"%s\",\n", $2
-               } else if ($1 == "DOMAIN-SUFFIX") {
-                   printf "\"domain_suffix\": \".%s\",\n", $2
-               } else if ($1 == "IP-CIDR") {
-                   gsub(/,no-resolve/, "", $2)
-                   printf "\"ip_cidr\": \"%s\",\n", $2
-               } else if ($1 == "DOMAIN-KEYWORD") {
-                   printf "\"domain_keyword\": \"%s\",\n", $2
+           domain=()
+           domain_suffix=()
+           ip_cidr=()
+           domain_keyword=()
+
+           while IFS= read -r line; do
+               # 忽略注释行和空行
+               if [[ $line =~ ^\ *# ]] || [[ -z $line ]]; then
+                   continue
+               fi
+    
+               # DOMAIN
+               if [[ $line =~ ^DOMAIN, ]]; then
+                   domain_value=$(echo "$line" | cut -d ',' -f 2)
+                   domain+=("$domain_value")
+               fi
+    
+               # DOMAIN-SUFFIX
+               if [[ $line =~ ^DOMAIN-SUFFIX, ]]; then
+                   domain_suffix_value=".${line#DOMAIN-SUFFIX,}"
+                   domain_suffix+=("$domain_suffix_value")
+               fi
+    
+               # IP-CIDR
+               if [[ $line =~ ^IP-CIDR, ]]; then
+                   ip_cidr_value=$(echo "$line" | cut -d ',' -f 2 | sed 's/,no-resolve//')
+                   ip_cidr+=("$ip_cidr_value")
+               fi
+    
+               # DOMAIN-KEYWORD
+               if [[ $line =~ ^DOMAIN-KEYWORD, ]]; then
+                   domain_keyword_value=$(echo "$line" | cut -d ',' -f 2)
+                   domain_keyword+=("$domain_keyword_value")
+               fi
+    
+           done < "$file"
+
+           output_file="$(basename "$file" .list).json"
+
+           # 生成JSON文件
+           cat <<EOF > "$output_file"
+           {
+               "version": "$version",
+               "rules": {
+                   "domain": $(printf '%s\n' "${domain[@]}" | jq -R . | jq -s .),
+                   "domain_suffix": $(printf '%s\n' "${domain_suffix[@]}" | jq -R . | jq -s .),
+                   "ip_cidr": $(printf '%s\n' "${ip_cidr[@]}" | jq -R . | jq -s .),
+                   "domain_keyword": $(printf '%s\n' "${domain_keyword[@]}" | jq -R . | jq -s .)
                }
-           }' "$file")
-           # 输出JSON
-           echo "{" > "$output"
-           echo "  \"version\": \"$version\"，" >> "$output"
-           echo "  \"rules\": {" >> "$output"
-           echo "$rules" >> "$output"
-           echo "  }" >> "$output"
-           echo "}" >> "$output"
+           }
+           EOF
           done
 
           echo 更新README.md

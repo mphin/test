@@ -108,7 +108,7 @@ jobs:
            output_file="$(basename "$file" .list).json"
 
            # 生成JSON文件
-           cat <<EOF > "$output_file"
+           cat <<'EOF' > "$output_file"
            {
                "version": "$version",
                "rules": {

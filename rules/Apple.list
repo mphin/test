@@ -5,7 +5,6 @@
 
 DOMAIN-SUFFIX,cable.auth.com
 
-
 # ------------------------------------------------
 # 以下规则来源为ACL4SSR，仅删除部分重复
 DOMAIN,apple.comscoreresearch.com

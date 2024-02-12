@@ -71,8 +71,8 @@ jobs:
 
            # 创建JSON文件并写入初始内容
            echo "{" > "$json_file"
-           echo '    "version": 1,' >> "$json_file"
-           echo '    "rules": [' >> "$json_file"
+           echo '  "version": 1,' >> "$json_file"
+           echo '  "rules": [' >> "$json_file"
 
            # 初始化变量
            domain_values=""
@@ -116,24 +116,24 @@ jobs:
 
            # 添加值到JSON文件
            if [ -n "$domain_values" ]; then
-               echo "    {"$'\n'"      "domain": [" >> "$json_file"
+               echo "    {"$'\n'"      \"domain\": [" >> "$json_file"
                echo -n "$domain_values" >> "$json_file"
-               echo "        ]"$'\n'"    }," >> "$json_file"
+               echo "      ]"$'\n'"    }," >> "$json_file"
            fi
            if [ -n "$domain_suffix_values" ]; then
-               echo "    {"$'\n'"      "domain_suffix": [" >> "$json_file"
+               echo "    {"$'\n'"      \"domain_suffix\": [" >> "$json_file"
                echo -n "$domain_suffix_values" >> "$json_file"
-               echo "        ]"$'\n'"    }," >> "$json_file"
+               echo "      ]"$'\n'"    }," >> "$json_file"
            fi
            if [ -n "$ip_cidr_values" ]; then
-               echo "    {"$'\n'"      "ip_cidr": [" >> "$json_file"
+               echo "    {"$'\n'"      \"ip_cidr\": [" >> "$json_file"
                echo -n "$ip_cidr_values" >> "$json_file"
-               echo "        ]"$'\n'"    }," >> "$json_file"
+               echo "      ]"$'\n'"    }," >> "$json_file"
            fi
            if [ -n "$domain_keyword_values" ]; then
-               echo "    {"$'\n'"      "domain_keyword": [" >> "$json_file"
+               echo "    {"$'\n'"      \"domain_keyword\": [" >> "$json_file"
                echo -n "$domain_keyword_values" >> "$json_file"
-               echo "        ]"$'\n'"    }," >> "$json_file"
+               echo "      ]"$'\n'"    }," >> "$json_file"
            fi
            
            # 删除最后一个逗号

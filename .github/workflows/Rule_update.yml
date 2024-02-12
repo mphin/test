@@ -115,21 +115,26 @@ jobs:
            done < "$file"
 
            # 添加值到JSON文件
-           echo '        "domain": [' >> "$json_file"
-           echo -n "$domain_values" >> "$json_file"
-           echo '        ],' >> "$json_file"
-
-           echo '        "domain_suffix": [' >> "$json_file"
-           echo -n "$domain_suffix_values" >> "$json_file"
-           echo '        ],' >> "$json_file"
-
-           echo '        "ip_cidr": [' >> "$json_file"
-           echo -n "$ip_cidr_values" >> "$json_file"
-           echo '        ],' >> "$json_file"
-
-           echo '        "domain_keyword": [' >> "$json_file"
-           echo -n "$domain_keyword_values" >> "$json_file"
-           echo '        ]' >> "$json_file"
+           if [ -n "$domain_values" ]; then
+               echo '        "domain": [' >> "$json_file"
+               echo -n "$domain_values" >> "$json_file"
+               echo '        ],' >> "$json_file"
+           fi
+           if [ -n "$domain_suffix_values" ]; then
+               echo '        "domain_suffix": [' >> "$json_file"
+               echo -n "$domain_suffix_values" >> "$json_file"
+               echo '        ],' >> "$json_file"
+           fi
+           if [ -n "$ip_cidr_values" ]; then
+               echo '        "ip_cidr": [' >> "$json_file"
+               echo -n "$ip_cidr_values" >> "$json_file"
+               echo '        ],' >> "$json_file"
+           fi
+           if [ -n "$domain_keyword_values" ]; then
+               echo '        "domain_keyword": [' >> "$json_file"
+               echo -n "$domain_keyword_values" >> "$json_file"
+               echo '        ]' >> "$json_file"
+           fi
 
            # 添加JSON文件结束标记
            echo '    }' >> "$json_file"

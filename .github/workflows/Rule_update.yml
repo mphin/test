@@ -108,17 +108,17 @@ jobs:
            output_file="$(basename "$file" .list).json"
 
            # 生成JSON文件
-           cat <<'EOF' > "$output_file"
            {
-               "version": "$version",
-               "rules": {
-                   "domain": $(printf '%s\n' "${domain[@]}" | jq -R . | jq -s .),
-                   "domain_suffix": $(printf '%s\n' "${domain_suffix[@]}" | jq -R . | jq -s .),
-                   "ip_cidr": $(printf '%s\n' "${ip_cidr[@]}" | jq -R . | jq -s .),
-                   "domain_keyword": $(printf '%s\n' "${domain_keyword[@]}" | jq -R . | jq -s .)
-               }
+               echo "{"
+               echo "    \"version\": \"$version\","
+               echo "    \"rules\": {"
+               echo "        \"domain\": $(printf '%s\n' "${domain[@]}" | jq -R . | jq -s .),"
+               echo "        \"domain_suffix\": $(printf '%s\n' "${domain_suffix[@]}" | jq -R . | jq -s .),"
+               echo "        \"ip_cidr\": $(printf '%s\n' "${ip_cidr[@]}" | jq -R . | jq -s .),"
+               echo "        \"domain_keyword\": $(printf '%s\n' "${domain_keyword[@]}" | jq -R . | jq -s .)"
+               echo "    }"
+               echo "}" > "$output_file"
            }
-           EOF
           done
 
           echo 更新README.md

@@ -90,45 +90,45 @@ jobs:
                # 处理DOMAIN行
                if [[ "$line" == DOMAIN,* ]]; then
                    domain=$(echo "$line" | cut -d, -f2)
-                   domain_values="$domain_values \"$domain\","
+                   domain_values="$domain_values        \"$domain\","$'\n'
                fi
 
                # 处理DOMAIN-SUFFIX行
                if [[ "$line" == DOMAIN-SUFFIX,* ]]; then
                    domain_suffix=$(echo "$line" | cut -d, -f2)
                    domain_suffix=".$domain_suffix"
-                   domain_suffix_values="$domain_suffix_values \"$domain_suffix\","
+                   domain_suffix_values="$domain_suffix_values        \"$domain_suffix\","$'\n'
                fi
 
                # 处理IP-CIDR行
                if [[ "$line" == IP-CIDR,* ]]; then
                    ip_cidr=$(echo "$line" | cut -d, -f2)
                    ip_cidr=$(echo "$ip_cidr" | sed 's/,no-resolve//g')
-                   ip_cidr_values="$ip_cidr_values \"$ip_cidr\","
+                   ip_cidr_values="$ip_cidr_values        \"$ip_cidr\","$'\n'
                fi
 
                # 处理DOMAIN-KEYWORD行
                if [[ "$line" == DOMAIN-KEYWORD,* ]]; then
                    domain_keyword=$(echo "$line" | cut -d, -f2)
-                   domain_keyword_values="$domain_keyword_values \"$domain_keyword\","
+                   domain_keyword_values="$domain_keyword_values        \"$domain_keyword\","$'\n'
                fi
            done < "$file"
 
            # 添加值到JSON文件
            echo '        "domain": [' >> "$json_file"
-           echo "${domain_values%,}" >> "$json_file"
+           echo -n "$domain_values" >> "$json_file"
            echo '        ],' >> "$json_file"
 
            echo '        "domain_suffix": [' >> "$json_file"
-           echo "${domain_suffix_values%,}" >> "$json_file"
+           echo -n "$domain_suffix_values" >> "$json_file"
            echo '        ],' >> "$json_file"
 
            echo '        "ip_cidr": [' >> "$json_file"
-           echo "${ip_cidr_values%,}" >> "$json_file"
+           echo -n "$ip_cidr_values" >> "$json_file"
            echo '        ],' >> "$json_file"
 
            echo '        "domain_keyword": [' >> "$json_file"
-           echo "${domain_keyword_values%,}" >> "$json_file"
+           echo -n "$domain_keyword_values" >> "$json_file"
            echo '        ]' >> "$json_file"
 
            # 添加JSON文件结束标记

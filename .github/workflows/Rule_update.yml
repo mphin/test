@@ -140,8 +140,7 @@ jobs:
            sed -i '$ s/,$//' "$json_file"
            
            # 添加JSON文件结束标记
-           echo '    }' >> "$json_file"
-           echo "}" >> "$json_file"
+           echo "  ]"$'\n'"}" >> "$json_file"
           done
 
           echo 更新README.md

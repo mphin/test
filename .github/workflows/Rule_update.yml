@@ -118,21 +118,25 @@ jobs:
            if [ -n "$domain_values" ]; then
                echo "    {"$'\n'"      \"domain\": [" >> "$json_file"
                echo -n "$domain_values" >> "$json_file"
+               sed -i '$ s/,$//' "$json_file"
                echo "      ]"$'\n'"    }," >> "$json_file"
            fi
            if [ -n "$domain_suffix_values" ]; then
                echo "    {"$'\n'"      \"domain_suffix\": [" >> "$json_file"
                echo -n "$domain_suffix_values" >> "$json_file"
+               sed -i '$ s/,$//' "$json_file"
                echo "      ]"$'\n'"    }," >> "$json_file"
            fi
            if [ -n "$ip_cidr_values" ]; then
                echo "    {"$'\n'"      \"ip_cidr\": [" >> "$json_file"
                echo -n "$ip_cidr_values" >> "$json_file"
+               sed -i '$ s/,$//' "$json_file"
                echo "      ]"$'\n'"    }," >> "$json_file"
            fi
            if [ -n "$domain_keyword_values" ]; then
                echo "    {"$'\n'"      \"domain_keyword\": [" >> "$json_file"
                echo -n "$domain_keyword_values" >> "$json_file"
+               sed -i '$ s/,$//' "$json_file"
                echo "      ]"$'\n'"    }," >> "$json_file"
            fi
            

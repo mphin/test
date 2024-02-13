@@ -38,7 +38,7 @@ jobs:
               sed -i 's/＞/>/g' $file
               #获取变量
               current_date=$(TZ=Asia/Shanghai date '+%Y年%m月%d日%H:%M:%S')
-              count=$(grep -v -e '^$' -e '^#' -e '^!' $file | wc -l)
+              count=$(grep -e '^DOMAIN,' -e '^DOMAIN-SUFFIX,' -e '^IP-CIDR,' -e '^DOMAIN-KEYWORD,' $file | wc -l)
               count_with_unit="${count}条"
               #修改数量和日期
               sed -i "s/^# 更新: .*/# 更新: $current_date/" $file
@@ -134,7 +134,7 @@ jobs:
 
           echo 更新README.md
           new_date=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H:%M:%S')
-          count_1=$(grep -v -e '^$' -e '^#' -e '^!' rules/*.list | grep -v 'Adblack.list' | wc -l)
+          count_1=$(grep -e '^DOMAIN,' -e '^DOMAIN-SUFFIX,' -e '^IP-CIDR,' -e '^DOMAIN-KEYWORD,' rules/!(Adblack).list | wc -l)
           sed -i "s/最近更新: .*/最近更新: $new_date/" README.md
           sed -i "s/规则数量: .*/规则数量: $count_1条/" README.md
 

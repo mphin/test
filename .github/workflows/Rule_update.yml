@@ -30,7 +30,7 @@ jobs:
           
           wget -O sing-box.tar.gz "https://github.com/SagerNet/sing-box/releases/download/${download_tag}/sing-box-${download_tag#v}-linux-amd64.tar.gz"
           tar -zxvf sing-box.tar.gz
-          cp sing-box-${download_tag#v}-linux-amd64/sing-box ..
+          cp sing-box-${download_tag#v}-linux-amd64/sing-box .
           chmod +x sing-box
           
           echo 更新规则文件

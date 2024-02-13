@@ -130,7 +130,7 @@ jobs:
               fi
               sed -i '$ s/,$//' "$json_file"
               echo "  ]"$'\n'"}" >> "$json_file"
-              sing-box rule-set compile --output rules/sing-box/$(basename "$file" .list).srs $json_file
+              ./sing-box rule-set compile --output rules/sing-box/$(basename "$file" .list).srs $json_file
           done
 
           echo 更新README.md

@@ -134,7 +134,7 @@ jobs:
 
           echo 更新README.md
           new_date=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H:%M:%S')
-          count_1=$(grep -e '^DOMAIN,' -e '^DOMAIN-SUFFIX,' -e '^IP-CIDR,' -e '^DOMAIN-KEYWORD,' rules/!(Adblack).list | wc -l)
+          count_1=$(find rules/ -name '*.list' ! -name 'Adblack.list' -exec grep -e '^DOMAIN,' -e '^DOMAIN-SUFFIX,' -e '^IP-CIDR,' -e '^DOMAIN-KEYWORD,' {} + | wc -l)
           sed -i "s/最近更新: .*/最近更新: $new_date/" README.md
           sed -i "s/规则数量: .*/规则数量: $count_1条/" README.md
 

@@ -62,6 +62,9 @@
 - **Google搜索重定向**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)
+- **壁纸-精选高清壁纸**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/test.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/test.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/test.plugin)
 - **Sub-Store**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Sub-Store.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Sub-Store.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Sub-Store.plugin)

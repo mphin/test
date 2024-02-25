@@ -25,7 +25,6 @@ jobs:
     - name: Update Plugin
       run: |
         plugin_folder="plugin"
-        conf_folder="plugin/.conf"
         loon_plugin_folder="loon/plugin"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/${GITHUB_REF##*/}/"
         current_year=$(date +'%Y')
@@ -33,8 +32,8 @@ jobs:
         previous_year_1=$((current_year - 1))
         previous_year_2=$((current_year - 2))
         
-        mkdir -p "$conf_folder" "$plugin_folder" "$loon_plugin_folder" tmp
-        for conf_file in $conf_folder/*.conf; do
+        mkdir -p "$plugin_folder" "$plugin_folder" "$loon_plugin_folder" tmp
+        for conf_file in $plugin_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 grep -qi '^#!url' "$conf_file" || sed -i '1s/^/#!url = /' "$conf_file"
                 download_url=$(grep -i "#!url" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
@@ -168,7 +167,8 @@ jobs:
         done
 
         # Update loon/README.md
-        plugin_files=$(find tmp/ -maxdepth 1 -type f -name "*.plugin")
+        mv -f tmp/*.plugin tmp/README.md "$loon_plugin_folder/"
+        plugin_files=$(find "$loon_plugin_folder/" -maxdepth 1 -type f -name "*.plugin")
         readme_file="tmp/README.md"
         touch "$readme_file" && echo "# Loon插件" > "$readme_file"
         while IFS= read -r file; do
@@ -184,7 +184,6 @@ jobs:
         sed -i '/# Loon插件/,$d' loon/README.md
         cat $readme_file >> loon/README.md
 
-        mv -f tmp/*.plugin tmp/README.md "$loon_plugin_folder/"
         cp -fr tmp/* plugin/
         rm -fr tmp
 

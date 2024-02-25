@@ -1,4 +1,4 @@
-name: Plugin_Workflow
+name: Plugin_update
 
 on:
   workflow_dispatch:
@@ -24,15 +24,16 @@ jobs:
 
     - name: Update Plugin
       run: |
-        plugin_folder="loon/plugin"
+        plugin_folder="plugin"
         conf_folder="plugin/.conf"
+        loon_plugin_folder="loon/plugin"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/${GITHUB_REF##*/}/"
         current_year=$(date +'%Y')
         current_date=$(date "+%Y-%m-%d %H:%M:%S")
         previous_year_1=$((current_year - 1))
         previous_year_2=$((current_year - 2))
         
-        mkdir -p "$conf_folder" "$plugin_folder" tmp
+        mkdir -p "$conf_folder" "$plugin_folder" "$loon_plugin_folder" tmp
         for conf_file in $conf_folder/*.conf; do
             if [ -f "$conf_file" ]; then
                 grep -qi '^#!url' "$conf_file" || sed -i '1s/^/#!url = /' "$conf_file"
@@ -153,16 +154,16 @@ jobs:
                 done < "$plugin_file"
                 
                 # 对比文件内容更新date值
-                grep -v '^#!date' "$plugin_file" > "$plugin_file.tmp" || true
-                if [ -f "$plugin_folder/$(basename "$conf_file" .conf).plugin" ]; then
-                    grep -v '^#!date' "$plugin_folder/$(basename "$conf_file" .conf).plugin" > "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"
+                grep -v '^#!date' "$plugin_file" > "plugin_new.tmp"
+                if [ -f "$loon_plugin_folder/$(basename "$conf_file" .conf).plugin" ]; then
+                    grep -v '^#!date' "$loon_plugin_folder/$(basename "$conf_file" .conf).plugin" > "plugin_old.tmp"
                 fi
-                if [ -f "$plugin_file.tmp" ] && [ -f "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp" ]; then
-                    if ! cmp -s "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"; then
+                if [ -f "plugin_new.tmp" ] && [ -f "plugin_old.tmp" ]; then
+                    if ! cmp -s "plugin_new.tmp" "plugin_old.tmp"; then
                         sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
                     fi
                 fi
-                rm -f "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"
+                rm -f "plugin_new.tmp" "plugin_old.tmp"
             fi
         done
 
@@ -183,7 +184,7 @@ jobs:
         sed -i '/# Loon插件/,$d' loon/README.md
         cat $readme_file >> loon/README.md
 
-        mv -f tmp/*.plugin tmp/README.md "$plugin_folder/"
+        mv -f tmp/*.plugin tmp/README.md "$loon_plugin_folder/"
         cp -fr tmp/* plugin/
         rm -fr tmp
 

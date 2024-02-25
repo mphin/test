@@ -144,7 +144,7 @@ jobs:
                     # 对比script内容更新date值
                     if [ -f "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ] && [ -f "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ]; then
                         if ! cmp -s "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"; then
-                            sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
+                            sed -i "/^#!date/ { s/.*/#!date = $current_date/; b; }; $ a #!date = $current_date" "$conf_file" "$plugin_file"
                         fi
                     fi
                     full_url="$base_url$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"
@@ -159,7 +159,7 @@ jobs:
                 fi
                 if [ -f "plugin_new.tmp" ] && [ -f "plugin_old.tmp" ]; then
                     if ! cmp -s "plugin_new.tmp" "plugin_old.tmp"; then
-                        sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
+                        sed -i "/^#!date/ { s/.*/#!date = $current_date/; b; }; $ a #!date = $current_date" "$conf_file" "$plugin_file"
                     fi
                 fi
                 rm -f "plugin_new.tmp" "plugin_old.tmp"

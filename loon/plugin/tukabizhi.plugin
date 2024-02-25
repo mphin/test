@@ -1,0 +1,9 @@
+#!name = 图卡壁纸解锁
+#!desc = 非一次性解锁，需保持插件开启
+#!date = 2024-02-17 14:07:12
+
+[Script]
+http-response https://smallatom.xyz/bz/img006/periodList script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/tukabizhi/script/tukabizhi.js, requires-body = true, tag = 图卡壁纸解锁
+
+[Mitm]
+hostname = smallatom.xyz

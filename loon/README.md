@@ -77,6 +77,9 @@
 - **壁纸-精选高清壁纸**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
+- **美团**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/美团.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/美团.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/美团.plugin)
 - **Sub-Store**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Sub-Store.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Sub-Store.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Sub-Store.plugin)

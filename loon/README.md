@@ -29,6 +29,9 @@
 - **入口落地查询**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/netisp.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/netisp.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/netisp.plugin)
+- **121321**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/11111.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/11111.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/11111.plugin)
 - **插件仓库**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/LoonGallery.plugin)

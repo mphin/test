@@ -142,11 +142,11 @@ jobs:
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
                     wget -O "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$script_download_url"
                     # 对比script内容更新date值
-                    if [ -f "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ] & [ -f "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ]; then
-                        if ! cmp -s "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"; then
-                            sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
-                        fi
-                    fi
+                    #if [ -f "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ] & [ -f "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ]; then
+                        #if ! cmp -s "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"; then
+                            #sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
+                        #fi
+                    #fi
                     full_url="$base_url$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi
@@ -155,11 +155,11 @@ jobs:
                 # 对比文件内容更新date值
                 grep -v '^#!date' "$plugin_file" > "$plugin_file.tmp" || true
                 grep -v '^#!date' "$plugin_folder/$(basename "$conf_file" .conf).plugin" > "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp" || true
-                if [ -f "$plugin_file.tmp" ] & [ -f "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp" ]; then
-                    if ! cmp -s "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"; then
-                        sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
-                    fi
-                fi
+                #if [ -f "$plugin_file.tmp" ] & [ -f "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp" ]; then
+                    #if ! cmp -s "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"; then
+                        #sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
+                    #fi
+                #fi
                 rm "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"
             fi
         done

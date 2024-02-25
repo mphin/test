@@ -1,0 +1,12 @@
+#!name = 修复美团DNS
+#!desc = 保持插件开启状态
+#!author = cntrump
+#!date = 2024-02-17 14:07:12
+
+[Rewrite]
+http(s)?://route-stats.d.meituan.net(.*)? http$1://route-stats.dreport.meituan.net$2 302
+http(s)?://metrics-picture.d.meituan.net(.*)? http$1://metrics-picture.dreport.meituan.net$2 302
+http(s)?://maplocatesdksnapshot.d.meituan.net(.*)? http$1://maplocatesdksnapshot.dreport.meituan.net$2 302
+
+[Mitm]
+hostname = route-stats.d.meituan.net, metrics-picture.d.meituan.net, maplocatesdksnapshot.d.meituan.net

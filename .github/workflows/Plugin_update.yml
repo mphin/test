@@ -167,7 +167,7 @@ jobs:
         done
 
         # Update loon/README.md
-        mv -f tmp/*.plugin tmp/README.md "$loon_plugin_folder/"
+        mv -f tmp/*.plugin "$loon_plugin_folder/"
         plugin_files=$(find "$loon_plugin_folder/" -maxdepth 1 -type f -name "*.plugin")
         readme_file="tmp/README.md"
         touch "$readme_file" && echo "# Loon插件" > "$readme_file"
@@ -183,7 +183,8 @@ jobs:
         done <<< "$plugin_files"
         sed -i '/# Loon插件/,$d' loon/README.md
         cat $readme_file >> loon/README.md
-
+        
+        mv -f tmp/README.md "$loon_plugin_folder/"
         cp -fr tmp/* plugin/
         rm -fr tmp
 

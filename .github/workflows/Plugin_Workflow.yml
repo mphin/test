@@ -162,7 +162,7 @@ jobs:
                         sed -i "s/#!date.*/#!date = $current_date/" "$conf_file" "$plugin_file"
                     fi
                 fi
-                rm "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"
+                rm -f "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"
             fi
         done
         

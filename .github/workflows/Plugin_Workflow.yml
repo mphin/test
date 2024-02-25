@@ -185,7 +185,7 @@ jobs:
 
         mv tmp/*.plugin tmp/README.md "$plugin_folder/"
         cp -r tmp/* plugin/
-        rm -fr tmp
+        #rm -fr tmp
 
     - name: Commit and push
       run: |

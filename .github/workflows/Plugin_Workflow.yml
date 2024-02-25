@@ -8,7 +8,7 @@ on:
     branches:
       - main
     paths:
-      - 'loon/plugin/.conf/*'
+      - 'plugin/.conf/*'
       - '.github/workflows/Plugin_Workflow.yml'
       
 jobs:
@@ -25,7 +25,7 @@ jobs:
     - name: Update Plugin
       run: |
         plugin_folder="loon/plugin"
-        conf_folder="loon/plugin/.conf"
+        conf_folder="plugin/.conf"
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/${GITHUB_REF##*/}/"
         current_year=$(date +'%Y')
         current_date=$(date "+%Y-%m-%d %H:%M:%S")
@@ -165,8 +165,7 @@ jobs:
                 rm -f "$plugin_file.tmp" "$plugin_folder/$(basename "$conf_file" .conf).plugin.tmp"
             fi
         done
-        
-        cp -r tmp/. "$plugin_folder/"
+
         # Update README
         plugin_files=$(find "$plugin_folder" -maxdepth 1 -type f -name "*.plugin")
         readme_file="tmp/README.md"
@@ -181,7 +180,11 @@ jobs:
             echo "  - [$raw_link]($raw_link)" >> "$readme_file"
           fi
         done <<< "$plugin_files"
-        sed -i '/# Loon插件/,$d' loon/README.md && cat $readme_file >> loon/README.md
+        sed -i '/# Loon插件/,$d' loon/README.md
+        cat $readme_file >> loon/README.md
+
+        cp -r tmp/*.plugin tmp/README.md "$plugin_folder/"
+        cp -r tmp/!(README.md|*.plugin) "plugin/"
         rm -fr tmp
 
     - name: Commit and push

@@ -183,8 +183,8 @@ jobs:
         sed -i '/# Loon插件/,$d' loon/README.md
         cat $readme_file >> loon/README.md
 
-        cp -r tmp/*.plugin tmp/README.md "$plugin_folder/"
-        cp -r tmp/!(README.md|*.plugin) "plugin/"
+        mv tmp/*.plugin tmp/README.md "$plugin_folder/"
+        cp -r tmp/* plugin/
         rm -fr tmp
 
     - name: Commit and push

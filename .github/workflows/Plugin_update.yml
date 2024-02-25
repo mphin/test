@@ -9,7 +9,7 @@ on:
       - main
     paths:
       - 'plugin/.conf/*'
-      - '.github/workflows/Plugin_Workflow.yml'
+      - '.github/workflows/Plugin_update.yml'
       
 jobs:
   Plugin_update:

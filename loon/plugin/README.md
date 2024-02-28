@@ -1,7 +1,10 @@
 # Loon插件
-- **Google重定向**：
+- **Google**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)
-- **1.1.1.1配置管理**：
+- **1.1.1.1**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
+- **Google重定向**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/测试.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/测试.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/测试.plugin)

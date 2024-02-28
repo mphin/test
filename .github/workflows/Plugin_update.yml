@@ -36,7 +36,7 @@ jobs:
                 grep -q -m 1 '^http' "$conf_file" && sed -i '1s/^/#!url = /' "$conf_file"
                 download_url=$(grep -i "#!url" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 download_file="tmp/$(basename "$conf_file" .conf)/$(basename "$download_url")"
-                [ -n "$download_url" ] && mkdir -p "tmp/$(basename "$conf_file" .conf)/" && wget -O "$download_file" "$download_url"
+                #[ -n "$download_url" ] && mkdir -p "tmp/$(basename "$conf_file" .conf)/" && wget -O "$download_file" "$download_url"
                 
                 name=$(grep -i "#!name" $conf_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                 [ -z "$name" ] && name=$(grep -i "#!name" $download_file | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')

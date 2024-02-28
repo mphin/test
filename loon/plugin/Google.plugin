@@ -1,10 +1,3 @@
-#!name = Google重定向
-#!desc = 将google.cn/google.com.hk重定向回google.com
-#!date = 2024-02-29 04:52:29
-
-[Rewrite]
-^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
-^https?:\/\/(www.)?(g|google)\.com.hk https://www.google.com 302
-
-[Mitm]
-hostname = *.google.cn, *.google.com.hk
+#!name = Google
+#!desc = 仅供学习和个人使用，不得用于商业目的或其他非法用途
+#!date = 2024-02-29 06:10:08

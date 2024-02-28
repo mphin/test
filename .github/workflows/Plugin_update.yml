@@ -170,11 +170,9 @@ jobs:
 
         # Update loon/README.md
         mv -f tmp/*.plugin "$loon_plugin_folder/"
-        plugin_files=$(find "$loon_plugin_folder/" -maxdepth 1 -type f -name "*.plugin")
-        readme_file="tmp/README.md"
-        touch "$readme_file" && echo "# Loon插件" > "$readme_file"
-        while IFS= read -r file; do
-          plugin_name=$(grep -i "#!name" $file | awk -F '=' '{print $2}' | tr -d '[:space:]')
+        process_plugin_file() {
+          local file="$1"
+          plugin_name=$(grep -i "#!name" "$file" | awk -F '=' '{print $2}' | tr -d '[:space:]')
           if [ -n "$plugin_name" ]; then
             install_link="https://www.nsloon.com/openloon/import?plugin=$base_url$file"
             raw_link="$base_url$file"
@@ -182,7 +180,17 @@ jobs:
             echo "  - [点击安装]($install_link)" >> "$readme_file"
             echo "  - [$raw_link]($raw_link)" >> "$readme_file"
           fi
-        done <<< "$plugin_files"
+        }
+        loon_plugin_files=($(find "$loon_plugin_folder/" -maxdepth 1 -type f -name "Loon*.plugin" -exec grep -H "#!date" {} + | sort -k3 -r | awk -F ':' '{print $1}'))
+        other_plugin_files=($(find "$loon_plugin_folder/" -maxdepth 1 -type f -name "*.plugin" ! -name "Loon*.plugin" -exec grep -H "#!date" {} + | sort -k3 -r | awk -F ':' '{print $1}'))
+        readme_file="tmp/README.md"
+        touch "$readme_file" && echo "# Loon插件" > "$readme_file"
+        for file in "${loon_plugin_files[@]}"; do
+           process_plugin_file "$file"
+        done
+        for file in "${other_plugin_files[@]}"; do
+           process_plugin_file "$file"
+        done
         sed -i '/# Loon插件/,$d' loon/README.md
         cat $readme_file >> loon/README.md
         
@@ -193,7 +201,7 @@ jobs:
     - name: Commit and push
       run: |
         git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"
-        git add . && git commit -m "自动更新$(date +'%Y-%m-%d %H:%M')" || exit 0
+        git add . && git commit -m "插件更新$(date +'%Y-%m-%d %H:%M')" || exit 0
         git push
 
     - name: Cleanup Workflow

@@ -7,4 +7,4 @@
 ^https?:\/\/(www.)?(g|google)\.com.hk https://www.google.com 302
 
 [Mitm]
-hostname = *.google.cn, *.google.com.hk#!date = 2024-02-29 17:10:37
+hostname = *.google.cn, *.google.com.hk

@@ -1,6 +1,7 @@
 #!name = Google重定向
 #!desc = 将google.cn/google.com.hk重定向回google.com
-#!date = 2024-02-29 06:42:18
+#!date = 2024-02-29 13:32:43
+2024-02-29 13:31:44
 
 [Rewrite]
 ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302

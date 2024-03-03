@@ -95,9 +95,12 @@ jobs:
                 [ -z "$general" ] && general=$(sed -n '/\[General\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d' | sed '/always-raw-tcp-hosts/d')
                 rule=$(sed -n '/\[Rule\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$rule" ] && rule=$(sed -n '/\[Rule\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
+                host=$(sed -n '/\[Host\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
+                [ -z "$host" ] && host=$(sed -n '/\[Host\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 
                 [ -n "$general" ] && echo -e "\n[General]\n$general" >> "$plugin_file"
                 [ -n "$rewrite" ] && echo -e "\n[Rewrite]\n$rewrite" >> "$plugin_file"
+                [ -n "$host" ] && echo -e "\n[Host]\n$host" >> "$plugin_file"
                 [ -n "$rule" ] && echo -e "\n[Rule]\n$rule" >> "$plugin_file"
                 [ -n "$script" ] && echo -e "\n[Script]\n$script" >> "$plugin_file"
                 [ -n "$mitm" ] && echo -e "\n[Mitm]\nhostname = $mitm" >> "$plugin_file"

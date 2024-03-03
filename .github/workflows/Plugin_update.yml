@@ -138,7 +138,7 @@ jobs:
                 while IFS= read -r line; do
                   if [[ "$line" == *"script-path"* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
-                    wget -O "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$script_download_url" || true
+                    wget -nv -O "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$script_download_url" || true
                     # 对比script内容更新date值
                     if [ -f "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ] && [ -f "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ]; then
                         if ! cmp -s "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"; then

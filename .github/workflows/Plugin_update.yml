@@ -22,8 +22,8 @@ jobs:
 
     - name: Update Plugin
       run: |
-        plugin_folder="plugin"
-        loon_plugin_folder="loon/plugin"
+        plugin_folder="plugin" #存放配置文件和js
+        loon_plugin_folder="loon/plugin" #存放loon插件
         base_url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/${GITHUB_REF##*/}/"
         current_year=$(date +'%Y')
         current_date=$(date "+%Y-%m-%d %H:%M:%S")
@@ -76,7 +76,7 @@ jobs:
                 [ -n "$author" ] && echo "#!author = $author" >> "$plugin_file"
                 [ -n "$homepage" ] && echo "#!homepage = $homepage" >> "$plugin_file"
                 if [ -n "$icon" ]; then
-                    icon_old=$(grep -i "#!icon" $(basename "$conf_file" .conf).plugin | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
+                    icon_old=$(grep -i "#!icon" $loon_plugin_folder/$(basename "$conf_file" .conf).plugin | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
                     if [ "$icon_old" != "$icon" ]; then
                         mkdir -p "tmp/$(basename "$conf_file" .conf)/icon"
                         wget -O "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" "$icon"

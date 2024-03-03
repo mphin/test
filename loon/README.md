@@ -9,9 +9,6 @@
 - **☁️Cloudflare:1️⃣1.1.1.1withWARP**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
-- **1.1.1.1配置管理**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1111111.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1111111.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1111111.plugin)
 - **☁️Cloudflare:1️⃣1.1.1.1withWARP**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)

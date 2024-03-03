@@ -76,8 +76,11 @@ jobs:
                 [ -n "$author" ] && echo "#!author = $author" >> "$plugin_file"
                 [ -n "$homepage" ] && echo "#!homepage = $homepage" >> "$plugin_file"
                 if [ -n "$icon" ]; then
-                    mkdir -p "tmp/$(basename "$conf_file" .conf)/icon"
-                    wget -O "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" "$icon"
+                    icon_old=$(grep -i "#!icon" $(basename "$conf_file" .conf).plugin | awk -F '=' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/%0D//')
+                    if [ "$icon_old" != "$icon" ]; then
+                        mkdir -p "tmp/$(basename "$conf_file" .conf)/icon"
+                        wget -O "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" "$icon"
+                    fi
                     icon="$base_url$plugin_folder/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png"
                     echo "#!icon = $icon" >> "$plugin_file"
                 fi

@@ -29,14 +29,18 @@ jobs:
           
           echo 更新文件内容
           for file in $FILES; do
+            # 修正字符
+            sed -i -e 's/＞/>/g' -e 's/！/!/g' $file
+            # 获取变量
             current_date=$(TZ=Asia/Shanghai date '+%Y%m%d%H%M')
             count=$(grep -v -e '^$' -e '^!' -e '^#' $file | wc -l)
             count_with_unit="${count}"
             # 修改时间和数量
             sed -i "s/^! Version: .*/! Version: $current_date/" $file
             sed -i "s/^! Total lines: .*/! Total lines: $count_with_unit/" $file
-            # 修正字符
-            sed -i -e 's/＞/>/g' -e 's/！/!/g' $file
+
+            grep -v -e '^$' -e '^!' -e '^#' $file | sed '/\$$/! s/$/^/'
+
             # 修改规则正序
             temp_file=$(mktemp)
             domain_list=""
@@ -65,7 +69,7 @@ jobs:
 
       - name: Commit And Push
         run: |
-          git config --global user.email "long632450362@qq.com" && git config --global user.name "Bot"
+          git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"
           git add . && git commit -m "日常更新$(date +'%Y-%m-%d %H:%M')"
           git push
 

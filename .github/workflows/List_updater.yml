@@ -39,7 +39,7 @@ jobs:
             sed -i "s/^! Version: .*/! Version: $current_date/" $file
             sed -i "s/^! Total lines: .*/! Total lines: $count_with_unit/" $file
 
-            grep -v -E '^$' -e '^!' -e '^#' $file | grep -E '[^\\^]$' | sed 's/$/\^/'
+            grep -v -E '^$|^!|^#' $file | grep -v -E '\^$' | sed 's/$/\^/'
 
             # 修改规则正序
             temp_file=$(mktemp)

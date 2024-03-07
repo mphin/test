@@ -4,7 +4,7 @@
 #!author = VirgilClyne & R·E
 #!homepage = https://github.com/VirgilClyne
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/1.1.1.1/icon/1.1.1.1.png
-#!date = 2024-03-04 03:14:34
+#!date = 2024-03-08 03:18:57
 
 [Script]
 generic script-path=https://raw.githubusercontent.com/mphin/test/main/plugin/1.1.1.1/script/1.1.1.1.panel.js, tag=☁ WARP Panel, img-url=lock.icloud.fill, timeout=10

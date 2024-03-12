@@ -1,4 +1,7 @@
 # Loon插件
+- **wangyiyun**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)
 - **☁️Cloudflare:1️⃣1.1.1.1withWARP**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)

@@ -135,6 +135,7 @@ jobs:
                         fi
                     done
                 done
+                sed -i '/^# /d' "$plugin_file"
 
                 # script下载
                 mkdir -p "tmp/$(basename "$conf_file" .conf)/script"

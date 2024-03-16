@@ -4,15 +4,12 @@
 #!author = VirgilClyne & R·E
 #!homepage = https://github.com/VirgilClyne
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/1111111/icon/1111111.png
-#!date = 2024-03-08 03:18:57
+#!date = 2024-03-17 04:32:39
 
 [Script]
-# WARP Panel
 generic script-path=https://raw.githubusercontent.com/mphin/test/main/plugin/1111111/script/1.1.1.1.panel.js, tag=☁ WARP Panel, img-url=lock.icloud.fill, timeout=10
-# WARP Personal
 http-request ^https?:\/\/(api|zero-trust-client)\.cloudflareclient\.com\/(.*)\/reg\/[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$ script-path=https://raw.githubusercontent.com/mphin/test/main/plugin/1111111/script/1.1.1.1.request.js, requires-body=1, tag=☁ WARP Personal Request
 http-response ^https?:\/\/(api|zero-trust-client)\.cloudflareclient\.com\/(.*)\/reg\/[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$ script-path=https://raw.githubusercontent.com/mphin/test/main/plugin/1111111/script/1.1.1.1.response.js, requires-body=1, tag=☁ WARP Personal Response
-# Zero Trust Client (Cloudflare for Teams)
 http-request ^https?:\/\/(api|zero-trust-client)\.cloudflareclient\.com\/(.*)\/reg\/t\.[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$ script-path=https://raw.githubusercontent.com/mphin/test/main/plugin/1111111/script/1.1.1.1.request.js, requires-body=1, tag=☁ WARP Teams Request
 http-response ^https?:\/\/(api|zero-trust-client)\.cloudflareclient\.com\/(.*)\/reg\/t\.[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$ script-path=https://raw.githubusercontent.com/mphin/test/main/plugin/1111111/script/1.1.1.1.response.js, requires-body=1, tag=☁ WARP Teams Response
 

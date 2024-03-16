@@ -1,6 +1,6 @@
 #!name = wangyiyun
 #!desc = 仅供学习和个人使用，不得用于商业目的或其他非法用途
-#!date = 2024-03-17 03:58:34
+#!date = 2024-03-17 04:19:42
 
 [Script]
 # > 网易云音乐黑胶vip
@@ -20,4 +20,4 @@ http-request ^https?:\/\/interface3?\.music\.163\.com\/eapi\/(homepage\/|v6\/)?p
 http-request ^https?:\/\/interface3?\.music\.163\.com\/eapi\/vipauth\/app\/auth\/(soundquality\/)?query script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/wangyiyun/script/wangyiyun.js, tag = 会员认证
 
 [Mitm]
-hostname = *music.163.com,
+hostname = *music.163.com

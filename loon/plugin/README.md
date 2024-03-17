@@ -1,4 +1,4 @@
-# Loon插件
+# 🎈Loon插件
 - **寻简-思维导图&流程图VIP解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/xunjian.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/xunjian.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/xunjian.plugin)

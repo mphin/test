@@ -30,3 +30,31 @@
 - **Google重定向**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)
+# 🎈Loon插件
+- **寻简-思维导图&流程图VIP解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/xunjian.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/xunjian.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/xunjian.plugin)
+- **网易云音乐黑胶VIP**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)
+- **github**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
+- **wyy**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wyy.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wyy.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wyy.plugin)
+- **☁️Cloudflare:1️⃣1.1.1.1withWARP**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
+- **1.1.1.1配置管理**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1111111.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1111111.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1111111.plugin)
+- **☁️Cloudflare:1️⃣1.1.1.1withWARP**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
+- **Google重定向**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/测试.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/测试.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/测试.plugin)
+- **Google重定向**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Google.plugin)

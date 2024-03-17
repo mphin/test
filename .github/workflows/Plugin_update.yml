@@ -125,10 +125,10 @@ jobs:
                                 previous_line_number=$((line_number - 1))
                                 previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
                                 if [[ "$previous_line" == "#"* ]]; then
-                                   comment_value=$(echo "$previous_line" | sed 's/^# *//')
+                                    comment_value=$(echo "$previous_line" | sed 's/^# *//')
                                     sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
                                 else
-                                    name_value=$(grep -m 1 '#!name = ' "$plugin_file" | sed 's/^#!name = //')
+                                    name_value=$(echo "$previous_line" | grep -o 'tag = [^ ]*' | sed 's/tag = //' || grep -m 1 '#!name = ' "$plugin_file" | sed 's/^#!name = //')
                                     sed -i -e "${line_number}s/$/ $name_value/" "$plugin_file"
                                 fi
                             fi

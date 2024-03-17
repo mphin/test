@@ -1,13 +1,13 @@
 # Loon插件
+- **网易云音乐黑胶VIP**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)
 - **github**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
 - **wyy**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wyy.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wyy.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wyy.plugin)
-- **wangyiyun**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)
 - **☁️Cloudflare:1️⃣1.1.1.1withWARP**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)

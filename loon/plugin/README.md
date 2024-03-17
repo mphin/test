@@ -1,4 +1,7 @@
 # Loon插件
+- **github**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/github.plugin)
 - **wyy**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wyy.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wyy.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wyy.plugin)

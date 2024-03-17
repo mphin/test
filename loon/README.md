@@ -3,6 +3,9 @@
   - [https://raw.githubusercontent.com/mphin/ProxyTools/main/loon/config/Loon_config_mphin.conf](https://raw.githubusercontent.com/mphin/ProxyTools/main/loon/config/Loon_config_mphin.conf)
 
 # Loon插件
+- **xunjian**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/xunjian.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/xunjian.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/xunjian.plugin)
 - **网易云音乐黑胶VIP**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/wangyiyun.plugin)

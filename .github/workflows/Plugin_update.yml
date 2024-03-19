@@ -31,7 +31,7 @@ jobs:
         current_date=$(date "+%Y-%m-%d %H:%M:%S")
         previous_year_1=$((current_year - 1))
         previous_year_2=$((current_year - 2))
-        
+
         mkdir -p "$plugin_folder" "$plugin_folder" "$loon_plugin_folder" tmp
         for conf_file in $plugin_folder/*.conf; do
             if [ -f "$conf_file" ]; then
@@ -82,6 +82,18 @@ jobs:
                     wget -O "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" "$icon"
                     icon="$base_url$plugin_folder/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png"
                     echo "#!icon = $icon" >> "$plugin_file"
+                else
+                    icon_folder="$plugin_folder/$(basename "$conf_file" .conf)/icon"
+                    if [ -d "$icon_folder" ]; then
+                        if [ "$(ls -A $icon_folder)" ]; then
+                            cd "$icon_folder"
+                            for file in *; do
+                                mv "$file" "$(basename "$conf_file" .conf).png"
+                                icon="$base_url$plugin_folder/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png"
+                                echo "#!icon = $icon" >> "$plugin_file"
+                            done
+                        fi
+                    fi
                 fi
                 [ -n "$select" ] && echo "$select" | sed 's/^/#!select = /' >> "$plugin_file"
                 [ -n "$input" ] && echo "$input" | sed 's/^/#!input = /' >> "$plugin_file"

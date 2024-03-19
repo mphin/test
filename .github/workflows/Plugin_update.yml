@@ -35,6 +35,7 @@ jobs:
         mkdir -p "$plugin_folder" "$plugin_folder" "$loon_plugin_folder" tmp
         for conf_file in $plugin_folder/*.conf; do
             if [ -f "$conf_file" ]; then
+                sed -i '/^$/d' "$conf_file"
                 head -n 1 "$conf_file" | grep -q '^http' && sed -i '1s/^/#!url = /' "$conf_file"
                 download_url=$(grep -i "#!url" $conf_file | awk -F '=' '{print $2}' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/%0D//')
                 download_file="tmp/$(basename "$conf_file" .conf)/$(basename "$download_url")"

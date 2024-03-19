@@ -87,7 +87,7 @@ jobs:
                     if [ -d "$icon_folder" ]; then
                         if [ "$(ls -A $icon_folder)" ]; then
                             for file in "$icon_folder"/*; do
-                                mv -b "$file" "$icon_folder/$(basename "$conf_file" .conf).png"
+                                mv -f "$file" "$icon_folder/$(basename "$conf_file" .conf).png"
                                 icon="$base_url$icon_folder/$(basename "$conf_file" .conf).png"
                                 echo "#!icon = $icon" >> "$plugin_file"
                             done

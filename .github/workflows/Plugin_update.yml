@@ -183,6 +183,8 @@ jobs:
                 fi
                 rm -f "plugin_new.tmp" "plugin_old.tmp"
             fi
+            # 规范conf文件
+            sed -i '/^#!date/,/^$/{/^$/d}' $conf_file
         done
 
         # Update loon/README.md

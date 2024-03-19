@@ -84,15 +84,11 @@ jobs:
                     echo "#!icon = $icon" >> "$plugin_file"
                 else
                     icon_folder="$plugin_folder/$(basename "$conf_file" .conf)/icon"
-                    if [ -d "$icon_folder" ]; then
-                        if [ "$(ls -A $icon_folder)" ]; then
-                            for file in "$icon_folder"/*; do
-                                mv "$file" "$icon_folder/$(basename "$conf_file" .conf).png" || true
-                                icon="$base_url$icon_folder/$(basename "$conf_file" .conf).png"
-                                echo "#!icon = $icon" >> "$plugin_file"
-                            done
-                        fi
-                    fi
+                    find "$icon_folder" -type f -name "*.png" -print0 | while IFS= read -r -d '' file; do
+                        mv "$file" "$icon_folder/$(basename "$conf_file" .conf).png" || true
+                        icon="$base_url$icon_folder/$(basename "$conf_file" .conf).png"
+                        echo "#!icon = $icon" >> "$plugin_file"
+                    done
                 fi
                 [ -n "$select" ] && echo "$select" | sed 's/^/#!select = /' >> "$plugin_file"
                 [ -n "$input" ] && echo "$input" | sed 's/^/#!input = /' >> "$plugin_file"

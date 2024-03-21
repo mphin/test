@@ -95,8 +95,8 @@ jobs:
                 [ -n "$input" ] && echo "$input" | sed 's/^/#!input = /' >> "$plugin_file"
                 echo "#!date = $date" >> "$plugin_file"
 
-                mitm=$(grep -i "hostname" $conf_file | awk -F '=' '{print $2}' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/%0D//; s/,$//; s/,\([^ ]\)/, \1/g')
-                [ -z "$mitm" ] &&mitm=$(grep -i "hostname" $download_file | awk -F '=' '{print $2}' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/%0D//; s/,$//; s/,\([^ ]\)/, \1/g' | sed 's/%INSERT% //; s/%APPEND% //')
+                mitm=$(grep -i "hostname" $conf_file | awk -F '=' '{print $2}' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/%0D//; s/,$//')
+                [ -z "$mitm" ] &&mitm=$(grep -i "hostname" $download_file | awk -F '=' '{print $2}' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/%0D//; s/,$//' | sed 's/%INSERT% //; s/%APPEND% //')
                 script=$(sed -n '/\[Script\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/^\[/p;/\[rewrite_local\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 rewrite=$(sed -n '/\[Rewrite\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
@@ -107,10 +107,7 @@ jobs:
                 [ -z "$rule" ] && rule=$(sed -n '/\[Rule\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 host=$(sed -n '/\[Host\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$host" ] && host=$(sed -n '/\[Host\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
-                reject=$(echo "$script" | awk '/ reject/ {print}' | sed 's/url reject/reject/g')
                 
-                [ -n "$reject" ] && [ -n "$rewrite" ] && rewrite=$(printf "%s\n%s" "$rewrite" "$reject") ; script=$(echo "$script" | sed '/ reject/d')
-                [ -n "$reject" ] && [ -z "$rewrite" ] && rewrite="$reject" ; script=$(echo "$script" | sed '/ reject/d')
                 [ -n "$general" ] && echo -e "\n[General]\n$general" >> "$plugin_file"
                 [ -n "$rewrite" ] && echo -e "\n[Rewrite]\n$rewrite" >> "$plugin_file"
                 [ -n "$host" ] && echo -e "\n[Host]\n$host" >> "$plugin_file"
@@ -138,7 +135,7 @@ jobs:
                                 previous_line_number=$((line_number - 1))
                                 previous_line=$(sed -n "${previous_line_number}p" "$plugin_file")
                                 if [[ "$previous_line" == "#"* ]]; then
-                                    comment_value=$(echo "$previous_line" | sed 's/^# *//; s/^> *//')
+                                    comment_value=$(echo "$previous_line" | sed 's/^# *//')
                                     sed -i -e "${line_number}s/$/ $comment_value/" "$plugin_file"
                                 else
                                     name_value=$(echo "$previous_line" | grep -o 'tag = [^ ]*' | sed 's/tag = //')
@@ -168,13 +165,8 @@ jobs:
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi
                 done < "$plugin_file"
-
-                # 规范文件格式
-                sed -i '1,/^#!date/{/^$/d}' $conf_file
-                sed -i 's/\([^[:space:]]\)\s*=\s*\([^[:space:]]\)/\1 = \2/g' $plugin_file
-                sed -i '/^hostname/s/,\([^ ]\)/, \1/g' $plugin_file
                 
-                # 对比插件内容更新date值
+                # 对比文件内容更新date值
                 grep -v '^#!date' "$plugin_file" > "plugin_new.tmp"
                 if [ -f "$loon_plugin_folder/$(basename "$conf_file" .conf).plugin" ]; then
                     grep -v '^#!date' "$loon_plugin_folder/$(basename "$conf_file" .conf).plugin" > "plugin_old.tmp"
@@ -187,6 +179,8 @@ jobs:
                 fi
                 rm -f "plugin_new.tmp" "plugin_old.tmp"
             fi
+            # 规范conf文件
+            sed -i '1,/^#!date/{/^$/d}' $conf_file
         done
 
         # Update loon/README.md

@@ -1,4 +1,7 @@
 # 🎈Loon插件
+- **咪咕音乐解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/migu.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/migu.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/migu.plugin)
 - **☁️Cloudflare:1️⃣1.1.1.1withWARP**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/123.plugin)
@@ -8,9 +11,6 @@
 - **☁️Cloudflare:1️⃣1.1.1.1withWARP**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
-- **咪咕音乐解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/migu.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/migu.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/migu.plugin)
 - **Google重定向**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/测试.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/测试.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/测试.plugin)

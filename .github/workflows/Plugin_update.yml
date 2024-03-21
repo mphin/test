@@ -107,10 +107,9 @@ jobs:
                 [ -z "$rule" ] && rule=$(sed -n '/\[Rule\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 host=$(sed -n '/\[Host\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$host" ] && host=$(sed -n '/\[Host\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
-
                 reject=$(echo "$script" | awk '/ reject/ {print}')
-                [ -n "$reject" ] && rewrite=$(printf "%s%s" "$rewrite" "$reject")
-                script=$(echo "$script" | sed '/ reject/d')
+                
+                [ -n "$reject" ] && rewrite=$(printf "%s%s" "$rewrite" "$reject") | script=$(echo "$script" | sed '/ reject/d; s/url reject/reject/g')
                 [ -n "$general" ] && echo -e "\n[General]\n$general" >> "$plugin_file"
                 [ -n "$rewrite" ] && echo -e "\n[Rewrite]\n$rewrite" >> "$plugin_file"
                 [ -n "$host" ] && echo -e "\n[Host]\n$host" >> "$plugin_file"

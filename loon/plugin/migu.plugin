@@ -1,10 +1,11 @@
 #!name = 咪咕音乐解锁
 #!desc = 仅供学习和个人使用，不得用于商业目的或其他非法用途
-#!date = 2024-03-21 11:58:31
+#!date = 2024-03-21 12:07:38
 
 [Rewrite]
 ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
-^https?:\/\/(www.)?(g|google)\.com.hk https://www.google.com 302^https://app\.c\.nf\.migu\.cn/member/api/marketing/text reject
+^https?:\/\/(www.)?(g|google)\.com.hk https://www.google.com 302
+^https://app\.c\.nf\.migu\.cn/member/api/marketing/text reject
 ^https://app\.c.nf\.migu\.cn/payment/watch-ad reject-200
 ^https://h5\.nf\.migu\.cn/app/v4/p/pendant-ad/index reject
 

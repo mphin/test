@@ -181,7 +181,7 @@ jobs:
             fi
             # 规范文件格式
             sed -i '1,/^#!date/{/^$/d}' $conf_file
-            sed -i 's/\([^=]\)=/\1 = /g' $plugin_file
+            sed -i 's/\([^[:space:]]\)\s*=\s*\([^[:space:]]\)/\1 = \2/g' $plugin_file
         done
 
         # Update loon/README.md

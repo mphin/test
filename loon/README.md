@@ -26,12 +26,12 @@
 - **TestFlight账户管理**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
-- **咪咕音乐解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)
 - **BoxJs**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
+- **咪咕音乐解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)
 - **YouTube去广告**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin)

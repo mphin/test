@@ -95,8 +95,8 @@ jobs:
                 [ -n "$input" ] && echo "$input" | sed 's/^/#!input = /' >> "$plugin_file"
                 echo "#!date = $date" >> "$plugin_file"
 
-                mitm=$(grep -i "hostname" $conf_file | awk -F '=' '{print $2}' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/%0D//; s/,$//')
-                [ -z "$mitm" ] &&mitm=$(grep -i "hostname" $download_file | awk -F '=' '{print $2}' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/%0D//; s/,$//' | sed 's/%INSERT% //; s/%APPEND% //')
+                mitm=$(grep -i "hostname" $conf_file | awk -F '=' '{print $2}' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/%0D//; s/,$//; s/,\([^ ]\)/, \1/g')
+                [ -z "$mitm" ] &&mitm=$(grep -i "hostname" $download_file | awk -F '=' '{print $2}' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/%0D//; s/,$//; s/,\([^ ]\)/, \1/g' | sed 's/%INSERT% //; s/%APPEND% //')
                 script=$(sed -n '/\[Script\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 [ -z "$script" ] && script=$(sed -n '/\[Script\]/,/^\[/p;/\[rewrite_local\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d')
                 rewrite=$(sed -n '/\[Rewrite\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
@@ -182,6 +182,7 @@ jobs:
             # 规范文件格式
             sed -i '1,/^#!date/{/^$/d}' $conf_file
             sed -i 's/\([^[:space:]]\)\s*=\s*\([^[:space:]]\)/\1 = \2/g' $plugin_file
+            sed -i '/^hostname/s/,\([^ ]\)/, \1/g' $plugin_file
         done
 
         # Update loon/README.md

@@ -108,7 +108,7 @@ jobs:
                 host=$(sed -n '/\[Host\]/,/^\[/p' "$conf_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
                 [ -z "$host" ] && host=$(sed -n '/\[Host\]/,/^\[/p' "$download_file" | sed '/^\[/d; /^[[:space:]]*$/d; /^#/d')
 
-                reject=$(echo "$script" | grep " reject")
+                [ -n "$script" ] && reject=$(echo "$script" | grep " reject")
                 #[ -n "$reject" ] && rewrite=$(printf "%s%s" "$rewrite" "$reject")
                 #script=$(echo "$script" | sed '/ reject/d')
                 [ -n "$general" ] && echo -e "\n[General]\n$general" >> "$plugin_file"

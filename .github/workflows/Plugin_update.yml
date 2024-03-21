@@ -110,7 +110,7 @@ jobs:
                 reject=$(echo "$script" | awk '/ reject/ {print}' | sed 's/url reject/reject/g')
                 
                 [ -n "$reject" ] && [ -n "$rewrite" ] && rewrite=$(printf "%s\n%s" "$rewrite" "$reject") ; script=$(echo "$script" | sed '/ reject/d')
-                [ -n "$reject" ] && [ -z "$rewrite" ] rewrite="$reject" ; script=$(echo "$script" | sed '/ reject/d')
+                [ -n "$reject" ] && [ -z "$rewrite" ] && rewrite="$reject" ; script=$(echo "$script" | sed '/ reject/d')
 
 
 

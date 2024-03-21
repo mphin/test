@@ -179,8 +179,9 @@ jobs:
                 fi
                 rm -f "plugin_new.tmp" "plugin_old.tmp"
             fi
-            # 规范conf文件
+            # 规范文件格式
             sed -i '1,/^#!date/{/^$/d}' $conf_file
+            sed -i 's/\([^=]\)=/\1 = /g' $plugin_file
         done
 
         # Update loon/README.md

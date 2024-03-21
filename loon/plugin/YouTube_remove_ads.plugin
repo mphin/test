@@ -3,14 +3,14 @@
 #!author = Maasea VirgilClyne Choler DivineEngine app2smile
 #!homepage = https://gitlab.com/lodepuly/vpn_tool/-/tree/master/Tool/Loon/Plugin
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/YouTube_remove_ads/icon/YouTube_remove_ads.png
-#!date = 2024-03-21 12:33:33
+#!date = 2024-03-21 13:48:32
 
 [Rewrite]
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad reject-200
 
 [Script]
-http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence) script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/YouTube_remove_ads/script/YouTube_remove_ads_request.js, requires-body = true, binary-body-mode = true, tag = YouTube请求
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting) script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/YouTube_remove_ads/script/YouTube_remove_ads_response.js, requires-body = true, binary-body-mode = true, tag = YouTube响应
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence) script-pat h  = https://raw.githubusercontent.com/mphin/test/main/plugin/YouTube_remove_ads/script/YouTube_remove_ads_request.js, requires-bod y  = true, binary-body-mod e  = true, ta g  = YouTube请求
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting) script-pat h  = https://raw.githubusercontent.com/mphin/test/main/plugin/YouTube_remove_ads/script/YouTube_remove_ads_response.js, requires-bod y  = true, binary-body-mod e  = true, ta g  = YouTube响应
 
 [Mitm]
 hostname = *.googlevideo.com, youtubei.googleapis.com

@@ -3,13 +3,13 @@
 #!author = NobyDa
 #!homepage = https://github.com/NobyDa/Script/tree/master
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/TF_Account/icon/TF_Account.png
-#!date = 2024-03-21 13:41:36
+#!date = 2024-03-21 13:48:32
 
 [General]
 skip-proxy = iosapps.itunes.apple.com
 
 [Script]
-http-request ^https:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/ requires-body = 1,timeout = 120,script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/TF_Account/script/TestFlightAccount.js,tag = TestFlight账户管理
+http-request ^https:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/ requires-bod y = 1,timeou t = 120,script-pat h = https://raw.githubusercontent.com/mphin/test/main/plugin/TF_Account/script/TestFlightAccount.js,ta g = TestFlight账户管理
 
 [Mitm]
 hostname = testflight.apple.com

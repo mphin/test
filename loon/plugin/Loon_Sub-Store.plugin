@@ -6,15 +6,15 @@
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Sub-Store/icon/Loon_Sub-Store.png
 #!select = 节点缓存有效期,1分钟,5分钟,10分钟,30分钟,1小时,2小时,3小时,6小时,12小时,24小时,48小时,72小时,参数传入
 #!select = 响应头缓存有效期,1分钟,5分钟,10分钟,30分钟,1小时,2小时,3小时,6小时,12小时,24小时,48小时,72小时,参数传入
-#!date = 2024-03-21 13:41:36
+#!date = 2024-03-21 13:48:32
 
 [Rule]
 DOMAIN,sub-store.vercel.app,PROXY
 
 [Script]
-http-request ^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))) script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Sub-Store/script/sub-store-1.min.js, requires-body = true, timeout = 120, tag = Sub-Store Core
-http-request ^https?:\/\/sub\.store script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Sub-Store/script/sub-store-0.min.js, requires-body = true, timeout = 120, tag = Sub-Store Simple
-cron "55 23 * * *" script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Sub-Store/script/cron-sync-artifacts.min.js, timeout = 120, tag = Sub-Store Sync
+http-request ^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))) script-pat h = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Sub-Store/script/sub-store-1.min.js, requires-bod y = true, timeou t = 120, ta g = Sub-Store Core
+http-request ^https?:\/\/sub\.store script-pat h = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Sub-Store/script/sub-store-0.min.js, requires-bod y = true, timeou t = 120, ta g = Sub-Store Simple
+cron "55 23 * * *" script-pat h = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Sub-Store/script/cron-sync-artifacts.min.js, timeou t = 120, ta g = Sub-Store Sync
 
 [Mitm]
 hostname = sub.store

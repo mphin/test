@@ -1,9 +1,9 @@
 #!name = 寻简-思维导图&流程图会员解锁
 #!desc = 非一次性解锁，支持无水印下载保存，部分功能自测，此插件仅供学习与交流，请在下载使用24小时内删除！请勿在中国大陆转载与贩卖！
-#!date = 2024-03-17 12:17:25
+#!date = 2024-03-21 13:48:32
 
 [Script]
-http-response https:\/\/api\.mindyushu\.com\/user\/(get-apple-member|me|storage-info) script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/XunJian/script/xunjian.js, requires-body = true, tag = 寻简-思维导图流程图会员解锁
+http-response https:\/\/api\.mindyushu\.com\/user\/(get-apple-member|me|storage-info) script-pat h  = https://raw.githubusercontent.com/mphin/test/main/plugin/XunJian/script/xunjian.js, requires-bod y  = true, ta g  = 寻简-思维导图流程图会员解锁
 
 [Mitm]
 hostname = api.mindyushu.com

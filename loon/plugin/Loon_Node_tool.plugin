@@ -3,8 +3,8 @@
 #!author = KOP-XIAO xream keywos wuhu_zzz 整点猫咪
 #!homepage = https://gitlab.com/lodepuly/vpn_tool//tree/master/Tool/Loon/Plugin
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Node_tool/icon/Loon_Node_tool.png
-#!date = 2024-03-08 04:13:02
+#!date = 2024-03-21 13:48:32
 
 [Script]
-generic script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Node_tool/script/LocationDetection.js, timeout = 10, tag = 地理位置查询, img-url = location.circle.system
-generic script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Node_tool/script/NodeUnlockDetection.js, timeout = 20, tag = 节点解锁查询, img-url = play.circle.system
+generic script-pat h  = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Node_tool/script/LocationDetection.js, timeou t  = 10, ta g  = 地理位置查询, img-ur l  = location.circle.system
+generic script-pat h  = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Node_tool/script/NodeUnlockDetection.js, timeou t  = 20, ta g  = 节点解锁查询, img-ur l  = play.circle.system

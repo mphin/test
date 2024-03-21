@@ -2,15 +2,15 @@
 #!desc = JavaScript数据管理器，用于管理脚本储存的数据。使用前请在本插件的详情页面为[PROXY]项分配代理策略。
 #!openUrl = http://boxjs.com
 #!author = chavyleung
-#!homepage = https://gitlab.com/lodepuly/vpn_tool/-/tree/master/Tool/Loon/Plugin
+#!homepage = https://chavyleung.gitbook.io/boxjs/
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/BoxJS/icon/BoxJS.png
-#!date = 2024-03-21 13:48:32
+#!date = 2024-03-22 04:33:25
 
 [Rule]
-DOMAIN-SUFFIX, jsdelivr.net, PROXY
+DOMAIN-SUFFIX,jsdelivr.net,PROXY
 
 [Script]
-http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-pat h  = https://raw.githubusercontent.com/mphin/test/main/plugin/BoxJS/script/BoxJS.js, requires-bod y  = true, ta g  = BoxJS, timeou t  = 120
+http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-pat h = https://raw.githubusercontent.com/mphin/test/main/plugin/BoxJS/script/chavy.boxjs.js, requires-bod y = true, timeou t = 120, ta g = BoxJs
 
 [Mitm]
 hostname = boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net

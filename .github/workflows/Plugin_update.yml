@@ -165,8 +165,13 @@ jobs:
                     sed -i "s#$(sed 's/[&/\]/\\&/g' <<< "$script_download_url")#$full_url#" "$plugin_file"
                   fi
                 done < "$plugin_file"
+
+                # 规范文件格式
+                sed -i '1,/^#!date/{/^$/d}' $conf_file
+                sed -i 's/\([^[:space:]]\)\s*=\s*\([^[:space:]]\)/\1 = \2/g' $plugin_file
+                sed -i '/^hostname/s/,\([^ ]\)/, \1/g' $plugin_file
                 
-                # 对比文件内容更新date值
+                # 对比插件内容更新date值
                 grep -v '^#!date' "$plugin_file" > "plugin_new.tmp"
                 if [ -f "$loon_plugin_folder/$(basename "$conf_file" .conf).plugin" ]; then
                     grep -v '^#!date' "$loon_plugin_folder/$(basename "$conf_file" .conf).plugin" > "plugin_old.tmp"
@@ -179,10 +184,6 @@ jobs:
                 fi
                 rm -f "plugin_new.tmp" "plugin_old.tmp"
             fi
-            # 规范文件格式
-            sed -i '1,/^#!date/{/^$/d}' $conf_file
-            sed -i 's/\([^[:space:]]\)\s*=\s*\([^[:space:]]\)/\1 = \2/g' $plugin_file
-            sed -i '/^hostname/s/,\([^ ]\)/, \1/g' $plugin_file
         done
 
         # Update loon/README.md

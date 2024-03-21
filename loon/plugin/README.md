@@ -17,21 +17,24 @@
 - **插件仓库**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_Gallery.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_Gallery.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_Gallery.plugin)
+- **TikTok解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TikTok_redirect.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TikTok_redirect.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TikTok_redirect.plugin)
+- **TestFlight账户管理**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
+- **咪咕音乐解锁**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)
+- **BoxJs**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
 - **YouTube去广告**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin)
 - **微信外部链接解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/WeixinLinks.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/WeixinLinks.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/WeixinLinks.plugin)
-- **TikTok解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TikTok_redirect.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TikTok_redirect.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TikTok_redirect.plugin)
-- **BoxJs**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
-- **咪咕音乐解锁**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)
 - **网易云音乐黑胶VIP**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/WangYiYun.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/WangYiYun.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/WangYiYun.plugin)
@@ -56,9 +59,6 @@
 - **1.1.1.1配置管理**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
-- **TestFlight账户管理**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
 ## ⚠️免责声明
 - 本项目的部分内容收集于互联网，仅供资源共享和学习研究之用，不能保证其合法性、准确性、完整性和有效性。请用户根据具体情况自行判断其适用性。
 - 任何间接使用脚本的用户，包括但不限于搭建VPS或在某些行为违反国家/地区法律或相关法规的情况下进行传播，本项目对于由此引起的任何隐私泄漏或其他后果概不负责。

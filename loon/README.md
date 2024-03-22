@@ -20,9 +20,6 @@
 - **跳过代理**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_General.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_General.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_General.plugin)
-- **BoxJs**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
 - **YouTube去广告**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin)
@@ -53,6 +50,9 @@
 - **彩云天气解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/CaiYunTianQi.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/CaiYunTianQi.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/CaiYunTianQi.plugin)
+- **BoxJs**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/BoxJS.plugin)
 - **1.1.1.1配置管理**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/1.1.1.1.plugin)

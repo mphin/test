@@ -4,14 +4,14 @@
 #!author = Peng-YM
 #!homepage = https://gitlab.com/lodepuly/vpn_tool/-/tree/master/Tool/Loon/Plugin
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Gallery/icon/Loon_Gallery.png
-#!date = 2024-03-21 13:48:32
+#!date = 2024-03-22 21:37:45
 
 [Rule]
 DOMAIN, loon-plugin.vercel.app, PROXY
 DOMAIN, raw.githubusercontent.com, PROXY
 
 [Script]
-http-request ^https?:\/\/xn--ck8h\.com script-pat h  = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Gallery/script/gallery.js, requires-bod y  = true, timeou t  = 120, ta g  = Loon插件仓库
+http-request ^https?:\/\/xn--ck8h\.com script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/Loon_Gallery/script/gallery.js, requires-body = true, timeout = 120, tag = Loon插件仓库
 
 [Mitm]
 hostname = xn--ck8h.com

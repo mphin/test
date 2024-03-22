@@ -4,13 +4,13 @@
 #!author = chavyleung
 #!homepage = https://chavyleung.gitbook.io/boxjs/
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/BoxJS/icon/BoxJS.png
-#!date = 2024-03-22 04:33:25
+#!date = 2024-03-22 21:37:45
 
 [Rule]
 DOMAIN-SUFFIX,jsdelivr.net,PROXY
 
 [Script]
-http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-pat h = https://raw.githubusercontent.com/mphin/test/main/plugin/BoxJS/script/chavy.boxjs.js, requires-bod y = true, timeou t = 120, ta g = BoxJs
+http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path=https://raw.githubusercontent.com/mphin/test/main/plugin/BoxJS/script/chavy.boxjs.js, requires-body=true, timeout=120, tag=BoxJs
 
 [Mitm]
 hostname = boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net

@@ -1,6 +1,6 @@
 #!name = 咪咕音乐解锁
 #!desc = 仅供学习和个人使用，不得用于商业目的或其他非法用途
-#!date = 2024-03-21 13:48:32
+#!date = 2024-03-22 21:37:45
 
 [Rewrite]
 ^https://app\.c\.nf\.migu\.cn/member/api/marketing/text reject
@@ -8,8 +8,8 @@
 ^https://h5\.nf\.migu\.cn/app/v4/p/pendant-ad/index reject
 
 [Script]
-http-response ^https?:\/\/(u|c|app).(musicapp|c.nf).migu.cn.*(user\/(queryUserInfo.do|member\/center))|column\/(startup-pic-with-ad|marketing\/advertising)|resource\/skin\/list\/.*$ script-pat h  = https://raw.githubusercontent.com/mphin/test/main/plugin/MiGuMusic/script/miguyinyue.js, requires-bod y  = true, ta g  = 咪咕音乐vip、音质、下载
-http-request ^https?:\/\/app.(c|pd).nf.migu.cn\/.*\/(listen-url|music\/batchQueryMusicPolicy|download-url).*$ script-pat h  = https://raw.githubusercontent.com/mphin/test/main/plugin/MiGuMusic/script/migu.js, ta g  = 咪咕音乐vip、音质、下载
+http-response ^https?:\/\/(u|c|app).(musicapp|c.nf).migu.cn.*(user\/(queryUserInfo.do|member\/center))|column\/(startup-pic-with-ad|marketing\/advertising)|resource\/skin\/list\/.*$ script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/MiGuMusic/script/miguyinyue.js, requires-body = true, tag = 咪咕音乐vip、音质、下载
+http-request ^https?:\/\/app.(c|pd).nf.migu.cn\/.*\/(listen-url|music\/batchQueryMusicPolicy|download-url).*$ script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/MiGuMusic/script/migu.js, tag = 咪咕音乐vip、音质、下载
 
 [Mitm]
 hostname = app.pd.nf.migu.cn, c.musicapp.migu.cn, u.musicapp.migu.cn, app.c.nf.migu.cn, app.c.nf.migu.cn, h5.nf.migu.cn

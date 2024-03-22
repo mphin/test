@@ -172,7 +172,7 @@ jobs:
                 # 规范文件格式
                 sed -i '1,/^#!date/{/^$/d}' $conf_file
                 #sed -i 's/\([^[:space:]]\)\s*=\s*\([^[:space:]]\)/\1 = \2/g' $plugin_file
-                sed -i -E '/(script-path|requires-body|tag|timeout)\s*=/ s/([^[:space:]]\s*)=\s*([^[:space:]])/ \1 = \2/g' $plugin_file
+                #sed -i -E '/( script-path| requires-body| tag| timeout)\s*=/ s/([^[:space:]])\s*=\s*([^[:space:]])/\1 = \2/g' $plugin_file
                 sed -i '/^hostname/s/,\([^ ]\)/, \1/g' $plugin_file
                 
                 # 对比插件内容更新date值

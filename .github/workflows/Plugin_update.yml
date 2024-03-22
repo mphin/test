@@ -83,7 +83,10 @@ jobs:
                 if [ -n "$icon" ]; then
                     mkdir -p "tmp/$(basename "$conf_file" .conf)/icon"
                     wget -O "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" "$icon"
-                    mogrify -resize 120x120\> "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" && touch "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png"
+                    size=$(identify -format "%wx%h" "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png")
+                    if [ "$size" != "120x120" ]; then
+                        convert "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" -resize 120x120\> "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png"
+                    fi
                     icon="$base_url$plugin_folder/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png"
                     echo "#!icon = $icon" >> "$plugin_file"
                 else

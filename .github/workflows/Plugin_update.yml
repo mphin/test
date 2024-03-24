@@ -157,6 +157,7 @@ jobs:
                   if [[ "$line" == *"script-path"* ]]; then
                     script_download_url=$(echo "$line" | sed -n 's/^.*script-path\s*=\s*\([^,]*\).*$/\1/p')
                     wget -O "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$script_download_url"
+                    sed -i '1i\/*\n脚本引用"$script_download_url"\n*/' "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"
                     # 对比script内容更新date值
                     if [ -f "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ] && [ -f "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" ]; then
                         if ! cmp -s "tmp/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")" "$plugin_folder/$(basename "$conf_file" .conf)/script/$(basename "$script_download_url")"; then

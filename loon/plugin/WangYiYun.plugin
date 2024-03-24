@@ -1,7 +1,7 @@
 #!name = 网易云音乐黑胶VIP
 #!desc = 共享会员用的人多会崩溃，此脚本仅供学习与交流，请在下载使用24小时内删除！请勿在中国大陆转载与贩卖！
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/WangYiYun/icon/WangYiYun.png
-#!date = 2024-03-22 21:37:45
+#!date = 2024-03-24 10:34:06
 
 [Script]
 http-request ^https:\/\/interface3?\.music\.163\.com\/eapi\/playermode\/ script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/WangYiYun/script/wangyiyun.js, tag = 播放器会员皮肤

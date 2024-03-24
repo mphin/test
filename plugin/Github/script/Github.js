@@ -1,4 +1,7 @@
 /*
+脚本引用"$script_download_url"
+*/
+/*
 GitHub 1.142.1
 除了Ai功能，其他功能都可用
 

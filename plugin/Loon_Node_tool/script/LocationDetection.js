@@ -1,3 +1,6 @@
+/*
+脚本引用"$script_download_url"
+*/
 /* 测试 api
  * 地理位置查询
  * 感谢并修改自https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/geo_location.js

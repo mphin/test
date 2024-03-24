@@ -1,3 +1,6 @@
+/*
+脚本引用"$script_download_url"
+*/
 /***************************
 支持将 QX重写 Surge模块 Loon插件 解析至Surge Shadowrocket Loon Stash
 

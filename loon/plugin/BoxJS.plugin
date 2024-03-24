@@ -4,7 +4,7 @@
 #!author = chavyleung
 #!homepage = https://chavyleung.gitbook.io/boxjs/
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/BoxJS/icon/BoxJS.png
-#!date = 2024-03-22 21:37:45
+#!date = 2024-03-24 10:34:06
 
 [Rule]
 DOMAIN-SUFFIX,jsdelivr.net,PROXY

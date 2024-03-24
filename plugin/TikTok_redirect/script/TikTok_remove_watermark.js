@@ -1,3 +1,6 @@
+/*
+脚本引用"$script_download_url"
+*/
 var watermark = (data) => {
 	try {
 		let body = JSON.parse(data);

@@ -1,3 +1,6 @@
+/*
+脚本引用"$script_download_url"
+*/
 const $ = new Env('BoxJs')
 
 // 为 eval 准备的上下文环境

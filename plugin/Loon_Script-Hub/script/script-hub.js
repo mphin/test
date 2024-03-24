@@ -1,3 +1,6 @@
+/*
+脚本引用"$script_download_url"
+*/
 const NAME = `script-hub`
 
 const $ = new Env(NAME)

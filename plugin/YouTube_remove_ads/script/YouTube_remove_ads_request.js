@@ -1,4 +1,7 @@
 /*
+脚本引用"$script_download_url"
+*/
+/*
 脚本作者：Maasea
 引用地址：https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.beta.js
 */

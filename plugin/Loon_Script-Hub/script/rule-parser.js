@@ -1,3 +1,6 @@
+/*
+脚本引用"$script_download_url"
+*/
 /****************************
    支持QX & Surge & Clash 规则集解析
    适用app: Surge Shadowrocket Stash Loon

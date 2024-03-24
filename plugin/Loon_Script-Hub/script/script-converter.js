@@ -1,3 +1,6 @@
+/*
+脚本引用"$script_download_url"
+*/
 const TITLE = `Script Hub: 脚本转换`
 const NAME = `script-converter`
 

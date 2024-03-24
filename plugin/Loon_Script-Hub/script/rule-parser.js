@@ -1,5 +1,5 @@
 /*
-脚本引用"$script_download_url"
+脚本引用https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/rule-parser.js
 */
 /****************************
    支持QX & Surge & Clash 规则集解析

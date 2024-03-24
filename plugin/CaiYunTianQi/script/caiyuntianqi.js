@@ -1,5 +1,5 @@
 /*
-脚本引用"$script_download_url"
+脚本引用https://raw.githubusercontent.com/chxm1023/Rewrite/main/caiyuntianqi.js
 */
 /*************************************
 

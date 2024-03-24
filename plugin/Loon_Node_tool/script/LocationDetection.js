@@ -1,5 +1,5 @@
 /*
-脚本引用"$script_download_url"
+脚本引用https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/Node_detection_tool/LocationDetection.js
 */
 /* 测试 api
  * 地理位置查询

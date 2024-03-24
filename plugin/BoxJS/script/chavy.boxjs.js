@@ -1,5 +1,5 @@
 /*
-脚本引用"$script_download_url"
+脚本引用https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js
 */
 const $ = new Env('BoxJs')
 

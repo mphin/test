@@ -1,5 +1,5 @@
 /*
-脚本引用"$script_download_url"
+脚本引用https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/script-hub.js
 */
 const NAME = `script-hub`
 

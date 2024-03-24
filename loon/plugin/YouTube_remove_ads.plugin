@@ -3,7 +3,7 @@
 #!author = Maasea VirgilClyne Choler DivineEngine app2smile
 #!homepage = https://gitlab.com/lodepuly/vpn_tool/-/tree/master/Tool/Loon/Plugin
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/YouTube_remove_ads/icon/YouTube_remove_ads.png
-#!date = 2024-03-24 10:34:06
+#!date = 2024-03-24 10:36:12
 
 [Rewrite]
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad reject-200

@@ -1,5 +1,5 @@
 /*
-脚本引用"$script_download_url"
+脚本引用https://raw.githubusercontent.com/Yu9191/Rewrite/main/Github.js
 */
 /*
 GitHub 1.142.1

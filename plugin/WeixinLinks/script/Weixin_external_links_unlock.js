@@ -1,5 +1,5 @@
 /*
-脚本引用"$script_download_url"
+脚本引用https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/Weixin/Weixin_external_links_unlock.js
 */
 /*
 引用地址https://raw.githubusercontent.com/zZPiglet/Task/master/asset/UnblockURLinWeChat.js

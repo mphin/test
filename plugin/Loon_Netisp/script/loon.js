@@ -1,5 +1,5 @@
 /*
-脚本引用"$script_download_url"
+脚本引用https://raw.githubusercontent.com/Keywos/rule/master/script/netisp/js/loon.js
 */
 /**
  * @key

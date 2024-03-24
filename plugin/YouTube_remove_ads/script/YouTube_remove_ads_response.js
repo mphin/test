@@ -1,5 +1,5 @@
 /*
-脚本引用"$script_download_url"
+脚本引用https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads_response.js
 */
 /*
 脚本作者：Maasea

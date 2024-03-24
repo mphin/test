@@ -3,7 +3,7 @@
 #!author = zZPiglet
 #!homepage = https://gitlab.com/lodepuly/vpn_tool/-/tree/master/Tool/Loon/Plugin
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/WeixinLinks/icon/WeixinLinks.png
-#!date = 2024-03-24 10:34:06
+#!date = 2024-03-24 10:36:12
 
 [Script]
 http-response ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? script-path = https://raw.githubusercontent.com/mphin/test/main/plugin/WeixinLinks/script/Weixin_external_links_unlock.js, requires-body = true, tag = 微信外部链接解锁

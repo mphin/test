@@ -20,6 +20,9 @@
 - **跳过代理**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_General.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_General.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_General.plugin)
+- **TestFlight账户管理**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
 - **YouTube去广告**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/YouTube_remove_ads.plugin)
@@ -35,9 +38,6 @@
 - **TikTok解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TikTok_redirect.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TikTok_redirect.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TikTok_redirect.plugin)
-- **TestFlight账户管理**：
-  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
-  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
 - **咪咕音乐解锁**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/MiGuMusic.plugin)

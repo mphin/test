@@ -3,7 +3,8 @@
 #!author = yqc007
 #!homepage = https://yfamily.ml
 #!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/AdGuard/icon/AdGuard.png
-#!date = 2024-03-27 00:53:41
+#!icon = https://raw.githubusercontent.com/mphin/test/main/plugin/AdGuard/icon/AdGuard.png
+#!date = 2024-03-27 01:59:58
 
 [Script]
 http-response ^https?:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt requires-body=1,script-path=https://raw.githubusercontent.com/mphin/test/main/plugin/AdGuard/script/AdGuardProCrack.js

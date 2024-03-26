@@ -77,7 +77,7 @@ jobs:
                 [ -n "$openUrl" ] && echo "#!openUrl = $openUrl" >> "$plugin_file"
                 [ -n "$author" ] && echo "#!author = $author" >> "$plugin_file"
                 [ -n "$homepage" ] && echo "#!homepage = $homepage" >> "$plugin_file"
-                if [ -n "$icon" ]; then
+                if [ -n "$icon" ] && [[ "$icon" == http* ]]; then
                     mkdir -p "tmp/$(basename "$conf_file" .conf)/icon"
                     wget -O "tmp/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png" "$icon"
                     icon="$base_url$plugin_folder/$(basename "$conf_file" .conf)/icon/$(basename "$conf_file" .conf).png"

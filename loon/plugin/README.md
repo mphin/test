@@ -17,6 +17,9 @@
 - **跳过代理**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_General.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_General.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/Loon_General.plugin)
+- **AdGuard**：
+  - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/AdGuard.plugin)
+  - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/AdGuard.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/AdGuard.plugin)
 - **TestFlight账户管理**：
   - [点击安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
   - [https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin](https://raw.githubusercontent.com/mphin/test/main/loon/plugin/TF_Account.plugin)
